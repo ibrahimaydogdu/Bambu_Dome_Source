@@ -17,7 +17,7 @@ Görevin; tüm bölümlerin verilerini, mekanik formüllerini ve LCA bulguların
 
 2. **Yazım Dili ve Üslup:**
    - Kesin, veriye dayalı, pasif-etken dengeli teknik akademik İngilizce.
-   - Standart atıflarında IStructE Manual (2025) denklem numaraları (Denklem 3.9, 6.1–6.5, Tablo 4.4, A3.4) ve doğrulanmış birincil kaynaklar (`Trujillo et al. 2025`, `Zea Escamilla & Habert 2014`, `Correal et al. 2021`, `ICE v3.0`).
+   - Standart atıflarında IStructE Manual (2025) denklem numaraları (Denklem 3.9, 6.1–6.5, Tablo 4.4, A3.4) ve künyesi Papers PDF'leriyle teyit edilen kaynaklar (`Trujillo et al. 2025`, `Zea Escamilla & Habert 2014`, `Correal et al. 2021`, `ICE Educational V5.0`, yazar sırası [DOĞRULANACAK]).
    - Sıfır dolgu kelimesi; doğrulanmamış her parametre için "assumption / [DOĞRULANACAK]" disiplini.
 
 ---
@@ -48,12 +48,12 @@ Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bul
 3. **2. Materials and Design Standards**
    - 2.1. Guadua angustifolia culm morphology and discrete 24-section catalog (Table 2)
    - 2.2. ISO 22156:2021 & IStructE 2025 ASD design equations ($C_{DF}$, $FS=2$, $C_R=0.90$, Ylinen $c=0.8$, deflection $span/150$)
-   - 2.3. Hybrid joint mechanics: Bolted mortar-injected steel connector capacity ($F_{j,Rd} = 53.2\text{ kN}$, $n_{\text{bolt}}=2$ [assumption])
+   - 2.3. Hybrid joint mechanics: Bolted mortar-injected steel connector capacity ($F_{j,Rd} = 49.3\text{ kN}$, $n_{\text{bolt}}=4$, NSR-10 Tabla G.12.11-2/3 allowable capacity)
 4. **3. Computational Methodology**
    - 3.1. 40-m dome topologies (geodesic16, kiewitt32, ribbed40 freq=2 mesh adaptation of Saka 1991 layout)
    - 3.2. Direct stiffness solver and ASCE 7-22 ASD unfactored load combinations
    - 3.3. Single-objective formulation with multiplicative constraint penalty ($f_{\text{pen}} = W_{\text{bambu}} (1+P)^\varepsilon$, $\varepsilon=2$)
-   - 3.4. 3 metaheuristic algorithms selection ([TUNING SONUCUNA GÖRE]) and 30-seed statistical protocol
+   - 3.4. 3 metaheuristic algorithms selection (ABC, ACO, DO) and 30-seed statistical protocol
    - 3.5. Empirical quasi-collinearity of mass and embodied carbon ($R^2 = 0.81 - 0.97$) and collapse of Pareto front
    - 3.6. Cradle-to-gate (A1–A3) embodied carbon model and parameter assumptions
 5. **4. Numerical Results and Statistical Verification**
@@ -62,10 +62,10 @@ Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bul
    - 4.3. Structural feasibility and ASD demand-capacity ratio distribution ($DCR \le 1.0$)
    - 4.4. Empirical verification of quasi-collinearity and single-point Pareto collapse
 6. **5. Deep Discussion: The Decarbonization Paradox**
-   - 5.1. Component-wise embodied carbon breakdown and parametric sensitivity (connection share down to 43–52% in unfavorable bounds)
+   - 5.1. Component-wise embodied carbon breakdown and parametric sensitivity (baseline joint share 74.1–82.1%; 45.3–57.7% at the least favourable bounds; LCA_SENSITIVITY_REPORT.md)
    - 5.2. Debunking the zero-carbon bamboo myth (Engineering reality vs. greenwashing)
    - 5.3. Comparison with conventional steel dome benchmarks
-   - 5.4. Study limitations ($n_{\text{bolt}}=2$ assumption, slenderness assumption, pinning assumption, LCA inventory assumptions)
+   - 5.4. Study limitations ($n_{\text{bolt}}=4$ assumption, 12 short elements limitation, slenderness conservative check, pinning assumption, LCA inventory assumptions)
 7. **6. Conclusions**
    - Four concise bullet points summarizing quantitative outcomes
 8. **References (Numbered Style [1], verified DOIs)**

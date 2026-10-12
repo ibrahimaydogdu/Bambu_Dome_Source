@@ -35,14 +35,16 @@ Burada:
   - $P_{e,k} = \pi^2 E_k I C_{\text{bow}} / (K L)^2$, $C_{\text{bow}} = 1 - b_0 / 0.02$, $b_0 = 0.01$ [varsayım], $K = 1.0$.
   - Ylinen parametresi $c = 0.8$ (Manual Denklem 6.1, Ek A6.2).
   - $N_{cr,\text{izin}} = P_{cr,k} \cdot C_R \cdot C_{DF} \cdot C_T / FS$, $DCR_{c,i} = N_{c,i} / N_{cr,\text{izin}} \le 1.0$.
-- **Narinlik Sınırı:** $\lambda_i = K L_i / r_i \le 150$ [kaynağı doğrulanamadı, varsayım].
-- **Bağlantı Sınırı:** $|N_i| / F_{j,Rd} \le 1.0$, $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\max} = 2 \times 26.6 = 53.2\text{ kN}$.
-  - $F_{\text{bolt},\max} = 26.6\text{ kN}$ (Correal vd. 2021 Tablo 4 deney maksimum yükü).
-  - $n_{\text{bolt}} = 2$ (çapraz çift cıvata) varsayımdır. Tek cıvatada 231 eleman (ribbed40) ve 8 eleman (kiewitt32) kesitten bağımsız olarak sınırı aştığından zorunlu bir kabuldür; duyarlılık konusu olarak incelenir.
+- **Narinlik Sınırı:** $\lambda_i = K L_i / r_i \le 150$ (çekme ve basınca uygulanır; NSR-10 G.12.9.2.6/7 yalnızca basınç için ister, bilinçli muhafazakârdır).
+- **Bağlantı Sınırı:** $|N_i| / F_{j,Rd} \le 1.0$, $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$.
+  - $F_{\text{bolt},\text{adm}} = 13.25\text{ kN}$: NSR-10 Tabla G.12.11-2 izinli yük (Ø5/8" cıvata, $D=100\text{ mm}$, çift kesme).
+  - $C_g = 0.93$: Tabla G.12.11-3 grup katsayısı; $n_{\text{bolt}} = 4$ kullanıcı kararıdır.
+  - 270 optimum tasarımın tamamı bağlantı sınırını sağlar (en yüksek bağlantı D/C 0.807, ribbed40).
+  - Geometrik sınırlama: ribbed40'ta 12 kısa eleman (%0.82, $L=0.76\text{ m}$) gereken 3 cıvatayı NSR-10 kuralına göre barındıramaz (`T10`).
 - **Servis Deplasmanı (SLS):**
   $$u_{\max} \le u_{\text{izin}} = \frac{L_{\text{span}}}{150} = \frac{40\,000\text{ mm}}{150} \approx 266.67\text{ mm} \quad \text{[IStructE Manual 2025 örneği]}$$
 
-Doğrulanmış temel sonuç: Tüm elemanlar katalogdaki en büyük kesitteyken (Kesit 24, $D=160\text{ mm}, t=16\text{ mm}$) üç kubbe de tüm ASD sınırlarını tam sağlamaktadır (en gayrimüsait $DCR = 0.75$). Bu referans tasarımda yapısal ağırlıklar: `geodesic16` $20.9\text{ kN}$, `kiewitt32` $84.5\text{ kN}$, `ribbed40` $190.0\text{ kN}$'dur (eski geçersiz optimum ağırlıklar belgelerden çıkarılmıştır).
+Güncel kodla kontrol (2026-10-13, `results_report.limit_breakdown`): Tüm elemanlar katalogdaki en büyük kesitteyken (Kesit 24, $D=160\text{ mm}, t=22\text{ mm}$) üç kubbe de tüm ASD sınırlarını sağlar ($P = 0$; en büyük D/C = 0.807, ribbed40 bağlantı kontrolü). Bu tasarımda yapısal ağırlıklar `geodesic16` $20.9\text{ kN}$, `kiewitt32` $84.5\text{ kN}$, `ribbed40` $190.3\text{ kN}$'dur. Bunlar optimum değil, üst sınır referansıdır.
 
 ---
 
@@ -53,15 +55,15 @@ Optimizasyon tamamlandıktan sonra elde edilen en hafif, uygulanabilir ($P=0$) k
 $$EC_{\text{total}} = M_{\text{bambu}} \cdot EC_b + M_{\text{steel}} \cdot EC_s + M_{\text{mortar}} \cdot EC_m \quad [\text{kg CO}_2\text{e}]$$
 
 ### Literatür Parametreleri ve Varsayımlar:
-1. **$EC_b = 0.35\text{ kg CO}_2\text{e/kg}$:** [Varsayım; Zea Escamilla & Habert 2014 Tablo 8 ile teyit edilecek].
-2. **$EC_s = 2.10\text{ kg CO}_2\text{e/kg}$:** [Varsayım; ICE v3.0 xlsx ile teyit edilecek].
-3. **$EC_m = 0.18\text{ kg CO}_2\text{e/kg}$:** [Varsayım; ICE v3.0 xlsx ile teyit edilecek].
+1. **$EC_b = 0.30\text{ kg CO}_2\text{e/kg}$:** (aralık $0.09–1.23$, türetilmiş temel değer; alt sınır varsayım; `EC_BAMBOO_METHOD.md`).
+2. **$EC_s = 2.38\text{ kg CO}_2\text{e/kg}$:** (bağlantı plakası çeliği, ICE Educational V5.0 Haziran 2026; boru referans için 2.51 kg CO2e/kg).
+3. **$EC_m = 0.18\text{ kg CO}_2\text{e/kg}$:** (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı).
 4. **Bağlantı Geometrisi:**
    - Düğüm gövdesi kütlesi: $m_{\text{hub}} = 2.0\text{ kg/düğüm}$
    - Çubuk ucu çelik manşon/saplama: $0.50\text{ kg/uç}$
    - Uç bölge harç dolgusu: $\rho = 2100\text{ kg/m}^3$, dolgu boyu $L_{\text{inj}} = 2.5 D$ (kesite bağlı harç kütlesi).
 
-*LCA Duyarlılık Notu:* Hibrit bağlantı karbon payı, en elverişsiz parametre setinde %43–52 seviyelerine düşebilmektedir. Dolayısıyla nihai karbon dökümü ve manşet bulgu, tam kampanya sonuçları alındıktan sonra hesaplanacak olup ön-yazılı sabit bir yüzde verilmez.
+*LCA Duyarlılık Notu:* Temel durumda hibrit bağlantı karbon payı %74.1–%82.1; en elverişsiz parametre setinde kiewitt32'de %45.3'e düşerek duyarlılık sergiler. Dolayısıyla "Dekarbonizasyon Paradoksu" parametreye duyarlıdır.
 
 ---
 
@@ -100,18 +102,18 @@ $$EC_{\text{total}} = M_{\text{bambu}} \cdot EC_b + M_{\text{steel}} \cdot EC_s 
 
 ### 4.1. İncelenen 3 Kubbe Topolojisi ($Span = 40.0\text{ m}$)
 1. **`geodesic16`:** 115 çubuk, 46 düğüm, 23 tasarım grubu ($\text{NFE} = 23\,000$).
-2. **`kiewitt32`:** 456 çubuk, 161 düğüm, 20 tasarım grubu ($\text{NFE} = 22\,000$, 22 değişken).
-3. **`ribbed40` ($freq=2$):** 1464 çubuk, 321 düğüm, 43 tasarım grubu ($\text{NFE} = 43\,000$).
+2. **`kiewitt32`:** 456 çubuk, 169 düğüm, 22 tasarım grubu ($\text{NFE} = 22\,000$).
+3. **`ribbed40` ($freq=2$):** 1464 çubuk, 505 düğüm, 43 tasarım grubu ($\text{NFE} = 43\,000$).
    - *Topoloji Notu:* Orijinal Saka (1991) 40 m çelik benchmark'ı 354 eleman içermekte olup çubuk boyları 2.9–5.97 m arasındadır ve bambu culm sınırlarına uymaz. Bu çalışmadaki model Saka geometrisinden uyarlanan $freq=2$ yoğunlaştırmasıdır ($L \in [0.76, 3.08]\text{ m}$).
 
 ### 4.2. Algoritma Seçimi ve 3 Algoritmalı Kampanya Tasarımı
-Kod tabanında 16 algoritma (`metaheuristic_optimizers.py`) yer almaktadır. Ancak nihai kampanya, `04_Results/TUNING_STUDY.md` duyarlılık analizinden (aday havuzu: ABC, ACO, DO, GWO, WOA, TLBO; tohum 2001–2005) belirlenen **3 algoritma ([TUNING SONUCUNA GÖRE])** (2 bilinen yüksek performanslı yöntem + 1 görece yeni yöntem) ile yürütülür.
+Kod tabanında 16 algoritma (`metaheuristic_optimizers.py`) yer almaktadır. Ancak nihai kampanya, `04_Results/TUNING_STUDY.md` duyarlılık analizinden belirlenen **3 algoritma: ABC (pop 20), ACO (pop 40), DO (pop 40)** ile yürütülür.
 
 ### 4.3. Koşu Parametreleri ve Hesaplama Bütçesi
 - **Hesaplama Bütçesi:** $\text{NFE} = 1000 \times \text{tasarım grubu sayısı}$ (ribbed40: 43 000, kiewitt32: 22 000, geodesic16: 23 000).
 - **Bağımsız Tohum Sayısı:** **$R = 30$ bağımsız tohum** (`seed = [1001, ..., 1030]`).
 - **Toplam İş Sayısı:** $3 \text{ Kubbe} \times 3 \text{ Algoritma} \times 30 \text{ Tohum} = \mathbf{270\text{ optimizasyon koşusu}}$.
-- **Paralel Süre (7 İşçi):** Ribbed40 koşusu 7 paralel işçide yaklaşık 16 dk sürmektedir. 270 işlik tam kampanyanın tahmini duvar saati süresi ≈ **3.5–4 saattir**.
+- **Paralel Süre (7 İşçi):** 270 işlik tam kampanya 3 sa 21 dk içinde tamamlanmış ve 270/270 uygulanabilirlik ($P=0$) elde edilmiştir.
 - **Kayıt ve Devam:** Her iş için RNG durumunu içeren atomik JSON checkpoint ve değerlendirme başına `.npz` kayıt dosyaları tutulur (kesintiye uğrayan koşu bit düzeyinde özdeş sonuçla devam eder).
 
 ---
@@ -120,7 +122,7 @@ Kod tabanında 16 algoritma (`metaheuristic_optimizers.py`) yer almaktadır. Anc
 
 1. **Tanımlayıcı İstatistikler:** Min, Mean, Median, Max, Std Dev, Feasibility Rate (%).
 2. **Hipotez Testleri:**
-   - **Wilcoxon Rank-Sum Testi (Mann-Whitney U):** Algoritmalar arası ikili kıyaslamalarda çift taraflı test, çoklu karşılaştırma için **Holm düzeltmesi** ve Vargha-Delaney $A_{12}$ etki büyüklüğü ($p < 0.05$).
+   - **Mann-Whitney U Testi (İki yönlü, Holm düzeltmeli):** Algoritmalar arası ikili kıyaslamalarda çift taraflı test, çoklu karşılaştırma için **Holm düzeltmesi** ve Vargha-Delaney $A_{12}$ etki büyüklüğü; anlamlılık düzeyi α = 0.05 (Holm sonrası). Sonuç: $p_{\text{Holm}} \le 5.53 \times 10^{-4}$ (`STATISTICAL_TEST_RESULTS.md`).
    - **Friedman Testi:** Tohum bloklu küresel sıra hiyerarşisi.
 3. **Grafiksel Çıktılar:**
    - Yakınsama profilleri ($\pm 1$ Std gölgeli).
@@ -129,11 +131,12 @@ Kod tabanında 16 algoritma (`metaheuristic_optimizers.py`) yer almaktadır. Anc
 
 ---
 
-## 📚 6. DOĞRULANMIŞ LİTERATÜR ATIFLARI
+## 📚 6. LİTERATÜR ATIFLARI (künyeler Papers PDF'leriyle teyit edildi; ICE yazar sırası hariç)
 
 1. **Paraskeva, T. S., Pradhan, N. P., Stoura, C. D., & Dimitrakopoulos, E. G. (2019).** *"Monotonic loading testing and characterization of new multi-full-culm bamboo to steel connections."* Construction and Building Materials, 201, 473–483. DOI: 10.1016/j.conbuildmat.2018.12.198. *(Kao Jue, M6 cıvata).*
 2. **Trujillo, D., Harries, K., Kaminski, S., & Lopez, L. F. (2025).** *"Manual for the design of bamboo structures to ISO 22156:2021."* The Institution of Structural Engineers (IStructE), London. ISBN: 978-1-906335-97-7.
 3. **Zea Escamilla, E., & Habert, G. (2014).** *"Environmental impacts of bamboo-based construction materials representing global production diversity."* Journal of Cleaner Production, 69, 117–127. DOI: 10.1016/j.jclepro.2014.01.067.
-4. **Correal, J. F., Prada, M., Suárez, F., & Moreno, M. (2021).** *"Bearing capacity of bolted-mortar infill connections in bamboo and yield model formulation."* Construction and Building Materials, 305, 124597. DOI: 10.1016/j.conbuildmat.2021.124597. *(Guadua, F_bolt,max deney yükü).*
-5. **Jones, C., & Hammond, G. (2019).** *"Inventory of Carbon and Energy (ICE) Version 3.0."* Circular Ecology.
+4. **Correal, J. F., Prada, M., Suárez, F., & Moreno, M. (2021).** *"Bearing capacity of bolted-mortar infill connections in bamboo and yield model formulation."* Construction and Building Materials, 305, 124597. DOI: 10.1016/j.conbuildmat.2021.124597. *(Guadua; yalnızca bağlantı davranışı referansı, F_j için kaynak değildir).*
+5. **Circular Ecology (2026).** *"Inventory of Carbon and Energy (ICE) Educational Version 5.0."* (Haziran 2026, yazar sırası [DOĞRULANACAK]).
 6. **ISO 22156:2021.** *"Bamboo structures — Structural design."* International Organization for Standardization, Geneva.
+7. **NSR-10 Título G (2010).** *Reglamento Colombiano de Construcción Sismo Resistente, Título G — Estructuras de madera y estructuras de guadua.* (Tabla G.12.11-2/3; G.12.9.2.6/7; `Papers/NSR-10_Titulo_G.pdf`).

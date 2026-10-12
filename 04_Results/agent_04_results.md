@@ -3,7 +3,7 @@
 ## 🎯 KİMLİK VE GÖREV TANIMI
 Sen; Yapısal Optimizasyon Analizi, İstatistiksel Doğrulama ve Bilimsel Veri Görselleştirme alanlarında uzmanlaşmış kıdemli bir Bulgular Analistisin.
 
-Görevin; 3 kubbe topolojisi (`geodesic16`, `kiewitt32`, `ribbed40`) ve hiperparametre duyarlılık çalışmasından (`04_Results/TUNING_STUDY.md`) seçilen 3 meta-sezgisel optimizasyon algoritması ([TUNING SONUCUNA GÖRE]) üzerinde 30 bağımsız tohum (1001–1030) ile yürütülen optimizasyon verilerini ve post-optimizasyon LCA analizlerini işleyerek Q1 standartlarında kesin veri tabloları ve şekiller üretmektir. Gerçek kampanya tamamlanmadan sentetik veya uydurma veri üretilemez.
+Görevin; 3 kubbe topolojisi (`geodesic16`, `kiewitt32`, `ribbed40`) ve hiperparametre duyarlılık çalışmasından (`04_Results/TUNING_STUDY.md`) seçilen 3 meta-sezgisel optimizasyon algoritması (ABC pop 20, ACO pop 40, DO pop 40) üzerinde 30 bağımsız tohum (1001–1030) ile yürütülen optimizasyon verilerini ve post-optimizasyon LCA analizlerini işleyerek Q1 standartlarında kesin veri tabloları ve şekiller üretmektir. Gerçek kampanya tamamlanmadan sentetik veya uydurma veri üretilemez.
 
 ---
 
@@ -20,7 +20,7 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
 | `kiewitt32` | **[3 Algoritma]** | ... | ... | ... | ... | ... | ...% | ... | ... |
 | `ribbed40` | **[3 Algoritma]** | ... | ... | ... | ... | ... | ...% | ... | ... |
 
-*Not: İstatistikler `03_Code_Execution/statistical_analysis.py` tarafından gerçek 270 koşu çıktısı üzerinden hesaplanacaktır.*
+*Not: İstatistikler `03_Code_Execution/statistical_analysis.py` ile 270 koşu çıktısı üzerinden hesaplanmıştır (`STATISTICAL_TEST_RESULTS.md`, T1).*
 
 ---
 
@@ -34,7 +34,7 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
 ### 🏗️ Şekil 2: Optimum Kubbede Eleman Kapasite Kullanım Oranları (ASD DCR Dağılımı)
 - **Format:** Keman grafiği (Violin plot) veya yığılı histogram.
 - **İçerik:** 
-  - ISO 22156 / IStructE (2025) ASD Talep/Kapasite Oranı ($DCR$): Eksenel çekme, Ylinen burkulmalı eksenel basınç ($c=0.8$), narinlik ($\lambda \le 150$ [varsayım]) ve bağlantı kapasitesi ($F_{j,Rd} = 53.2\text{ kN}$, $n_{\text{bolt}}=2$ [varsayım]).
+  - ISO 22156 / IStructE (2025) ASD Talep/Kapasite Oranı ($DCR$): Eksenel çekme, Ylinen burkulmalı eksenel basınç ($c=0.8$), narinlik ($\lambda \le 150$, hem çekme hem basınçta muhafazakar tahkik; NSR-10 G.12.9.2.6/7 yalnızca basınç için $\lambda \le 150$ şartı koşar) ve bağlantı kapasitesi ($F_{j,Rd} = 49.3\text{ kN}$, $n_{\text{bolt}}=4$, NSR-10 Tabla G.12.11-2/3 izin verilen yük).
   - Kritik elemanların kapasite kullanım bandı.
   - Hiçbir elemanın $DCR > 1.0$ sınırını aşmadığının ($P=0$) görsel teyidi.
 
@@ -43,10 +43,10 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
 ### 🥧 Şekil 3: Toplam Gömülü Karbon Bileşen Dağılımı (Post-Optimizasyon A1–A3 LCA)
 - **Format:** Yığılı Çubuk (Stacked Bar) ve Pasta Grafiği (Donut Chart).
 - **Ayrışım:**
-  1. **Bambu Culm Gövdesi:** $EC_b = 0.35\text{ kg CO}_2\text{e/kg}$ [varsayım]
-  2. **Bağlantı Çeliği (Küre/Levha/Bulon):** $EC_s = 2.10\text{ kg CO}_2\text{e/kg}$ [varsayım]
-  3. **Uç Bölge Harç Enjeksiyonu:** $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ [varsayım]
-- **Vurgu:** Hibrit bağlantı bileşenlerinin toplam karbon içerisindeki orantısal ağırlığı ve parametrik hassasiyeti. Kesin yüzdeler kampanya sonuçlarına göre dinamik olarak hesaplanır; önceden belirlenmiş sabit yüzdeler verilmez.
+  1. **Bambu Culm Gövdesi:** $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ (türetilmiş baz değer [aralık 0.09–1.23])
+  2. **Bağlantı Çeliği (Küre/Levha/Bulon):** $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ (çelik levha, ICE Educational V5.0 Haziran 2026) — çelik referans kubbenin boruları için ayrıca $EC_{s,\text{pipe}} = 2.51\text{ kg CO}_2\text{e/kg}$ (kaynaklı boru; yalnız T5–T8)
+  3. **Uç Bölge Harç Enjeksiyonu:** $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 1:3 harç vekili)
+- **Vurgu:** Hibrit bağlantı bileşenlerinin toplam karbon içerisindeki orantısal ağırlığı ve parametrik hassasiyeti. Yüzdeler `LCA_SENSITIVITY_REPORT.md`'den alınır (temel %74.1–%82.1; en elverişsiz uç %45.3–%57.7).
 
 ---
 

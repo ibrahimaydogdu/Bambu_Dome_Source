@@ -36,11 +36,11 @@ MATERIAL_PROPERTIES = {
     # --- Servis siniri ---
     "disp_limit_ratio": 150.0, # yer degistirme siniri = aciklik/150 (Manual ornegi; ISO 22156 sehim siniri vermez)
 
-    # Beşikten-Kapıya (A1-A3) Gömülü Karbon Katsayıları -- KAYNAKLARI DOGRULANMAMIS VARSAYIM (ICE v3.0 xlsx'ten alinacak)
+    # Beşikten-Kapıya (A1-A3) Gömülü Karbon Katsayıları -- celik/harc: ICE Educational V5.0 (Haz 2026); bambu: turetilmis (varsayim)
     "EC_bamboo": 0.30,         # kg CO2e / kg culm (A1-A3, biyojenik karbon HARIC): turetilmis; bkz. 04_Results/EC_BAMBOO_METHOD.md (aralik 0.09-1.23)
     "EC_steel": 2.38,          # kg CO2e / kg baglanti celigi: ICE Educational V5.0 (Haz 2026) "Steel, Plate" 2.38 (worldsteel 2023); galvanizli 2.62
     "EC_steel_tube": 2.51,     # kg CO2e / kg celik boru (CHS): ICE V5.0 "Steel, welded pipe" 2.51 (seamless tube 1.90)
-    "EC_mortar": 0.18,         # kg CO2e / kg
+    "EC_mortar": 0.18,         # kg CO2e / kg: ICE V5.0 harc 1:3; rotresiz grout satiri yok -> proxy (varsayim)
     "node_steel_mass": 4.50,   # kg / düğüm ("fixed" modu)
     "node_mortar_mass": 2.80   # kg / düğüm ("fixed" modu)
 }
@@ -83,15 +83,6 @@ RAW_CATALOG_DATA = [
     (23, 160.0, 15.0),   # t/D = 0.094
     (24, 160.0, 22.0),   # t/D = 0.138 (Maksimum basma kapasitesi)
 ]
-
-
-def culm_cost_per_meter(D_m: float) -> float:
-    """
-    Tablo 1: Çapa bağlı non-lineer Guadua culm maliyeti [USD/m].
-    C_culm(D) = 0.65 * (D / 0.08)^2.2
-    Kaynak: DANE (Kolombiya) ve CAMACOL piyasa rayiçleri.
-    """
-    return 0.65 * (D_m / 0.08) ** 2.2
 
 
 def build_catalog_dataframe():

@@ -12,7 +12,7 @@ Eksenel kafes sistemlerde yapısal eleman hacmi $V = \sum A_i L_i$ minimize edil
 - Bambu Gömülü Karbonu: $EC_{\text{bambu}} = EF_{\text{bambu}} \cdot M_{\text{bambu}}$
 - Bambu Maliyeti: $C_{\text{bambu}} = c_m \cdot M_{\text{bambu}}$ (veya boya/çapa bağlı monotonik maliyet)
 
-Sabit düğüm modelinde kütle ile karbon tam doğrusal bir ilişki ($f_2 = 35.68 f_1 + \text{sabit}$) sergiler. Kesite bağlı bağlantı modelinde ise tasarım uzayında ölçülen korelasyon $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde güçlü bir ampirik yakın-doğrusallık gösterir. Kütleyi azaltırken karbonu artıran antagonist bir mekanik ödünleşim mekanizması bulunmadığından ve tüm kısıtlar kesitleri aynı yönde büyümeye zorladığından çok amaçlı Pareto cephesi tekil bir optimuma ya da çok dar bir aralığa çökmektedir. Çok amaçlı algoritmaların ürettiği yayılımlar ise gerçek mühendislik dengesini değil, algoritmik gürültüyü temsil etmektedir.
+Sabit düğüm modelinde kütle ile karbon tam doğrusal bir ilişki ($f_2$, $f_1$'in tam doğrusal fonksiyonudur; corr = 1.000, `test_fast_eval.py`) sergiler. Kesite bağlı bağlantı modelinde ise tasarım uzayında ölçülen korelasyon $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde güçlü bir ampirik yakın-doğrusallık gösterir. Kütleyi azaltırken karbonu artıran antagonist bir mekanik ödünleşim mekanizması bulunmadığından ve tüm kısıtlar kesitleri aynı yönde büyümeye zorladığından çok amaçlı Pareto cephesi tekil bir optimuma ya da çok dar bir aralığa çökmektedir. Çok amaçlı algoritmaların ürettiği yayılımlar ise gerçek mühendislik dengesini değil, algoritmik gürültüyü temsil etmektedir.
 
 ### 1.2. İki Aşamalı Mimari
 1. **Aşama 1: Titiz Tek Amaçlı Yapısal Ağırlık Minimizasyonu:** Kısıtları tam sağlayan en hafif ve güvenli yapısal tasarımı bulmak ($\min f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$).
@@ -45,8 +45,8 @@ $$D/C_{\text{strength}, i} = \max\left( D/C_{\text{tens}, i}, \, D/C_{\text{buck
 Burada:
 - Eksenel çekme: $D/C_{\text{tens}, i} = \dfrac{N_{t, i}}{A_i \cdot f_{t,\text{izin}}}$
 - Ylinen sütun kararlılığı (Manual Denk. 6.1, Ek A6.2): $c = 0.8$, $P_{e,k} = \pi^2 \cdot E_k \cdot I_i \cdot C_{\text{bow}} / (K L_i)^2$, $C_{\text{bow}} = 1 - b_0/0.02$, $b_0 = 0.01$ (varsayım), $K = 1.0$. İzin verilen $N_{cr} = N_{cr,k} \cdot C_R \cdot C_{DF} \cdot C_T / FS$. $D/C_{\text{buck}, i} = |N_{c, i}| / N_{cr,\text{izin}}$.
-- Narinlik kısıtı: $\lambda_i = L_i / r_i \le 150$ (varsayım).
-- Bağlantı kapasitesi: $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\max} = 2 \times 26.6 = 53.2\text{ kN}$ ($F_{\text{bolt},\max}$: Correal vd. 2021 Tablo 4 tek bağlantı deney üst sınırı; $n_{\text{bolt}} = 2$ çapraz cıvata varsayımdır).
+- Narinlik kısıtı: $\lambda_i = L_i / r_i \le 150$ (NSR-10 yalnızca basınç için ister; çekme ve basınca uygulanması bilinçli muhafazakârdır).
+- Bağlantı kapasitesi: $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$ ($F_{\text{bolt},\text{adm}}$: NSR-10 Tabla G.12.11-2 izinli yük, Ø5/8" cıvata, $D=100\text{ mm}$, çift kesme; $C_g = 0.93$: Tabla G.12.11-3; $n_{\text{bolt}} = 4$ kullanıcı kararı).
 - Grup cezası: $P_{\text{strength}, g} = \max_{i \in g} \max\left(D/C_{\text{strength}, i} - 1.0, \, 0.0\right)$.
 
 ### 2.2. Deplasman Servis Kısıtı ($P_{\text{disp}}$)
@@ -69,7 +69,7 @@ $$P_{\text{disp}} = \max\left(\frac{u_{\max}}{u_{\text{izin}}} - 1.0, \, 0.0\rig
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 2. TEK AMAÇLI OPTİMİZASYON MOTORU                           │
-│    - 3 Algoritma: [TUNING SONUCUNA GÖRE] (2 bilinen + 1 yeni│
+│    - 3 Algoritma: ABC, ACO, DO (2 bilinen + 1 yeni)         │
 │    - 30 Bağımsız Tohum (1001–1030) x NFE = 1000 * N_grup    │
 │    - Vektörel Hızlı Doğrudan Rijitlik Çözücüsü (fast_eval)  │
 │    - Çarpımsal Ceza Fonksiyonu, P = 0 Feasible Arşivi       │
@@ -96,9 +96,9 @@ $$P_{\text{disp}} = \max\left(\frac{u_{\max}}{u_{\text{izin}}} - 1.0, \, 0.0\rig
                                ▼
 ┌─────────────────────────────────────────────────────────────┐
 │ 5. BEŞİKTEN-KAPIYA (A1-A3) LCA VE PARAMETRİK DUYARLILIK     │
-│    - Bambu Karbonu: m_bambu * 0.35 kg CO2e/kg (varsayım)    │
-│    - Çelik Bağlantı: m_steel * 2.10 kg CO2e/kg (varsayım)   │
-│    - Harç Enjeksiyonu: m_mortar * 0.18 kg CO2e/kg (varsayım)│
+│    - Bambu Karbonu: m_bambu * 0.30 kg CO2e/kg (türetilmiş)  │
+│    - Çelik Bağlantı: m_steel * 2.38 kg CO2e/kg (ICE V5.0)   │
+│    - Harç Enjeksiyonu: m_mortar * 0.18 kg CO2e/kg (proxy)   │
 │    - Parametrik Duyarlılık: L_inj / D, EC_steel, EC_bamboo  │
 │    - Kütle-Karbon Ampirik Yakın-Doğrusallığı (R^2=0.81-0.97)│
 └─────────────────────────────────────────────────────────────┘

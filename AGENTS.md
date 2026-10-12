@@ -49,7 +49,7 @@ Bu belge; BambuDome akademik araştırma ekosistemindeki tüm yapay zeka ajanlar
    - Karbon hesabı post-optimizasyon LCA ve parametrik duyarlılık analizi olarak yürütülür.
 
 2. **3 Algoritma ve 30 Tohum Kuralı (Kullanıcı Kararı):**
-   - Büyük üretim kampanyasında 3 algoritma (2 bilinen iyi + 1 görece yeni yöntem: [TUNING SONUCUNA GÖRE]) kullanılır.
+   - Büyük üretim kampanyasında 3 algoritma kullanılır: 2 bilinen iyi yöntem (ABC, ACO) + 1 görece yeni yöntem (DO, Dandelion Optimizer; Zhao vd. 2022). Seçim `04_Results/TUNING_STUDY.md` tuning çalışmasına dayanır.
    - 3 kubbe modelinde 30 bağımsız tohumla (1001–1030) test edilir (Toplam 270 iş).
    - Wilcoxon rank-sum (Mann-Whitney U, Holm düzeltmeli, $p < 0.05$) ve tohum bloklu Friedman sıra testleri zorunludur.
 

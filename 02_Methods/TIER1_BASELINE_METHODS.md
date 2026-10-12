@@ -56,7 +56,7 @@ Dış çap $D$ ve et kalınlığı $t$ olan dairesel içi boş bambu enkesitte (
 Enkesit alanı $A = \frac{\pi}{4}(D^2 - d_i^2)$, atalet momenti $I = \frac{\pi}{64}(D^4 - d_i^4)$ ve atalet yarıçapı $r = \frac{\sqrt{D^2 + d_i^2}}{4}$'tür.
 
 1. **Narinlik Sınırı:**
-   $$\text{Denklem (3):} \quad \lambda = \frac{K \cdot L}{r} \le \lambda_{\max} = 150 \quad \text{[kaynağı doğrulanamadı, muhafazakâr mühendislik varsayımı]}$$
+   $$\text{Denklem (3):} \quad \lambda = \frac{K \cdot L}{r} \le \lambda_{\max} = 150 \quad \text{[NSR-10 G.12.9.2.6/7 yalnızca basınç için ister; çekme ve basınca uygulanması bilinçli muhafazakârdır]}$$
    Kafes elemanları için burkulma boyu katsayısı $K = 1.0$'dir.
 
 2. **Ylinen Formülasyonu ve Euler Kararsızlığı (IStructE Manual 2025 Denklem 6.1–6.5, Ek A6.2):**
@@ -79,10 +79,11 @@ Bambu kafes elemanlarının uç bağlantılarında eksenel yük aktarım sınır
 
 $$\text{Denklem (8):} \quad \frac{|N|}{F_{j,Rd}} \le 1.0$$
 
-Burada $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\max} = 2 \times 26.6 = 53.2\text{ kN}$'dur.
-- $F_{\text{bolt},\max} = 26.6\text{ kN}$: Correal vd. 2021 (*Constr. Build. Mater.* 305: 124597) Tablo 4'ten alınan Ø15.9 mm tekil cıvatalı, harç enjeksiyonlu *Guadua* bağlantısının **deneysel maksimum tepe yüküdür** (izin verilen tasarım değeri değildir).
-- $n_{\text{bolt}} = 2$ (çapraz çift cıvata) **kaynaksız bir varsayımdır**.
-- *Gerekçe ve kısıtlayıcı duyarlılık:* Tek cıvata ($n_{\text{bolt}} = 1, 26.6\text{ kN}$) kabulünde, ribbed40 kubbesinde 1464 elemanın 231'i, kiewitt32 kubbesinde 8 eleman en büyük kesit (kesit 24) seçilse dahi sınırı aşmaktadır (maksimum servis kuvveti $39.8\text{ kN}$). Dolayısıyla $n_{\text{bolt}} = 2$ kabulü yapısal uygulanabilirlik için zorunlu bir varsayım olup çalışmada duyarlılık konusu olarak tartışılır.
+Burada $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$'dur.
+- $F_{\text{bolt},\text{adm}} = 13.25\text{ kN}$: NSR-10 Tabla G.12.11-2 (PDF s.138), Ø5/8" (#5) cıvata, çift kesme, lif doğrultusu, $D = 100\text{ mm}$, **izinli yük**.
+- $C_g = 0.93$: Tabla G.12.11-3 (s.139), 4 cıvata grup katsayısı. $n_{\text{bolt}} = 4$ kullanıcı kararıdır.
+- 270 optimum tasarımın tamamı bağlantı sınırını sağlar (en yüksek bağlantı D/C 0.807, ribbed40).
+- Geometrik detaylandırma sınırlaması: ribbed40'ta 1464 elemandan 12'si (%0.82, hepsi $L = 0.76\text{ m}$) gereken cıvata sayısını NSR-10 aralık kuralına göre barındıramaz (`T10`, `joint_bolt_check.py`). Geodesic16 ve kiewitt32'de bu sorun yoktur.
 
 ### 2.5. Servis Edilebilirlik Sınır Durumu (SLS - Deplasman)
 Maksimum düğüm düşey yer değiştirmesi açıklık ($S$) cinsinden sınırlandırılır (IStructE Manual 2025 örneği; ISO 22156 doğrudan sehim sınırı vermez):
@@ -95,13 +96,13 @@ $$\text{Denklem (9):} \quad \frac{|u_{\max}|}{u_{\text{izin}}} \le 1.0, \quad u_
 
 ## 3. Beşikten-Kapıya Gömülü Karbon ($ECO_2e$) Varsayımları
 
-Gömülü karbon sınırları EN 15978 standardına göre **Beşikten-Kapıya (Cradle-to-Gate / Modül A1–A3)** olarak modellenir. Modelde kullanılan katsayılar literatür varsayımları olup, ICE v3.0 ve Zea Escamilla & Habert 2014 ile teyit edilmelidir:
-- $EC_{\text{bambu}} = 0.35\text{ kg CO}_2\text{e/kg}$ (Varsayım; Zea Escamilla & Habert 2014 Tablo 8 teyit bekliyor).
-- $EC_{\text{çelik}} = 2.10\text{ kg CO}_2\text{e/kg}$ (Varsayım; ICE v3.0 teyit bekliyor).
-- $EC_{\text{harç}} = 0.18\text{ kg CO}_2\text{e/kg}$ (Varsayım; ICE v3.0 teyit bekliyor).
+Gömülü karbon sınırları EN 15978 standardına göre **Beşikten-Kapıya (Cradle-to-Gate / Modül A1–A3)** olarak modellenir (biyojenik karbon hariç tutulmuştur):
+- $EC_{\text{bambu}} = 0.30\text{ kg CO}_2\text{e/kg}$ (aralık $0.09–1.23$, türetilmiş temel değer: üretim 0.092 + nakliye 0.21; alt sınır varsayım; `EC_BAMBOO_METHOD.md`).
+- $EC_{\text{çelik}} = 2.38\text{ kg CO}_2\text{e/kg}$ (bağlantı plakası çeliği, ICE Educational V5.0 Haziran 2026; boru referans için 2.51 kg CO2e/kg).
+- $EC_{\text{harç}} = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı).
 
 ---
 
 ## 4. Meta-Sezgisel Optimizasyon Algoritmaları Havuzu
 
-Kod altyapısında 16 meta-sezgisel optimizasyon algoritması (HS, BBO, WOA, DO, ABC, ACO, BSO, CSA, FA, GOA, TLBO, TSA, GWO, HBA, AO, SSO) bulunmaktadır. Bu havuzdan ön tarama ve hiperparametre duyarlılık çalışması (`04_Results/TUNING_STUDY.md`) sonucunda seçilecek **3 algoritma ([TUNING SONUCUNA GÖRE])** nihai 30 tohumluk deneysel kampanyada kullanılacaktır.
+Kod altyapısında 16 meta-sezgisel optimizasyon algoritması (HS, BBO, WOA, DO, ABC, ACO, BSO, CSA, FA, GOA, TLBO, TSA, GWO, HBA, AO, SSO) bulunmaktadır. Bu havuzdan ön tarama ve hiperparametre duyarlılık çalışması (`04_Results/TUNING_STUDY.md`) sonucunda seçilen **3 algoritma (ABC, ACO, DO)** nihai 30 tohumluk deneysel kampanyada kullanılmıştır.

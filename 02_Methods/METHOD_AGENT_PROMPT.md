@@ -17,8 +17,8 @@ Görevin: Projenin metodoloji bölümünü; ISO 22156:2021 ve ASCE 7-22 kısıtl
    - **ASD Kapasite Formatı:** $X_{\text{izin}} = X_k \cdot C_R \cdot C_{DF} \cdot C_T / FS$ ($FS = 2.0$, $C_R = 0.90$ varsayım, $C_{DF} = 0.55/0.65/0.85$, $C_T = 1.0$).
    - **Eksenel Çekme Tahkiki:** $N_t / (A \cdot f_{t,\text{izin}}) \le 1.0$ ($f_{t,k} = 40.0\text{ MPa}$).
    - **Eksenel Basınç ve Sütun Kararlılığı:** Ylinen formülü ($c = 0.8$, $C_{\text{bow}} = 1 - b_0/0.02$, $b_0 = 0.01$ varsayım, $K = 1.0$, $E_k = 10,000\text{ MPa}$, $f_{c,k} = 37.8\text{ MPa}$).
-   - **Narinlik Üst Sınırı:** $\lambda = L / r \le 150$ (varsayım).
-   - **Bağlantı Kapasitesi:** $|N| / F_{j,Rd} \le 1.0$ ($F_{j,Rd} = 53.2\text{ kN}$, Correal vd. 2021 ve $n_{\text{bolt}} = 2$ varsayım).
+   - **Narinlik Üst Sınırı:** $\lambda = L / r \le 150$ (çekme ve basınca uygulanır; NSR-10 yalnızca basınç için ister, bilinçli muhafazakârdır).
+   - **Bağlantı Kapasitesi:** $|N| / F_{j,Rd} \le 1.0$ ($F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$, NSR-10 Tabla G.12.11-2/3 izinli yük, $n_{\text{bolt}} = 4$ kullanıcı kararı).
    - **Servis Edilebilirlik Sınır Durumu (SLS):** $u_{\max} \le \text{span}/150$ ($267\text{ mm}$, IStructE Manual örneği).
 3. **Beşikten-Kapıya (A1–A3) Gömülü Karbon Hesabı ve Duyarlılık:**
    - Bambu culm, bağlantı çeliği ve harç dolgusunun kütle bazlı emisyon toplamı ve parametrik duyarlılığı ($L_{\text{inj}}/D$, $EC_s$, $EC_b$).
@@ -35,7 +35,7 @@ Görevin: Projenin metodoloji bölümünü; ISO 22156:2021 ve ASCE 7-22 kısıtl
    - $P(\mathbf{X}) = \sum_{g=1}^{N_g} \max(0, DCR_{\max, g} - 1.0) + \max(0, u_{\max}/u_{\text{allow}} - 1.0)$
    - $\varepsilon = 2.0$: Uygun çözümlerde $P = 0$ ve $f_{\text{pen}} = W_{\text{bambu}}$.
 4. **Meta-Sezgisel Algoritmalar:**
-   - 16 algoritma havuzu test edilmiş olup, büyük üretim kampanyasında tuning duyarlılık çalışmasından seçilen 3 algoritma ([TUNING SONUCUNA GÖRE]) kullanılır (NFE = $1000 \times N_{\text{vars}}$).
+   - 16 algoritma havuzu test edilmiş olup, büyük üretim kampanyasında tuning duyarlılık çalışmasından seçilen 3 algoritma (ABC, ACO, DO) kullanılır (NFE = $1000 \times N_{\text{vars}}$).
 5. **Algoritmik Akış:**
    - *Adım 1:* Başlangıç popülasyonunu ayrık bambu kesit kataloğundan başlat.
    - *Adım 2:* Rijitlik matrisini çöz ve iç kuvvetler/deplasmanları elde et.

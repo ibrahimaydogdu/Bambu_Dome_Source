@@ -1,5 +1,8 @@
 # PARAMETRE ARAŞTIRMASI PROMPT'U (diğer yapay zekâ için)
 
+> [!NOTE]
+> Bu belge tarihsel 1. tur araştırma promptudur. Araştırma ve denetimler sonucunda kesinleşen güncel parametreler ($F_{j,Rd} = 49.3\text{ kN}$ NSR-10, ICE V5.0 Haziran 2026, $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$, seçilen 3 algoritma: ABC, ACO, DO) için `00_System/DOCS_UPDATE_PROMPT.md` (Rev. 2) ve `PROJECT_STATE.md` belgelerine bakınız.
+
 **Görev:** Aşağıdaki tablodaki her parametre için, kodda şu an kullanılan değerin **kaynaklı** karşılığını bul. Kodu ve proje belgelerini değiştirme; yalnızca araştırma raporu üret (`04_Results/PARAMETER_EVIDENCE.md`). Çıktıyı Developer/Results Agent'a değil kullanıcıya teslim et; doğrulamayı Claude Code oturumu yapacak.
 
 ## Kanıt kuralları (ihlal edilirse madde geçersiz sayılır)

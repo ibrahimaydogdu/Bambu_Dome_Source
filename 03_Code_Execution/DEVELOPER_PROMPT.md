@@ -24,8 +24,8 @@ Görevin: Bambu kubbe/kafes sonlu elemanlar modelini doğrudan rijitlik çözüc
    - İzinli gerilme katsayıları: $FS = 2.0$, $C_R = 0.90$ [varsayım], $C_T = 1.0$.
    - Yük süresi katsayıları: $C_{DF} = 0.55\text{ (kalıcı)}, 0.65\text{ (geçici)}, 0.85\text{ (anlık rüzgar)}$.
    - Ylinen burkulma parametreleri: $c = 0.8$, $b_0 = 0.01$ [varsayım], $K = 1.0$.
-   - Narinlik kısıtı: $\lambda \le 150$ [kaynağı doğrulanamadı, varsayım].
-   - Bağlantı kapasitesi: $F_{j,Rd} = 53.2\text{ kN}$ ($n_{\text{bolt}} = 2$ [varsayım], $F_{\text{bolt},\max} = 26.6\text{ kN}$ Correal vd. 2021).
+   - Narinlik kısıtı: $\lambda \le 150$ hem çekme hem basınç elemanlarına uygulanır; NSR-10 G.12.9.2.6/7 yalnızca basınç için $\lambda \le 150$ şartı koştuğundan çekme elemanlarına da uygulanması bilinçli ve muhafazakar bir tasarım kabulüdür.
+   - Bağlantı kapasitesi: $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$ (NSR-10 Tabla G.12.11-2/3 izin verilen yük, $\varnothing 5/8"$ bulon, $D=100\text{ mm}$, çift kesme, $n_{\text{bolt}} = 4$ kullanıcı kararı; Correal vd. 2021 yalnızca bağlantı davranışı için anılır, F_j için kaynak değildir).
    - Deplasman sınırı: $u_{\max} \le span/150 = 266.67\text{ mm}$ (IStructE Manual 2025 örneği).
 4. **Mafsallı Uç Serbestlikleri (Truss Releases):**
    - Kubbe çubukları kafes davranışı gösterdiğinden moment serbesttir ($M=0$).
@@ -55,11 +55,11 @@ Görevin: Bambu kubbe/kafes sonlu elemanlar modelini doğrudan rijitlik çözüc
 2. **Aşama 2: Çözücü Eşdeğerlik Testi:**  
    `python test_fast_eval.py`: Rastgele yükleme altında DC eşdeğerliği, kubbe modelleri, ASD ceza modları.
 3. **Aşama 3: Tuning ve Algoritma Seçimi:**  
-   `python tuning_study.py`: 6 aday algoritma (ABC, ACO, DO, GWO, WOA, TLBO) ve 2001–2005 tohumları üzerinde popülasyon duyarlılık analizi. Sonuçlara göre 3 algoritma seçilir ([TUNING SONUCUNA GÖRE]).
+   `python tuning_study.py`: 6 aday algoritma (ABC, ACO, DO, GWO, WOA, TLBO) ve 2001–2005 tohumları üzerinde popülasyon duyarlılık analizi. Seçilen 3 nihai algoritma: ABC (pop 20), ACO (pop 40) ve DO (pop 40).
 4. **Aşama 4: Büyük Üretim Kampanyası:**  
    3 kubbe × 3 algoritma × 30 tohum = 270 koşu.  
    Bütçe: $\text{NFE} = 1000 \times N_g$ (ribbed40: 43 000, kiewitt32: 22 000, geodesic16: 23 000).  
-   Süre tahmini: 7 işçide ≈ 3.5–4 saat (ribbed40 tek koşusu ≈ 16 dk).
+   Kampanya tamamlanmıştır (7 paralel iş parçacığında gerçek çalışma süresi: 3 sa 21 dk, 2026-10-09, 270/270 uygulanabilir çözüm).
 
 ---
 

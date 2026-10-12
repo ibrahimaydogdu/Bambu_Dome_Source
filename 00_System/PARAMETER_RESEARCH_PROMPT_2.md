@@ -1,5 +1,8 @@
 # PARAMETRE ARAŞTIRMASI 2. TUR (diğer yapay zekâ için): kanıt kurallarını sıkılaştırılmış hâli
 
+> [!NOTE]
+> Bu belge tarihsel 2. tur araştırma promptudur. Araştırma ve denetimler sonucunda kesinleşen güncel parametreler ($F_{j,Rd} = 49.3\text{ kN}$ NSR-10, ICE V5.0 Haziran 2026, $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$, seçilen 3 algoritma: ABC, ACO, DO) için `00_System/DOCS_UPDATE_PROMPT.md` (Rev. 2) ve `PROJECT_STATE.md` belgelerine bakınız.
+
 **Bağlam:** 1. turdaki `04_Results/PARAMETER_EVIDENCE.md` Claude Code denetiminden geçti (`04_Results/PARAMETER_EVIDENCE_REVIEW.md`, 1–3. bölümler). Sonuç: uydurma alıntılar ve **kendi ürettiğin "arşiv" PDF'leri** (`Evidence/E1–E10`, tek sayfa HeadlessChrome çıktısı, kaynak belge değil) kanıt sayılmadı. Bu turda aşağıdaki 3 iş kaldı. Kodu ve diğer belgeleri değiştirme.
 
 ## Değişmez kurallar

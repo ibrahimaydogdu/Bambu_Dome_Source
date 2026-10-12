@@ -5,7 +5,8 @@ Besikten-Kapiya (A1-A3) Gomulu Karbon Hesaplayicisi
 Bambu govde (culm) + celik flansh/civata dugum + rotresiz cimento harc dolgusu
 bilesenlerini kapsayan Life Cycle Assessment (A1-A3 kapsamlari).
 
-Kaynak katsayilari: ICE v3.0 (Hammond & Jones) / Ecoinvent 3.9
+Katsayilar ve kaynaklari: bamboo_catalog.py MATERIAL_PROPERTIES (ICE Educational V5.0, Haz 2026;
+EC_bamboo turetilmis, bkz. 04_Results/EC_BAMBOO_METHOD.md)
 """
 
 from __future__ import annotations
@@ -15,9 +16,9 @@ from bamboo_catalog import MATERIAL_PROPERTIES as MP
 # ---------------------------------------------------------------------------
 # Karbon Emisiyon Katsayilari (kg CO2e / kg)
 # ---------------------------------------------------------------------------
-EC_BAMBOO  = MP["EC_bamboo"]       # 0.35 kg CO2e/kg  -- Islenmis Guadua culm
-EC_STEEL   = MP["EC_steel"]        # 2.10 kg CO2e/kg  -- Celik flansh / civata
-EC_MORTAR  = MP["EC_mortar"]       # 0.18 kg CO2e/kg  -- Rotresiz cimento harc
+EC_BAMBOO  = MP["EC_bamboo"]       # 0.30 kg CO2e/kg  -- Guadua culm (turetilmis, aralik 0.09-1.23)
+EC_STEEL   = MP["EC_steel"]        # 2.38 kg CO2e/kg  -- Celik flansh / civata (ICE V5.0 "Steel, Plate")
+EC_MORTAR  = MP["EC_mortar"]       # 0.18 kg CO2e/kg  -- Rotresiz harc (ICE V5.0 harc 1:3, proxy)
 
 # Ortalama dugum malzeme kutleleri (kg/dugum)
 NODE_STEEL_KG  = MP["node_steel_mass"]    # 4.50 kg/dugum

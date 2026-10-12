@@ -21,7 +21,7 @@ Varsayılan Parametreler: $L_{\text{inj}} = 2.5 D$, $EC_{\text{bamboo}} = 0.30$ 
 | kiewitt32 | 4.19 | 0.79 | 9.43 | 14.41 | 25.93 | 39.03 | 35.04 | 74.07 | 4.84 |
 | geodesic16 | 0.59 | 0.21 | 1.06 | 1.86 | 20.61 | 57.25 | 22.13 | 79.39 | 0.86 |
 
-> Temel senaryoda bağlantı bileşenleri (çelik + harç) toplam gömülü karbonun %74.1–%82.1'ini, yalnızca çelik %39.0–%57.3'ini oluşturur (bu tasarımlar ve bu varsayımlar için; EC değerleri doğrulanmamış varsayımdır).
+> Temel senaryoda bağlantı bileşenleri (çelik + harç) toplam gömülü karbonun %74.1–%82.1'ini, yalnızca çelik %39.0–%57.3'ini oluşturur (bu tasarımlar için; $EC_s$ ve $EC_m$ değerleri ICE Educational V5.0'dan alınmış, $EC_b$ türetilmiş baz değerdir (alt sınır 0.09 varsayım; `EC_BAMBOO_METHOD.md`), harç 1:3 harç vekilidir).
 
 ---
 

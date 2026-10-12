@@ -34,10 +34,10 @@ Burada:
   $$P_{e,k} = \frac{\pi^2 E_k I C_{\text{bow}}}{(K L)^2}, \quad C_{\text{bow}} = 1 - \frac{b_0}{0.02}, \quad b_0 = 0.01\text{ [varsayım]}, \quad K = 1.0$$
   $$P_{cr,k} = \frac{P_{c,k} + P_{e,k}}{2c} - \sqrt{\left(\frac{P_{c,k} + P_{e,k}}{2c}\right)^2 - \frac{P_{c,k} P_{e,k}}{c}}, \quad c = 0.8$$
   $$N_{cr,\text{izin}} = P_{cr,k} \cdot \frac{C_R \cdot C_{DF} \cdot C_T}{FS}, \quad DCR_{c, i} = \frac{N_{c, i}}{N_{cr,\text{izin}}} \le 1.0$$
-- **Narinlik Sınırı:** $\lambda_i = \frac{K L_i}{r_i} \le 150$ [kaynağı doğrulanamadı, varsayım].
+- **Narinlik Sınırı:** $\lambda_i = \frac{K L_i}{r_i} \le 150$ (çekme ve basınca uygulanır; NSR-10 yalnızca basınç için ister).
 - **Düğüm Bağlantı Kapasitesi:**
-  $$\frac{|N_i|}{F_{j,Rd}} \le 1.0, \quad F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\max} = 2 \times 26.6 = 53.2\text{ kN}$$
-  *($F_{\text{bolt},\max} = 26.6\text{ kN}$ Correal vd. 2021 Tablo 4 deney maksimum tepe yükü; $n_{\text{bolt}} = 2$ çapraz cıvata varsayımdır).*
+  $$\frac{|N_i|}{F_{j,Rd}} \le 1.0, \quad F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$$
+  *($F_{\text{bolt},\text{adm}} = 13.25\text{ kN}$ NSR-10 Tabla G.12.11-2 izinli yük, Ø5/8" cıvata, $D=100\text{ mm}$, çift kesme; $C_g = 0.93$ Tabla G.12.11-3; $n_{\text{bolt}} = 4$ kullanıcı kararıdır).*
 - **Deplasman Kısıtı (SLS):**
   $$u_{\max} \le u_{\text{izin}} = \frac{L_{\text{span}}}{150} = \frac{40\,000\text{ mm}}{150} \approx 266.67\text{ mm} \quad \text{[IStructE Manual 2025 örneği]}$$
 
@@ -51,10 +51,10 @@ Sistem sınırı EN 15804 standardına uygun olarak Beşikten-Kapıya (A1–A3) 
 ### 2.2. Ayrıştırılmış Karbon Modeli
 $$EC_{\text{total}} = \sum m_{\text{bambu}} \cdot EC_b + \sum m_{\text{çelik}} \cdot EC_s + \sum m_{\text{harç}} \cdot EC_m$$
 
-Literatür varsayımları:
-- $EC_b = 0.35\text{ kg CO}_2\text{e/kg}$ [Varsayım; Zea Escamilla & Habert 2014 Tablo 8 ile teyit edilecek].
-- $EC_s = 2.10\text{ kg CO}_2\text{e/kg}$ [Varsayım; ICE v3.0 xlsx ile teyit edilecek].
-- $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ [Varsayım; ICE v3.0 xlsx ile teyit edilecek].
+Literatür ve envanter katsayıları:
+- $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ (aralık $0.09–1.23$, türetilmiş temel değer; alt sınır varsayım; `EC_BAMBOO_METHOD.md`).
+- $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ (bağlantı plakası çeliği, ICE Educational V5.0 Haziran 2026; boru referans için 2.51 kg CO2e/kg).
+- $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı).
 
 Düğüm ve bağlantı kütleleri:
 - Düğüm küresi: $m_{\text{hub}} = 2.0\text{ kg/düğüm}$
@@ -65,7 +65,7 @@ Düğüm ve bağlantı kütleleri:
 
 ## 🔬 3. EKSENEL KAFESLERDE AMPİRİK YAKIN-DOĞRUSALLIK (QUASI-COLLINEARITY)
 
-- Sabit düğüm kütleli modelde kütle ile karbon arasında analitik ilişki $f_2 = 35.68 \cdot f_1 + \text{sabit}$ olup tam doğrusaldır ($R^2 = 1.0$).
+- Sabit düğüm kütleli modelde kütle ile karbon arasında analitik ilişki tam doğrusaldır ($\text{corr} = 1.000$).
 - Kesite bağlı harç ve manşon modelinde ise uygun tasarımlarda kütle ile gömülü karbon arasındaki korelasyon $r = 0.91 - 0.98$ ve determinasyon katsayısı $R^2 = 0.81 - 0.97$ olarak ölçülmektedir.
 - Bu yüksek korelasyon, iki amaç fonksiyonu arasında **ampirik bir yakın-doğrusallık (quasi-collinearity)** olduğunu ortaya koyar (analitik gradyan paralelliği değil).
 - Bu yakın-doğrusallık nedeniyle çok-amaçlı optimizasyon algoritmalarında (NSGA-II, MOABC vb.) Pareto cephesi tek bir noktaya veya aşırı dar bir aralığa çöker. Gerçek bir fiziksel çelişki (trade-off) bulunmadığından problem tek amaçlı formüle edilmiştir.
@@ -75,6 +75,6 @@ Düğüm ve bağlantı kütleleri:
 ## 🚀 4. META-SEZGİSEL OPTİMİZASYON VE DENEYSEL TASARIM
 
 - **Algoritma Havuzu:** 16 algoritma (HS, BBO, WOA, DO, ABC, ACO, BSO, CSA, FA, GOA, TLBO, TSA, GWO, HBA, AO, SSO).
-- **Kampanya Algoritma Seçimi:** `04_Results/TUNING_STUDY.md` duyarlılık analizine göre seçilecek **3 algoritma ([TUNING SONUCUNA GÖRE])** (2 bilinen yüksek performanslı + 1 görece yeni yöntem).
+- **Kampanya Algoritma Seçimi:** `04_Results/TUNING_STUDY.md` duyarlılık analizine göre seçilen **3 algoritma: ABC (pop 20), ACO (pop 40), DO (pop 40)**.
 - **Hesaplama Bütçesi:** $\text{NFE} = 1000 \times N_g$ (ribbed40: 43 000, kiewitt32: 22 000, geodesic16: 23 000).
-- **İstatistik:** 30 bağımsız tohum (1001–1030), iki yönlü Holm-düzeltmeli Wilcoxon rank-sum (Mann-Whitney U, Vargha-Delaney $A_{12}$) ve tohum bloklu Friedman sıra testi.
+- **İstatistik:** 30 bağımsız tohum (1001–1030), iki yönlü Holm-düzeltmeli Mann-Whitney U (α = 0.05; sonuç $p_{\text{Holm}} \le 5.53 \times 10^{-4}$, Vargha-Delaney $A_{12}$) ve tohum bloklu Friedman sıra testi.

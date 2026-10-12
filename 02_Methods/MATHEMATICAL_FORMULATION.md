@@ -47,7 +47,7 @@ $$\text{Denklem (5):} \quad X_{\text{izin}} = \frac{X_k \cdot C_R \cdot C_{DF} \
 - **Güvenlik Katsayısı ($FS$):** $FS = 2.0$ (lif boyuna gerilmeler için).
 - **Diğer Düzeltmeler:** $C_R = 0.90$ (tekil culm için muhafazakâr varsayım; Manual $\ge 4$ paralel culm için 1.1 önermektedir), $C_T = 1.0$.
 - **Kapasite Çarpanı:** $k = \frac{C_R \cdot C_{DF} \cdot C_T}{FS} \in \{0.2475, \, 0.2925, \, 0.3825\}$.
-- **Yük Kombinasyonları:** ASCE 7-22 §2.4.1 ASD faktörsüz kombinasyonları: $D$; $D+S$; $D+0.6W$; $D+0.75S+0.45W$; $0.6D+0.6W$.
+- **Yük Kombinasyonları:** ASCE 7-22 §2.4.1 ASD faktörsüz kombinasyonları: $D$; $D+S$; $D+0.6W^{\pm}$; $D+0.75S+0.45W^{\pm}$; $0.6D+0.6W^{\pm}$ (rüzgâr iki yönlü; toplam 8 kombinasyon).
 
 ### 3.1. Eksenel Çekme Gerilmesi Kısıtı (Manual Denk. 6.5)
 Her $i = 1, \dots, N_e$ elemanı için hesap eksenel çekme gerilmesi $\sigma_{t, i} = N_{t, i} / A_i(x_i)$:
@@ -73,14 +73,16 @@ $$\text{Denklem (8):} \quad P_{e,k, i} = \frac{\pi^2 \cdot E_k \cdot I_i(x_i) \c
 - İzin verilen kritik kuvvet: $N_{cr,\text{izin}, i} = \frac{N_{cr,k, i} \cdot C_R \cdot C_{DF} \cdot C_T}{FS}$.
 
 ### 3.3. Geometrik Narinlik Üst Sınırı
-$$\text{Denklem (9):} \quad DCR_{slend, i} = \frac{\lambda_i}{\lambda_{max}} \le 1.0, \quad \lambda_i = \frac{L_i}{r_i(x_i)}, \quad \lambda_{max} = 150.0 \quad \text{(varsayım)}$$
+$$\text{Denklem (9):} \quad DCR_{slend, i} = \frac{\lambda_i}{\lambda_{max}} \le 1.0, \quad \lambda_i = \frac{L_i}{r_i(x_i)}, \quad \lambda_{max} = 150.0 \quad \text{(çekme ve basınca uygulanır; NSR-10 yalnızca basınç için ister)}$$
 
 ### 3.4. Harç Dolgulu Çelik Mafsal Bağlantı Kapasitesi
 $$\text{Denklem (10):} \quad DCR_{joint, i} = \frac{|N_i|}{F_{j,Rd}} \le 1.0$$
 
-- $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\max} = 2 \times 26.6\text{ kN} = 53.2\text{ kN}$.
-- $F_{\text{bolt},\max} = 26.6\text{ kN}$: Correal vd. 2021 (CBM 305, Tablo 4) Ø15.9 mm cıvata tek bağlantı deney maksimum yüküdür (tasarım değeri değildir).
-- $n_{\text{bolt}} = 2$ (çapraz cıvata) varsayımdır; $n_{\text{bolt}} = 1$ durumunda en büyük servis kuvveti (39.8 kN) nedeniyle kesitten bağımsız kapasite aşımı oluşacağından 2 cıvata zorunlu varsayılmıştır.
+- $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$.
+- $F_{\text{bolt},\text{adm}} = 13.25\text{ kN}$: NSR-10 Tabla G.12.11-2 (PDF s.138), Ø5/8" (#5) cıvata, çift kesme, lif doğrultusu, $D = 100\text{ mm}$, izinli yük.
+- $C_g = 0.93$: NSR-10 Tabla G.12.11-3 (s.139), 4 cıvata grup etki faktörü. $n_{\text{bolt}} = 4$ kullanıcı kararıdır.
+- 270 optimum tasarımın tamamı bağlantı sınırını sağlar (en yüksek bağlantı D/C 0.807, ribbed40).
+- Geometrik detaylandırma sınırlaması: ribbed40 modelinde 1464 elemandan 12'si (%0.82, hepsi $L = 0.76\text{ m}$) gereken 3 cıvatayı NSR-10 aralık kuralına göre boyuna barındıramaz (`T10`, `joint_bolt_check.py`). Geodesic16 ve kiewitt32'de bu sorun yoktur.
 
 ### 3.5. Servis Edilebilirlik Deplasman Kısıtı (SLS)
 $$\text{Denklem (11):} \quad \frac{|u_{\max}|}{u_{\text{allow}}} \le 1.0, \quad u_{\text{allow}} = \frac{\text{span}}{150} = \frac{40\text{ m}}{150} \approx 0.267\text{ m} \quad \text{(IStructE 2025 Manual örneği)}$$
@@ -95,9 +97,9 @@ $$\text{Denklem (12):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}} \cdot EC_b + 
 
 - $m_{\text{steel}} = N_n \cdot m_{\text{hub}} + 2 \sum_{i=1}^{N_e} (c_{s0} + c_{s1} D_i(x_i))$
 - $m_{\text{mortar}} = 2 \sum_{i=1}^{N_e} \rho_m \frac{\pi}{4} (D_i - 2 t_i)^2 (L_{\text{inj}}), \quad L_{\text{inj}} = 2.5 D_i$
-- Emisyon katsayıları: $EC_b = 0.35\text{ kg CO}_2\text{e/kg}$, $EC_s = 2.10\text{ kg CO}_2\text{e/kg}$, $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (varsayım; ICE v3.0 ve Zea Escamilla & Habert 2014 Tablo 8 ile teyit edilecektir).
+- Emisyon katsayıları: $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ (aralık $0.09–1.23$, türetilmiş temel değer; alt sınır varsayım; `EC_BAMBOO_METHOD.md`), $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ (plaka çelik, ICE Educational V5.0 Haziran 2026), $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı). Çelik referans borusu için $EC_{s,\text{pipe}} = 2.51\text{ kg CO}_2\text{e/kg}$.
 - Düğüm parametreleri: $m_{\text{hub}} = 2.0\text{ kg/düğüm}$, $c_{s0} = 0.5\text{ kg/uç}$, $\rho_m = 2100\text{ kg/m}^3$ (varsayım).
-- Bağlantı karbonunun payı ve Dekarbonizasyon Paradoksu, parametrik duyarlılık analizi ($L_{\text{inj}}/D \in [1.5, 3.5]$, $EC_s$, $EC_b$) ile incelenir.
+- Bağlantı karbonunun payı ve Dekarbonizasyon Paradoksu, parametrik duyarlılık analizi ($L_{\text{inj}}/D \in [1.5, 3.5]$, $EC_s$, $EC_b$) ile incelenir (temel durumda bağlantı payı %74.1–%82.1; en elverişsiz uçta kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
 
 ---
 
@@ -117,7 +119,7 @@ $$\text{Denklem (12):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}} \cdot EC_b + 
 | $E_k$ | Karakteristik elastisite modülü | $10,000\text{ MPa}$ |
 | $c$ | Ylinen kararlılık formülü katsayısı | $0.80$ |
 | $C_{\text{bow}}, b_0$ | Eğrilik kusuru katsayısı ve başlangıç eğriliği | $1 - b_0/0.02, \quad b_0 = 0.01\text{ (varsayım)}$ |
-| $\lambda_{max}$ | Narinlik üst sınırı | $150\text{ (varsayım)}$ |
-| $F_{j,Rd}$ | Harç dolgulu mafsal eksenel kapasite sınırı | $53.2\text{ kN (2 cıvata varsayımı)}$ |
+| $\lambda_{max}$ | Narinlik üst sınırı | $150\text{ (çekme ve basınca uygulanır)}$ |
+| $F_{j,Rd}$ | Harç dolgulu mafsal eksenel kapasite sınırı | $49.3\text{ kN (NSR-10, 4 cıvata)}$ |
 | $u_{\text{allow}}$ | SLS deplasman sınırı ($\text{span}/150$) | $266.7\text{ mm}$ |
-| $EC_b, EC_s, EC_m$ | Bambu, çelik ve harç karbon katsayıları | $0.35, 2.10, 0.18\text{ kg CO}_2\text{e/kg (varsayım)}$ |
+| $EC_b, EC_s, EC_m$ | Bambu, bağlantı çeliği ve harç karbon katsayıları | $0.30, 2.38, 0.18\text{ kg CO}_2\text{e/kg (ICE V5.0 / türetilmiş)}$ |

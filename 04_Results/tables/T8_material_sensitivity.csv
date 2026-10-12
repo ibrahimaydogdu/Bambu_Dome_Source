@@ -1,37 +1,25 @@
-Dome,Parameter,Bamboo/Steel cost,Bamboo/Steel CO2e
-geodesic16,steel tube price 1.0 USD/kg,0.7501668174832481,
-geodesic16,steel tube price 1.5 USD/kg,0.5806211259453969,
-geodesic16,steel tube price 2.0 USD/kg,0.4735857106886498,
-geodesic16,steel tube price 3.0 USD/kg,0.34601315180911746,
-geodesic16,steel EC 1.6 kgCO2e/kg,,0.3958220907386907
-geodesic16,steel EC 1.9 kgCO2e/kg,,0.33332386588521323
-geodesic16,steel EC 2.51 kgCO2e/kg,,0.2523168705904005
-geodesic16,steel EC 2.8 kgCO2e/kg,,0.22618405185068038
-geodesic16,bamboo EC 0.09 kgCO2e/kg,,0.2159084094263858
-geodesic16,bamboo EC 0.3 kgCO2e/kg,,0.2523168705904005
-geodesic16,bamboo EC 0.47 kgCO2e/kg,,0.28179038677079327
-geodesic16,bamboo EC 1.23 kgCO2e/kg,,0.4135543414596083
-kiewitt32,steel tube price 1.0 USD/kg,1.0729380064610048,
-kiewitt32,steel tube price 1.5 USD/kg,0.8065114979646056,
-kiewitt32,steel tube price 2.0 USD/kg,0.6460801590234329,
-kiewitt32,steel tube price 3.0 USD/kg,0.46219887595681314,
-kiewitt32,steel EC 1.6 kgCO2e/kg,,0.4362538986282862
-kiewitt32,steel EC 1.9 kgCO2e/kg,,0.3673717041080305
-kiewitt32,steel EC 2.51 kgCO2e/kg,,0.27809013458376813
-kiewitt32,steel EC 2.8 kgCO2e/kg,,0.2492879420733064
-kiewitt32,bamboo EC 0.09 kgCO2e/kg,,0.22761187368531552
-kiewitt32,bamboo EC 0.3 kgCO2e/kg,,0.27809013458376813
-kiewitt32,bamboo EC 0.47 kgCO2e/kg,,0.31895348864442014
-kiewitt32,bamboo EC 1.23 kgCO2e/kg,,0.5016367185626295
-ribbed40,steel tube price 1.0 USD/kg,0.9475762489239328,
-ribbed40,steel tube price 1.5 USD/kg,0.7523891201629037,
-ribbed40,steel tube price 2.0 USD/kg,0.6238789885439328,
-ribbed40,steel tube price 3.0 USD/kg,0.46502417254852196,
-ribbed40,steel EC 1.6 kgCO2e/kg,,0.544528207843268
-ribbed40,steel EC 1.9 kgCO2e/kg,,0.4585500697627521
-ribbed40,steel EC 2.51 kgCO2e/kg,,0.34710961456144585
-ribbed40,steel EC 2.8 kgCO2e/kg,,0.3111589759104389
-ribbed40,bamboo EC 0.09 kgCO2e/kg,,0.3036371715499257
-ribbed40,bamboo EC 0.3 kgCO2e/kg,,0.34710961456144585
-ribbed40,bamboo EC 0.47 kgCO2e/kg,,0.3823015922374383
-ribbed40,bamboo EC 1.23 kgCO2e/kg,,0.5396304336124635
+Dome,Parameter,Bamboo/Steel CO2e
+geodesic16,steel EC 1.6 kgCO2e/kg,0.3958220907386906
+geodesic16,steel EC 1.9 kgCO2e/kg,0.3333238658852132
+geodesic16,steel EC 2.51 kgCO2e/kg,0.2523168705904004
+geodesic16,steel EC 2.8 kgCO2e/kg,0.22618405185068036
+geodesic16,bamboo EC 0.09 kgCO2e/kg,0.21590840942638576
+geodesic16,bamboo EC 0.3 kgCO2e/kg,0.2523168705904004
+geodesic16,bamboo EC 0.47 kgCO2e/kg,0.2817903867707932
+geodesic16,bamboo EC 1.23 kgCO2e/kg,0.4135543414596082
+kiewitt32,steel EC 1.6 kgCO2e/kg,0.4362538986282862
+kiewitt32,steel EC 1.9 kgCO2e/kg,0.3673717041080305
+kiewitt32,steel EC 2.51 kgCO2e/kg,0.27809013458376813
+kiewitt32,steel EC 2.8 kgCO2e/kg,0.2492879420733064
+kiewitt32,bamboo EC 0.09 kgCO2e/kg,0.22761187368531552
+kiewitt32,bamboo EC 0.3 kgCO2e/kg,0.27809013458376813
+kiewitt32,bamboo EC 0.47 kgCO2e/kg,0.31895348864442014
+kiewitt32,bamboo EC 1.23 kgCO2e/kg,0.5016367185626295
+ribbed40,steel EC 1.6 kgCO2e/kg,0.5445282078432682
+ribbed40,steel EC 1.9 kgCO2e/kg,0.4585500697627522
+ribbed40,steel EC 2.51 kgCO2e/kg,0.3471096145614459
+ribbed40,steel EC 2.8 kgCO2e/kg,0.31115897591043895
+ribbed40,bamboo EC 0.09 kgCO2e/kg,0.30363717154992576
+ribbed40,bamboo EC 0.3 kgCO2e/kg,0.3471096145614459
+ribbed40,bamboo EC 0.47 kgCO2e/kg,0.38230159223743837
+ribbed40,bamboo EC 1.23 kgCO2e/kg,0.5396304336124635
