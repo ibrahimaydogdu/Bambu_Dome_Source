@@ -13,22 +13,20 @@ Tum formul kaynaklari:
 from __future__ import annotations
 import math
 from dataclasses import dataclass
-from bamboo_catalog import MATERIAL_PROPERTIES as MP
+from bamboo_catalog import MATERIAL_PROPERTIES as MP, ASD_K
 
 
 # ---------------------------------------------------------------------------
-# Sabitler
+# Sabitler (kaynaklar: bamboo_catalog.py)
 # ---------------------------------------------------------------------------
-K_MOD       = MP["k_mod"]          # 0.70
-GAM_M_T     = MP["gamma_M_t"]      # 1.30 (cekme)
-GAM_M_C     = MP["gamma_M_c"]      # 1.30 (basinc)
-F_T_0_K     = MP["f_t_0_k"]        # 45,000 kPa
-F_C_0_K     = MP["f_c_0_k"]        # 38,000 kPa
-F_T_0_D     = MP["f_t_0_d"]        # 24,231 kPa (tasarim degeri)
-F_C_0_D     = MP["f_c_0_d"]        # 20,462 kPa
-BETA_C      = MP["beta_c"]         # 0.10
-E_05        = MP["E_05"]            # 8,500,000 kPa
-LAMBDA_MAX  = MP["lambda_max"]      # 150.0
+F_T_K       = MP["f_t_0_k"]       # kPa
+F_C_K       = MP["f_c_0_k"]       # kPa
+E_K         = MP["E_k"]           # kPa
+YLINEN_C    = MP["ylinen_c"]
+C_BOW       = 1.0 - MP["b0"] / 0.02
+K_EFF       = MP["K_eff"]
+LAMBDA_MAX  = MP["lambda_max"]
+F_J_RD      = MP["F_j_Rd"]        # kN
 
 
 @dataclass
@@ -55,119 +53,63 @@ def check_member(
     P_kN: float,
     section_row,
     L_m: float,
+    k_asd: float | None = None,
 ) -> CheckResult:
     """
-    Tek eleman icin ISO 22156 Madde 7/8 tahkiki.
+    Tek eleman icin ISO 22156 ASD tahkiki (Manual Denk. 3.9, 6.1-6.5).
 
-    Parametreler
-    ------------
-    member_id  : Eleman adi ('1', '23', vb.)
-    P_kN       : Eksenel kuvvet kN (+ cekme, - basinc)
-    section_row: catalog_df.loc[sec_idx] satirindaki Series
-    L_m        : Eleman uzunlugu [m]
-
-    Doner
-    -----
-    CheckResult (narinlik + cekme veya basinc + burkulma)
+    k_asd: C_R*C_DF*C_T/FS kapasite carpani (yuk suresi sinifina gore, bamboo_catalog.ASD_K);
+           None -> surekli yuk (en kati). Talep P/k_asd karakteristik kapasiteyle karsilastirilir.
+    Baglanti kontrolu |P| / F_j_Rd (olceksiz) ve narinlik lambda/lambda_max ayrica dahil edilir.
     """
-    A  = float(section_row["A_m2"])
-    r  = float(section_row["r_m"])
-
-    # --- Narinlik ---
+    k = ASD_K["permanent"] if k_asd is None else k_asd
+    A = float(section_row["A_m2"])
+    r = float(section_row["r_m"])
     lam = L_m / r if r > 0 else 9999.0
-
+    dc_sl = lam / LAMBDA_MAX
     if abs(P_kN) < 1e-9:
-        return CheckResult(
-            member_id=member_id,
-            P_kN=P_kN,
-            A_m2=A,
-            r_m=r,
-            L_m=L_m,
-            lambda_val=lam,
-            mode="zero",
-            demand_capacity_ratio=lam / LAMBDA_MAX,
-            is_violated=(lam > LAMBDA_MAX),
-        )
+        return CheckResult(member_id, P_kN, A, r, L_m, lam, "zero", dc_sl, dc_sl > 1.0)
 
-    # --- Narinlik kisiti ---
-    lam_violation = max(0.0, lam - LAMBDA_MAX) / LAMBDA_MAX
-
+    dc_joint = abs(P_kN) / F_J_RD
+    Ps = P_kN / k
     if P_kN > 0:
-        # CEKME  (ISO 22156 Md. 7.2)
-        # sigma_t = P / A  <=  f_t_0_d
-        sigma = P_kN / A
-        dc = sigma / F_T_0_D
-        dc = max(dc, lam / LAMBDA_MAX)   # narinlik de DC'ye dahil
-        return CheckResult(
-            member_id=member_id,
-            P_kN=P_kN,
-            A_m2=A,
-            r_m=r,
-            L_m=L_m,
-            lambda_val=lam,
-            mode="tension",
-            demand_capacity_ratio=dc,
-            is_violated=(dc > 1.0),
-        )
+        mode = "tension"
+        dc_m = (Ps / A) / F_T_K
     else:
-        # BASINC + BURKULMA  (ISO 22156 Md. 7.3 / Ylinen formulu)
-        P_abs = abs(P_kN)
-
-        # Kismi cekme / basinc karsilikli etki katsayisi (Ylinen stab.)
-        # f_c_cr = Euler kritik gerilmesi
-        if lam <= 0:
-            lam_safe = 1.0
-        else:
-            lam_safe = lam
-
-        # Euler kritik gerilmesi: f_c_cr = pi^2 * E_05 / lambda^2
-        f_c_cr = (math.pi ** 2 * E_05) / (lam_safe ** 2)
-
-        # Ylinen sutun kararlilik katsayisi
-        ratio = f_c_cr / F_C_0_D
-        cp_num = (1.0 + ratio) / (2.0 * BETA_C)
-        cp = cp_num - math.sqrt(cp_num ** 2 - ratio / BETA_C)
-        cp = max(0.0, min(1.0, cp))
-
-        # Tasarim basinc kapasitesi
-        f_c_d_eff = F_C_0_D * cp
-
-        # Talebin kapasiteye orani
-        sigma_c = P_abs / A
-        dc_c = sigma_c / f_c_d_eff if f_c_d_eff > 0 else 9999.0
-        dc = max(dc_c, lam / LAMBDA_MAX)
-
-        return CheckResult(
-            member_id=member_id,
-            P_kN=P_kN,
-            A_m2=A,
-            r_m=r,
-            L_m=L_m,
-            lambda_val=lam,
-            mode="compression",
-            demand_capacity_ratio=dc,
-            is_violated=(dc > 1.0),
-        )
+        mode = "compression"
+        lam_s = max(lam * K_EFF, 1.0)
+        pe = math.pi ** 2 * E_K * C_BOW / lam_s ** 2
+        x = (F_C_K + pe) / (2.0 * YLINEN_C)
+        fcr = x - math.sqrt(x * x - F_C_K * pe / YLINEN_C)
+        dc_m = (abs(Ps) / A) / fcr if fcr > 0 else 9999.0
+    dc = max(dc_m, dc_sl, dc_joint)
+    return CheckResult(member_id, P_kN, A, r, L_m, lam, mode, dc, dc > 1.0)
 
 
 def check_displacement(
     displacements: dict[str, tuple[float, float, float]],
-    span_m: float = 24.384,   # 354-eleman geodezik kubbe referans acikligi
-    disp_limit_ratio: float = 1.0 / 200.0,
+    span_m: float = 40.0,   # 40 m kubbe referans acikligi
+    disp_limit_ratio: float = 1.0 / MP['disp_limit_ratio'],
+    disp_limit_m: float | None = None,
 ) -> tuple[float, float]:
     """
     Yer degistirme kisitini degerlendirir.
 
-    disp_limit = span / 200  (ASCE 7 / literatur degeri)
+    disp_limit_m verilirse (SLS limit: orn. S/360, tum dugumler): her dugumun
+    her yondeki (U1,U2,U3) bilesenleri bu mutlak sinirla karsilastirilir.
+    Verilmezse: bileske / (span * disp_limit_ratio).
 
     Doner:
       max_disp_m : Modeldeki maksimum mutlak yer degistirme [m]
       dc_disp    : Talebin kapasiteye orani (> 1.0 ise ihlal)
     """
-    limit = span_m * disp_limit_ratio
+    limit = disp_limit_m if disp_limit_m is not None else span_m * disp_limit_ratio
     max_d = 0.0
     for u1, u2, u3 in displacements.values():
-        total = math.sqrt(u1**2 + u2**2 + u3**2)
+        if disp_limit_m is not None:
+            total = max(abs(u1), abs(u2), abs(u3))
+        else:
+            total = math.sqrt(u1**2 + u2**2 + u3**2)
         if total > max_d:
             max_d = total
     dc = max_d / limit if limit > 0 else 9999.0
@@ -182,13 +124,14 @@ def evaluate_all_members(
     catalog_df,
     displacements: dict[str, tuple[float, float, float]],
     span_m: float = 24.384,
-    disp_limit_ratio: float = 1.0 / 200.0,
+    disp_limit_ratio: float = 1.0 / MP['disp_limit_ratio'],
+    disp_limit_m: float | None = None,
 ) -> tuple[float, float, list[CheckResult]]:
     """
     Tum elemanlar icin ISO 22156 tahkikini yapar.
 
     Doner:
-      penalty_structural : Toplam yapisal ceza degeri (NSGA-II kisit degeri)
+      penalty_structural : Toplam yapisal ceza degeri (normalize kisit ihlali P)
       max_dc             : En kritik D/C orani
       results            : Her eleman icin CheckResult listesi
     """
@@ -212,7 +155,8 @@ def evaluate_all_members(
 
     # Yer degistirme kisiti
     _max_disp, dc_disp = check_displacement(
-        displacements, span_m=span_m, disp_limit_ratio=disp_limit_ratio
+        displacements, span_m=span_m, disp_limit_ratio=disp_limit_ratio,
+        disp_limit_m=disp_limit_m,
     )
     if dc_disp > 1.0:
         total_penalty += (dc_disp - 1.0)

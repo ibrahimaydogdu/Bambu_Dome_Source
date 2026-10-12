@@ -1,0 +1,74 @@
+{
+  "model": "geodesic16",
+  "algorithm": "abc",
+  "algorithm_name": "Artificial Bee Colony (ABC)",
+  "seed": 1001,
+  "pop_size": 6,
+  "max_iters": 3,
+  "elapsed_s": 0.04603266716003418,
+  "evals": 42,
+  "best_penalized_weight_kN": 7.650948265475597,
+  "best_structural_weight_kN": 7.650948265475597,
+  "best_embodied_carbon_kgCO2e": 867.4584190135511,
+  "penalty": 0.0,
+  "is_feasible": true,
+  "best_sections": [
+    15,
+    9,
+    11,
+    16,
+    13,
+    10,
+    17,
+    18,
+    11,
+    23,
+    7,
+    4,
+    10,
+    5,
+    17,
+    7,
+    3,
+    7,
+    9,
+    18,
+    10,
+    3,
+    4
+  ],
+  "history": [
+    {
+      "iter": 0,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 6
+    },
+    {
+      "iter": 1,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 18
+    },
+    {
+      "iter": 2,
+      "best_penalized": 7.650948265475597,
+      "best_weight": 7.650948265475597,
+      "best_carbon": 867.4584190135511,
+      "is_feasible": true,
+      "evals": 30
+    },
+    {
+      "iter": 3,
+      "best_penalized": 7.650948265475597,
+      "best_weight": 7.650948265475597,
+      "best_carbon": 867.4584190135511,
+      "is_feasible": true,
+      "evals": 42
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "hound": {
+      "command": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\Scripts\\hound.exe",
+      "args": []
+    },
+    "reference-resolver": {
+      "command": "C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python311\\python.exe",
+      "args": [
+        "F:\\My Drive\\MyProjects\\Makale Çalışmaları\\2027\\BambuDome\\.agents\\tools\\reference_resolver.py"
+      ]
+    }
+  }
+}

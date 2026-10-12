@@ -1,0 +1,74 @@
+{
+  "model": "geodesic16",
+  "algorithm": "hs",
+  "algorithm_name": "Harmony Search (HS)",
+  "seed": 1001,
+  "pop_size": 6,
+  "max_iters": 3,
+  "elapsed_s": 0.0274507999420166,
+  "evals": 24,
+  "best_penalized_weight_kN": 7.774464234225193,
+  "best_structural_weight_kN": 7.774464234225193,
+  "best_embodied_carbon_kgCO2e": 868.9436058322026,
+  "penalty": 0.0,
+  "is_feasible": true,
+  "best_sections": [
+    15,
+    9,
+    11,
+    16,
+    13,
+    10,
+    17,
+    18,
+    11,
+    23,
+    7,
+    4,
+    10,
+    5,
+    17,
+    6,
+    3,
+    7,
+    9,
+    18,
+    10,
+    3,
+    4
+  ],
+  "history": [
+    {
+      "iter": 0,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 6
+    },
+    {
+      "iter": 1,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 12
+    },
+    {
+      "iter": 2,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 18
+    },
+    {
+      "iter": 3,
+      "best_penalized": 7.774464234225193,
+      "best_weight": 7.774464234225193,
+      "best_carbon": 868.9436058322026,
+      "is_feasible": true,
+      "evals": 24
+    }
+  ]
+}

@@ -25,8 +25,9 @@ try:
     sec24 = get_section_by_index(24)
     assert abs(sec24["D_m"] - 0.160) < 1e-6
     # Tasarim degerleri
-    assert abs(MATERIAL_PROPERTIES["f_t_0_d"] - (0.70 * 45000 / 1.30)) < 1.0
-    assert abs(MATERIAL_PROPERTIES["f_c_0_d"] - (0.70 * 38000 / 1.30)) < 1.0
+    from bamboo_catalog import ASD_K
+    assert abs(ASD_K["permanent"] - 0.90 * 0.55 / 2.0) < 1e-12
+    assert abs(ASD_K["instantaneous"] - 0.90 * 0.85 / 2.0) < 1e-12
     print("[PASS] bamboo_catalog.py")
 except Exception as e:
     print(f"[FAIL] bamboo_catalog.py -- {e}")
@@ -41,9 +42,10 @@ try:
     sec = BAMBOO_CATALOG.loc[5]   # D=100mm, t=9mm
     cr = check_member("test_tension", P_kN=50.0, section_row=sec, L_m=2.0)
     assert cr.mode == "tension"
-    # sigma = 50 / A_m2   f_t_0_d = 24231 kPa
-    sigma = 50.0 / sec["A_m2"]
-    dc_expected = sigma / MATERIAL_PROPERTIES["f_t_0_d"]
+    from bamboo_catalog import ASD_K
+    # ASD: sigma = (P/k) / A  <=  f_t_0_k   (k = surekli yuk carpani)
+    sigma = 50.0 / ASD_K["permanent"] / sec["A_m2"]
+    dc_expected = sigma / MATERIAL_PROPERTIES["f_t_0_k"]
     assert abs(cr.demand_capacity_ratio - max(dc_expected, 2.0/sec["r_m"]/150)) < 0.01, \
         f"DC orani: {cr.demand_capacity_ratio}"
     print("[PASS] iso22156_checks.py -- cekme")
@@ -146,49 +148,28 @@ except Exception as e:
     errors.append(e)
 
 # ------------------------------------------------------------------
-# Test 7: multi_objective_optimizer.py -- Pareto yardimcilari
+# Test 7: metaheuristic_optimizers.py -- 16 Algoritma Entegrasyonu
 # ------------------------------------------------------------------
 try:
-    from multi_objective_optimizer import (
-        dominates, non_dominated_sort_front0, crowding_distance, update_archive
-    )
+    from metaheuristic_optimizers import MetaheuristicOptimizer, ALGORITHM_NAMES
     import numpy as np
 
-    obj = np.array([
-        [1.0, 4.0],   # 0 -- Pareto
-        [2.0, 3.0],   # 1 -- Pareto
-        [3.0, 2.0],   # 2 -- Pareto
-        [4.0, 1.0],   # 3 -- Pareto
-        [3.0, 3.0],   # 4 -- baskiniyor
-        [2.5, 3.5],   # 5 -- baskiniyor
-    ])
-    front = non_dominated_sort_front0(obj)
-    assert set(front) == {0, 1, 2, 3}, f"Pareto front hatalı: {front}"
+    def dummy_eval(gene):
+        # Basit hedef ve ceza fonksiyonu
+        w = float(np.sum((gene - 10)**2))
+        p = 0.0 if np.sum(gene) > 5 else 0.5
+        return w, w * 0.35, p
 
-    cd = crowding_distance(obj[[0, 1, 2, 3]])
-    assert cd[0] == float("inf") and cd[-1] == float("inf")
+    assert len(ALGORITHM_NAMES) == 16, f"16 algoritma bekleniyordu, {len(ALGORITHM_NAMES)} bulundu"
+    for code in ALGORITHM_NAMES.keys():
+        opt = MetaheuristicOptimizer(dummy_eval, n_vars=4, pop_size=6, max_iters=2, seed=123, method=code)
+        best, hist = opt.optimize()
+        assert best is not None
+        assert len(hist) == 3  # iter 0, 1, 2
 
-    # dominates
-    assert dominates(np.array([1.0, 2.0]), np.array([2.0, 3.0]))
-    assert not dominates(np.array([2.0, 2.0]), np.array([2.0, 2.0]))
-
-    # Arsiv guncelle
-    sols, objs = [], []
-    sols, objs = update_archive(sols, objs, np.array([1.0, 2.0]), np.array([10.0, 20.0]))
-    assert len(objs) == 1
-    # 2. ekleme (9,19) 1.'yi (10,20) baskiliyor -> 1 kalir
-    sols, objs = update_archive(sols, objs, np.array([1.5, 2.5]), np.array([9.0, 19.0]))
-    assert len(objs) == 1 and objs[0] == [9.0, 19.0]
-    # 3. ekleme (11,21) arsiv tarafindan baskinlaniyor -> hala 1
-    sols, objs = update_archive(sols, objs, np.array([2.0, 3.0]), np.array([11.0, 21.0]))
-    assert len(objs) == 1  # Baskinlaniyor, eklenmemeli
-    # Gercek non-dominated ekleme: (8, 25) -> 2. cozum
-    sols, objs = update_archive(sols, objs, np.array([3.0, 1.0]), np.array([8.0, 25.0]))
-    assert len(objs) == 2  # Her ikisi de Pareto optimal
-
-    print("[PASS] multi_objective_optimizer.py -- Pareto yardimcilari")
+    print("[PASS] metaheuristic_optimizers.py -- 16 Optimizasyon Yontemi Dogrulandi")
 except Exception as e:
-    print(f"[FAIL] multi_objective_optimizer.py -- {e}")
+    print(f"[FAIL] metaheuristic_optimizers.py -- {e}")
     errors.append(e)
 
 # ------------------------------------------------------------------

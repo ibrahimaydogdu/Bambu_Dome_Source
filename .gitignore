@@ -37,10 +37,11 @@ build/
 # ==============================================================================
 # Optimizasyon checkpoint dosyalari (gizlilik + boyut)
 03_Code_Execution/checkpoints/
-# Pareto sonuc grafikleri (buyuk PNG)
+# Optimizasyon sonuc grafikleri (buyuk PNG)
 03_Code_Execution/results/*.png
 # Ham log dosyalari
 03_Code_Execution/logs/
+03_Code_Execution/campaign_state.json
 
 # ==============================================================================
 # OS
@@ -55,3 +56,14 @@ desktop.ini
 ~$*.docx
 ~$*.xlsx
 *.tmp
+
+# ==============================================================================
+# Ucuncu taraf belgeler (telif/boyut): PDF/XLSX kaynaklar ve arsivler depoya girmez
+# ==============================================================================
+Papers/
+03_Code_Execution/Papers/
+Evidence/*.pdf
+Evidence/*.xlsx
+Evidence/ICE-Educational-V5.0/
+Evidence/FX/*.zip
+*.sdb

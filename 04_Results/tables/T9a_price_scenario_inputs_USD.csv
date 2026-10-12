@@ -1,0 +1,5 @@
+country,steel_mat,steel_erected,conn,grout,bamboo_ref,d_ref,note
+Indonesia 2024 (Jateng HSD),1.1408223642094069,3.7179525163840528,3.0476117977664545,0.5387580247214521,0.23040450201195056,70.0,"bambu, celik malzeme, grout: belgeden; erected/baglanti: Hindistan oranlari"
+India 2023 (CPWD DSR),0.7221612896202557,2.3535315121907416,1.9291936546686967,0.3389860202743866,0.14585023709854356,70.0,"celik, baglanti, grout: belgeden; bambu: Endonezya oranindan (r_b)"
+Turkiye 2026 (CSB Agustos),0.6893726235636837,2.246672892217605,4.000846450330526,0.3245769501876561,0.1392281226384751,70.0,"erected ve imalat: belgeden; celik malzeme=erected/k_tube (Hindistan); grout, bambu: oranla"
+"Colombia 2026 (Guadua, D_ref=120 mm varsayim)",0.9314918269148313,3.0357420142873974,2.4884027262175756,0.43887202249791935,1.5831363493657085,120.0,"bambu: Guadua 6 m birim fiyat (2026, kur=2025 ort.); celik/grout: Endonezya-Hindistan ortalamasi (proxy)"

@@ -1,0 +1,4 @@
+Dome,Members,n_req=1,n_req=2,n_req=3,n_req=4,n_req>4,Members too short for required bolts,Share [%],Shortest member [m],Max force in too-short members [kN],Members < 1.35 m (4 bolts both ends)
+geodesic16,115,115,0,0,0,0,0,0.0,2.2415914363638216,0.0,0
+kiewitt32,456,388,68,0,0,0,0,0.0,2.092900135364561,0.0,0
+ribbed40,1464,813,591,60,0,0,12,0.819672131147541,0.7609279926014101,31.252856687720016,84

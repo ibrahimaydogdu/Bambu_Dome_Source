@@ -9,7 +9,6 @@ Kaynak katsayilari: ICE v3.0 (Hammond & Jones) / Ecoinvent 3.9
 """
 
 from __future__ import annotations
-import math
 from bamboo_catalog import MATERIAL_PROPERTIES as MP
 
 

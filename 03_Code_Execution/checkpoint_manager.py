@@ -17,6 +17,7 @@ import json
 import os
 import tempfile
 import logging
+import random
 from pathlib import Path
 from datetime import datetime
 from typing import Any
@@ -39,6 +40,26 @@ def _numpy_to_python(obj: Any) -> Any:
     if isinstance(obj, (list, tuple)):
         return [_numpy_to_python(i) for i in obj]
     return obj
+
+
+def _rng_state() -> dict:
+    """python `random` ve numpy RNG durumunu JSON'a cevirir (devamda ayni rastgele dizi surer)."""
+    py = random.getstate()
+    nm = np.random.get_state()
+    return {"py": [py[0], list(py[1]), py[2]],
+            "np": [nm[0], nm[1].tolist(), int(nm[2]), int(nm[3]), float(nm[4])]}
+
+
+def _restore_rng(st: dict | None) -> None:
+    if not st:
+        return
+    try:
+        py = st["py"]
+        random.setstate((py[0], tuple(py[1]), py[2]))
+        nm = st["np"]
+        np.random.set_state((nm[0], np.array(nm[1], dtype=np.uint32), nm[2], nm[3], nm[4]))
+    except Exception as exc:                          # eski bicimli checkpoint
+        logger.warning("RNG durumu geri yuklenemedi: %s", exc)
 
 
 class CheckpointManager:
@@ -79,6 +100,7 @@ class CheckpointManager:
                 state.get("iter", "?"),
                 state.get("timestamp", "?"),
             )
+            _restore_rng(state.get("_rng"))
             return state
         except (json.JSONDecodeError, KeyError, OSError) as exc:
             logger.warning("Bozuk checkpoint dosyasi (siliniyor): %s", exc)
@@ -95,6 +117,7 @@ class CheckpointManager:
         """
         state = _numpy_to_python(state)
         state["timestamp"] = datetime.now().isoformat()
+        state["_rng"] = _rng_state()
 
         dir_ = self.checkpoint_path.parent
         try:
@@ -109,10 +132,8 @@ class CheckpointManager:
             ) as tf:
                 json.dump(state, tf, ensure_ascii=False, indent=2)
                 tmp_path = tf.name
-            # Atomik rename (Windows uyumlu)
-            if self.checkpoint_path.exists():
-                self.checkpoint_path.unlink()
-            os.rename(tmp_path, str(self.checkpoint_path))
+            # Atomik degistirme (Windows'ta da hedefin uzerine yazar)
+            os.replace(tmp_path, str(self.checkpoint_path))
             logger.debug("Checkpoint kaydedildi: iter=%d", state.get("iter", "?"))
         except OSError as exc:
             logger.error("Checkpoint yazma hatasi: %s", exc)

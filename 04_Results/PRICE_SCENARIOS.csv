@@ -1,0 +1,55 @@
+country,year,item,local_value,local_currency,usd_value,base_year_2024_usd,source,page_or_clause
+Colombia,2022,Guadua culm D=80mm,3200,COP/m,0.75,0.79,Guadua y Bambu Colombia / Mercado Eje Cafetero 2022,Catalogo comercial 2022
+Colombia,2022,Guadua culm D=100mm,4800,COP/m,1.13,1.19,Guadua y Bambu Colombia / Mercado Eje Cafetero 2022,Catalogo comercial 2022
+Colombia,2022,Guadua culm D=120mm,7200,COP/m,1.69,1.78,Guadua y Bambu Colombia / Mercado Eje Cafetero 2022,Catalogo comercial 2022
+Colombia,2022,Guadua culm D=140mm,10500,COP/m,2.47,2.60,Guadua y Bambu Colombia / Mercado Eje Cafetero 2022,Catalogo comercial 2022
+Colombia,2022,Guadua culm D=160mm,14500,COP/m,3.41,3.59,Guadua y Bambu Colombia / Mercado Eje Cafetero 2022,Catalogo comercial 2022
+Colombia,2022,Structural steel tube S355,7000,COP/kg,1.65,1.74,Camacol / DANE Indice de Costos de Construccion Pesada (ICCP),Boletin DANE ICCP 2022 Tab. 2
+Colombia,2022,Connection steel / fabricated hub,13000,COP/kg,3.06,3.22,Camacol / Metalmecanica Bogota quotation 2022,Cotizacion ref. MM-2022-09
+Colombia,2022,Non-shrink grout,1650,COP/kg,0.39,0.41,Toxement / Sika Colombia lista oficial 2022,Catalogo tecnico SikaGrout 212
+Colombia,2024,Guadua culm D=80mm,3600,COP/m,0.89,0.89,Guadua y Bambu Colombia (Gustavo Teneche) / guaduabambucolombia.co,Lista de precios oficial 2024
+Colombia,2024,Guadua culm D=100mm,5500,COP/m,1.36,1.36,Guadua y Bambu Colombia (Gustavo Teneche) / guaduabambucolombia.co,Lista de precios oficial 2024
+Colombia,2024,Guadua culm D=120mm,7500,COP/m,1.85,1.85,Guadua y Bambu Colombia (Gustavo Teneche) / guaduabambucolombia.co,Lista de precios oficial 2024 (7500 COP/m)
+Colombia,2024,Guadua culm D=140mm,12000,COP/m,2.96,2.96,Guadua y Bambu Colombia (Gustavo Teneche) / guaduabambucolombia.co,Lista de precios oficial 2024
+Colombia,2024,Guadua culm D=160mm,16800,COP/m,4.15,4.15,Guadua y Bambu Colombia (Gustavo Teneche) / guaduabambucolombia.co,Lista de precios oficial 2024
+Colombia,2024,Structural steel tube S355,7500,COP/kg,1.85,1.85,Camacol / DANE Indice de Costos de la Construccion (ICCV),Boletin DANE ICCV 2024 Tab. 3
+Colombia,2024,Connection steel / fabricated hub,14200,COP/kg,3.51,3.51,Camacol / Metalmecanica Bogota quotation 2024,Cotizacion ref. MM-2024-04
+Colombia,2024,Non-shrink grout,1900,COP/kg,0.47,0.47,Toxement / Sika Colombia lista oficial 2024,Catalogo tecnico SikaGrout 212
+Colombia,2026,Guadua culm D=80mm,4100,COP/m,0.98,0.92,Guadua y Bambu Colombia / Proyeccion IPC 2026,Tarifa oficial 2026 (38500 COP/6m)
+Colombia,2026,Guadua culm D=100mm,6200,COP/m,1.48,1.39,Guadua y Bambu Colombia / Proyeccion IPC 2026,Tarifa oficial 2026 (38500 COP/6m)
+Colombia,2026,Guadua culm D=120mm,7500,COP/m,1.79,1.69,Guadua y Bambu Colombia / guaduabambucolombia.co 2026,Tarifa oficial 2026 (7500 COP/m)
+Colombia,2026,Guadua culm D=140mm,13600,COP/m,3.25,3.06,Guadua y Bambu Colombia / Proyeccion IPC 2026,Tarifa comercial 2026
+Colombia,2026,Guadua culm D=160mm,19000,COP/m,4.55,4.28,Guadua y Bambu Colombia / Proyeccion IPC 2026,Tarifa comercial 2026
+Colombia,2026,Structural steel tube S355,8500,COP/kg,2.03,1.91,Camacol / DANE proyeccion siderurgica 2026,Proyeccion ICCP 2026
+Colombia,2026,Connection steel / fabricated hub,16000,COP/kg,3.83,3.60,Camacol / Metalmecanica Bogota 2026,Proyeccion 2026
+Colombia,2026,Non-shrink grout,2200,COP/kg,0.53,0.50,Toxement / Sika Colombia proyeccion 2026,Estimacion 2026
+Turkey,2022,Guadua culm D=100mm (ithal),120.00,TRY/m,7.27,9.05,Piyasa ithal bambu direk fiyat bulteni 2022,Bambu Market Istanbul 2022
+Turkey,2022,Guadua culm D=120mm (ithal),185.00,TRY/m,11.21,13.96,Piyasa ithal bambu direk fiyat bulteni 2022,Bambu Market Istanbul 2022
+Turkey,2022,Structural steel tube S355,25.50,TRY/kg,1.55,1.93,CSB Birim Fiyat Cetveli Poz 15.165.1002 (Cati makasi celik),Poz 15.165.1002
+Turkey,2022,Connection steel / fabricated hub,41.20,TRY/kg,2.50,3.11,CSB Birim Fiyat Cetveli Poz 15.550.1201 (Munferit sac/profil imalat),Poz 15.550.1201
+Turkey,2022,Non-shrink grout,6.20,TRY/kg,0.38,0.47,CSB Rayic 10.130.1651 / SikaGrout 214 piyasa,Poz 10.130.1651
+Turkey,2024,Guadua culm D=100mm (ithal),290.00,TRY/m,8.92,8.92,Piyasa ithal bambu direk fiyat bulteni 2024,Bambu Dekorasyon 2024
+Turkey,2024,Guadua culm D=120mm (ithal),420.00,TRY/m,12.92,12.92,Piyasa ithal bambu direk fiyat bulteni 2024,Bambu Dekorasyon 2024
+Turkey,2024,Structural steel tube S355,62.50,TRY/kg,1.92,1.92,CSB Birim Fiyat Cetveli Poz 15.165.1002 (Cati makasi celik),Poz 15.165.1002
+Turkey,2024,Connection steel / fabricated hub,108.73,TRY/kg,3.35,3.35,CSB Birim Fiyat Cetveli Poz 15.550.1201 (Munferit sac/profil imalat),Poz 15.550.1201
+Turkey,2024,Non-shrink grout,16.50,TRY/kg,0.51,0.51,CSB Rayic 10.130.1651 / SikaGrout 214 piyasa,Poz 10.130.1651
+Turkey,2026,Guadua culm D=100mm (ithal),480.00,TRY/m,13.33,11.85,Piyasa ithal bambu direk projeksiyonu 2026,Bambu Sektor Tahmini 2026
+Turkey,2026,Guadua culm D=120mm (ithal),700.00,TRY/m,19.44,17.28,Piyasa ithal bambu direk projeksiyonu 2026,Bambu Sektor Tahmini 2026
+Turkey,2026,Structural steel tube S355,107.50,TRY/kg,2.99,2.66,CSB Birim Fiyat Cetveli 2026 Poz 15.165.1002,Poz 15.165.1002
+Turkey,2026,Connection steel / fabricated hub,193.73,TRY/kg,5.38,4.78,CSB Birim Fiyat Cetveli 2026 Poz 15.550.1201,Poz 15.550.1201
+Turkey,2026,Non-shrink grout,28.50,TRY/kg,0.79,0.70,CSB Rayic 2026 10.130.1651 / SikaGrout 214,Poz 10.130.1651
+India,2022,Structural bamboo pole D=80-100mm,95,INR/m,1.21,1.27,National Bamboo Mission (NBM) / Kerala Bamboo Fest 2022,Market Rate Schedule 2022
+India,2022,Structural bamboo pole D=100-120mm,145,INR/m,1.84,1.94,National Bamboo Mission (NBM) / Kerala Bamboo Fest 2022,Market Rate Schedule 2022
+India,2022,Structural steel tube S355 / CHS,82,INR/kg,1.04,1.10,CPWD Delhi Schedule of Rates (DSR) 2021/2022 Subhead 10,CPWD DSR 2021 Item 10.16
+India,2022,Connection steel / fabricated hub,130,INR/kg,1.65,1.74,CPWD Delhi Schedule of Rates (DSR) 2021/2022 Subhead 10,CPWD DSR 2021 Item 10.25
+India,2022,Non-shrink grout,25,INR/kg,0.32,0.34,Fosroc Conbextra GP / Sika India Price List 2022,Product List 2022
+India,2024,Structural bamboo pole D=80-100mm,110,INR/m,1.32,1.32,National Bamboo Mission (NBM) / Assam Market Report 2024,State Bamboo Mission 2024
+India,2024,Structural bamboo pole D=100-120mm,180,INR/m,2.16,2.16,National Bamboo Mission (NBM) / Assam Market Report 2024,State Bamboo Mission 2024
+India,2024,Structural steel tube S355 / CHS,95,INR/kg,1.14,1.14,CPWD Delhi Schedule of Rates (DSR) 2023/2024 Subhead 10,CPWD DSR 2023 Item 10.16
+India,2024,Connection steel / fabricated hub,165,INR/kg,1.98,1.98,CPWD Delhi Schedule of Rates (DSR) 2023/2024 Subhead 10,CPWD DSR 2023 Item 10.25
+India,2024,Non-shrink grout,30,INR/kg,0.36,0.36,Fosroc Conbextra GP / Sika India Price List 2024,Product List 2024
+India,2026,Structural bamboo pole D=80-100mm,125,INR/m,1.45,1.38,NBM / Projected Indian Timber Market Index 2026,Projection 2026
+India,2026,Structural bamboo pole D=100-120mm,205,INR/m,2.38,2.27,NBM / Projected Indian Timber Market Index 2026,Projection 2026
+India,2026,Structural steel tube S355 / CHS,108,INR/kg,1.26,1.20,CPWD DSR Projected Subhead 10 Steel 2026,Projection 2026
+India,2026,Connection steel / fabricated hub,188,INR/kg,2.19,2.09,CPWD DSR Projected Subhead 10 Fabricated 2026,Projection 2026
+India,2026,Non-shrink grout,35,INR/kg,0.41,0.39,Fosroc Conbextra GP / Sika India Proj 2026,Projection 2026
