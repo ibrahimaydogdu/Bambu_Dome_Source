@@ -582,7 +582,7 @@ Economic assessments across international market scenarios showed that Guadua ba
 
 [28] Zhao, S., Zhang, T., Ma, S., Chen, M., 2022. Dandelion Optimizer: A nature-inspired metaheuristic algorithm for engineering applications. Engineering Applications of Artificial Intelligence 114, 105075. https://doi.org/10.1016/j.engappai.2022.105075
 
-[29] Saka, M.P., 1991. Optimum design of steel frames with tapered members. Computers & Structures 38 (1), 79–92. https://doi.org/10.1016/0045-7949(91)90205-Z
+[29] Saka, M.P., 1997. Optimum design of steel frames with tapered members. Computers & Structures 63 (4), 797–811. https://doi.org/10.1016/S0045-7949(96)00074-0
 
 [30] Kaveh, A., Talatahari, S., 2010. Optimal design of Schwedler and ribbed domes via hybrid Big Bang–Big Crunch algorithm. Journal of Constructional Steel Research 66 (3), 412–419. https://doi.org/10.1016/j.jcsr.2009.10.013
 
