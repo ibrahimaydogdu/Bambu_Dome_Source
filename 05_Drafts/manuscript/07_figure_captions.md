@@ -1,15 +1,19 @@
-# Figure captions
+# Figure Captions
 
-Tables carry their captions in the text (Tables 1–18 and S1).
+Tables carry their captions directly within the text (Tables 1–18 and Supplementary Table S1).
 
-**Figure 1.** Lightest design of each dome: the lightest feasible design among the 90 runs per dome (3 algorithms × 30 seeds). Bars give the outer diameter D [mm] of each design group (left axis); the line gives the wall thickness t [mm] (right axis). The panel titles give the algorithm that found the design and its weight. ABC found the lightest design of each dome; ACO reached the same weight on Kiewitt and Ribbed.
+**Figure 1.** Multi-stage computational flowchart of the research methodology: (i) structural sizing optimization phase (Steps 1–6) coupling discrete member profile updates, linear stiffness analysis, and normative ASD constraint evaluation under a fixed evaluation budget ($NFE = 1000\,N_g$); and (ii) post-processing phase (Steps 7–9) evaluating statistical convergence across 30 independent random starting seeds, cradle-to-gate embodied carbon balances, and international material cost trade-offs.
 
-**Figure 2.** Penalized weight against the number of function evaluations (NFE) for the three domes. Solid lines: mean of the 30 runs of an algorithm; dashed lines: best of the 30 runs. Logarithmic vertical axis, clipped to 0.9–4 times the final minimum of each dome. Markers: circle ABC, square ACO, triangle DO.
+**Figure 2.** Spatial topology, plan projections, elevation profiles, and optimal cross-sectional diameter allocations across the three benchmark space domes: (a) 16 m Geodesic dome, (b) 32 m Kiewitt dome, and (c) 40 m Ribbed dome. For each dome topology, the respective panel displays: (i) 3D perspective view, (ii) plan view, and (iii) side elevation view, along with the color-coded culm outer diameter $D$ [mm] scale bar.
 
-**Figure 3.** Best weight of the 30 runs of each algorithm on each dome. Dots are individual runs, the orange line is the median, the green triangle is the mean, and hollow circles are outliers beyond 1.5 times the interquartile range. The box spans the interquartile range.
+**Figure 3.** Penalized weight convergence profiles across function evaluations (NFE) for the three benchmark space domes. Solid lines depict the mean curve across 30 independent runs of each algorithm; dashed lines show the best run. Markers: circle (ABC), square (ACO), triangle (DO). The vertical logarithmic axis is clipped to 0.9–4.0 times the final minimum weight of each dome.
 
-**Figure 4.** Share of design groups in which each check gives the largest D/C ratio. Left: lightest design of each dome. Right: mean of the 90 feasible runs of each dome. The checks are tension, compression, slenderness and joint capacity.
+**Figure 4.** Distribution and dispersion of the best structural weights across 30 independent runs for each metaheuristic optimizer and dome topology. Individual markers represent single runs, the orange horizontal line denotes the median, green triangles indicate the mean, and the box spans the interquartile range.
 
-**Figure 5a.** Member weight [kN] of the steel structures (best of 30 runs) and of the lightest bamboo designs. Reference is the 354-member steel dome.
+**Figure 5.** Cross-sectional sizing profiles of the lightest feasible bamboo dome designs identified across 90 optimization runs per dome (3 algorithms × 30 seeds). Bars represent the outer culm diameter $D$ [mm] of each design group (left axis); lines indicate wall thickness $t$ [mm] (right axis).
 
-**Figure 5b.** Embodied carbon [t CO₂e] of the structures of Figure 5a, by component: tube (steel) or culm (bamboo), connection steel and grout (labelled "mortar" in the figure).
+**Figure 6.** Proportion of structural design groups governed by each normative limit state check (compression buckling, member slenderness, tension, and joint capacity) in the lightest designs (left panel) and averaged across all 90 feasible runs per dome (right panel).
+
+**Figure 7a.** Structural member weight [kN] of the benchmark steel domes (best of 30 runs) and the lightest bamboo dome designs. The reference model is the classical 354-member steel dome.
+
+**Figure 7b.** Cradle-to-gate embodied carbon emissions [t CO₂e] of the structural configurations shown in Figure 7a, partitioned by structural component: primary members (steel tube or bamboo culm), connection steel hardware, and cementitious grout infill.

@@ -1,0 +1,16 @@
+Dome,EC_bamboo_kg_per_kg,Total_Carbon_tCO2e,Total_Joint_Carbon_pct,Bamboo_Carbon_pct
+ribbed40,0.03,8.91,97.54,2.46
+ribbed40,0.1,9.37,92.78,7.22
+ribbed40,0.24,10.34,84.1,15.9
+ribbed40,0.5,12.07,71.99,28.01
+ribbed40,1.23,17.01,51.1,48.9
+kiewitt32,0.03,3.96,96.57,3.43
+kiewitt32,0.1,4.24,90.12,9.88
+kiewitt32,0.24,4.84,78.97,21.03
+kiewitt32,0.5,5.91,64.6,35.4
+kiewitt32,1.23,8.97,42.59,57.41
+geodesic16,0.03,0.58,96.7,3.3
+geodesic16,0.1,0.62,90.48,9.52
+geodesic16,0.24,0.71,79.64,20.36
+geodesic16,0.5,0.86,65.53,34.47
+geodesic16,1.23,1.29,43.59,56.41

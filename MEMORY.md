@@ -67,3 +67,30 @@ Belgeler: Jawa Tengah HSD 2024 (baja profil 18.000 Rp/kg, grout ~8.500 Rp/kg, ba
 
 ## 9. Dosya haritası
 `04_Results/`: tables/T1–T10, figures/F1–F5, STATISTICAL_TEST_RESULTS.md, LCA_SENSITIVITY_REPORT.md, EC_BAMBOO_METHOD.md, PAPER_METHODS_NOTES.md, PARAMETER_EVIDENCE_REVIEW.md (denetim günlüğü), campaign_final/ (özet CSV, en iyi tasarımlar, çelik referans). `03_Code_Execution/`: fem_bridge.py, truss_model.py, dome_types.py, fast_eval.py, metaheuristic_optimizers.py, run_full_campaign.py, steel_reference.py, aisc_pipes.py, tuning_study.py, sap_export.py, governing_limit_shares.py (belirleyici sınır durumlar), bamboo_catalog.py (tüm malzeme parametreleri).
+
+## Emisyon faktörü revizyonu (2026-10-13, Tur 11): ICE kaldırıldı
+
+Kullanıcı kararı: ICE Educational V5.0 lisansı araştırma kullanımını dışladığı için baz faktörler beyan edilmiş EPD değerleriyle değiştirildi (analiz ve optimum tasarımlar değişmedi; yalnız post-optimizasyon karbon).
+
+| Parametre | Eski (ICE) | Yeni baz | Kaynak (Evidence/) |
+|---|---|---|---|
+| Bağlantı çeliği (plaka) | 2,38 | 1,13 | `Bauforumstahl_Walzprofile_Grobbleche_EPD.pdf` s. 7 (1,13E+3 kg CO2e/t; tesis aralığı 0,5–2 kat, s. 8; EPD geçerliliği 24.10.2023'te bitmiş) |
+| Çelik boru | 2,51 | 1,701 | `Welded_Tube_HSS_EPD.pdf` s. 7 (1701,06 kg CO2e/t) |
+| Harç | 0,18 | 0,310 | `SikaGrout_312_HP_EPD.pdf` s. 10 (3,10E-01 kg CO2e/kg) |
+| Bambu culm EC_b | 0,30 | 0,243 | 0,0324 (INBAR TR35 Tablo 1: 0,0156 + 0,0168) + 0,211 (0,185 × 0,3 × 3,8; DEFRA 2023 rijit kamyon aralığı 0,1782–0,2146) |
+
+Duyarlılık aralıkları: EC_s 0,565–2,26; EC_m 0,155–0,62 (varsayım, 0,5–2 kat); EC_b 0,0324–1,23.
+Yeni sonuçlar: bağlantı payı %79,6 / %79,0 / %84,1 (geodesic/kiewitt/ribbed); bambu/çelik karbon oranı 0,319 / 0,424 / 0,493 (EC_b = 1,23'te 0,583 / 0,785 / 0,812); tek parametreli taramalarda bağlantı payı %42,6–97,5. Toplam karbon: 0,71 / 4,84 / 10,34 t CO2e (bambu), 2,21 / 11,42 / 20,95 t (çelik).
+Güncellenenler: `bamboo_catalog.py` sabitleri, `lca_sensitivity_analysis.py`, `results_report.py`, T5–T8, `LCA_SENSITIVITY_REPORT.md`, F5, grafik özet, makale (özet, vurgular, Tablo 5, 13–16, Tartışma, Sonuçlar), ek dosya S5.1, referanslar ([39]–[42] EPD/DEFRA; ICE çıkarıldı).
+Bu dosyadaki ve diğer proje belgelerindeki (agent_*.md, 00_System, 01–02 klasörleri) eski ICE tabanlı sayılar (2,38 / 2,51 / 0,18 / 0,30; %74,1–82,1; 0,252–0,347) GEÇERSİZDİR; makale ve tablolar yeni değerleri kullanır.
+`campaign_final/summary.csv` ve `global_best*.json` içindeki karbon sütunları eski faktörlerle yazıldığından güncel değildir; kullanılmaz.
+
+## Referans ve Repro Paketi Senkronizasyonu (2026-10-13, Tur 12)
+
+1. **Referans Atıfları Tamamlandı:** Referans listesinde olup metinde doğrudan atıfı bulunmayan 7 kaynak ([11], [12], [13], [14], [16], [19], [29]) Introduction, Methods (burkulma & birleşim), Numerical Examples (kubbe topolojisi & bambu özellikleri) ve Discussion bölümlerine organik biçimde eklendi; tüm bölümler ve `MANUSCRIPT_FULL.*` senkronize edildi.
+2. **Repro Paketi CSV Dönüştürmesi:** Hakem denetiminde ham `.md` notları yerine standart veri setleri talep edildiğinden; istatistik testleri (`T_stats_descriptive.csv`, `T_stats_friedman_ranks.csv`, `T_stats_wilcoxon_pairwise.csv`), LCA duyarlılık ve bağlantı payları (`T_lca_base_case_breakdown.csv`, `T_lca_sensitivity_*.csv`), hiper-parametre tuning (`T_tuning_study_summary.csv`), sınır durum payları (`T_governing_limit_shares.csv`) ve Şekil 3'ün 2700 satırlık ham yakınsama geçmişi (`T_convergence_curves_history.csv`) üretildi. Hakemler için `04_Results/tables/README.md` kılavuzu yazıldı.
+3. **Veri Erişilebilirlik Beyanı:** `07_declarations.md` ve `MANUSCRIPT_FULL.*` dosyalarındaki beyan daraltılarak depoda yer alan FEA çözücü, optimizasyon kodları, SAP2000 modelleri ve yapılandırılmış CSV veri setleriyle tam uyumlu hale getirildi.
+4. **Çift GitHub Deposu Senkronizasyonu ve Push:**
+   - `BambuDome-reproducibility` deposu (`https://github.com/ibrahimaydogdu/BambuDome-reproducibility.git`): Yereldeki 19 commit edilmemiş dosya + yeni üretilen tüm CSV veri setleri ve modeller stage edilip commit edildi ve `origin/main`'e başarıyla push edildi.
+   - `Bambu_Dome_Source` çalışma deposu (`https://github.com/ibrahimaydogdu/Bambu_Dome_Source.git`): Tüm güncel makale, kod ve sonuç revizyonlarıyla senkronize edilerek push edildi.
+

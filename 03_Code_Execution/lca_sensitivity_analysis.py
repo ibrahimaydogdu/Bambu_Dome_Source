@@ -8,9 +8,9 @@ parametre degisimlerine karsi direncini test eder.
 
 Degistirilen parametreler:
   - L_inj_factor: 1.5 - 3.5 (varsayilan 2.5)
-  - EC_steel    : 1.2 - 3.0 kg CO2e/kg (varsayilan 2.38; ICE V5.0 plate)
-  - EC_bamboo   : 0.09 - 1.23 kg CO2e/kg (varsayilan 0.30; turetilmis)
-  - EC_mortar   : 0.12 - 0.28 kg CO2e/kg (varsayilan 0.18)
+  - EC_steel    : 0.565 - 2.26 kg CO2e/kg (varsayilan 1.13; bauforumstahl EPD, tesis araligi 0.5-2 kat)
+  - EC_bamboo   : 0.0324 - 1.23 kg CO2e/kg (varsayilan 0.243; turetilmis)
+  - EC_mortar   : 0.155 - 0.62 kg CO2e/kg (varsayilan 0.310; 0.5-2 kat, varsayim)
 
 Kullanim:
   python lca_sensitivity_analysis.py [--output-dir ../04_Results]
@@ -119,9 +119,9 @@ def run_parametric_sensitivity(designs: dict):
     # 1. Temel Durum Analizi (Base Case)
     base_cm = CarbonModel(
         l_inject_factor=2.5,
-        ec_bamboo=0.30,
-        ec_steel=2.38,
-        ec_mortar=0.18,
+        ec_bamboo=0.243,
+        ec_steel=1.13,
+        ec_mortar=0.310,
     )
 
     for m_name, d_info in designs.items():
@@ -132,9 +132,9 @@ def run_parametric_sensitivity(designs: dict):
     # 2. Parametrik Taramalar (Tekil Parametre Degisimi)
     param_ranges = {
         "L_inj_factor": [1.5, 2.0, 2.5, 3.0, 3.5],
-        "EC_steel": [1.2, 1.9, 2.38, 2.62, 3.0],
-        "EC_bamboo": [0.09, 0.20, 0.30, 0.47, 1.23],
-        "EC_mortar": [0.12, 0.15, 0.18, 0.22, 0.28],
+        "EC_steel": [0.565, 0.85, 1.13, 1.70, 2.26],
+        "EC_bamboo": [0.0324, 0.10, 0.243, 0.50, 1.23],
+        "EC_mortar": [0.155, 0.23, 0.310, 0.47, 0.62],
     }
 
     sensitivity_tables = {}
@@ -146,7 +146,7 @@ def run_parametric_sensitivity(designs: dict):
         # L_inj_factor taraması
         rows_linj = []
         for val in param_ranges["L_inj_factor"]:
-            cm = CarbonModel(l_inject_factor=val, ec_bamboo=0.30, ec_steel=2.38, ec_mortar=0.18)
+            cm = CarbonModel(l_inject_factor=val, ec_bamboo=0.243, ec_steel=1.13, ec_mortar=0.310)
             r = compute_lca_breakdown(m, d_info["gene"], cm)
             rows_linj.append({
                 "L_inj / D": val,
@@ -162,7 +162,7 @@ def run_parametric_sensitivity(designs: dict):
         # EC_steel taraması
         rows_steel = []
         for val in param_ranges["EC_steel"]:
-            cm = CarbonModel(l_inject_factor=2.5, ec_bamboo=0.30, ec_steel=val, ec_mortar=0.18)
+            cm = CarbonModel(l_inject_factor=2.5, ec_bamboo=0.243, ec_steel=val, ec_mortar=0.310)
             r = compute_lca_breakdown(m, d_info["gene"], cm)
             rows_steel.append({
                 "EC_steel (kg/kg)": val,
@@ -176,7 +176,7 @@ def run_parametric_sensitivity(designs: dict):
         # EC_bamboo taraması
         rows_bam = []
         for val in param_ranges["EC_bamboo"]:
-            cm = CarbonModel(l_inject_factor=2.5, ec_bamboo=val, ec_steel=2.38, ec_mortar=0.18)
+            cm = CarbonModel(l_inject_factor=2.5, ec_bamboo=val, ec_steel=1.13, ec_mortar=0.310)
             r = compute_lca_breakdown(m, d_info["gene"], cm)
             rows_bam.append({
                 "EC_bamboo (kg/kg)": val,
@@ -187,7 +187,7 @@ def run_parametric_sensitivity(designs: dict):
         m_tables["EC_bamboo"] = pd.DataFrame(rows_bam)
 
         worst = compute_lca_breakdown(m, d_info["gene"], CarbonModel(
-            l_inject_factor=1.5, ec_bamboo=0.47, ec_steel=1.2, ec_mortar=0.12))
+            l_inject_factor=1.5, ec_bamboo=0.50, ec_steel=0.565, ec_mortar=0.155))
         m_tables["worst"] = worst
         sensitivity_tables[m_name] = m_tables
 
@@ -227,7 +227,7 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
         "",
         "## 1. Temel Durum (Base-Case) Karbon ve Kütle Dökümü",
         "",
-        "Varsayılan Parametreler: $L_{\\text{inj}} = 2.5 D$, $EC_{\\text{bamboo}} = 0.30$ (türetilmiş), $EC_{\\text{steel}} = 2.38$ (ICE V5.0 plate), $EC_{\\text{mortar}} = 0.18\\text{ kg CO}_2\\text{e/kg}$.",
+        "Varsayılan Parametreler: $L_{\\text{inj}} = 2.5 D$, $EC_{\\text{bamboo}} = 0.243$ (türetilmiş), $EC_{\\text{steel}} = 1.13$ (bauforumstahl EPD), $EC_{\\text{mortar}} = 0.310\\text{ kg CO}_2\\text{e/kg}$ (SikaGrout-312 HP EPD).",
         "",
     ]
 
@@ -250,7 +250,7 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
     jp = [r["pct_joint_co2"] for r in base_results.values()]
     sp = [r["pct_steel_co2"] for r in base_results.values()]
     lines.append(f"> Temel senaryoda bağlantı bileşenleri (çelik + harç) toplam gömülü karbonun %{min(jp):.1f}–%{max(jp):.1f}'ini, "
-                 f"yalnızca çelik %{min(sp):.1f}–%{max(sp):.1f}'ini oluşturur (bu tasarımlar için; $EC_s$ ve $EC_m$ değerleri ICE Educational V5.0'dan alınmış, $EC_b$ türetilmiş baz değerdir (alt sınır 0.09 varsayım; `EC_BAMBOO_METHOD.md`), harç 1:3 harç vekilidir).")
+                 f"yalnızca çelik %{min(sp):.1f}–%{max(sp):.1f}'ini oluşturur (bu tasarımlar için; $EC_s$ ve $EC_m$ değerleri beyan edilmiş EPD değerleridir (bauforumstahl, SikaGrout-312 HP), $EC_b$ INBAR TR35 ve Zea & Habert 2014'ten türetilmiş baz değerdir).")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -263,17 +263,17 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
         lines.append("#### a) Enjeksiyon Uzunluğunun Etkisi ($L_{\\text{inj}} / D \\in [1.5, 3.5]$)")
         lines.append(df_to_md(tables["L_inj"]))
         lines.append("")
-        lines.append("#### b) Çelik Gömülü Karbon Katsayısının Etkisi ($EC_{\\text{steel}} \\in [1.2, 3.0]\\text{ kg CO}_2\\text{e/kg}$)")
+        lines.append("#### b) Çelik Gömülü Karbon Katsayısının Etkisi ($EC_{\\text{steel}} \\in [0.565, 2.26]\\text{ kg CO}_2\\text{e/kg}$)")
         lines.append(df_to_md(tables["EC_steel"]))
         lines.append("")
-        lines.append("#### c) Bambu Gömülü Karbon Katsayısının Etkisi ($EC_{\\text{bamboo}} \\in [0.09, 1.23]\\text{ kg CO}_2\\text{e/kg}$)")
+        lines.append("#### c) Bambu Gömülü Karbon Katsayısının Etkisi ($EC_{\\text{bamboo}} \\in [0.0324, 1.23]\\text{ kg CO}_2\\text{e/kg}$)")
         lines.append(df_to_md(tables["EC_bamboo"]))
         lines.append("")
 
     lines.append("---")
     lines.append("")
     lines += ["## 3. Senaryo Sınırları (hesaplanan)", "",
-              "Birleşik senaryo: parametreler bağlantı payını azaltan yönde birlikte uygulandı (L_inj=1.5D, EC_steel=1.2, EC_bamboo=0.47, EC_mortar=0.12). Bu, tek parametreli taramaların en düşük değeri değildir:", ""]
+              "Birleşik senaryo: parametreler bağlantı payını azaltan yönde birlikte uygulandı (L_inj=1.5D, EC_steel=0.565, EC_bamboo=0.50, EC_mortar=0.155). Bu, tek parametreli taramaların en düşük değeri değildir:", ""]
     for m, t in sensitivity_tables.items():
         lines.append(f"- `{m}`: bağlantı payı %{t['worst']['pct_joint_co2']:.1f} (bambu %{t['worst']['pct_bamboo_co2']:.1f})")
     lines.append("")

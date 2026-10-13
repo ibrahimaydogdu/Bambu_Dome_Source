@@ -1,0 +1,10 @@
+Model,Algorithm,Mean_Rank,Chi2_Friedman,p_value
+geodesic16,ABC,1.1,48.6,2.7967e-11
+geodesic16,ACO,2.0,48.6,2.7967e-11
+geodesic16,DO,2.9,48.6,2.7967e-11
+kiewitt32,ABC,1.2333,38.264,4.9096e-09
+kiewitt32,ACO,2.0333,38.264,4.9096e-09
+kiewitt32,DO,2.7333,38.264,4.9096e-09
+ribbed40,ABC,1.25,49.16,2.114e-11
+ribbed40,ACO,1.75,49.16,2.114e-11
+ribbed40,DO,3.0,49.16,2.114e-11

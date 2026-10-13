@@ -36,11 +36,11 @@ MATERIAL_PROPERTIES = {
     # --- Servis siniri ---
     "disp_limit_ratio": 150.0, # yer degistirme siniri = aciklik/150 (Manual ornegi; ISO 22156 sehim siniri vermez)
 
-    # Beşikten-Kapıya (A1-A3) Gömülü Karbon Katsayıları -- celik/harc: ICE Educational V5.0 (Haz 2026); bambu: turetilmis (varsayim)
-    "EC_bamboo": 0.30,         # kg CO2e / kg culm (A1-A3, biyojenik karbon HARIC): turetilmis; bkz. 04_Results/EC_BAMBOO_METHOD.md (aralik 0.09-1.23)
-    "EC_steel": 2.38,          # kg CO2e / kg baglanti celigi: ICE Educational V5.0 (Haz 2026) "Steel, Plate" 2.38 (worldsteel 2023); galvanizli 2.62
-    "EC_steel_tube": 2.51,     # kg CO2e / kg celik boru (CHS): ICE V5.0 "Steel, welded pipe" 2.51 (seamless tube 1.90)
-    "EC_mortar": 0.18,         # kg CO2e / kg: ICE V5.0 harc 1:3; rotresiz grout satiri yok -> proxy (varsayim)
+    # Beşikten-Kapıya (A1-A3) Gömülü Karbon Katsayıları -- beyan edilmis EPD degerleri (Evidence/); bambu: TR35 + Zea 2014 ile turetilmis
+    "EC_bamboo": 0.243,        # kg CO2e / kg culm (A1-A3, biyojenik karbon HARIC): 0.0324 (INBAR TR35 Tablo 1: hasat 0.0156 + nakliye 0.0168) + 0.211 (0.185 x 0.3 x 3.8; yuk duzeltmesi 3.8: Zea & Habert 2014); aralik 0.0324-1.23
+    "EC_steel": 1.13,          # kg CO2e / kg baglanti celigi: bauforumstahl EPD-BFS-20180116-IBG2-DE s.7, A1-A3 1.13E+3 kg CO2e / t (ortalama; tesis araligi 0.5-2 kat)
+    "EC_steel_tube": 1.701,    # kg CO2e / kg celik boru (HSS): Welded Tube of Canada EPD S-P-07775 s.7, A1-A3 1701.06 kg CO2e / t
+    "EC_mortar": 0.310,        # kg CO2e / kg: SikaGrout-312 HP EPD S-P-12151 s.10, A1-A3 3.10E-01 kg CO2e / kg
     "node_steel_mass": 4.50,   # kg / düğüm ("fixed" modu)
     "node_mortar_mass": 2.80   # kg / düğüm ("fixed" modu)
 }

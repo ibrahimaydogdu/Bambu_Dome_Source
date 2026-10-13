@@ -16,9 +16,9 @@ from bamboo_catalog import MATERIAL_PROPERTIES as MP
 # ---------------------------------------------------------------------------
 # Karbon Emisiyon Katsayilari (kg CO2e / kg)
 # ---------------------------------------------------------------------------
-EC_BAMBOO  = MP["EC_bamboo"]       # 0.30 kg CO2e/kg  -- Guadua culm (turetilmis, aralik 0.09-1.23)
-EC_STEEL   = MP["EC_steel"]        # 2.38 kg CO2e/kg  -- Celik flansh / civata (ICE V5.0 "Steel, Plate")
-EC_MORTAR  = MP["EC_mortar"]       # 0.18 kg CO2e/kg  -- Rotresiz harc (ICE V5.0 harc 1:3, proxy)
+EC_BAMBOO  = MP["EC_bamboo"]       # 0.243 kg CO2e/kg -- Guadua culm (TR35 + Zea 2014 ile turetilmis, aralik 0.0324-1.23)
+EC_STEEL   = MP["EC_steel"]        # 1.13 kg CO2e/kg  -- Celik flansh / civata (bauforumstahl EPD)
+EC_MORTAR  = MP["EC_mortar"]       # 0.310 kg CO2e/kg -- Rotresiz harc (SikaGrout-312 HP EPD)
 
 # Ortalama dugum malzeme kutleleri (kg/dugum)
 NODE_STEEL_KG  = MP["node_steel_mass"]    # 4.50 kg/dugum

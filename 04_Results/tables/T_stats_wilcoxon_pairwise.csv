@@ -1,0 +1,7 @@
+Model,Comparison,Diff_Median_kN,U_Statistic,p_value,Vargha_Delaney_A12,Significance_005,p_Holm_corrected
+geodesic16,ABC vs ACO,0.2286,764.5,3.4e-06,0.8494,+,3.4e-06
+geodesic16,ABC vs DO,0.5546,900.0,2.97e-11,1.0,+,5.94e-11
+kiewitt32,ABC vs ACO,0.7032,690.0,5.27e-06,0.7667,+,5.27e-06
+kiewitt32,ABC vs DO,1.9872,900.0,1.21e-12,1.0,+,2.42e-12
+ribbed40,ABC vs ACO,0.6852,682.5,0.000553,0.7583,+,0.000553
+ribbed40,ABC vs DO,8.0284,900.0,2.84e-11,1.0,+,5.67e-11

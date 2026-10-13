@@ -1,3 +1,5 @@
+> **GÜNCEL DEĞİL (2026-10-13, Tur 11):** Bu belgedeki EC_bambu = 0,30 türetmesi ICE V5.0 yumuşak odun değerine (0,2626) dayanıyordu. ICE kullanımı lisans nedeniyle bırakıldı; güncel baz EC_b = 0,243 = 0,0324 (INBAR TR35 Tablo 1) + 0,211 (300 km yol nakliyesi, 0,185 × 0,3 × 3,8). Ayrıntı: `00_System/PROJECT_STATE.md`, makale ek dosyası S5.1.
+
 # Bambu culm gömülü karbonu (A1–A3) için türetme yöntemi
 
 **Amaç:** Doğrudan kaynağı olmayan EC_bambu (kg CO₂e/kg yuvarlak culm, A1–A3, **biyojenik karbon hariç**) değerini, elimizdeki yayınlardan izlenebilir bir yöntemle türetmek. Kod değeri: **0,30** (aralık 0,09–1,23).

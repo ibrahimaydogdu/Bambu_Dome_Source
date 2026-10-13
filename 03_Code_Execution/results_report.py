@@ -8,7 +8,7 @@ Kampanya sonuclarindan makale tablo ve sekilleri (04_Results/figures, 04_Results
   Maliyet burada hesaplanmaz: belgelenmis fiyatlarla malzeme maliyeti price_scenarios.py (T9, T9a).
 
 Kullanim: python results_report.py [--campaign C:\\BambuDome_campaign\\full] [--steel C:\\BambuDome_campaign\\steel_ref]
-EC degerleri bamboo_catalog.py'den (ICE V5.0; EC_bamboo turetilmis); duyarlilik tablolari ayrica uretilir.
+EC degerleri bamboo_catalog.py'den (beyan edilmis EPD degerleri; EC_bamboo turetilmis); duyarlilik tablolari ayrica uretilir.
 """
 from __future__ import annotations
 import os
@@ -420,11 +420,11 @@ def part_material(res, steel_res, best_rows):
         if not len(s) or not len(b):
             continue
         s, b = s.iloc[0], b.iloc[0]
-        for ec in (1.6, 1.9, 2.51, 2.8):
-            cs = ec / 2.51 * s.co2
+        for ec in (0.851, 1.701, 2.552, 3.402):
+            cs = ec / 1.701 * s.co2
             sens.append({"Dome": m, "Parameter": f"steel EC {ec} kgCO2e/kg", "Bamboo/Steel CO2e": b.co2 / cs})
-        for ecb in (0.09, 0.30, 0.47, 1.23):
-            cb = b.co2_parts[0] * ecb / 0.30 + b.co2_parts[1] + b.co2_parts[2]
+        for ecb in (0.0324, 0.243, 0.50, 1.23):
+            cb = b.co2_parts[0] * ecb / 0.243 + b.co2_parts[1] + b.co2_parts[2]
             sens.append({"Dome": m, "Parameter": f"bamboo EC {ecb} kgCO2e/kg", "Bamboo/Steel CO2e": cb / s.co2})
     save_table(pd.DataFrame(sens).fillna(""), "T8_material_sensitivity", "Table 8. Sensitivity of bamboo/steel CO2e ratio to EC assumptions")
     return S

@@ -40,6 +40,15 @@
 
 ## 🔄 3. DİNAMİK TUR GÜNLÜĞÜ (ITERATION HISTORY)
 
+### 📍 [Round 12] - [2026-10-13] - Master Agent & Developer Agent (Referans Atıfları, Repro CSV Paketi, Çift GitHub Push)
+1. **Referans Atıfları:** Hakem/editör eleştirisi üzerine metin içinde doğrudan atıfı bulunmayan [11], [12], [13], [14], [16], [19], [29] referansları Giriş, Yöntem, Sayısal Örnekler ve Tartışma bölümlerine bağlamlarına tam uygun şekilde eklendi; tüm `.md` bölümleri ve derlenmiş `MANUSCRIPT_FULL.*` senkronize edildi.
+2. **Repro Paketi CSV Dönüşümü:** Markdown çalışma raporları yerine hakemlerin inceleyeceği 10 adet standart CSV veri seti (`04_Results/tables/T_*.csv`) üretildi: `T_stats_descriptive.csv`, `T_stats_friedman_ranks.csv`, `T_stats_wilcoxon_pairwise.csv`, `T_lca_base_case_breakdown.csv`, `T_lca_sensitivity_*.csv`, `T_tuning_study_summary.csv`, `T_governing_limit_shares.csv` ve Şekil 3'ün 2700 satırlık ham yakınsama serisi `T_convergence_curves_history.csv`. Ayrıca `04_Results/tables/README.md` veri rehberi oluşturuldu.
+3. **Veri Erişilebilirlik Beyanı:** Makale beyanı, depoda bulunan kod, model ve yapılandırılmış CSV veri setleriyle tam uyumlu hale getirildi.
+4. **Çift GitHub Deposu Senkronizasyonu:** Hem `BambuDome-reproducibility` (`https://github.com/ibrahimaydogdu/BambuDome-reproducibility.git`) hem de `Bambu_Dome_Source` (`https://github.com/ibrahimaydogdu/Bambu_Dome_Source.git`) depoları tüm güncel kod, veri setleri ve dokümantasyonla commit edilip GitHub'a push edildi.
+
+### 📍 [Round 11] - [2026-10-13] - Master Agent & Developer Agent (ICE Kaldırıldı, EPD Faktörleri)
+- Emisyon faktörleri revize edildi: Bauforumstahl EPD (1.13), Welded Tube HSS EPD (1.701), SikaGrout EPD (0.310), INBAR TR35 + DEFRA 2023 nakliye (0.243). Sonuçlar ve tablolar güncellendi.
+
 ### 📍 [Round 10] - [2026-10-13] - Master Agent (Aşama 5 taslağı: denetim, yeniden yazım, yeni bulgular)
 1. Diğer yapay zekânın ilk makale taslağı bağımsız denetimde geçersiz bulundu (45'ten fazla ciddi hata: uydurma yük/kombinasyon/formül/senaryo, uydurma kaynakça başlıkları, kaynaksız sayılar, gizli yer işaretleri). Taslak Master Agent tarafından yeniden yazıldı; tablolar kaynak dosyalardan betikle üretildi; yer işaretleri görünür; `NUMBERS_TRACE.md` ve `OPEN_ITEMS.md` otomatik üretilir.
 2. Kubbe açıklıkları: ribbed40 40 m, kiewitt32 32 m, geodesic16 nominal 16 m (belgelerdeki "40 m'lik üç kubbe" düzeltildi).
@@ -140,3 +149,20 @@ Kampanya verileri, istatistiksel hipotez testleri, birincil kanıt denetimleri v
 **Sorumlu Ajan:** `Academic Stylist & Writer` (ve `Master Agent` koordinasyonu)
 
 - **Kritik Kural:** Kullanıcı onayı olmadan bir sonraki aşamaya geçilmeyecektir (AGENTS.md Kural 4).
+
+## Emisyon faktörü revizyonu (2026-10-13, Tur 11): ICE kaldırıldı
+
+Kullanıcı kararı: ICE Educational V5.0 lisansı araştırma kullanımını dışladığı için baz faktörler beyan edilmiş EPD değerleriyle değiştirildi (analiz ve optimum tasarımlar değişmedi; yalnız post-optimizasyon karbon).
+
+| Parametre | Eski (ICE) | Yeni baz | Kaynak (Evidence/) |
+|---|---|---|---|
+| Bağlantı çeliği (plaka) | 2,38 | 1,13 | `Bauforumstahl_Walzprofile_Grobbleche_EPD.pdf` s. 7 (1,13E+3 kg CO2e/t; tesis aralığı 0,5–2 kat, s. 8; EPD geçerliliği 24.10.2023'te bitmiş) |
+| Çelik boru | 2,51 | 1,701 | `Welded_Tube_HSS_EPD.pdf` s. 7 (1701,06 kg CO2e/t) |
+| Harç | 0,18 | 0,310 | `SikaGrout_312_HP_EPD.pdf` s. 10 (3,10E-01 kg CO2e/kg) |
+| Bambu culm EC_b | 0,30 | 0,243 | 0,0324 (INBAR TR35 Tablo 1: 0,0156 + 0,0168) + 0,211 (0,185 × 0,3 × 3,8; DEFRA 2023 rijit kamyon aralığı 0,1782–0,2146) |
+
+Duyarlılık aralıkları: EC_s 0,565–2,26; EC_m 0,155–0,62 (varsayım, 0,5–2 kat); EC_b 0,0324–1,23.
+Yeni sonuçlar: bağlantı payı %79,6 / %79,0 / %84,1 (geodesic/kiewitt/ribbed); bambu/çelik karbon oranı 0,319 / 0,424 / 0,493 (EC_b = 1,23'te 0,583 / 0,785 / 0,812); tek parametreli taramalarda bağlantı payı %42,6–97,5. Toplam karbon: 0,71 / 4,84 / 10,34 t CO2e (bambu), 2,21 / 11,42 / 20,95 t (çelik).
+Güncellenenler: `bamboo_catalog.py` sabitleri, `lca_sensitivity_analysis.py`, `results_report.py`, T5–T8, `LCA_SENSITIVITY_REPORT.md`, F5, grafik özet, makale (özet, vurgular, Tablo 5, 13–16, Tartışma, Sonuçlar), ek dosya S5.1, referanslar ([39]–[42] EPD/DEFRA; ICE çıkarıldı).
+Bu dosyadaki ve diğer proje belgelerindeki (agent_*.md, 00_System, 01–02 klasörleri) eski ICE tabanlı sayılar (2,38 / 2,51 / 0,18 / 0,30; %74,1–82,1; 0,252–0,347) GEÇERSİZDİR; makale ve tablolar yeni değerleri kullanır.
+`campaign_final/summary.csv` ve `global_best*.json` içindeki karbon sütunları eski faktörlerle yazıldığından güncel değildir; kullanılmaz.

@@ -1,0 +1,7 @@
+Dome,Design_Type,Tension_Groups,Compression_Buckling_Groups,Slenderness_Groups,Connection_Groups,Total_Groups
+Geodesic,en iyi,0,19,4,0,23
+Geodesic,ortalama (90 kosu) [%],0.0,81.1,18.9,0.0,100
+Kiewitt,en iyi,0,21,1,0,22
+Kiewitt,ortalama (90 kosu) [%],0.0,95.5,4.5,0.0,100
+Ribbed,en iyi,0,41,2,0,43
+Ribbed,ortalama (90 kosu) [%],0.0,93.4,6.5,0.2,100
