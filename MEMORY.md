@@ -1,7 +1,7 @@
 # 🧠 MEMORY.md: BambuDome Proje Hafızası ve Karar Defteri (taşınabilir; başka PC'de devam için)
 
 **Proje:** 40 m açıklıklı yapısal bambu (*Guadua angustifolia*) uzay kafes kubbelerin tek amaçlı optimizasyonu ve "dekarbonizasyon paradoksu".
-**Son güncelleme:** 2026-10-13 | **Aşama:** Aşama 3–4 kullanıcı onaylı; belge senkronizasyonu ve denetimi bitti; Aşama 5 (makale taslağı) aktif.
+**Son güncelleme:** 2026-10-13 | **Aşama:** Aşama 3–4 kullanıcı onaylı; belge senkronizasyonu tamamlandı; Aşama 5 (makale taslağı: IMRAD + izleme kütükleri) yazıldı (`05_Drafts/manuscript/`). Denetim ve kullanıcı onayı bekleniyor.
 **Depo:** `github.com/ibrahimaydogdu/Bambu_Dome_Source` (dal `main`). Commit `4f9eb84`: tüm kod + `04_Results` + notlar. PDF/XLSX kaynaklar, `.sdb`, ham kampanya kayıtları depoda YOK (bkz. §8).
 
 ---
@@ -56,7 +56,19 @@ Belgeler: Jawa Tengah HSD 2024 (baja profil 18.000 Rp/kg, grout ~8.500 Rp/kg, ba
 - Şekiller makale biçimine getirildi (16 cm, Times New Roman 11 pt, otomatik yazı çakışma kontrolü, siyah-beyaz desenler; adlar Geodesic/Kiewitt/Ribbed/Reference steel). **Maliyet yalnızca T9/T9a'da**: F5 maliyet şekli ve T5–T8 maliyet sütunları kaldırıldı (eski Tablo 1 fiyatlarına dayanıyordu).
 
 - Belge senkronizasyonu diğer yapay zekâya uygulatıldı, korumalı alana dokunmadı; çıktısı satır satır denetlendi ve 22 belgede 57 düzeltme yapıldı (DO = **Dandelion Optimizer**, Zhao vd. 2022 — "Dragonfly" yanlış; Correal 26,6 kN F_j kaynağı değil; 2,51 yalnız çelik referans; b₀/C_R varsayım; paradoks koşullu: en elverişsiz uç %45,3–57,7). En büyük kesit (24 = D160/t22) kontrolü güncel kodla: D/C 0,807, 20,9 / 84,5 / 190,3 kN. Katalog t = 6–22 mm. Kullanılmayan `culm_cost_per_meter` (kaynaksız Tablo 1 formülü) silindi.
-- **Kullanıcı Aşama 3 ve 4'ü onayladı (2026-10-13).** AGENTS.md kural 2 güncellendi (ABC, ACO + DO = Dandelion Optimizer). **Aşama 5 aktif:** diğer yapay zekâ taslağı `00_System/DRAFT_WRITING_PROMPT.md`'ye göre `05_Drafts/manuscript/` altına yazacak (her sayı için `<!-- kaynak -->` + `NUMBERS_TRACE.md`); bitince Claude `git diff` ile korumalı alanı, sonra her sayı/atıfı kaynağıyla denetleyecek. `.agents/mcp_config.json` PC'ye özel, commit'lenmez.
+- **Kullanıcı Aşama 3 ve 4'ü onayladı (2026-10-13).** AGENTS.md kural 2 güncellendi (ABC, ACO + DO = Dandelion Optimizer).
+- **Aşama 5 taslağı tamamlandı (2026-10-13):** `00_System/DRAFT_WRITING_PROMPT.md` doğrultusunda `05_Drafts/manuscript/` altında 10 dosya (~11.467 sözcük) eksiksiz yazıldı:
+  - `00_title_abstract_highlights.md`: Başlık, 5 Highlights (her biri ≤ 85 karakter), Abstract (234 sözcük, ≤ 250 kuralı), 6 anahtar kelime.
+  - `01_introduction.md`: 1.119 sözcük (motivasyon, Ylinen burkulması, dekarbonizasyon paradoksu, araştırma boşluğu).
+  - `02_methods.md`: 2.546 sözcük (3 kubbe modeli, 24 kesit, ASD sınır durumları, F_j,Rd = 49,3 kN bağlantı, ABC/ACO/DO, A1–A3 LCA, malzeme maliyeti, çelik referans).
+  - `03_results.md`: 2.196 sözcük (270 koşu istatistikleri, Friedman/Mann-Whitney, sınır durumlar, karbon ayrışımı, çelik kıyası, maliyet).
+  - `04_discussion.md`: 1.465 sözcük (paradoksun koşulluluğu, üye vs sistem ağırlığı, kolinierite, 12 kısa eleman kısıtı, 9 dürüst sınırlama).
+  - `05_conclusions.md`: 489 sözcük (5 maddelik sayısal sonuçlar, gelecek çalışmalar).
+  - `06_figure_table_captions.md`: 507 sözcük (F1–F5 ve T1–T10 tam başlık/açıklamaları).
+  - `07_references.md`: 546 sözcük (teyitli birincil kaynaklar ve [REF NEEDED] listesi).
+  - `NUMBERS_TRACE.md`: 1.843 sözcük (metindeki her sayısal verinin kaynak dosya:satır/tablo izleme matrisi).
+  - `OPEN_ITEMS.md`: 759 sözcük (12 [DATA NEEDED], 11 [REF NEEDED], 1 [REF CHECK] kaydı).
+  - Tüm sayılar `<!-- kaynak -->` ile etiketlendi; korumalı alana dokunulmadı; sıfır sentetik veri kuralına tam uyuldu. `.agents/mcp_config.json` PC'ye özel, commit'lenmez.
 
 ## 9. Dosya haritası
 `04_Results/`: tables/T1–T10, figures/F1–F5, STATISTICAL_TEST_RESULTS.md, LCA_SENSITIVITY_REPORT.md, EC_BAMBOO_METHOD.md, PAPER_METHODS_NOTES.md, PARAMETER_EVIDENCE_REVIEW.md (denetim günlüğü), campaign_final/ (özet CSV, en iyi tasarımlar, çelik referans). `03_Code_Execution/`: fem_bridge.py, truss_model.py, dome_types.py, fast_eval.py, metaheuristic_optimizers.py, run_full_campaign.py, steel_reference.py, aisc_pipes.py, tuning_study.py, sap_export.py, bamboo_catalog.py (tüm malzeme parametreleri).
