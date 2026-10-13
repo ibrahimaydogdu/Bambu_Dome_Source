@@ -17,7 +17,7 @@
   - *Structures* (Elsevier / IStructE, IF: 4.1+)
 - **Ana Problem & Kapsam:** 
   - 16, 32 ve 40 m açıklıklı (geodesic16, kiewitt32, ribbed40) biyo-yapısal uzay kafes kubbe modellerinin (*Guadua angustifolia* culmları ile) **ISO 22156:2021** ve **IStructE (2025)** İzinli Gerilme Tasarımı (**ASD**) ile ASCE 7-22 kısıtları altında tek amaçlı yapısal ağırlık minimizasyonu ($\min f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$, $\varepsilon=2.0$).
-  - Kesite bağlı bağlantı modelinde kütle ile gömülü karbon arasındaki ampirik yakın-doğrusallık ($R^2 = 0.81 - 0.97$, corr = $0.91 - 0.98$) sebebiyle çok-amaçlı Pareto cephesinin tek noktaya / dar aralığa çökmesi gerekçesiyle tek amaçlı optimizasyon yürütülmesi ve post-optimizasyon Beşikten-Kapıya (A1–A3) LCA ayrıştırması modeli.
+  - Kütle ile gömülü karbonun yakın ama özdeş olmaması ($r = 0.72 - 0.90$; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir) nedeniyle tek amaçlı optimizasyon yürütülmesi, çok amaçlı aramanın kapsam dışı bırakılması ve post-optimizasyon Beşikten-Kapıya (A1–A3) LCA ayrıştırması modeli.
   - **Araştırma Konusu:** Biyo-yapısal kubbelerde hibrit bağlantı bileşenlerinin (çelik manşon/düğüm ve enjeksiyon harcı) toplam gömülü karbondaki payı (%74.1–%82.1) ve bu payın envanter parametrelerine duyarlılığı ("Dekarbonizasyon Paradoksu").
 
 ---
@@ -43,7 +43,7 @@
 ### 📍 [Round 10] - [2026-10-13] - Master Agent (Aşama 5 taslağı: denetim, yeniden yazım, yeni bulgular)
 1. Diğer yapay zekânın ilk makale taslağı bağımsız denetimde geçersiz bulundu (45'ten fazla ciddi hata: uydurma yük/kombinasyon/formül/senaryo, uydurma kaynakça başlıkları, kaynaksız sayılar, gizli yer işaretleri). Taslak Master Agent tarafından yeniden yazıldı; tablolar kaynak dosyalardan betikle üretildi; yer işaretleri görünür; `NUMBERS_TRACE.md` ve `OPEN_ITEMS.md` otomatik üretilir.
 2. Kubbe açıklıkları: ribbed40 40 m, kiewitt32 32 m, geodesic16 nominal 16 m (belgelerdeki "40 m'lik üç kubbe" düzeltildi).
-3. Yeni analiz: `weight_carbon_tradeoff.py` → `04_Results/WEIGHT_CARBON_TRADEOFF.md`. Ziyaret edilen uygun tasarımlarda r = 0,897 / 0,724 / 0,857 (R² 0,804 / 0,524 / 0,734); en hafif tasarımın karbonu en düşüğün %1,57 / %6,74 / %4,34 üstünde. Belgelerdeki "R² 0,81–0,97" üretilemedi; AGENTS.md kural 1 ifadesi için kullanıcı kararı bekleniyor.
+3. Yeni analiz: `weight_carbon_tradeoff.py` → `04_Results/WEIGHT_CARBON_TRADEOFF.md`. Ziyaret edilen uygun tasarımlarda r = 0,897 / 0,724 / 0,857 (R² 0,804 / 0,524 / 0,734); en hafif tasarımın karbonu en düşüğün %1,57 / %6,74 / %4,34 üstünde. Belgelerdeki "R² 0,81–0,97" üretilemedi; AGENTS.md kural 1 ve 23 belge kullanıcı onayıyla ölçülen değerlerle güncellendi (tek amaçlı kapsam korundu).
 4. ICE Educational V5.0 kullanım koşulları araştırmayı dışlıyor; EC_çelik/EC_harç kaynağı için kullanıcı kararı bekleniyor.
 5. LCA raporu: %45,3–57,7 "birleşik elverişsiz senaryo"dur; tek parametreli taramaların en düşüğü %41,1 (kiewitt32, EC_b = 1,23). Rapor betiği (`lca_sensitivity_analysis.py`) metni düzeltildi.
 

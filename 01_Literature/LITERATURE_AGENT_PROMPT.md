@@ -54,7 +54,7 @@ Ajan, analiz sırasında şu araç ve yetenekleri (Skills) kullanır:
 
 ### ADIM 4: Literatür Boşluğunun (Research Gap) Tespiti
 - Taranan makalelerin nerede tıkandığını somutlaştırır:
-  *(Örn: "Mevcut literatürde bambu yapılar ya sadece deneysel bağlantı ve küçük ölçekli çerçevelerle sınırlı kalmış ya da kubbe optimizasyonları sadece teorik çelik profiller üzerinden yürütülmüştür. Eksenel kafeslerde kütle ile karbonun ampirik yakın-doğrusallığı ($R^2 = 0.81 - 0.97$) ve antagonist ödünleşim yokluğu nedeniyle yapay çok amaçlı Pareto modellerinin metodolojik geçersizliği göz ardı edilmiş; biyo-hibrit yapılarda kaçınılmaz olan çelik ve harç bağlantılarının çevresel yükünün belirleyiciliği ve Dekarbonizasyon Paradoksu parametrik olarak ele alınmamıştır.")*
+  *(Örn: "Mevcut literatürde bambu yapılar ya sadece deneysel bağlantı ve küçük ölçekli çerçevelerle sınırlı kalmış ya da kubbe optimizasyonları sadece teorik çelik profiller üzerinden yürütülmüştür. Eksenel kafeslerde kütle ile karbonun ilişkisinin ölçülmesi ve gömülü karbonun bağlantı bileşenlerine ayrıştırılması ele alınmamış; biyo-hibrit yapılarda kaçınılmaz olan çelik ve harç bağlantılarının çevresel yükünün belirleyiciliği ve Dekarbonizasyon Paradoksu parametrik olarak ele alınmamıştır.")*
 
 ### ADIM 5: Özgün Değer ve Temel Katkılar (Novelty & Contributions)
 - Çalışmanın bilime ve mühendisliğe katkısını 3 net maddede ilan eder:

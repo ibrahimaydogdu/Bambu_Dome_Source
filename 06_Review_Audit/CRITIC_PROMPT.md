@@ -12,7 +12,7 @@
 ## 🛑 MAKALEYE ÖZEL KIRMIZI ÇİZGİLER (AUDIT TRIGGERS)
 
 1. **Sahte Pareto ve Zorlama Çok Amaçlılık Yasağı:**
-   - Eksenel kafes sistemlerde kütle ile karbonun ampirik yakın-doğrusallığı ($R^2 = 0.81 - 0.97$) sebebiyle çok amaçlı Pareto kurguları derhal reddedilir.
+   - Çok amaçlı arama bu çalışmanın kapsamı dışındadır. Kütle ile karbonun ölçülen ilişkisi ($r = 0.72 - 0.90$, `04_Results/WEIGHT_CARBON_TRADEOFF.md`) yazılmadan kurulan "ödünleşim yok" veya "cephe çöker" ifadeleri ve çok amaçlı Pareto kurguları derhal reddedilir.
    - Problem kesinlikle **Tek Amaçlı Yapısal Kütle Minimizasyonu** ($f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$, $\varepsilon=2.0$) olarak formüle edilmiş olmalıdır. Karbon analizi optimizasyon sonrası detaylı LCA ayrıştırması olarak sunulmalıdır.
 
 2. **İstatistiksel Güvenilirlik ve 3 Algoritmalı Kampanya:**

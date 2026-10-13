@@ -37,8 +37,8 @@ Numbers checked: 642. Not found in any source: 41.
 | 1.39 | 04_Results/PRICE_SCENARIOS.csv, Papers/Malkowska2022_NailedBambooConn, Papers/NSR-10_Titulo_G.pdf |
 | 1.5 | 03_Code_Execution/lca_sensitivity_analysis.py, 03_Code_Execution/metaheuristic_optimizers.py, 03_Code_Execution/price_scenarios.py, 03_Code_Execution/results_report.py ... |
 | 3 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/aisc_pipes.py, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/carbon_calculator.py ... |
-| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/tables/T8_material_sensitivity.csv ... |
-| 6.7 | Papers/Correal2021_BearingCapacityBol, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf, campaign/campaign.log |
+| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/RESULTS_AGENT_PROMPT.md ... |
+| 6.7 | 04_Results/RESULTS_AGENT_PROMPT.md, 04_Results/agent_04_results.md, AGENTS.md, Papers/Correal2021_BearingCapacityBol ... |
 
 ## 01_introduction.md
 
@@ -104,7 +104,7 @@ Numbers checked: 642. Not found in any source: 41.
 | 6 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/dome_types.py, 03_Code_Execution/joint_bolt_check.py ... |
 | 5 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/aisc_pipes.py, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/dome_types.py ... |
 | 50 | 03_Code_Execution/dome_types.py, 03_Code_Execution/test_units.py, 04_Results/EC_BAMBOO_METHOD.md, 04_Results/PARAMETER_EVIDENCE.md ... |
-| 72 | 03_Code_Execution/dome_types.py, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/PARAMETER_EVIDENCE_REVIEW.md, Papers/Archila2018_BambooReinforcedCo ... |
+| 72 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/dome_types.py, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/PARAMETER_EVIDENCE_REVIEW.md ... |
 | 700 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/carbon_calculator.py, 03_Code_Execution/results_report.py ... |
 | 680 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/bamboo_catalog.py, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf |
 | 10 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/aisc_pipes.py, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/dome_types.py ... |
@@ -273,7 +273,7 @@ Numbers checked: 642. Not found in any source: 41.
 | 66.365 | 04_Results/TUNING_STUDY.md, 04_Results/tables/T1_optimization_results.md |
 | 66.452 | 04_Results/tables/T1_optimization_results.md |
 | 0.194 | 04_Results/tables/T1_optimization_results.md |
-| 67.000 | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/tables/T1_optimization_results.md, Papers/2018 Zea et al.Industrial or T, Papers/Archila2018_BambooReinforcedCo ... |
+| 67.000 | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/tables/T1_optimization_results.md, MEMORY.md, Papers/2018 Zea et al.Industrial or T ... |
 | 43000 | 04_Results/STATISTICAL_TEST_RESULTS.md, 04_Results/tables/T1_optimization_results.md, campaign/campaign.log |
 | 12.16 | Papers/Paraskeva2019_MultiCulmConnect |
 | 67.050 | 04_Results/tables/T1_optimization_results.md |
@@ -486,7 +486,7 @@ Numbers checked: 642. Not found in any source: 41.
 | 0.347 | 04_Results/tables/T6_same_geometry_ratio.md, 04_Results/tables/T8_material_sensitivity.md |
 | 0.414 | 04_Results/tables/T8_material_sensitivity.md |
 | 0.502 | 04_Results/tables/T8_material_sensitivity.md |
-| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/tables/T8_material_sensitivity.csv ... |
+| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/RESULTS_AGENT_PROMPT.md ... |
 | 0.396 | 04_Results/tables/T8_material_sensitivity.md |
 | 0.436 | 04_Results/tables/T8_material_sensitivity.md |
 | 0.545 | 04_Results/tables/T8_material_sensitivity.md |
@@ -582,15 +582,15 @@ Numbers checked: 642. Not found in any source: 41.
 | 0.5 | 03_Code_Execution/dome_types.py, 03_Code_Execution/fast_eval.py, 03_Code_Execution/metaheuristic_optimizers.py, 03_Code_Execution/results_report.py ... |
 | 2.5 | 03_Code_Execution/fast_eval.py, 03_Code_Execution/fem_bridge.py, 03_Code_Execution/lca_sensitivity_analysis.py, 03_Code_Execution/price_scenarios.py ... |
 | 57 | MEMORY.md, Papers/2018 Zea et al.Industrial or T, Papers/Archila2018_BambooReinforcedCo, Papers/Dome354Member_Optimization.pdf ... |
-| 67 | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/tables/T1_optimization_results.md, Papers/2018 Zea et al.Industrial or T, Papers/Archila2018_BambooReinforcedCo ... |
+| 67 | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/tables/T1_optimization_results.md, MEMORY.md, Papers/2018 Zea et al.Industrial or T ... |
 | 2018, | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/EC_BAMBOO_METHOD.md, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_REVIEW.md ... |
 | 34.7 | Papers/2018 Zea et al.Industrial or T |
 | 49.0 | 00_System/DOCS_UPDATE_PROMPT.md, 04_Results/PARAMETER_EVIDENCE.md, MEMORY.md, Papers/2018 Zea et al.Industrial or T ... |
 | 6.4 | 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/fast_eval.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PRICE_EVIDENCE_IN_CO.md ... |
-| 0.72 | Papers/NSR-10_Titulo_G.pdf, Papers/Paraskeva2019_MultiCulmConnect |
+| 0.72 | 04_Results/RESULTS_AGENT_PROMPT.md, 04_Results/agent_04_results.md, AGENTS.md, Papers/NSR-10_Titulo_G.pdf ... |
 | 0.90 | 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/metaheuristic_optimizers.py, 03_Code_Execution/results_report.py, 03_Code_Execution/test_units.py ... |
-| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/tables/T8_material_sensitivity.csv ... |
-| 6.7 | Papers/Correal2021_BearingCapacityBol, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf, campaign/campaign.log |
+| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/RESULTS_AGENT_PROMPT.md ... |
+| 6.7 | 04_Results/RESULTS_AGENT_PROMPT.md, 04_Results/agent_04_results.md, AGENTS.md, Papers/Correal2021_BearingCapacityBol ... |
 | 9.6 | Papers/Correal2021_BearingCapacityBol, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf |
 | 12.7 | Papers/Correal2021_BearingCapacityBol, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf, campaign/campaign.log |
 | 1.23 | 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/carbon_calculator.py, 03_Code_Execution/lca_sensitivity_analysis.py, 03_Code_Execution/results_report.py ... |
@@ -666,8 +666,8 @@ Numbers checked: 642. Not found in any source: 41.
 | 1.342 | 04_Results/tables/T9_price_scenarios_cost.md, Papers/IStructE2023_Manual_Bamboo_ISO |
 | 1.5 | 03_Code_Execution/lca_sensitivity_analysis.py, 03_Code_Execution/metaheuristic_optimizers.py, 03_Code_Execution/price_scenarios.py, 03_Code_Execution/results_report.py ... |
 | 3 | 00_System/DOCS_UPDATE_PROMPT.md, 03_Code_Execution/aisc_pipes.py, 03_Code_Execution/bamboo_catalog.py, 03_Code_Execution/carbon_calculator.py ... |
-| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/tables/T8_material_sensitivity.csv ... |
-| 6.7 | Papers/Correal2021_BearingCapacityBol, Papers/IStructE2023_Manual_Bamboo_ISO, Papers/NSR-10_Titulo_G.pdf, campaign/campaign.log |
+| 1.6 | 03_Code_Execution/results_report.py, 04_Results/PARAMETER_EVIDENCE.md, 04_Results/PARAMETER_EVIDENCE_R2.md, 04_Results/RESULTS_AGENT_PROMPT.md ... |
+| 6.7 | 04_Results/RESULTS_AGENT_PROMPT.md, 04_Results/agent_04_results.md, AGENTS.md, Papers/Correal2021_BearingCapacityBol ... |
 
 ## 06_figure_table_captions.md
 

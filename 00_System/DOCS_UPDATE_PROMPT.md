@@ -102,7 +102,7 @@ Kaynak: `campaign.log` ön kontrol satırları, `dome_types.py`.
 
 ## 4. Kütle–karbon ilişkisi
 
-- **"R² ≈ 0,99" ve "∇EC ∥ ∇W analitik ispatı" ifadelerini kaldır.** Doğru ifade: sabit düğüm modelinde f₂, f₁'in tam doğrusal fonksiyonudur (corr = 1,000, `test_fast_eval.py`). Kesite bağlı bağlantı modelinde uygun örneklerde R² = 0,81–0,97 (corr 0,91–0,98). Yani **ampirik olarak yakın-doğrusal, ispatlanmış kolinearite değil**. Çok amaçlı cephe tek noktaya veya dar bir aralığa çöker.
+- **"R² ≈ 0,99" ve "∇EC ∥ ∇W analitik ispatı" ifadelerini kaldır.** Doğru ifade: sabit düğüm modelinde f₂, f₁'in tam doğrusal fonksiyonudur (corr = 1,000, `test_fast_eval.py`). Kesite bağlı bağlantı modelinde, kampanyada ziyaret edilen uygun tasarımlarda r = 0,72–0,90 (R² = 0,52–0,80; `04_Results/WEIGHT_CARBON_TRADEOFF.md`); en hafif tasarımın karbonu bulunan en düşüğün %1,6–6,7 üstündedir. Eski "R² = 0,81–0,97" aralığı üretilemedi. "Cephe çöker" veya "ödünleşim yok" yazma; ölçülen değerleri yaz.
 
 ---
 

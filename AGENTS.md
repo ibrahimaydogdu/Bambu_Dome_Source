@@ -18,7 +18,7 @@ Bu belge; BambuDome akademik araştırma ekosistemindeki tüm yapay zeka ajanlar
 
 3. **Method Architect (Metot ve Teori Mimarı):**
    - Sonlu elemanlar kabullerini, ISO 22156:2021 ve IStructE (2025) ASD sınır durum tahkiklerini formüle eder.
-   - Eksenel kafeslerde kütle-karbon ampirik yakın-doğrusallığını ($R^2 = 0.81 - 0.97$) ve tek amaçlı çarpımsal ceza modelini yönetir.
+   - Eksenel kafeslerde kütle-karbon ilişkisinin ölçülen değerlerini (`04_Results/WEIGHT_CARBON_TRADEOFF.md`) ve tek amaçlı çarpımsal ceza modelini yönetir.
    - Dosya: `02_Methods/METHOD_AGENT_PROMPT.md`
 
 4. **Developer Agent (Kod, Hesaplama ve Kampanya Motoru):**
@@ -36,15 +36,16 @@ Bu belge; BambuDome akademik araştırma ekosistemindeki tüm yapay zeka ajanlar
 
 7. **Critic Agent (Kıdemli Hakem ve Baş Denetçi):**
    - Her aşama sonunda üretilen metin ve kodları denetler.
-   - Sahte Pareto veya yapay çok-amaçlılık tespit ettiğinde süreci derhal durdurur ve revizyon talep eder.
+   - Ölçülmemiş ödünleşim iddiası, "cephe çöker" gibi kanıtsız ifade veya yapay çok-amaçlılık (sahte Pareto) tespit ettiğinde süreci derhal durdurur ve revizyon talep eder.
    - Dosya: `06_Review_Audit/CRITIC_PROMPT.md`
 
 ---
 
 ## 🔒 2. KESİN VE TAVİZSİZ ÇALIŞMA KURALLARI
 
-1. **Sahte Pareto Yasağı:**
-   - Eksenel kafes kubbelerde kütle ile gömülü karbon amaçları monoton artış gösterip ampirik olarak yakın-doğrusaldır ($R^2 = 0.81 - 0.97$). Antagonist bir mekanik ödünleşim bulunmadığından yapay çok amaçlı modeller (NSGA-II, MOABC, MODBO) kesinlikle yasaktır.
+1. **Tek Amaçlı Kapsam ve Sahte Pareto Yasağı:**
+   - Kampanyada ziyaret edilen uygun tasarımlarda kütle ile gömülü karbon pozitif ilişkilidir ($r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$; `04_Results/WEIGHT_CARBON_TRADEOFF.md`). Amaçlar yakındır ancak özdeş değildir: en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir. Gerçek bir çok amaçlı arama yapılmamıştır.
+   - Bu çalışmanın kapsamı tek amaçlıdır; çok amaçlı algoritmalar (NSGA-II, MOABC, MODBO) kapsam dışıdır (gelecek çalışma). Ölçülmemiş bir ödünleşimi veya aramadan gelmeyen bir Pareto cephesini iddia etmek, "ödünleşim yoktur" ya da "cephe tek noktaya çöker" demek yasaktır; ölçülen değerler yazılır.
    - Optimizasyon tek amaçlıdır: $\min f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$.
    - Karbon hesabı post-optimizasyon LCA ve parametrik duyarlılık analizi olarak yürütülür.
 

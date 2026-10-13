@@ -60,7 +60,7 @@ Yazım sırası: Methods → Results → Discussion → Introduction → Conclus
 - Friedman χ²_F = 48.60 / 38.26 / 49.16; Mann-Whitney U (Holm), α = 0.05: ABC her kubbede ACO ve DO'dan anlamlı derecede iyi, p_Holm ≤ 5.53×10⁻⁴, A12 = 0.758–1.000.
 - SAP2000 doğrulaması: bağıl fark ≤ 1.3×10⁻¹³; max D/C 0.9959 / 0.9923 / 0.99995.
 - Sınır durumlar (T4, F4): basınç hâkim; narinlik grupların ~%5–19'u; çekme D/C ≤ 0.43; u/u_lim ≤ 0.14; bağlantı D/C ≤ 0.807.
-- Kütle–karbon ilişkisi: kesite bağlı modelde R² = 0.81–0.97 (ampirik, ispat değil).
+- Kütle–karbon ilişkisi: ziyaret edilen uygun tasarımlarda r = 0.72–0.90, R² = 0.52–0.80; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstünde (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
 
 **Karbon** (LCA_SENSITIVITY_REPORT, EC_BAMBOO_METHOD, T5–T8)
 - EC: bambu 0.30 (türetilmiş; aralık 0.09–1.23, alt sınır varsayım), bağlantı çeliği 2.38, harç 0.18 (rötresiz grout için proxy), çelik boru 2.51 (yalnız çelik referans). Biyojenik karbon hariç.

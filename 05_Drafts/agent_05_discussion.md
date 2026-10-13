@@ -24,8 +24,8 @@ Görevin; optimizasyon ve LCA bulgularını yüzeysel sayı tekrarlarından arı
 
 ### 3. Eksenel Kafeslerde Kütle-Karbon Yakın-Doğrusallığı (Quasi-Collinearity)
 - Tartışma bölümü, kafes optimizasyonu literatüründeki yaygın bir yanılsamaya dikkat çeker:
-  - Sabit düğümlü modellerde kütle ile karbon tam doğrusaldır ($R^2 = 1.0$). Kesite bağlı bağlantı modelinde ise determinasyon katsayısı $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde kalarak güçlü bir **ampirik yakın-doğrusallık** sergilemektedir (analitik türev paralelliği değil).
-  - Bu yakın-doğrusallık nedeniyle çok-amaçlı Pareto cephesi tek bir noktaya veya son derece dar bir banda çökmektedir. İki amaç arasında gerçek bir fiziksel çelişki (trade-off) bulunmadığından tek amaçlı ağırlık minimizasyonu yürütülmesi metodolojik olarak en sağlam yaklaşımdır.
+  - Sabit düğümlü modellerde kütle ile karbon tam doğrusaldır ($R^2 = 1.0$). Kesite bağlı bağlantı modelinde ise ziyaret edilen uygun tasarımlarda $r = 0.72 - 0.90$ ($R^2 = 0.52 - 0.80$) ölçülür (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
+  - En hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir; amaçlar yakındır ancak özdeş değildir. Tek amaçlı ağırlık minimizasyonu bir kapsam seçimidir ve çok amaçlı arama yapılmamıştır.
 
 ### 4. Dürüst Sınırlar ve Gelecek Çalışmalar (Future Directions)
 - **Çalışmanın Kısıtları:**

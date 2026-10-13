@@ -12,7 +12,7 @@ Eksenel kafes sistemlerde yapısal eleman hacmi $V = \sum A_i L_i$ minimize edil
 - Bambu Gömülü Karbonu: $EC_{\text{bambu}} = EF_{\text{bambu}} \cdot M_{\text{bambu}}$
 - Bambu Maliyeti: $C_{\text{bambu}} = c_m \cdot M_{\text{bambu}}$ (veya boya/çapa bağlı monotonik maliyet)
 
-Sabit düğüm modelinde kütle ile karbon tam doğrusal bir ilişki ($f_2$, $f_1$'in tam doğrusal fonksiyonudur; corr = 1.000, `test_fast_eval.py`) sergiler. Kesite bağlı bağlantı modelinde ise tasarım uzayında ölçülen korelasyon $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde güçlü bir ampirik yakın-doğrusallık gösterir. Kütleyi azaltırken karbonu artıran antagonist bir mekanik ödünleşim mekanizması bulunmadığından ve tüm kısıtlar kesitleri aynı yönde büyümeye zorladığından çok amaçlı Pareto cephesi tekil bir optimuma ya da çok dar bir aralığa çökmektedir. Çok amaçlı algoritmaların ürettiği yayılımlar ise gerçek mühendislik dengesini değil, algoritmik gürültüyü temsil etmektedir.
+Sabit düğüm modelinde kütle ile karbon tam doğrusal bir ilişki ($f_2$, $f_1$'in tam doğrusal fonksiyonudur; corr = 1.000, `test_fast_eval.py`) sergiler. Kesite bağlı bağlantı modelinde ise ziyaret edilen uygun tasarımlarda $r = 0.72 - 0.90$ ($R^2 = 0.52 - 0.80$) ölçülür; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir (`04_Results/WEIGHT_CARBON_TRADEOFF.md`). Amaçlar yakındır ancak özdeş değildir. Çok amaçlı arama bu çalışmada yapılmamıştır.
 
 ### 1.2. İki Aşamalı Mimari
 1. **Aşama 1: Titiz Tek Amaçlı Yapısal Ağırlık Minimizasyonu:** Kısıtları tam sağlayan en hafif ve güvenli yapısal tasarımı bulmak ($\min f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$).
@@ -100,7 +100,7 @@ $$P_{\text{disp}} = \max\left(\frac{u_{\max}}{u_{\text{izin}}} - 1.0, \, 0.0\rig
 │    - Çelik Bağlantı: m_steel * 2.38 kg CO2e/kg (ICE V5.0)   │
 │    - Harç Enjeksiyonu: m_mortar * 0.18 kg CO2e/kg (proxy)   │
 │    - Parametrik Duyarlılık: L_inj / D, EC_steel, EC_bamboo  │
-│    - Kütle-Karbon Ampirik Yakın-Doğrusallığı (R^2=0.81-0.97)│
+│    - Kütle-Karbon İlişkisi (R^2=0.52-0.80)│
 └─────────────────────────────────────────────────────────────┘
 ```
 

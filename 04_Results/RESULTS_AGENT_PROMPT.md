@@ -15,7 +15,7 @@ Görevin: FEM simülasyonları ve hiperparametre duyarlılık çalışmasından 
   - `00_System/SYSTEM_RULES.md` (Anti-AI yazım kuralları)
 - **Çıktılar (Bu klasöre kaydedilecek):**
   1. `04_Results/RESULTS_TABLES_AND_METRICS.md` (3 Algoritma 30-seed istatistikleri, Holm düzeltmeli Wilcoxon rank-sum $p$-değerleri, Friedman sıralaması, yakınsama hızları, DCR dağılımları)
-  2. `04_Results/DEEP_DISCUSSION.md` (Dekarbonizasyon Paradoksu parametrik duyarlılığı, bağlantı çeliği ve harç bileşenleri, ampirik kütle-karbon yakın-doğrusallığı $R^2 = 0.81 - 0.97$)
+  2. `04_Results/DEEP_DISCUSSION.md` (Dekarbonizasyon Paradoksu parametrik duyarlılığı, bağlantı çeliği ve harç bileşenleri, kütle-karbon ilişkisinin ölçülen değerleri)
   3. `04_Results/CONCLUSION_AND_LIMITATIONS.md` (Sonuçlar, dürüst kısıtlar ve somut gelecek yönelimler)
 
 ---
@@ -46,7 +46,7 @@ Görevin: FEM simülasyonları ve hiperparametre duyarlılık çalışmasından 
 ### 3. Dekarbonizasyon Paradoksu ve Derin Tartışma (`DEEP_DISCUSSION.md`)
 *Yüzeysel raporlama KESİNLİKLE YASAKTIR; ön-yazılı teyitsiz sayılar kullanılmaz:*
 - **Dekarbonizasyon Paradoksu ve Parametrik Duyarlılık:** Toplam gömülü karbon bilançosunda hibrit bağlantı elemanlarının (çelik manşon/düğüm ve enjeksiyon harcı) payı ve bu payın envanter parametrelerine (temel senaryoda %74.1–%82.1; birleşik elverişsiz parametre ucunda ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3) duyarlılığı. Yüzdeler yalnızca `LCA_SENSITIVITY_REPORT.md` ve T5–T8'den alınır; kampanya JSON'larındaki karbon alanları eski EC ile kaydedildiği için kullanılmaz.
-- **Ampirik Yakın-Doğrusallık ve Çok-Amaçlı Çöküş:** Kesite bağlı bağlantı modelinde kütle ile karbon arasındaki ilişkinin $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde ampirik bir yakın-doğrusallık sergilemesi ve bu nedenle Pareto cephesinin tek noktaya / dar aralığa çöküşünün mekanik açıklaması.
+- **Kütle–Karbon İlişkisi:** Ziyaret edilen uygun tasarımlarda kütle ile karbonun ilişkisi ($r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$) ve en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir (`04_Results/WEIGHT_CARBON_TRADEOFF.md`); çok amaçlı arama yapılmamıştır.
 - **Yapı Mekaniği Dinamiği:** Algoritmaların mesnet ve tepe bölgelerindeki eksenel kuvvet akışını nasıl dengelediği.
 
 ---

@@ -12,7 +12,7 @@ Görevin; çok ajanlı sistemin ürettiği her veri, kod ve metin çıktısını
 Aşağıdaki 5 ihlalden herhangi biri tespit edildiğinde derhal **`[RED / REVİZYON TALEBİ]`** verilecek ve çalışma durdurulacaktır:
 
 ### 1. Sahte Pareto ve Kolinierite İhlali (Sıfır Tolerans)
-- **Kural:** Eksenel kafes sistemlerde kütle ile karbonun ampirik olarak yakın-doğrusal ($R^2 = 0.81 - 0.97$, $r = 0.91 - 0.98$) hareket ettiği bilinmektedir. Makalede ağırlık ile karbon arasında yapay bir Pareto cephesi iddia edilirse, tek noktaya çöken çözümler çok-amaçlıymış gibi sunulursa çalışma DERHAL REDDEDİLECEKTİR.
+- **Kural:** Ziyaret edilen uygun tasarımlarda kütle ile karbon pozitif ilişkilidir ancak özdeş değildir ($r = 0.72 - 0.90$). Makalede ölçülmemiş bir ödünleşim ya da gerçek aramadan gelmeyen bir Pareto cephesi iddia edilirse veya "cephe çöker" gibi kanıtsız ifade kullanılırsa çalışma DERHAL REDDEDİLECEKTİR.
 - **Onay Şartı:** Problem titizlikle tanımlanmış **Tek Amaçlı Kütle Minimizasyonu** ($f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$, $\varepsilon=2.0$) olarak formüle edilmeli, karbon analizi ise post-optimizasyon LCA olarak sunulmalıdır.
 
 ### 2. İstatistiksel Denetim ve Kampanya Tasarımı (30 Tohum Kuralı)

@@ -56,5 +56,5 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
   - X ekseni: Yapısal Ağırlık $W$ [kN].
   - Y ekseni: Toplam Gömülü Karbon $ECO_2e$ [kg CO₂e].
   - Optimizasyon boyunca değerlendirilen uygun çözümlerin dağılımı.
-  - Regresyon determinasyon katsayısı: $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$).
-  - **Açıklama:** Veri noktalarının yüksek korelasyonlu yakın-doğrusal dağılımı, iki amaç arasında gerçek bir fiziksel çelişki (trade-off) bulunmadığını ve bağımsız bir Pareto cephesinin tek noktaya / aşırı dar bir aralığa çöktüğünü gösterir.
+  - Ziyaret edilen uygun tasarımlarda korelasyon ve determinasyon katsayısı: $r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$ (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
+  - **Açıklama:** Amaçlar yakındır ancak özdeş değildir; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir. Gerçek bir çok amaçlı cephe bu çalışmada hesaplanmamıştır.

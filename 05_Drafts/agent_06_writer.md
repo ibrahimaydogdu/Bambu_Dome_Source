@@ -54,7 +54,7 @@ Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bul
    - 3.2. Direct stiffness solver and ASCE 7-22 ASD unfactored load combinations
    - 3.3. Single-objective formulation with multiplicative constraint penalty ($f_{\text{pen}} = W_{\text{bambu}} (1+P)^\varepsilon$, $\varepsilon=2$)
    - 3.4. 3 metaheuristic algorithms selection (ABC, ACO, DO) and 30-seed statistical protocol
-   - 3.5. Empirical quasi-collinearity of mass and embodied carbon ($R^2 = 0.81 - 0.97$) and collapse of Pareto front
+   - 3.5. Relation between mass and embodied carbon among the visited feasible designs (WEIGHT_CARBON_TRADEOFF.md)
    - 3.6. Cradle-to-gate (A1–A3) embodied carbon model and parameter assumptions
 5. **4. Numerical Results and Statistical Verification**
    - 4.1. Sizing optimization results across 30 seeds (Table 1: Min, Mean, Median, Max, Std, Feasibility, p-values)
