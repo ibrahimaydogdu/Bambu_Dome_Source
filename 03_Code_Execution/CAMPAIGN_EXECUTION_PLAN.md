@@ -63,7 +63,7 @@ $$EC_{\text{total}} = M_{\text{bambu}} \cdot EC_b + M_{\text{steel}} \cdot EC_s 
    - Çubuk ucu çelik manşon/saplama: $0.50\text{ kg/uç}$
    - Uç bölge harç dolgusu: $\rho = 2100\text{ kg/m}^3$, dolgu boyu $L_{\text{inj}} = 2.5 D$ (kesite bağlı harç kütlesi).
 
-*LCA Duyarlılık Notu:* Temel durumda hibrit bağlantı karbon payı %74.1–%82.1; en elverişsiz parametre setinde kiewitt32'de %45.3'e düşerek duyarlılık sergiler. Dolayısıyla "Dekarbonizasyon Paradoksu" parametreye duyarlıdır.
+*LCA Duyarlılık Notu:* Temel durumda hibrit bağlantı karbon payı %74.1–%82.1; birleşik elverişsiz parametre setinde kiewitt32'de %45.3'e düşerek duyarlılık sergiler. Dolayısıyla "Dekarbonizasyon Paradoksu" parametreye duyarlıdır.
 
 ---
 

@@ -47,7 +47,7 @@ Bu belge; **Bambu Uzay Kafes Kubbelerin Tek Amaçlı Yapısal Optimizasyonu ve D
 - **Temel Sorumluluk:**
   - 30 koşuluk istatistiksel sonuçları (Min, Median, Mean, Max, Std, Wilcoxon rank-sum $p$-değerleri, Friedman sıra analizi) ve yakınsama grafiklerini üretir.
   - Optimum kubbede eleman DCR kapasite dağılımını haritalandırır.
-  - Toplam karbon bileşen dağılımını (Bambu, Çelik, Harç; temel senaryoda bağlantı payı %74.1–82.1, en elverişsiz uçta %45.3–57.7: `LCA_SENSITIVITY_REPORT.md`) ve ampirik yakın-doğrusallık korelasyonunu ($R^2 = 0.81 - 0.97$) tablolaştırır.
+  - Toplam karbon bileşen dağılımını (Bambu, Çelik, Harç; temel senaryoda bağlantı payı %74.1–82.1, birleşik elverişsiz uçta %45.3–57.7: `LCA_SENSITIVITY_REPORT.md`) ve ampirik yakın-doğrusallık korelasyonunu ($R^2 = 0.81 - 0.97$) tablolaştırır.
   - Geniş açıklıklı biyo-yapılarda bağlantı elemanlarının çevresel yükünü ve parametrik duyarlılık sınırlarını derinlemesine tartışır.
 
 ### 7. Academic Stylist & Formatter (Akademik Yazıcı & Dosya Derleyici)
@@ -62,7 +62,7 @@ Bu belge; **Bambu Uzay Kafes Kubbelerin Tek Amaçlı Yapısal Optimizasyonu ve D
 
 ```text
 AŞAMA 0: Strateji & Hipotez
-   Kullanıcı + Master Agent ──► 40 m Kubbeler, Tek Amaçlı Formülasyon, Dekarbonizasyon Paradoksu
+   Kullanıcı + Master Agent ──► 16–40 m Kubbeler, Tek Amaçlı Formülasyon, Dekarbonizasyon Paradoksu
          │
          ▼
 AŞAMA 1: Literatür & Boşluk Tespiti

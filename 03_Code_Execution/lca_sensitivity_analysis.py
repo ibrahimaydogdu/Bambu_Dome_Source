@@ -215,7 +215,7 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
     lines = [
         "# 🌿 BambuDome Beşikten-Kapıya (A1–A3) LCA Duyarlılık ve Karbon Ayrıştırma Raporu",
         "",
-        "Bu rapor; 40 m açıklıklı Guadua bambu uzay kafes kubbelerde bağlantı detaylarının (çelik mafsal flanşları + enjeksiyon harcı)",
+        "Bu rapor; 16, 32 ve 40 m açıklıklı Guadua bambu uzay kafes kubbelerde bağlantı detaylarının (çelik mafsal flanşları + enjeksiyon harcı)",
         "yapısal gömülü karbon bilançosundaki ağırlığını ve parametrik duyarlılık sınırlarını belgeler.",
         "",
         f"**Tasarım kaynağı:** `{src}` içindeki her kubbe için en hafif uygun çözüm "
@@ -250,7 +250,7 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
     jp = [r["pct_joint_co2"] for r in base_results.values()]
     sp = [r["pct_steel_co2"] for r in base_results.values()]
     lines.append(f"> Temel senaryoda bağlantı bileşenleri (çelik + harç) toplam gömülü karbonun %{min(jp):.1f}–%{max(jp):.1f}'ini, "
-                 f"yalnızca çelik %{min(sp):.1f}–%{max(sp):.1f}'ini oluşturur (bu tasarımlar ve bu varsayımlar için; EC değerleri doğrulanmamış varsayımdır).")
+                 f"yalnızca çelik %{min(sp):.1f}–%{max(sp):.1f}'ini oluşturur (bu tasarımlar için; $EC_s$ ve $EC_m$ değerleri ICE Educational V5.0'dan alınmış, $EC_b$ türetilmiş baz değerdir (alt sınır 0.09 varsayım; `EC_BAMBOO_METHOD.md`), harç 1:3 harç vekilidir).")
     lines.append("")
     lines.append("---")
     lines.append("")
@@ -273,9 +273,13 @@ def export_lca_report(base_results: dict, sensitivity_tables: dict, designs: dic
     lines.append("---")
     lines.append("")
     lines += ["## 3. Senaryo Sınırları (hesaplanan)", "",
-              "Parametreler bağlantı payı açısından en elverişsiz uçta (L_inj=1.5D, EC_steel=1.2, EC_bamboo=0.47, EC_mortar=0.12 birlikte):", ""]
+              "Birleşik senaryo: parametreler bağlantı payını azaltan yönde birlikte uygulandı (L_inj=1.5D, EC_steel=1.2, EC_bamboo=0.47, EC_mortar=0.12). Bu, tek parametreli taramaların en düşük değeri değildir:", ""]
     for m, t in sensitivity_tables.items():
         lines.append(f"- `{m}`: bağlantı payı %{t['worst']['pct_joint_co2']:.1f} (bambu %{t['worst']['pct_bamboo_co2']:.1f})")
+    lines.append("")
+    lines.append("Tek parametreli taramalarda (a–c) görülen en düşük bağlantı payı: " + ", ".join(
+        f"`{m}` %{min(t[k]['Total Joint Carbon %'].min() for k in ('L_inj', 'EC_steel', 'EC_bamboo')):.1f}"
+        for m, t in sensitivity_tables.items()) + ".")
     lines.append("")
     lines.append("Tekil taramalar a–c tablolarındadır. Bu rapordaki sayılar varsayılan EC değerlerine bağlıdır ve literatürle doğrulanana kadar nihai bulgu sayılmamalıdır.")
     lines.append("")

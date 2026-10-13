@@ -1,26 +1,33 @@
-# 7. References
+# References
 
-## Verified Citations (Primary Sources Confirmed in `Papers/`)
+Entries below were checked against the PDF in `Papers/` (authors, title, journal, volume, pages, DOI). Entries marked [REF NEEDED] or [REF CHECK] have no checked bibliographic details.
 
-1. ASCE/SEI 7-22 (2022). *Minimum Design Loads and Associated Criteria for Buildings and Other Structures*. American Society of Civil Engineers, Reston, VA, USA.
-2. Circular Ecology (2026). *Embodied Carbon – The Inventory of Carbon and Energy (ICE Database)*, Educational Version 5.0 (June 2026). Circular Ecology Ltd., United Kingdom. [REF CHECK: Author order not specified in document header].
-3. Correal, J. F., Prada, M., Suárez, N., Moreno, J. (2021). Experimental and numerical evaluation of Guadua bamboo bolted connections. *Construction and Building Materials*, 305, 124597. https://doi.org/10.1016/j.conbuildmat.2021.124597.
-4. ISO 22156:2021 (2021). *Bamboo structures — Structural design*. International Organization for Standardization, Geneva, Switzerland.
-5. NSR-10 (2010). *Reglamento Colombiano de Construcción Sismo Resistente, Título G — Estructuras de Madera y Estructuras de Guadua*. Asociación Colombiana de Ingeniería Sísmica (AIS), Bogotá, Colombia.
-6. Paraskeva, T. S., Pradhan, N. P., Stoura, C. D., Dimitrakopoulos, E. G. (2019). Monotonic and cyclic testing of bamboo connections with internal steel gusset plates. *Construction and Building Materials*, 201, 473–483. https://doi.org/10.1016/j.conbuildmat.2018.12.198.
-7. Trujillo, D., Harries, K. A., Kaminski, S., Lopez, L. F. (2025). *Manual for the design of bamboo structures to ISO 22156:2021*, Version 1.0. The Institution of Structural Engineers (IStructE), London, UK. ISBN: 978-1-906335-97-7.
-8. Zea Escamilla, E., Habert, G. (2014). Environmental impacts of bamboo-based construction materials representing global production chains. *Journal of Cleaner Production*, 69, 117–127. https://doi.org/10.1016/j.jclepro.2014.01.067.
+Correal, J.F., Prada, E., Suárez, A., Moreno, D., 2021. Bearing capacity of bolted-mortar infill connections in bamboo and yield model formulation. Construction and Building Materials 305, 124597. https://doi.org/10.1016/j.conbuildmat.2021.124597
 
-## References Cited as [REF NEEDED] (Pending Formal Verification / Missing DOI)
+Paraskeva, T., Pradhan, N.P.N., Stoura, C.D., Dimitrakopoulos, E.G., 2019. Monotonic loading testing and characterization of new multi-full-culm bamboo to steel connections. Construction and Building Materials 201, 473–483. https://doi.org/10.1016/j.conbuildmat.2018.12.198
 
-- [REF NEEDED: Zhao et al. 2022] — Zhao, S., Zhang, T., Ma, S., Chen, M. (2022). Dandelion Optimizer: A nature-inspired metaheuristic algorithm. *Engineering Applications of Artificial Intelligence*, 114, 105075. [To be verified before final submission].
-- [REF NEEDED: Karaboga 2005] — Karaboga, D. (2005). An idea based on honey bee swarm for numerical numerical optimization. Technical Report TR06, Erciyes University.
-- [REF NEEDED: Dorigo et al. 1996] — Dorigo, M., Maniezzo, V., Colorni, A. (1996). Ant system: optimization by a colony of cooperating agents. *IEEE Transactions on Systems, Man, and Cybernetics, Part B*, 26(1), 29–41.
-- [REF NEEDED: Saka 1991] — Saka, M. P. (1991). Optimum design of pin-jointed steel structures with discrete sizing variables.
-- [REF NEEDED: Hasançebi et al. 2009] — Hasançebi, O., Çarbaş, S., Doğan, E., Erdal, F., Saka, M. P. (2009). Performance evaluation of metaheuristic search techniques in the optimum design of real size pin jointed structures. *Computers & Structures*, 87(5–6), 284–302.
-- [REF NEEDED: AISC ASD-89] — American Institute of Steel Construction (1989). *Specification for Structural Steel Buildings: Allowable Stress Design and Plastic Design*. AISC, Chicago, IL.
-- [REF NEEDED: INBAR TR35] — International Network for Bamboo and Rattan (2014). Technical Report No. 35: Life cycle assessment of bamboo products. INBAR, Beijing, China.
-- [REF NEEDED: Jawa Tengah HSD 2024] — Pemerintah Provinsi Jawa Tengah (2024). *Harga Satuan Dasar (HSD) Bahan Bangunan dan Upah Kerja*, Semarang, Indonesia.
-- [REF NEEDED: CPWD DSR 2023] — Central Public Works Department (2023). *Delhi Schedule of Rates (DSR)*, Directorate General, CPWD, New Delhi, India.
-- [REF NEEDED: Turkiye CSB 2026] — T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı (2026). *İnşaat ve Tesisat Birim Fiyatları (Ağustos 2026)*, Ankara, Türkiye.
-- [REF NEEDED: Colombia Guadua 2026] — Comercializadora de Guadua y Bambú Colombia (2026). *Catálogo Oficial y Precios de Guadua Angustifolia Kunth 6 m*, Bogotá, Colombia.
+Restrepo, A., Becerra, R., Tibaquira G., J.E., 2016. Energetic and carbon footprint analysis in manufacturing process of bamboo boards in Colombia. Journal of Cleaner Production 126, 563–571. https://doi.org/10.1016/j.jclepro.2016.02.144
+
+Trujillo, D., Harries, K., Kaminski, S., Lopez, L.-F., 2025. Manual for the design of bamboo structures to ISO 22156:2021. The Institution of Structural Engineers, London. Version 1.0, November 2025. ISBN 978-1-906335-97-7 (print).
+
+van der Lugt, P., van den Dobbelsteen, A.A.J.F., Janssen, J.J.A., 2006. An environmental, economic and practical assessment of bamboo as a building material for supporting structures. Construction and Building Materials 20, 648–656. https://doi.org/10.1016/j.conbuildmat.2005.02.023
+
+Vogtländer, J., van der Lugt, P., Brezet, H., 2010. The sustainability of bamboo products for local and Western European applications. LCAs and land-use. Journal of Cleaner Production 18, 1260–1269. https://doi.org/10.1016/j.jclepro.2010.04.015
+
+Zea Escamilla, E., Habert, G., 2014. Environmental impacts of bamboo-based construction materials representing global production diversity. Journal of Cleaner Production 69, 117–127. https://doi.org/10.1016/j.jclepro.2014.01.067
+
+Zea Escamilla, E., Habert, G., Correal Daza, J.F., Archilla, H.F., Echeverry Fernández, J.S., Trujillo, D., 2018. Industrial or traditional bamboo construction? Comparative life cycle assessment (LCA) of bamboo-based buildings. Sustainability 10 (9), 3096. https://doi.org/10.3390/su10093096
+
+Ministerio de Ambiente, Vivienda y Desarrollo Territorial, Colombia. Reglamento Colombiano de Construcción Sismo Resistente NSR-10, Título G — Estructuras de madera y estructuras de guadua. [REF CHECK: year and publisher details]
+
+## Placeholders in the text
+
+- ISO 22156:2021 [REF CHECK: full title and publisher].
+- ASCE 7-22 [REF CHECK: title and publisher].
+- Circular Ecology, ICE Database Educational V5.0, June 2026 [REF CHECK: authors; LICENSE CHECK: terms of use exclude research use].
+- Zhao et al., 2022, dandelion optimizer [REF NEEDED: full citation].
+- Original references of ABC and ACO [REF NEEDED].
+- The 354-member reference dome and its loads [REF NEEDED].
+- AISC ASD 1989 [REF NEEDED].
+- Friedman, Mann–Whitney, Holm and Vargha–Delaney [REF NEEDED].
+- INBAR report with the emission data for laminated bamboo panels, used for the lower bound of EC_b [REF CHECK: report number, authors, year; file `Evidence/MOSO-Bamboo-products-LCA-TP35.pdf`].

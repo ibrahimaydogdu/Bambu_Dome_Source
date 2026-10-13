@@ -99,7 +99,7 @@ $$\text{Denklem (12):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}} \cdot EC_b + 
 - $m_{\text{mortar}} = 2 \sum_{i=1}^{N_e} \rho_m \frac{\pi}{4} (D_i - 2 t_i)^2 (L_{\text{inj}}), \quad L_{\text{inj}} = 2.5 D_i$
 - Emisyon katsayıları: $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ (aralık $0.09–1.23$, türetilmiş temel değer; alt sınır varsayım; `EC_BAMBOO_METHOD.md`), $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ (plaka çelik, ICE Educational V5.0 Haziran 2026), $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı). Çelik referans borusu için $EC_{s,\text{pipe}} = 2.51\text{ kg CO}_2\text{e/kg}$.
 - Düğüm parametreleri: $m_{\text{hub}} = 2.0\text{ kg/düğüm}$, $c_{s0} = 0.5\text{ kg/uç}$, $\rho_m = 2100\text{ kg/m}^3$ (varsayım).
-- Bağlantı karbonunun payı ve Dekarbonizasyon Paradoksu, parametrik duyarlılık analizi ($L_{\text{inj}}/D \in [1.5, 3.5]$, $EC_s$, $EC_b$) ile incelenir (temel durumda bağlantı payı %74.1–%82.1; en elverişsiz uçta kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
+- Bağlantı karbonunun payı ve Dekarbonizasyon Paradoksu, parametrik duyarlılık analizi ($L_{\text{inj}}/D \in [1.5, 3.5]$, $EC_s$, $EC_b$) ile incelenir (temel durumda bağlantı payı %74.1–%82.1; birleşik elverişsiz uçta kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
 
 ---
 

@@ -1,6 +1,6 @@
 # 🌿 BambuDome Beşikten-Kapıya (A1–A3) LCA Duyarlılık ve Karbon Ayrıştırma Raporu
 
-Bu rapor; 40 m açıklıklı Guadua bambu uzay kafes kubbelerde bağlantı detaylarının (çelik mafsal flanşları + enjeksiyon harcı)
+Bu rapor; 16, 32 ve 40 m açıklıklı Guadua bambu uzay kafes kubbelerde bağlantı detaylarının (çelik mafsal flanşları + enjeksiyon harcı)
 yapısal gömülü karbon bilançosundaki ağırlığını ve parametrik duyarlılık sınırlarını belgeler.
 
 **Tasarım kaynağı:** `C:\BambuDome_campaign\full\results` içindeki her kubbe için en hafif uygun çözüm (kampanya sonucu, el ile girilmiş gen yok). Tasarımlar:
@@ -118,10 +118,12 @@ Varsayılan Parametreler: $L_{\text{inj}} = 2.5 D$, $EC_{\text{bamboo}} = 0.30$ 
 
 ## 3. Senaryo Sınırları (hesaplanan)
 
-Parametreler bağlantı payı açısından en elverişsiz uçta (L_inj=1.5D, EC_steel=1.2, EC_bamboo=0.47, EC_mortar=0.12 birlikte):
+Birleşik senaryo: parametreler bağlantı payını azaltan yönde birlikte uygulandı (L_inj=1.5D, EC_steel=1.2, EC_bamboo=0.47, EC_mortar=0.12). Bu, tek parametreli taramaların en düşük değeri değildir:
 
 - `ribbed40`: bağlantı payı %57.7 (bambu %42.3)
 - `kiewitt32`: bağlantı payı %45.3 (bambu %54.7)
 - `geodesic16`: bağlantı payı %53.9 (bambu %46.1)
+
+Tek parametreli taramalarda (a–c) görülen en düşük bağlantı payı: `ribbed40` %52.8, `kiewitt32` %41.1, `geodesic16` %48.4.
 
 Tekil taramalar a–c tablolarındadır. Bu rapordaki sayılar varsayılan EC değerlerine bağlıdır ve literatürle doğrulanana kadar nihai bulgu sayılmamalıdır.

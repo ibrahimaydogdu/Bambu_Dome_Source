@@ -1,5 +1,7 @@
 # AŞAMA 5 — MAKALE TASLAĞI YAZIM PROMPT'U (diğer yapay zekâ için) — 2026-10-13
 
+> **NOT (2026-10-13):** Bu prompt'la üretilen ilk taslak bağımsız denetimde geçersiz bulundu (uydurma yükler, kombinasyonlar, formüller, senaryolar ve kaynakça başlıkları; gizli yer işaretleri; yanlış kaynak satır numaraları). Taslak Master Agent tarafından yeniden yazıldı (`05_Drafts/manuscript/`). Bu prompt yeniden kullanılacaksa: (1) olgu tablosu §3 düzeltildi ancak yük değerleri, kombinasyonlar, formüller ve yöntem ayrıntıları yazar tarafından kodla (`truss_model.py`, `fast_eval.py`, `bamboo_catalog.py`) tek tek karşılaştırılmalı; (2) yer işaretleri görünür metin olmalı, HTML yorumunda saklanmamalı; (3) kaynak satır numarası yerine dosya ve tablo adı verilmeli; (4) ICE Educational V5.0 araştırma kullanımını dışlıyor, EC kaynağı karara bağlanmadan karbon sayıları nihai sayılmaz.
+
 Görev: BambuDome çalışmasının İngilizce Q1 makale taslağını (IMRAD) yazmak. Aşama 3–4 sonuçları kullanıcı tarafından onaylandı; bütün sayılar `04_Results/` içinde hazır. **Senin işin yeni sonuç üretmek değil, var olan sonuçları doğru ve sade biçimde yazıya dökmek.** Taslak bittikten sonra Master Agent (Claude) her cümleyi ve her sayıyı kaynağıyla karşılaştıracak.
 
 Başlık (çalışma başlığı): *Is Bamboo Truly Zero-Carbon? Single-Objective Structural Optimization and the Decarbonization Paradox of Large-Span Spatial Domes*. Hedef dergi henüz seçilmedi; genel Elsevier biçimini kullan.
@@ -13,7 +15,7 @@ Başlık (çalışma başlığı): *Is Bamboo Truly Zero-Carbon? Single-Objectiv
 3. **Sıfır uydurma atıf:** Yalnızca §4'teki kaynaklara atıf yap. Başka bir kaynağa ihtiyaç varsa `[REF NEEDED: konu]` yaz; künye, DOI, sayfa, yıl uydurma. Bir kaynağa belirli bir bulgu atfediyorsan o bulgu PDF'te olmalı; emin değilsen `[REF CHECK]` ekle.
 4. **Her sayının kaynağını işaretle:** Sayının hemen ardından HTML yorumu koy: `5.80 kN<!-- T1 -->`, `74.1–82.1%<!-- LCA_SENSITIVITY_REPORT.md:24 -->`. Ayrıca `05_Drafts/manuscript/NUMBERS_TRACE.md` dosyasında her sayıyı `dosya | cümle | değer | kaynak dosya:satır/tablo` olarak listele.
 5. **Abartı yok:** "proves", "demonstrates conclusively", "for the first time", "novel framework", "paradigm" gibi iddialar yasak. Sonuçlar bu üç kubbe, bu katalog ve bu varsayımlar için geçerlidir; öyle yaz.
-6. **Paradoks koşulludur:** Bağlantı karbon payı temel senaryoda %74.1–82.1, en elverişsiz uçta %45.3–57.7'dir (kiewitt32'de %50 altı). "Connections always dominate" yazma.
+6. **Paradoks koşulludur:** Bağlantı karbon payı temel senaryoda %74.1–82.1, birleşik elverişsiz uçta %45.3–57.7'dir (kiewitt32'de %50 altı). "Connections always dominate" yazma.
 7. **Kullanma:** kampanya JSON'larındaki `best_embodied_carbon_kgCO2e`, `global_best_*.json` `carbon`, `STATISTICAL_TEST_RESULTS.md` `Carbon_Mean` sütunu (eski EC ile kaydedildi). Karbon sayıları yalnız `LCA_SENSITIVITY_REPORT.md` ve T5–T8'den.
 8. **Maliyet yalnız T9/T9a'dan.** T5–T8'de maliyet yok; eski "Tablo 1 USD/m" fiyatlarını kullanma. Üç ülke senaryosu bağımsız değildir (bambu fiyatı Endonezya oranından türetildi); tek senaryo + α duyarlılığı olarak sun.
 9. **Anti-AI dil filtresi (AGENTS.md kural 3):** Yasak sözcük ve kalıplar: *delve, tapestry, crucial, pivotal, paramount, robust (istatistik dışı), seamless, leverage, harness, unlock, unveil, groundbreaking, revolutionize, cutting-edge, state-of-the-art, holistic, synergy, intricate, myriad, plethora, landscape (mecaz), realm, navigate (mecaz), underscore, showcase, notably, Moreover/Furthermore ile başlayan ardışık cümleler, "It is worth noting that", "plays a crucial role", "In today's world"*. Kısa, edilgen olmayan, mühendislik dili kullan.
@@ -45,7 +47,7 @@ Yazım sırası: Methods → Results → Discussion → Introduction → Conclus
 Önce şunları tamamen oku: `MEMORY.md`, `00_System/DOCS_UPDATE_PROMPT.md` (§0–§8 ve §7a), `04_Results/PAPER_METHODS_NOTES.md`, `04_Results/EC_BAMBOO_METHOD.md`, `04_Results/LCA_SENSITIVITY_REPORT.md`, `04_Results/STATISTICAL_TEST_RESULTS.md`, `04_Results/TUNING_STUDY.md`, `04_Results/tables/T1…T10*.md`, `04_Results/campaign_final/README.md`.
 
 **Model ve kısıtlar** (kaynak: `bamboo_catalog.py`, DOCS_UPDATE_PROMPT §1–2)
-- 40 m açıklık; üç kubbe: ribbed40 (505 düğüm, 1464 çubuk, 43 grup, L 0.76–3.08 m), kiewitt32 (169, 456, 22, L_max 3.55 m), geodesic16 (46, 115, 23, L_max 2.96 m). Metinde adlar: **Ribbed, Kiewitt, Geodesic**; ilk geçişte kod adı ve grup sayısıyla tanımla.
+- Üç kubbe AYNI açıklıkta değildir: ribbed40 40 m açıklık, 8.28 m yükseklik (505 düğüm, 1464 çubuk, 43 grup, L 0.76–3.08 m); kiewitt32 32 m, 6.6 m (169, 456, 22, L 2.09–3.55 m); geodesic16 nominal 16 m, en büyük plan çapı 16.77 m, 3.72 m (46, 115, 23, L 2.24–2.96 m). Sehim sınırı kubbe başına açıklık/150 = 266.7 / 213.3 / 106.7 mm. Kaynak: `dome_types.py` PRESETS, `geometry_report`. Metinde adlar: **Ribbed, Kiewitt, Geodesic**; ilk geçişte kod adı ve grup sayısıyla tanımla.
 - Katalog: 24 Guadua kesiti, D 80–160 mm, t 6–22 mm.
 - ASD (IStructE Manual 2025 / ISO 22156): X_allow = X_k·C_R·C_DF·C_T/FS; FS = 2; C_R = 0.90 (varsayım); C_DF 0.55/0.65/0.85; C_T = 1.0; E_k = 10 GPa; f_t,0,k = 40 MPa; f_c,0,k = 37.8 MPa; ρ = 700 kg/m³; Ylinen c = 0.8; b₀ = 0.01 (varsayım, C_bow = 0.5); K = 1; λ ≤ 150 tüm elemanlara (NSR-10 yalnız basınç için ister → muhafazakâr); sehim span/150 = 266.7 mm.
 - Bağlantı: F_j,Rd = 4 × 13.25 × 0.93 = 49.3 kN (NSR-10 Tabla G.12.11-2/3, Ø5/8" cıvata, izinli yük).
@@ -62,7 +64,7 @@ Yazım sırası: Methods → Results → Discussion → Introduction → Conclus
 
 **Karbon** (LCA_SENSITIVITY_REPORT, EC_BAMBOO_METHOD, T5–T8)
 - EC: bambu 0.30 (türetilmiş; aralık 0.09–1.23, alt sınır varsayım), bağlantı çeliği 2.38, harç 0.18 (rötresiz grout için proxy), çelik boru 2.51 (yalnız çelik referans). Biyojenik karbon hariç.
-- Bağlantı payı: temel %74.1–82.1 (yalnız çelik %39.0–57.3); en elverişsiz uç ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3.
+- Bağlantı payı: temel %74.1–82.1 (yalnız çelik %39.0–57.3); birleşik elverişsiz uç ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3.
 
 **Çelik referans ve malzeme** (T5, T6, PAPER_METHODS_NOTES)
 - Çelik üye ağırlıkları: Reference (354 elemanlı çelik kubbe) 129.0, Ribbed 104.7, Kiewitt 60.7, Geodesic 11.4 kN.

@@ -46,7 +46,7 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
   1. **Bambu Culm Gövdesi:** $EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ (türetilmiş baz değer [aralık 0.09–1.23])
   2. **Bağlantı Çeliği (Küre/Levha/Bulon):** $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ (çelik levha, ICE Educational V5.0 Haziran 2026) — çelik referans kubbenin boruları için ayrıca $EC_{s,\text{pipe}} = 2.51\text{ kg CO}_2\text{e/kg}$ (kaynaklı boru; yalnız T5–T8)
   3. **Uç Bölge Harç Enjeksiyonu:** $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 1:3 harç vekili)
-- **Vurgu:** Hibrit bağlantı bileşenlerinin toplam karbon içerisindeki orantısal ağırlığı ve parametrik hassasiyeti. Yüzdeler `LCA_SENSITIVITY_REPORT.md`'den alınır (temel %74.1–%82.1; en elverişsiz uç %45.3–%57.7).
+- **Vurgu:** Hibrit bağlantı bileşenlerinin toplam karbon içerisindeki orantısal ağırlığı ve parametrik hassasiyeti. Yüzdeler `LCA_SENSITIVITY_REPORT.md`'den alınır (temel %74.1–%82.1; birleşik elverişsiz uç %45.3–%57.7).
 
 ---
 

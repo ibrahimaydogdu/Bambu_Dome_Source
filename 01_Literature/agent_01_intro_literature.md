@@ -37,7 +37,7 @@ Ajan, Giriş bölümünü şu 6 paragraflık kesintisiz ve mantıksal zincirle k
 5. **Paragraf 5 — Dekarbonizasyon Paradoksu ve Bağlantıların Gizli Ağırlığı:**  
    Yeşil aklama (greenwashing) tuzakları; bağlantı çeliği ve harç dolgusu ihmal edildiğinde ortaya çıkan yanıltıcı "sıfır karbon" iddiaları; gerçekçi A1–A3 beşikten-kapıya LCA sınırlarının ve parametrik duyarlılığın zorunluluğu.
 6. **Paragraf 6 — Makalenin Amacı ve 4 Özgün Katkısı:**  
-   - 40 m açıklıklı biyo-yapısal uzay kubbe benchmarkı ($freq=2$, 1464 eleman).
+   - 40 m açıklıklı ribbed40 modeli ($freq=2$, 1464 eleman); diğer modeller 32 m (kiewitt32) ve 16 m (geodesic16).
    - ISO 22156 / IStructE 2025 ASD kısıtlarının doğrudan rijitlik çözücüsü ile tam entegrasyonu.
    - Tuning duyarlılık çalışmasıyla belirlenen 3 meta-sezgisel algoritmanın (ABC, ACO, DO) 30 tohumluk titiz tek amaçlı optimizasyon karşılaştırması (Mann-Whitney U & Friedman).
    - Optimum kubbe tasarımları üzerinde dekarbonizasyon paradoksunun ve bileşen bazlı karbon ayrışımının parametrik duyarlılıkla incelenmesi.

@@ -10,7 +10,7 @@
 
 ## 🏛️ Proje Özeti ve Bilimsel Paradigma
 
-Bu çalışma, **40 metrelik endüstriyel açıklıklı biyo-kompozit uzay kafes kubbe** sistemlerinin (*Guadua angustifolia* culmları ile) yapısal güvenliğini, kısıtlı meta-sezgisel optimizasyonunu ve yaşam döngüsü gömülü karbon dinamiklerini inceleyen kapsamlı bir hesaplamalı mekanik ve sürdürülebilirlik araştırmasıdır.
+Bu çalışma, **16, 32 ve 40 m açıklıklı üç biyo-kompozit uzay kafes kubbe** sisteminin (*Guadua angustifolia* culmları ile) yapısal güvenliğini, kısıtlı meta-sezgisel optimizasyonunu ve yaşam döngüsü gömülü karbon dinamiklerini inceleyen kapsamlı bir hesaplamalı mekanik ve sürdürülebilirlik araştırmasıdır.
 
 ### 🚨 Stratejik Paradigma: Tek Amaçlı Formülasyon ve Post-Optimizasyon LCA
 Eksenel kafes optimizasyonlarında kütle, maliyet ve gömülü karbon amaçları kesit boyutları ile monoton artmakta ve antagonist bir mekanik ödünleşim (trade-off) mekanizması barındırmamaktadır. Bu durum çok amaçlı Pareto arayışlarının tekil bir optimuma ya da çok dar bir aralığa çökmesine yol açmaktadır. Çalışmamız bu ampirik gerçeği dikkate alarak iki aşamalı bir hesaplama çerçevesi uygular:
@@ -23,7 +23,7 @@ Eksenel kafes optimizasyonlarında kütle, maliyet ve gömülü karbon amaçlar�
    - **İstatistiksel Doğrulama:** 30 bağımsız tohum (1001–1030), Mann-Whitney U (iki yönlü, Holm düzeltmeli, A12 etki büyüklüğü) ve tohum bloklu Friedman sıra testi.
 2. **Beşikten-Kapıya (A1–A3) LCA ve Bağlantı Karbonu Analizi:**  
    - Elde edilen optimum tasarımlar üzerinde prefabrik çelik düğüm göbeği, saplamalar ve harç enjeksiyonlu uç detayları modellenerek bileşen bazlı gömülü karbon dökümü ve parametrik duyarlılık yürütülür.
-   - **Araştırma Sorusu:** Büyük açıklıklı biyo-yapısal uzay kafeslerde bağlantı çeliği ve harç dolgusu taban yükünün toplam gömülü karbon bilançosundaki gerçek ağırlığı ve "Dekarbonizasyon Paradoksu"nun parametrik sınırları incelenmektedir (Temel senaryoda bağlantı karbonu payı %74.1–%82.1; en elverişsiz parametre ucunda kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
+   - **Araştırma Sorusu:** Büyük açıklıklı biyo-yapısal uzay kafeslerde bağlantı çeliği ve harç dolgusu taban yükünün toplam gömülü karbon bilançosundaki gerçek ağırlığı ve "Dekarbonizasyon Paradoksu"nun parametrik sınırları incelenmektedir (Temel senaryoda bağlantı karbonu payı %74.1–%82.1; birleşik elverişsiz parametre ucunda kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
 
 ---
 

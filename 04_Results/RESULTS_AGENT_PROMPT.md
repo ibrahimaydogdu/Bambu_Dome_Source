@@ -45,7 +45,7 @@ Görevin: FEM simülasyonları ve hiperparametre duyarlılık çalışmasından 
 
 ### 3. Dekarbonizasyon Paradoksu ve Derin Tartışma (`DEEP_DISCUSSION.md`)
 *Yüzeysel raporlama KESİNLİKLE YASAKTIR; ön-yazılı teyitsiz sayılar kullanılmaz:*
-- **Dekarbonizasyon Paradoksu ve Parametrik Duyarlılık:** Toplam gömülü karbon bilançosunda hibrit bağlantı elemanlarının (çelik manşon/düğüm ve enjeksiyon harcı) payı ve bu payın envanter parametrelerine (temel senaryoda %74.1–%82.1; en elverişsiz parametre ucunda ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3) duyarlılığı. Yüzdeler yalnızca `LCA_SENSITIVITY_REPORT.md` ve T5–T8'den alınır; kampanya JSON'larındaki karbon alanları eski EC ile kaydedildiği için kullanılmaz.
+- **Dekarbonizasyon Paradoksu ve Parametrik Duyarlılık:** Toplam gömülü karbon bilançosunda hibrit bağlantı elemanlarının (çelik manşon/düğüm ve enjeksiyon harcı) payı ve bu payın envanter parametrelerine (temel senaryoda %74.1–%82.1; birleşik elverişsiz parametre ucunda ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3) duyarlılığı. Yüzdeler yalnızca `LCA_SENSITIVITY_REPORT.md` ve T5–T8'den alınır; kampanya JSON'larındaki karbon alanları eski EC ile kaydedildiği için kullanılmaz.
 - **Ampirik Yakın-Doğrusallık ve Çok-Amaçlı Çöküş:** Kesite bağlı bağlantı modelinde kütle ile karbon arasındaki ilişkinin $R^2 = 0.81 - 0.97$ ($r = 0.91 - 0.98$) seviyesinde ampirik bir yakın-doğrusallık sergilemesi ve bu nedenle Pareto cephesinin tek noktaya / dar aralığa çöküşünün mekanik açıklaması.
 - **Yapı Mekaniği Dinamiği:** Algoritmaların mesnet ve tepe bölgelerindeki eksenel kuvvet akışını nasıl dengelediği.
 

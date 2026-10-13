@@ -42,7 +42,7 @@ Görevin: Bambu kubbe/kafes sonlu elemanlar modelini doğrudan rijitlik çözüc
 - `tuning_study.py`: Algoritma ve hiperparametre seçimi için ön duyarlılık analizi (`04_Results/TUNING_STUDY.md`).
 - `bamboo_catalog.py`: 24 profilli ayrık Guadua angustifolia kesit kataloğu ve malzeme özellikleri.
 - `carbon_calculator.py`: Bambu gövde, bağlantı çeliği ve harç dolgusu A1–A3 LCA karbon modeli.
-- `truss_model.py` & `dome_types.py`: 40 m açıklıklı 3 kubbe geometrisi (`geodesic16`, `kiewitt32`, `ribbed40` freq=2).
+- `truss_model.py` & `dome_types.py`: 16, 32 ve 40 m açıklıklı 3 kubbe geometrisi (`geodesic16`, `kiewitt32`, `ribbed40` freq=2).
 - `sap2000_bridge.py` & `sap_export.py`: SAP2000 OAPI bağlantısı, model ihracı ve çapraz sağlama.
 - `run_full_campaign.py`: Çoklu işlemcili (multiprocessing) 270 koşuluk kampanya motoru (3 kubbe × 3 algoritma × 30 tohum).
 

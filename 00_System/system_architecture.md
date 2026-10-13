@@ -61,7 +61,7 @@ $$P_{\text{disp}} = \max\left(\frac{u_{\max}}{u_{\text{izin}}} - 1.0, \, 0.0\rig
 ```
 ┌─────────────────────────────────────────────────────────────┐
 │ 1. MODEL VE GEOMETRİ HAZIRLIĞI                              │
-│    - 3 Topoloji: geodesic16, kiewitt32, ribbed40 (S = 40 m) │
+│    - 3 Topoloji: geodesic16, kiewitt32, ribbed40 (S = 16/32/40 m) │
 │    - Tablo 2: 24 Ayrık Guadua Kesit Kataloğu (D: 80-160 mm) │
 │    - ASCE 7-22 §2.4.1 ASD Faktörsüz Yük Kombinasyonları    │
 └──────────────────────────────┬──────────────────────────────┘

@@ -1,79 +1,157 @@
 # 3. Results
 
-## 3.1. Algorithmic Performance and Statistical Verification
+## 3.1 Algorithm performance
 
-The optimization campaign across the three dome topologies produced 270 valid runs (3 topologies $\times$ 3 algorithms $\times$ 30 independent seeds)<!-- 00_System/DOCS_UPDATE_PROMPT.md:57 -->. All 270 runs successfully converged to fully feasible structural configurations with zero constraint penalty ($P = 0$)<!-- 00_System/DOCS_UPDATE_PROMPT.md:57 -->. Independent finite element cross-verification in SAP2000 confirmed a maximum relative discrepancy of $\le 1.3 \times 10^{-13}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:59 --> for axial forces and joint displacements, with maximum SAP2000 DCR values reaching 0.9959<!-- 00_System/DOCS_UPDATE_PROMPT.md:59 --> (`geodesic16`), 0.9923<!-- 00_System/DOCS_UPDATE_PROMPT.md:59 --> (`kiewitt32`), and 0.99995<!-- 00_System/DOCS_UPDATE_PROMPT.md:59 --> (`ribbed40`).
+All 270 runs ended with feasible designs (Table 7). The lightest design of each dome weighs 5.800 kN (Geodesic), 41.058 kN (Kiewitt) and 66.352 kN (Ribbed). ABC reached this weight in 5, 30 and 7 of its 30 runs, ACO in 0, 14 and 1 runs, and DO in none (`summary.csv`). DO gave the heaviest mean weight on every dome.
 
-Table 1 presents the structural weight statistics across the 30 independent runs for each algorithm:
-- **`geodesic16` (23 groups):** The Artificial Bee Colony (ABC) algorithm obtained the minimum best weight of 5.800 kN<!-- T1 --> (seed 1001<!-- 04_Results/campaign_final/README.md:2 -->), with a mean of 5.880 kN<!-- T1 --> and a standard deviation of 0.051 kN<!-- T1 --> (coefficient of variation $CV = 0.876\%$<!-- T1 -->). Ant Colony Optimization (ACO) attained a best weight of 5.842 kN<!-- T1 --> (mean 6.183 kN<!-- T1 -->, $CV = 5.030\%$<!-- T1 -->), while the Dandelion Optimizer (DO) achieved a best weight of 6.178 kN<!-- T1 --> (mean 6.488 kN<!-- T1 -->, $CV = 3.228\%$<!-- T1 -->). Average run times per execution were 0.388 min<!-- T1 --> (ABC), 0.832 min<!-- T1 --> (ACO), and 0.538 min<!-- T1 --> (DO) at an evaluation budget of $23\,000$ NFEs<!-- T1 -->.
-- **`kiewitt32` (22 groups):** Both ABC and ACO identified identical global best solutions of 41.058 kN<!-- T1 -->. ABC converged to 41.058 kN<!-- T1 --> across all 30 random seeds, producing zero standard deviation ($Std = 0.000\text{ kN}$<!-- T1 -->, $CV = 0.000\%$<!-- T1 -->). ACO reached a mean of 42.281 kN<!-- T1 --> ($Std = 1.393\text{ kN}$<!-- T1 -->), and DO reached a best of 41.348 kN<!-- T1 --> (mean 42.922 kN<!-- T1 -->, $Std = 0.876\text{ kN}$<!-- T1 -->). Mean run times were 1.694 min<!-- T1 --> (ABC), 2.128 min<!-- T1 --> (ACO), and 1.840 min<!-- T1 --> (DO) for $22\,000$ NFEs<!-- T1 -->.
-- **`ribbed40` (43 groups):** Both ABC and ACO attained the minimum best weight of 66.352 kN<!-- T1 -->. ABC maintained higher consistency, with a mean of 66.452 kN<!-- T1 --> ($Std = 0.194\text{ kN}$<!-- T1 -->, $CV = 0.292\%$<!-- T1 -->) compared to ACO's mean of 66.908 kN<!-- T1 --> ($Std = 0.474\text{ kN}$<!-- T1 -->, $CV = 0.709\%$<!-- T1 -->). DO converged to a best weight of 71.803 kN<!-- T1 --> (mean 74.404 kN<!-- T1 -->, $Std = 1.396\text{ kN}$<!-- T1 -->, $CV = 1.877\%$<!-- T1 -->). Average execution times for $43\,000$ NFEs<!-- T1 --> were 12.164 min<!-- T1 --> (ABC), 13.768 min<!-- T1 --> (ACO), and 12.661 min<!-- T1 --> (DO).
+| Dome | Algorithm | Feasible runs | Best [kN] | Median [kN] | Mean [kN] | Std [kN] | Worst [kN] | NFE | Mean time [min] |
+|---|---|---|---|---|---|---|---|---|---|
+| Geodesic | ABC | 30/30 | 5.800 | 5.894 | 5.880 | 0.051 | 5.980 | 23000 | 0.39 |
+| Geodesic | ACO | 30/30 | 5.842 | 6.122 | 6.183 | 0.311 | 7.151 | 23000 | 0.83 |
+| Geodesic | DO | 30/30 | 6.178 | 6.448 | 6.488 | 0.209 | 7.168 | 23000 | 0.54 |
+| Kiewitt | ABC | 30/30 | 41.058 | 41.058 | 41.058 | 0.000 | 41.058 | 22000 | 1.69 |
+| Kiewitt | ACO | 30/30 | 41.058 | 41.761 | 42.281 | 1.393 | 45.422 | 22000 | 2.13 |
+| Kiewitt | DO | 30/30 | 41.348 | 43.045 | 42.922 | 0.876 | 44.482 | 22000 | 1.84 |
+| Ribbed | ABC | 30/30 | 66.352 | 66.365 | 66.452 | 0.194 | 67.000 | 43000 | 12.16 |
+| Ribbed | ACO | 30/30 | 66.352 | 67.050 | 66.908 | 0.474 | 67.741 | 43000 | 13.77 |
+| Ribbed | DO | 30/30 | 71.803 | 74.394 | 74.404 | 1.396 | 77.079 | 43000 | 12.66 |
 
-Non-parametric Friedman rank testing confirmed significant differences among the three algorithms across seeds for all topologies:
-- `geodesic16`: $\chi^2_F = 48.600$<!-- STATISTICAL_TEST_RESULTS.md:27 -->, $p = 2.80 \times 10^{-11}$<!-- STATISTICAL_TEST_RESULTS.md:28 --> (mean ranks: ABC = 1.10<!-- STATISTICAL_TEST_RESULTS.md:34 -->, ACO = 2.00<!-- STATISTICAL_TEST_RESULTS.md:35 -->, DO = 2.90<!-- STATISTICAL_TEST_RESULTS.md:36 -->).
-- `kiewitt32`: $\chi^2_F = 38.264$<!-- STATISTICAL_TEST_RESULTS.md:39 -->, $p = 4.91 \times 10^{-9}$<!-- STATISTICAL_TEST_RESULTS.md:40 --> (mean ranks: ABC = 1.23<!-- STATISTICAL_TEST_RESULTS.md:46 -->, ACO = 2.03<!-- STATISTICAL_TEST_RESULTS.md:47 -->, DO = 2.73<!-- STATISTICAL_TEST_RESULTS.md:48 -->).
-- `ribbed40`: $\chi^2_F = 49.160$<!-- STATISTICAL_TEST_RESULTS.md:51 -->, $p = 2.11 \times 10^{-11}$<!-- STATISTICAL_TEST_RESULTS.md:52 --> (mean ranks: ABC = 1.25<!-- STATISTICAL_TEST_RESULTS.md:58 -->, ACO = 1.75<!-- STATISTICAL_TEST_RESULTS.md:59 -->, DO = 3.00<!-- STATISTICAL_TEST_RESULTS.md:60 -->).
+**Table 7.** Best-weight statistics of the 30 runs per algorithm and dome (seeds 1001–1030). NFE is the number of function evaluations per run. The time is the mean wall-clock time per run.
 
-Pair-wise Mann-Whitney U tests with Holm step-down correction established the statistical superiority of ABC over both ACO and DO ($\alpha = 0.05$):
-- In `geodesic16`, ABC surpassed ACO ($p_{\text{Holm}} = 3.40 \times 10^{-6}$<!-- STATISTICAL_TEST_RESULTS.md:71 -->, $A_{12} = 0.849$<!-- STATISTICAL_TEST_RESULTS.md:71 -->) and DO ($p_{\text{Holm}} = 5.94 \times 10^{-11}$<!-- STATISTICAL_TEST_RESULTS.md:72 -->, $A_{12} = 1.000$<!-- STATISTICAL_TEST_RESULTS.md:72 -->).
-- In `kiewitt32`, ABC outperformed ACO ($p_{\text{Holm}} = 5.27 \times 10^{-6}$<!-- STATISTICAL_TEST_RESULTS.md:77 -->, $A_{12} = 0.767$<!-- STATISTICAL_TEST_RESULTS.md:77 -->) and DO ($p_{\text{Holm}} = 2.42 \times 10^{-12}$<!-- STATISTICAL_TEST_RESULTS.md:78 -->, $A_{12} = 1.000$<!-- STATISTICAL_TEST_RESULTS.md:78 -->).
-- In `ribbed40`, ABC was superior to ACO ($p_{\text{Holm}} = 5.53 \times 10^{-4}$<!-- STATISTICAL_TEST_RESULTS.md:83 -->, $A_{12} = 0.758$<!-- STATISTICAL_TEST_RESULTS.md:83 -->) and DO ($p_{\text{Holm}} = 5.67 \times 10^{-11}$<!-- STATISTICAL_TEST_RESULTS.md:84 -->, $A_{12} = 1.000$<!-- STATISTICAL_TEST_RESULTS.md:84 -->).
+The seed-blocked Friedman test rejected equal performance on every dome (Table 8). ABC had the lowest mean rank on every dome and ACO the second lowest.
 
-Convergence histories across the evaluation budget (Fig. F2) demonstrate that ABC establishes early feasibility and converges rapidly within 20–30% of the allocated evaluations, whereas ACO experiences gradual refinement and DO displays plateauing behavior.
+| Dome | Friedman chi2_F | p | Mean rank ABC | Mean rank ACO | Mean rank DO |
+|---|---|---|---|---|---|
+| Geodesic | 48.600 | 2.7967e-11 | 1.1000 | 2.0000 | 2.9000 |
+| Kiewitt | 38.264 | 4.9096e-09 | 1.2333 | 2.0333 | 2.7333 |
+| Ribbed | 49.160 | 2.1140e-11 | 1.2500 | 1.7500 | 3.0000 |
 
-## 3.2. Optimum Structural Designs and Governing Limit States
+**Table 8.** Friedman test on the best weights of the 30 seeds (lower rank is lighter).
 
-Table 4 details the maximum demand-to-capacity ratios across the five limit states for the optimum designs:
-- **Axial Compression and Buckling:** Member compression under load combinations with gravity and wind downward pressure represents the primary governing criterion across all three domes. Maximum compression DCRs reach 0.996<!-- T4 --> for `geodesic16`, 0.992<!-- T4 --> for `kiewitt32`, and 1.000<!-- T4 --> for `ribbed40`. Across the 90 runs of each topology, mean maximum compression DCRs consistently equal 0.994–0.996<!-- T4 -->.
-- **Active Design Groups:** Groups operating near full capacity ($DCR \ge 0.95$<!-- T4 -->) constitute 8 of 23 groups (34.8%) in `geodesic16`<!-- T4 -->, 6 of 22 groups (27.3%) in `kiewitt32`<!-- T4 -->, and 9 of 43 groups (20.9%) in `ribbed40`<!-- T4 -->.
-- **Geometric Slenderness:** Maximum slenderness ratios ($\lambda / 150$) reach 0.733<!-- T4 --> in `geodesic16`, 0.532<!-- T4 --> in `kiewitt32`, and 0.664<!-- T4 --> in `ribbed40`. In the governing limit state breakdown (Fig. F4), slenderness directly governs section selection in approximately 5% to 19% of the design groups<!-- 04_Results/PAPER_METHODS_NOTES.md:7 -->.
-- **Axial Tension:** Maximum tensile DCRs remain low under all uplift combinations: 0.165<!-- T4 --> (`geodesic16`), 0.361<!-- T4 --> (`kiewitt32`), and 0.430<!-- T4 --> (`ribbed40`), demonstrating that wind-induced uplift is readily resisted by member tensile capacity.
-- **Connection Capacity:** Maximum connector load ratios ($N / F_{j,Rd}$) reach 0.280<!-- T4 --> in `geodesic16` (max axial force 13.80 kN<!-- [DATA NEEDED: max force in geodesic] -->), 0.543<!-- T4 --> in `kiewitt32` (max axial force 26.77 kN<!-- [DATA NEEDED: max force in kiewitt] -->), and 0.807<!-- T4 --> in `ribbed40` (max axial force 39.79 kN<!-- 04_Results/PAPER_METHODS_NOTES.md:10 -->), remaining safely below the allowable capacity of 49.3 kN<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 -->.
-- **Vertical Deflection (SLS):** Deflections under service gravity loads are minor. Peak apex displacement ratios ($u / u_{\text{allow}}$) are 0.060<!-- T4 --> (`geodesic16`), 0.062<!-- T4 --> (`kiewitt32`), and 0.129<!-- T4 --> (`ribbed40`), representing maximum vertical deflections of 16.0 mm, 16.5 mm, and 34.4 mm<!-- [DATA NEEDED: absolute deflections] -->, well within the 266.67 mm<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> limit.
+In the pairwise Mann–Whitney U tests, ABC was lighter than ACO and than DO on every dome after Holm correction (Table 9). The largest Holm-adjusted p-value is 5.53 × 10⁻⁴ (ABC versus ACO on Ribbed).
 
-## 3.3. Embodied Carbon Distribution and Component Breakdown
+| Dome | Comparison | Median difference [kN] | U | p (raw) | A12 | p_Holm |
+|---|---|---|---|---|---|---|
+| Geodesic | ABC vs ACO | 0.2286 | 764.5000 | 3.40e-06 | 0.8494 | 3.40e-06 |
+| Geodesic | ABC vs DO | 0.5546 | 900.0000 | 2.97e-11 | 1.0000 | 5.94e-11 |
+| Kiewitt | ABC vs ACO | 0.7032 | 690.0000 | 5.27e-06 | 0.7667 | 5.27e-06 |
+| Kiewitt | ABC vs DO | 1.9872 | 900.0000 | 1.21e-12 | 1.0000 | 2.42e-12 |
+| Ribbed | ABC vs ACO | 0.6852 | 682.5000 | 5.53e-04 | 0.7583 | 5.53e-04 |
+| Ribbed | ABC vs DO | 8.0284 | 900.0000 | 2.84e-11 | 1.0000 | 5.67e-11 |
 
-Table 7 and Fig. F5 present the cradle-to-gate (A1–A3) embodied carbon totals and component shares for the optimum bamboo domes:
-- Total embodied carbon is 860.5 kg CO$_2$e (0.861 t CO$_2$e)<!-- T6 --> for `geodesic16`, 4842.1 kg CO$_2$e (4.842 t CO$_2$e)<!-- T6 --> for `kiewitt32`, and 11341.1 kg CO$_2$e (11.341 t CO$_2$e)<!-- T6 --> for `ribbed40`.
-- **Bamboo Culm Share:** The bamboo members contribute 20.61%<!-- T7 --> (177.3 kg CO$_2$e<!-- [DATA NEEDED: absolute culm CO2] -->) of total carbon in `geodesic16`, 25.93%<!-- T7 --> (1255.6 kg CO$_2$e<!-- [DATA NEEDED: absolute culm CO2] -->) in `kiewitt32`, and 17.89%<!-- T7 --> (2029.2 kg CO$_2$e<!-- [DATA NEEDED: absolute culm CO2] -->) in `ribbed40`.
-- **Connector Steel Share:** Steel hardware (central hub plates, gussets, through-bolts) accounts for 57.25%<!-- T7 --> (492.7 kg CO$_2$e<!-- [DATA NEEDED: absolute steel CO2] -->) in `geodesic16`, 39.03%<!-- T7 --> (1889.7 kg CO$_2$e<!-- [DATA NEEDED: absolute steel CO2] -->) in `kiewitt32`, and 51.92%<!-- T7 --> (5888.2 kg CO$_2$e<!-- [DATA NEEDED: absolute steel CO2] -->) in `ribbed40`.
-- **Mortar Grout Share:** Non-shrink cementitious grout injected into the member ends contributes 22.13%<!-- T7 --> (190.5 kg CO$_2$e<!-- [DATA NEEDED: absolute mortar CO2] -->) in `geodesic16`, 35.04%<!-- T7 --> (1696.8 kg CO$_2$e<!-- [DATA NEEDED: absolute mortar CO2] -->) in `kiewitt32`, and 30.19%<!-- T7 --> (3423.7 kg CO$_2$e<!-- [DATA NEEDED: absolute mortar CO2] -->) in `ribbed40`.
-- **Total Joint Hardware Share:** Combined, the jointing components (steel + grout) represent 79.39%<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:22 --> of total embodied carbon in `geodesic16`, 74.07%<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:21 --> in `kiewitt32`, and 82.11%<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:20 --> in `ribbed40`.
+**Table 9.** Two-sided Mann–Whitney U tests of ABC against ACO and DO. The median difference is the median weight of the competitor minus that of ABC. A12 is the probability that a run of the competitor is heavier than a run of ABC.
 
-Thus, under baseline inventory parameters ($EC_b = 0.30$, $EC_s = 2.38$, $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$), joint hardware is responsible for 74.1% to 82.1%<!-- 00_System/DOCS_UPDATE_PROMPT.md:65 --> of the total structural carbon emissions of the bamboo domes.
+Figure 2 shows the mean and best penalized weight over the function evaluations. On all three domes the mean curve of DO is the lowest at small NFE and flattens at the highest value. The mean curves of ABC and ACO end close to each other on Ribbed and Kiewitt. On Kiewitt the ACO mean curve approaches the ABC curve later than ABC does and ends 1.2 kN higher (Table 7).
 
-## 3.4. Sensitivity Analysis of Carbon Footprint and Objective Collinearity
+For the lightest design of each dome, member forces and nodal displacements were also computed with SAP2000 (Table 10). The differences are normalised by the largest value in the SAP2000 results. The D/C values recomputed from the SAP2000 forces equal those of the own solver to five decimals.
 
-The parametric sensitivity of the connection emissions fraction to inventory assumptions and detailing geometry is illustrated in `04_Results/LCA_SENSITIVITY_REPORT.md`:
-1. **Grout Injection Length ($L_{\text{inj}} / D$):** Varying $L_{\text{inj}} / D$ from 1.5 to 3.5 in `ribbed40` alters the mortar carbon contribution from 20.60% ($9.97\text{ t CO}_2\text{e}$ total) to 36.85% ($12.71\text{ t CO}_2\text{e}$ total)<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:35-39 -->. Total joint carbon ranges from 79.65% to 83.92%<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:35-39 -->.
-2. **Extreme Inventory Bounds:** When bamboo emissions are evaluated at their upper literature bound ($EC_b = 1.23\text{ kg/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 -->, intercontinental shipping scenario) and steel plate emissions at their lower bound ($EC_s = 1.60\text{ kg/kg}$<!-- T8 -->), the joint carbon fraction decreases:
-   - In `kiewitt32`, the connection share falls to 45.3%<!-- 00_System/DOCS_UPDATE_PROMPT.md:65 -->, below the 50% threshold.
-   - In `geodesic16`, the connection share falls to 53.9%<!-- 00_System/DOCS_UPDATE_PROMPT.md:65 -->.
-   - In `ribbed40`, the connection share falls to 57.7%<!-- 00_System/DOCS_UPDATE_PROMPT.md:65 -->.
-   This demonstrates that connection dominance is not an absolute constant, but a conditional feature dependent on transportation distance and supply chain carbon intensity.
+| Dome | Largest axial force [kN] | Axial-force difference (normalised) | Displacement difference (normalised) | max D/C (own solver) | max D/C (SAP2000 forces) |
+|---|---|---|---|---|---|
+| Geodesic | 13.82 | 3.4e-15 | 7.3e-15 | 0.99589 | 0.99589 |
+| Kiewitt | 26.76 | 1.7e-14 | 3.2e-14 | 0.99226 | 0.99226 |
+| Ribbed | 39.77 | 6.2e-14 | 1.3e-13 | 0.99995 | 0.99995 |
 
-3. **Mass versus Carbon Collinearity:** Across the feasible search space of evaluated designs, structural mass and embodied carbon exhibit strong empirical quasi-collinearity ($r = 0.91 - 0.98$, $R^2 = 0.81 - 0.97$<!-- 00_System/DOCS_UPDATE_PROMPT.md:61 -->). In an idealized fixed-node model where node hardware is invariant to member diameter, the correlation is exactly $r = 1.000$. Because larger culm diameters require modestly larger injection volumes without introducing countervailing material trade-offs, minimizing bamboo structural mass directly minimizes total embodied carbon. Consequently, the multi-objective Pareto front collapses to a tight, nearly singular point.
+**Table 10.** Comparison of the own solver with SAP2000 for the lightest design of each dome.
 
-## 3.5. Comparative Material Benchmark: Bamboo versus Conventional Steel Domes
+## 3.2 Lightest designs and governing limit states
 
-Tables 5 and 6 summarize the comparative performance of the optimum bamboo domes against conventional structural steel configurations under identical geometry, spans, and loading criteria:
-- **Member Weight Comparison (Table 6):**
-  - In `geodesic16`, bamboo member weight is 5.800 kN<!-- T6 --> versus 11.404 kN<!-- T6 --> for steel, yielding a bamboo-to-steel weight ratio of 0.509<!-- T6 --> (a 49.1% weight reduction).
-  - In `kiewitt32`, bamboo member weight is 41.058 kN<!-- T6 --> versus 60.666 kN<!-- T6 --> for steel, giving a ratio of 0.677<!-- T6 --> (32.3% reduction).
-  - In `ribbed40`, bamboo member weight is 66.352 kN<!-- T6 --> versus 104.685 kN<!-- T6 --> for steel, giving a ratio of 0.634<!-- T6 --> (36.6% reduction).
-- **Embodied Carbon Comparison (Table 6):**
-  - In `geodesic16`, total carbon for bamboo is 0.861 t CO$_2$e<!-- T6 --> versus 3.410 t CO$_2$e<!-- T6 --> for steel (ratio of 0.252<!-- T6 -->, a 74.8% emissions reduction).
-  - In `kiewitt32`, bamboo carbon is 4.842 t CO$_2$e<!-- T6 --> versus 17.412 t CO$_2$e<!-- T6 --> for steel (ratio of 0.278<!-- T6 -->, a 72.2% reduction).
-  - In `ribbed40`, bamboo carbon is 11.341 t CO$_2$e<!-- T6 --> versus 32.673 t CO$_2$e<!-- T6 --> for steel (ratio of 0.347<!-- T6 -->, a 65.3% reduction).
-- **Total System Weight Distinction (Table 5):**
-  While bamboo culms are 32% to 49% lighter than steel members<!-- T6 -->, total system weight tells a different story once jointing materials are included. In `ribbed40`, the total system weight of the bamboo dome is 277.222 kN<!-- T5 --> (comprising 66.35 kN culms, 24.23 kN steel connectors, and 186.64 kN grout<!-- [DATA NEEDED: component weights] -->) compared to 128.955 kN<!-- T5 --> for the all-steel ribbed dome and 134.976 kN<!-- T5 --> for the 354-member reference steel dome. Total system mass of the bamboo structure is thus more than double that of the steel dome due to the heavy cementitious grout infill required at 2928 member ends.
+Table 11 gives the largest demand-to-capacity ratio of each check for the lightest designs. Compression reaches a ratio of 0.992–1.000 in all three designs. The displacement ratio is 0.060, 0.062 and 0.129 of the limit.
 
-## 3.6. Material Procurement Cost Comparison
+| Dome | Tension | Compression | Slenderness | Joint | u/u_lim | Groups with D/C >= 0.95 |
+|---|---|---|---|---|---|---|
+| Geodesic | 0.165 | 0.996 | 0.733 | 0.280 | 0.060 | 8/23 |
+| Kiewitt | 0.361 | 0.992 | 0.532 | 0.543 | 0.062 | 6/22 |
+| Ribbed | 0.430 | 1.000 | 0.664 | 0.807 | 0.129 | 9/43 |
 
-Table 9 summarizes the material procurement costs across four regional pricing schedules and four diameter scaling exponents ($\alpha \in \{1.5, 2.0, 2.5, 3.0\}$):
-- **Relative Material Cost Ratios (Bamboo/Steel):**
-  - For `geodesic16`, the ratio of bamboo to steel material cost ranges between 0.610 and 0.875<!-- T9 --> across all scenarios. Under baseline scaling ($\alpha = 2.0$<!-- 04_Results/PAPER_METHODS_NOTES.md:23 -->), the ratio is 0.637 to 0.868<!-- T9 -->, showing that bamboo provides an economic advantage for smaller, low-density topologies.
-  - For `kiewitt32`, the ratio ranges between 0.865 and 1.394<!-- T9 -->. Under baseline scaling ($\alpha = 2.0$<!-- 04_Results/PAPER_METHODS_NOTES.md:23 -->), the ratio is 0.922 to 1.248<!-- T9 --> (near cost parity in India/Indonesia/Turkiye, and 24.8% higher in Colombia).
-  - For `ribbed40`, the ratio ranges between 0.977 and 1.342<!-- T9 -->. Under baseline scaling ($\alpha = 2.0$<!-- 04_Results/PAPER_METHODS_NOTES.md:23 -->), the ratio is 1.016 to 1.297<!-- T9 -->, indicating comparable or slightly higher material costs for bamboo compared to structural steel.
-- **Cost Share Breakdown:**
-  Across all scenarios, non-shrink grout and steel connectors represent the vast majority of bamboo structure costs. In Indonesia ($\alpha = 2.0$), grout constitutes 57.07%<!-- T9 --> (`geodesic16`), 68.92%<!-- T9 --> (`kiewitt32`), and 66.96%<!-- T9 --> (`ribbed40`) of the total material cost, while culms account for only 14.60% to 19.29%<!-- T9 -->. In Colombia, raw Guadua culms represent a higher share (32.91% to 40.67%<!-- T9 -->), but grout remains a dominant expenditure (41.92% to 52.58%<!-- T9 -->).
+**Table 11.** Largest D/C ratio per check in the lightest design of each dome, displacement ratio and number of design groups with D/C ≥ 0.95.
+
+Compression determines the largest D/C ratio in 19 of 23 groups (Geodesic), 21 of 22 (Kiewitt) and 41 of 43 (Ribbed) in the lightest designs. Slenderness determines the remaining groups: 4, 1 and 2. Tension and the joint check determine no group of the lightest designs. Averaged over the 90 feasible runs of each dome, compression determines 81.1%, 95.5% and 93.4% of the groups, slenderness 18.9%, 4.5% and 6.5%, and the joint check 0.2% on Ribbed (`WEIGHT_CARBON_TRADEOFF.md`). Figure 4 shows these shares. The profiles of the lightest designs are in Figure 1.
+
+## 3.3 Bolts required per member
+
+The largest member forces of the lightest designs are 13.82, 26.76 and 39.77 kN (Table 10), below F_j,Rd = 49.3 kN, so most members need one or two bolts (Table 12). No member needs four. On Ribbed, 813 members need one bolt, 591 two and 60 three. Twelve Ribbed members (0.82%), all 0.76 m long, are too short to hold the three bolts they require under the NSR-10 spacing rules; the largest force in these members is 31.25 kN. Eighty-four Ribbed members are shorter than 1.35 m. Geodesic and Kiewitt have no such members; their shortest members are 2.24 m and 2.09 m long.
+
+| Dome | Members | n_req=1 | n_req=2 | n_req=3 | n_req=4 | n_req>4 | Members too short for required bolts | Share [%] | Shortest member [m] | Max force in too-short members [kN] | Members < 1.35 m (4 bolts both ends) |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| Geodesic | 115 | 115 | 0 | 0 | 0 | 0 | 0 | 0.00 | 2.24 | 0.00 | 0 |
+| Kiewitt | 456 | 388 | 68 | 0 | 0 | 0 | 0 | 0.00 | 2.09 | 0.00 | 0 |
+| Ribbed | 1464 | 813 | 591 | 60 | 0 | 0 | 12 | 0.82 | 0.76 | 31.25 | 84 |
+
+**Table 12.** Number of bolts required per member end (NSR-10 allowable load, #5 bolt) and members too short to hold them. Lengths and forces in the last columns are in m and kN.
+
+## 3.4 Embodied carbon of the lightest designs
+
+The embodied carbon of the lightest designs is 0.86 t CO₂e (Geodesic), 4.84 t (Kiewitt) and 11.34 t (Ribbed) (Table 13). Connection steel and grout together account for 79.39%, 74.07% and 82.11% of this carbon; connection steel alone accounts for 57.25%, 39.03% and 51.92%. The grout mass is 57%, 65% and 67% of the total mass of culm, steel and grout (derived from Table 13).
+
+| Dome | Bamboo [t] | Steel [t] | Grout [t] | Total [t] | Culm [%] | Steel [% CO2e] | Grout [% CO2e] | Joint (steel+grout) [% CO2e] | Total CO2e [t] |
+|---|---|---|---|---|---|---|---|---|---|
+| Geodesic | 0.59 | 0.21 | 1.06 | 1.86 | 20.61 | 57.25 | 22.13 | 79.39 | 0.86 |
+| Kiewitt | 4.19 | 0.79 | 9.43 | 14.41 | 25.93 | 39.03 | 35.04 | 74.07 | 4.84 |
+| Ribbed | 6.76 | 2.47 | 19.02 | 28.26 | 17.89 | 51.92 | 30.19 | 82.11 | 11.34 |
+
+**Table 13.** Mass and carbon breakdown of the lightest design of each dome (baseline parameters: EC_b = 0.30, EC_s = 2.38, EC_m = 0.18 kg CO₂e/kg; L_inj = 2.5 D).
+
+Table 14 shows the joint share (steel plus grout) when parameters are changed.
+
+| Dome | Base | L_inj/D = 1.5 | L_inj/D = 3.5 | EC_steel = 1.2 | EC_steel = 3.0 | EC_bamboo = 0.09 | EC_bamboo = 1.23 | Combined case |
+|---|---|---|---|---|---|---|---|---|
+| Geodesic | 79.39 | 77.38 | 81.06 | 71.22 | 82.06 | 92.77 | 48.43 | 53.9 |
+| Kiewitt | 74.07 | 69.84 | 77.26 | 67.85 | 76.46 | 90.50 | 41.06 | 45.3 |
+| Ribbed | 82.11 | 79.65 | 84.04 | 75.91 | 84.24 | 93.86 | 52.82 | 57.7 |
+
+**Table 14.** Joint share of the embodied carbon [%] for the lightest designs. Each column changes one parameter from the baseline; the last column changes L_inj/D = 1.5, EC_s = 1.2, EC_b = 0.47 and EC_m = 0.12 together.
+
+The emission factor of the bamboo culm has the largest effect. With EC_b = 0.09 the joint share is 90.50–93.86%; with EC_b = 1.23 it is 41.06–52.82%. The share changes by less than 10 percentage points with L_inj/D or EC_s alone. The joint share is below 50% for Kiewitt in the combined case (45.3%) and for Kiewitt (41.06%) and Geodesic (48.43%) with EC_b = 1.23.
+
+## 3.5 Weight and carbon among the visited designs
+
+Among the feasible designs visited by the 270 runs, weight and carbon are positively correlated, with r = 0.897 (Geodesic), 0.724 (Kiewitt) and 0.857 (Ribbed) (Table 15). The lightest design is not the lowest-carbon design. Its carbon is 1.57%, 6.74% and 4.34% above the lowest carbon found, and the lowest-carbon design is 12.66%, 11.41% and 9.61% heavier. The visited designs contain 11, 48 and 69 non-dominated points.
+
+| Dome | Feasible evaluations | r | R^2 | Non-dominated points | W of lightest [kN] | Carbon of lightest [kg CO2e] | W of lowest-carbon [kN] | Carbon of lowest-carbon [kg CO2e] | Carbon excess of lightest [%] | Weight excess of lowest-carbon [%] |
+|---|---|---|---|---|---|---|---|---|---|---|
+| Geodesic | 1237620 | 0.897 | 0.804 | 11 | 5.800 | 860.5 | 6.535 | 847.2 | 1.57 | 12.66 |
+| Kiewitt | 975273 | 0.724 | 0.524 | 48 | 41.058 | 4842.1 | 45.745 | 4536.2 | 6.74 | 11.41 |
+| Ribbed | 1866958 | 0.857 | 0.734 | 69 | 66.352 | 11341.1 | 72.728 | 10869.0 | 4.34 | 9.61 |
+
+**Table 15.** Relation between weight and carbon among the feasible evaluations of the 270 runs (carbon recomputed with the baseline emission factors). The evaluations are the points visited by a single-objective search; they are not a random sample and not a multi-objective front.
+
+## 3.6 Comparison with steel
+
+For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.634 of the weight of the steel members, and the embodied carbon of the bamboo systems (culm, connection steel and grout) is 0.252, 0.278 and 0.347 of that of the steel systems at the baseline emission factors (Table 17). With EC_b = 1.23 kg CO₂e/kg the three ratios are 0.414, 0.502 and 0.540. With a steel emission factor of 1.6 kg CO₂e/kg they are 0.396, 0.436 and 0.545 (`T8_material_sensitivity.csv`). The system weights, which include connection steel and grout, are higher for bamboo than for steel (Table 16): 18.211, 141.320 and 277.222 kN for bamboo against 13.434, 68.456 and 128.955 kN for steel (ratios 1.36, 2.06 and 2.15, derived).
+
+| Structure | Members | Member weight [kN] | System weight [kN] | Embodied carbon [t CO2e] |
+|---|---|---|---|---|
+| Steel - Reference (354 members) | 354 | 129.012 | 134.976 | 34.456 |
+| Steel - Ribbed | 1464 | 104.685 | 128.955 | 32.673 |
+| Steel - Kiewitt | 456 | 60.666 | 68.456 | 17.412 |
+| Steel - Geodesic | 115 | 11.404 | 13.434 | 3.410 |
+| Bamboo - Geodesic | 115 | 5.800 | 18.211 | 0.861 |
+| Bamboo - Kiewitt | 456 | 41.058 | 141.320 | 4.842 |
+| Bamboo - Ribbed | 1464 | 66.352 | 277.222 | 11.341 |
+
+**Table 16.** Steel and bamboo structures. Member weight is the culm weight (bamboo) or tube weight (steel). System weight adds connection steel and, for bamboo, grout. Reference is the 354-member steel dome. Bamboo values are for the lightest of the 90 runs of the dome; steel values are for the best of 30 runs.
+
+| Dome | Bamboo/Steel member weight | Bamboo/Steel CO2e |
+|---|---|---|
+| Geodesic | 0.509 | 0.252 |
+| Kiewitt | 0.677 | 0.278 |
+| Ribbed | 0.634 | 0.347 |
+
+**Table 17.** Bamboo to steel ratios for the same geometry: member weight and embodied carbon of the systems, at the baseline emission factors.
+
+Figure 5 shows the member weight and the embodied carbon of all structures of Table 16. Under the load condition of the literature study, the present steel model gives 135–136 kN for the 354-member dome, against 151.1–155.8 kN reported there [DATA NEEDED: calculation record of the 135–136 kN check; REF NEEDED: literature values].
+
+## 3.7 Material cost
+
+Table 18 gives the ratio of the bamboo material cost to the steel material cost for the same geometry. Over all scenarios and α, the ratio ranges from 0.610 to 0.875 (Geodesic), 0.865 to 1.394 (Kiewitt) and 0.977 to 1.342 (Ribbed). Grout accounts for 41.6–59.6%, 45.7–73.4% and 50.8–69.7% of the bamboo material cost of the three domes.
+
+| Price scenario | Geodesic (alpha = 2) | Geodesic (alpha 1.5-3) | Kiewitt (alpha = 2) | Kiewitt (alpha 1.5-3) | Ribbed (alpha = 2) | Ribbed (alpha 1.5-3) |
+|---|---|---|---|---|---|---|
+| Indonesia 2024 (Jateng HSD) | 0.639 | 0.612-0.724 | 0.926 | 0.869-1.137 | 1.021 | 0.981-1.154 |
+| India 2023 (CPWD DSR) | 0.637 | 0.610-0.721 | 0.922 | 0.865-1.133 | 1.016 | 0.977-1.150 |
+| Türkiye 2026 (CSB, August) | 0.638 | 0.611-0.723 | 0.924 | 0.867-1.135 | 1.019 | 0.979-1.152 |
+| Colombia 2026 (Guadua, D_ref = 120 mm assumed) | 0.868 | 0.862-0.875 | 1.248 | 1.191-1.394 | 1.297 | 1.279-1.342 |
+
+**Table 18.** Ratio of bamboo to steel material cost for the lightest bamboo and best steel designs of each dome, by price scenario. The columns give the ratio for α = 2 and the range over α = 1.5–3. A ratio above 1 means that the bamboo structure costs more. The four scenarios are not independent (Section 2.9).
+
+The ratio is below 1 for Geodesic in all scenarios. For Kiewitt, it is below 1 for α ≤ 2 in the Indonesian, Indian and Türkiye scenarios and above 1 in the Colombian scenario. For Ribbed, it is below 1 only for α = 1.5 in the Indonesian, Indian and Türkiye scenarios (0.977–0.981).

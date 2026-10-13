@@ -51,7 +51,7 @@ Kaynak: IStructE, *Manual for the design of bamboo structures to ISO 22156:2021*
 | f_c,0,k | 38 MPa | **37,8 MPa** (Manual Tablo A3.4, Guadua, n = 922) |
 | Yoğunluk | — | 700 kg/m³ (Manual Tablo 4.4; Guadua ort. 680, Tablo A3.9) |
 | Narinlik | λ ≤ 150 "ISO 22156'dan" | λ ≤ 150, **çekme ve basınç dahil tüm elemanlara uygulanır**. NSR-10 G.12.9.2.6/7 (PDF s.132–133) bu sınırı yalnızca basınç için ister; bizim uygulamamız bilinçli olarak muhafazakâr (`04_Results/PAPER_METHODS_NOTES.md`). |
-| Sehim | span/360, "ASCE 7 sehim" | **span/150** (Manual örneği; ISO 22156 sehim sınırı vermez). 40 m için 266,7 mm. |
+| Sehim | span/360, "ASCE 7 sehim" | **span/150** (Manual örneği; ISO 22156 sehim sınırı vermez). Kubbe açıklığına göre 40 / 32 / 16 m için 266,7 / 213,3 / 106,7 mm. |
 | **Bağlantı kapasitesi** | 120 kN (kaynaksız) **ve** 2 × 26,6 = 53,2 kN (n_bolt = 2, Correal vd. 2021 deney maksimumu) | **F_j,Rd = n_bolt · F_bolt,adm · C_g = 4 × 13,25 × 0,93 = 49,3 kN.** F_bolt,adm: NSR-10 Tabla G.12.11-2 (PDF s.138), Ø5/8" (#5) cıvata, çift kesme, lif doğrultusu, D = 100 mm, **izinli yük**. C_g: Tabla G.12.11-3 (s.139), 4 cıvata. n_bolt = 4 kullanıcı kararıdır. Correal 2021 artık F_j için kaynak değildir; yalnızca bağlantı davranışı için anılabilir. |
 
 **Bağlantıyla ilgili doğrulanmış sonuçlar (yaz):**
@@ -120,7 +120,7 @@ Kaynak: `campaign.log` ön kontrol satırları, `dome_types.py`.
 
 **Sonuçlar (`LCA_SENSITIVITY_REPORT.md`):**
 - Temel senaryo: bağlantı bileşenleri (çelik + harç) toplam gömülü karbonun **%74,1–82,1**'i. Yalnızca çelik %39,0–57,3.
-- En elverişsiz uç (L_inj = 1,5D, EC_çelik = 1,2, EC_bambu = 0,47, EC_harç = 0,12 birlikte): bağlantı payı ribbed40 %57,7, geodesic16 %53,9, **kiewitt32 %45,3**. Paradoks iddiası parametreye duyarlıdır. Bunu "paradoks her koşulda geçerli" diye yazma.
+- Birleşik elverişsiz uç (L_inj = 1,5D, EC_çelik = 1,2, EC_bambu = 0,47, EC_harç = 0,12 birlikte): bağlantı payı ribbed40 %57,7, geodesic16 %53,9, **kiewitt32 %45,3**. Paradoks iddiası parametreye duyarlıdır. Bunu "paradoks her koşulda geçerli" diye yazma.
 - Eski "%67–75" ve "%43–52" sayılarını sil (eski pilot/eski parametreler).
 - Literatür desteği: Zea Escamilla vd. 2018 (Tablo 2). Kolombiya bambu çerçeveli evde CO₂e payları bambu direk %6,4, çelik %34,7, nakliye %49.
 

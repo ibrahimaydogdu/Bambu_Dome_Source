@@ -14,7 +14,7 @@ Görevin; optimizasyon ve LCA bulgularını yüzeysel sayı tekrarlarından arı
 - **Tartışma Akışı:**
   - Bambu culmları optimize edildikçe kubbe gövde ağırlığı azalmakta, ancak yapının toplam karbon eğrisi bağlantı detaylarının getirdiği asimptotik taban değerin altına inememektedir.
   - Her bir düğüm noktası ($N_{\text{düğüm}}$) ve çubuk ucu; rüzgar emmesi ve kar yükü altında eksenel kuvvetleri aktarabilmek için çelik manşonlara, bulonlara ve rötresiz harç dolgusuna muhtaçtır.
-  - Bu hibrit bağlantı bileşenlerinin payı gömülü karbon bilançosunda baskındır; ancak bu oran tek bir sabit değer olmayıp envanter parametrelerine duyarlıdır (baz senaryoda %74.1–%82.1, en elverişsiz parametre kombinasyonunda %45.3 seviyesine inmekte, kiewitt32 kubbesinde %50'nin altına düşebilmektedir).
+  - Bu hibrit bağlantı bileşenlerinin payı gömülü karbon bilançosunda baskındır; ancak bu oran tek bir sabit değer olmayıp envanter parametrelerine duyarlıdır (baz senaryoda %74.1–%82.1, birleşik elverişsiz parametre kombinasyonunda %45.3 seviyesine inmekte, kiewitt32 kubbesinde %50'nin altına düşebilmektedir).
   - Sonuç: Doğal biyo-malzemelerin inşaat sektörünü gerçekten karbonsuzlaştırabilmesi (decarbonize), culm optimizasyonundan ziyade **düşük karbonlu bağlantı inovasyonuna** bağlıdır.
 
 ### 2. Yeşil Aklama (Greenwashing) Uyarısı ve Endüstriyel Gerçekçilik

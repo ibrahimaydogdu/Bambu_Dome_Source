@@ -1,145 +1,197 @@
-# 2. Materials and Methods
+# 2. Methods
 
-## 2.1. Dome Topology and Structural Modelling
+## 2.1 Dome models
 
-Three single-layer spatial dome configurations spanning 40.0 m<!-- 00_System/DOCS_UPDATE_PROMPT.md:48 --> with a rise of 8.0 m<!-- 00_System/DOCS_UPDATE_PROMPT.md:48 --> (span-to-rise ratio of 5:1) are investigated: Ribbed, Kiewitt, and Geodesic. In the computational model and data records, these topologies are designated as `ribbed40`, `kiewitt32`, and `geodesic16`, respectively:
-- **Ribbed dome (`ribbed40`):** Adapted from the 40 m<!-- 00_System/DOCS_UPDATE_PROMPT.md:48 --> ribbed configuration of Saka (1991)<!-- [REF NEEDED: Saka 1991] --> with a frequency of 2<!-- CAMPAIGN_EXECUTION_PLAN.md:18 -->. The model comprises 505 nodes<!-- T10 -->, 1464 members<!-- T10 -->, and 43 sizing design groups<!-- T4 -->. Member lengths vary between 0.76 m<!-- T10 --> and 3.08 m<!-- T5 -->.
-- **Kiewitt dome (`kiewitt32`):** A Kiewitt-8 pattern with 4 rings, comprising 169 nodes<!-- CAMPAIGN_EXECUTION_PLAN.md:18 -->, 456 members<!-- T10 -->, and 22 sizing design groups<!-- T4 -->. Member lengths range from 2.09 m<!-- T10 --> to 3.55 m<!-- T5 -->.
-- **Geodesic dome (`geodesic16`):** An icosahedron-derived geodesic breakdown comprising 46 nodes<!-- CAMPAIGN_EXECUTION_PLAN.md:18 -->, 115 members<!-- T10 -->, and 23 sizing design groups<!-- T4 -->. Member lengths range from 2.24 m<!-- T10 --> to 2.96 m<!-- T5 -->.
+Three dome models are analysed (Table 1). They differ in span, topology and member count. They are not scaled copies of one geometry.
 
-All dome members are modelled as pin-jointed truss elements carrying purely axial tension or compression, with rotational end releases ($M_x = M_y = M_z = 0$)<!-- 03_Code_Execution/DEVELOPER_PROMPT.md:31 -->. Pin supports are applied at all perimeter ground boundary nodes, restraining translations in the $X$, $Y$, and $Z$ directions while permitting rotations. Elastic structural analyses are conducted using an internal direct stiffness matrix formulation implemented in NumPy/SciPy, with cross-verification against CSI SAP2000 v24 via the Open API<!-- 03_Code_Execution/DEVELOPER_PROMPT.md:4 -->.
+| Dome | Code name | Span [m] | Rise [m] | Nodes | Members | Design groups | Supported nodes | Member length [m] | u_lim [mm] |
+|---|---|---|---|---|---|---|---|---|---|
+| Geodesic | geodesic16 | 16 (nominal) | 3.72 | 46 | 115 | 23 | 20 | 2.24-2.96 | 107 |
+| Kiewitt | kiewitt32 | 32 | 6.60 | 169 | 456 | 22 | 48 | 2.09-3.55 | 213 |
+| Ribbed | ribbed40 | 40 | 8.28 | 505 | 1464 | 43 | 48 | 0.76-3.08 | 267 |
 
-## 2.2. Bamboo Material Properties and Discrete Section Catalog
+**Table 1.** Dome models. The Geodesic dome has a nominal span of 16 m; twice the largest horizontal distance of a node from the vertical axis is 16.77 m. The rise is the height of the highest node above the lowest support. The displacement limit u_lim is the span divided by 150, rounded to 1 mm in the code.
 
-The structural elements are specified as round culms of *Guadua angustifolia* Kunth, a woody bamboo native to northern South America. The physical and mechanical properties are defined in accordance with ISO 22156:2021<!-- [REF: ISO 22156:2021] --> and the IStructE Bamboo Design Manual (Trujillo et al., 2025)<!-- [REF: Trujillo et al. 2025] -->:
-- Mean modulus of elasticity: $E_k = 10\,000\text{ MPa}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> (Table 4.4 of Trujillo et al., 2025<!-- [REF: Trujillo et al. 2025] -->).
-- Bulk density: $\rho = 700\text{ kg/m}^3$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->.
-- Characteristic compressive strength parallel to fibers: $f_{c,0,k} = 37.8\text{ MPa}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> based on testing of $n = 922$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> specimens (Table 4.4 of Trujillo et al., 2025<!-- [REF: Trujillo et al. 2025] -->).
-- Characteristic tensile strength parallel to fibers: $f_{t,0,k} = 40.0\text{ MPa}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->.
+- **Ribbed:** ribbed dome (called Schwedler type in the code). It is a frequency-2 densification of a 354-member reference steel dome with a 40 m span and a crown height of 8.28 m [REF NEEDED: source of the 354-member reference dome]. The reference dome has members up to 5.97 m long. The densified model has members of 0.76–3.08 m.
+- **Kiewitt:** spherical cap with 8 sectors and 6 rings.
+- **Geodesic:** icosahedral geodesic dome (class I, frequency 5) truncated at a colatitude of 50°. All nodes on the zigzag boundary are supported.
 
-A discrete catalog of 24 commercial *Guadua* section sizes is established based on regional morphological data<!-- 03_Code_Execution/bamboo_catalog.py -->. Outer diameters ($D$) range from 80 mm<!-- 00_System/DOCS_UPDATE_PROMPT.md:49 --> to 160 mm<!-- 00_System/DOCS_UPDATE_PROMPT.md:49 -->, with wall thicknesses ($t$) varying between 6 mm<!-- 00_System/DOCS_UPDATE_PROMPT.md:49 --> and 22 mm<!-- 00_System/DOCS_UPDATE_PROMPT.md:49 -->. Cross-sectional area $A$, moment of inertia $I$, and radius of gyration $r$ are calculated assuming annular cylindrical geometry:
-$$A = \frac{\pi}{4}\left(D^2 - (D - 2t)^2\right) = \pi t (D - t)$$
-$$I = \frac{\pi}{64}\left(D^4 - (D - 2t)^4\right)$$
-$$r = \sqrt{\frac{I}{A}} = \frac{1}{4}\sqrt{D^2 + (D - 2t)^2}$$
+Members are assigned to design groups by geometric class. For Geodesic, a group contains members with the same length, the same latitude and the same position in the 72° sector; mirror images form separate groups. For Ribbed and Kiewitt, the classes are defined in the dome generators of the code (`truss_model.py`, `dome_types.py`) [DATA NEEDED: verbal description of the Ribbed and Kiewitt group definition].
 
-## 2.3. Structural Design Constraints and ASD Formulation
+Members are pin-jointed axial-force elements. Supported nodes are restrained in all three translations. Member forces and nodal displacements are computed with a direct stiffness solver written for this study. For the lightest design of each dome, the results were compared with SAP2000 (Section 3.1).
 
-Member sizing is governed by the Allowable Stress Design (ASD) method prescribed in ISO 22156:2021<!-- [REF: ISO 22156:2021] --> and Trujillo et al. (2025)<!-- [REF: Trujillo et al. 2025] -->. Design allowable stresses ($X_{\text{allow}}$) are determined from characteristic values through:
-$$X_{\text{allow}} = \frac{X_k \cdot C_R \cdot C_{DF} \cdot C_T}{FS}$$
-where:
-- $FS = 2.0$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> is the global factor of safety on member capacity (IStructE Manual Equation 3.9<!-- [REF: Trujillo et al. 2025] -->).
-- $C_R = 0.90$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> is the reduction factor representing culm taper and initial geometric imperfections, adopted as an assumed baseline value<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->.
-- $C_T = 1.0$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> is the temperature adjustment factor for ambient service below 30 °C<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->.
-- $C_{DF}$ is the duration of load factor: $0.55$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> for permanent (dead) loads, $0.65$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> for snow load (two-month duration), and $0.85$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> for short-duration wind loads (IStructE Manual Table 3.2<!-- [REF: Trujillo et al. 2025] -->).
+## 2.2 Material and section catalogue
 
-Under any load combination $j$, the allowable compressive stress ($f_{c,0,\text{allow},j}$) accounts for column stability using Ylinen's equation (ISO 22156:2021 Clause 9.3; Trujillo et al., 2025, Eq. 6.2<!-- [REF: Trujillo et al. 2025] -->):
-$$f_{c,0,\text{allow},j} = \frac{f_{c,0,\text{allow}} + \sigma_{cr,j}}{2c} - \sqrt{\left(\frac{f_{c,0,\text{allow}} + \sigma_{cr,j}}{2c}\right)^2 - \frac{f_{c,0,\text{allow}} \cdot \sigma_{cr,j}}{c}}$$
-where $c = 0.8$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> is Ylinen's imperfection factor for natural bamboo culms, and $\sigma_{cr,j}$ is the Euler buckling stress with out-of-straightness reduction:
-$$\sigma_{cr,j} = \frac{\pi^2 E_{\text{allow},j}}{\lambda^2 \left(1 + \frac{C_{\text{bow}} \cdot b_0 \cdot \lambda}{\pi}\right)}$$
-Here, the effective length factor is $K = 1.0$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> for pin-ended members; slenderness is $\lambda = K L / r$; $C_{\text{bow}} = 0.5$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->; and initial bow imperfection $b_0 = 0.01$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> (assumed value corresponding to $L/1000$<!-- 04_Results/PAPER_METHODS_NOTES.md:5 -->). Allowable modulus is $E_{\text{allow},j} = E_k \cdot C_R \cdot C_{DF,j} \cdot C_T / FS$.
+Table 2 lists the material and design parameters.
 
-Five demand-to-capacity (DCR) constraints are evaluated across all members $i = 1, \dots, N_m$ and load combinations $j = 1, \dots, N_c$:
-1. **Axial Tension:**
-   $$DCR_{\text{tens},i,j} = \frac{N_{i,j}}{A_i \cdot f_{t,0,\text{allow},j}} \le 1.0 \quad (\text{for } N_{i,j} > 0)$$
-2. **Axial Compression and Buckling:**
-   $$DCR_{\text{buck},i,j} = \frac{|N_{i,j}|}{A_i \cdot f_{c,0,\text{allow},j}} \le 1.0 \quad (\text{for } N_{i,j} < 0)$$
-3. **Geometric Slenderness:**
-   $$DCR_{\text{slend},i} = \frac{\lambda_i}{150} \le 1.0$$
-   A limit of $\lambda \le 150$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 --> is enforced across all elements. In NSR-10 Título G (G.12.9.2.6)<!-- [REF: NSR-10 Titulo G] -->, this limit is mandatory for compression columns only. Imposing it on tension members as well is a conservative design decision adopted here<!-- 04_Results/PAPER_METHODS_NOTES.md:6 -->.
-4. **End Connector Capacity:**
-   $$DCR_{\text{joint},i,j} = \frac{|N_{i,j}|}{F_{j,Rd}} \le 1.0$$
-   where $F_{j,Rd} = 49.3\text{ kN}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 --> is the allowable connection strength derived in Section 2.4.
-5. **Serviceability Vertical Deflection (SLS):**
-   $$DCR_{\text{disp},k} = \frac{|u_{z,k}|}{u_{\text{allow}}} \le 1.0 \quad \text{where } u_{\text{allow}} = \frac{\text{Span}}{150} = \frac{40\,000\text{ mm}}{150} = 266.67\text{ mm}<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->$$
-   evaluated at all free nodes $k$ under unfactored service gravity combinations (Trujillo et al., 2025, Section 6.5<!-- [REF: Trujillo et al. 2025] -->).
+| Quantity | Value | Basis |
+|---|---|---|
+| Density ρ | 700 kg/m³ | IStructE Manual Table 4.4; mean Guadua value 680 kg/m³ (Table A3.9) |
+| Design modulus E_k | 10 GPa | Manual Table 4.4 gives 10 or 15 GPa (15 GPa for tropical bamboo with D/t ≥ 10, a mean value with 75% confidence). 10 GPa is used for all sections, a conservative choice |
+| Tension strength f_t,0,k | 40 MPa | Manual Table 4.4, schematic. For Guadua, Table A3.9 gives only a mean tension strength (121 MPa, COV 0.18) and no characteristic value |
+| Compression strength f_c,0,k | 37.8 MPa | Manual Table A3.4 (Guadua, n = 922) |
+| Factor of safety FS | 2.0 | axial members (Manual Appendix A3.6) |
+| Redundancy factor C_R | 0.90 | Manual: a single culm is non-redundant, C_R = 0.9. Applied to all members, which assumes single-culm members |
+| Temperature factor C_T | 1.0 | service temperature below 38 °C (Manual) |
+| Duration factor C_DF, Service Class 2 | 0.55 / 0.65 / 0.85 | permanent / transient / instantaneous loads; values from worked examples in the Manual (PDF pp. 153 and 163). The choice of Service Class 2 and the assignment of snow to transient and wind to instantaneous loads are assumptions |
+| Ylinen constant c | 0.8 | Manual Annex A6.2 |
+| Initial curvature b₀ | 0.01 | assumed [REF CHECK: Manual limit b₀ ≤ 0.02]; C_bow = 1 − b₀/0.02 = 0.5 |
+| Effective length factor K | 1.0 | Manual Table 6.1 |
+| Slenderness limit λ_max | 150 | NSR-10 G.12.9.2.6 and G.12.9.2.7 prescribe 150 for compression members; applied here to all members |
+| Displacement limit u_lim | span/150 | example in the IStructE Manual |
+| Joint capacity F_j,Rd | 49.3 kN | NSR-10 Tabla G.12.11-2 and G.12.11-3 (Section 2.5) |
 
-## 2.4. Hybrid End Connector Mechanics and Capacity
+**Table 2.** Material and design parameters. C_R, b₀, the Service Class and load-duration assignment, the choice E_k = 10 GPa and the use of λ_max for tension members are choices or assumptions of this study.
 
-Because natural hollow culms cannot transfer high concentrated nodal loads directly through bearing, a bolted, mortar-injected steel connector is implemented at each member end, consistent with common construction practice (e.g., Trujillo et al., 2025<!-- [REF: Trujillo et al. 2025] -->; Correal et al., 2021<!-- [REF: Correal et al. 2021] -->). The joint consists of an internal steel gusset plate inserted into the culm end, through-bolts, and a non-shrink cementitious grout infill injected over length $L_{\text{inj}} = 2.5 D$<!-- 04_Results/LCA_SENSITIVITY_REPORT.md:16 --> to prevent longitudinal splitting.
+The catalogue has 24 hollow circular sections with outer diameter D = 80–160 mm and wall thickness t = 6–22 mm (Supplementary Table S1) [DATA NEEDED: basis for the choice of the 24 (D, t) pairs]. The culm weight is W = g ρ Σ A_i L_i, with g = 9.81 m/s².
 
-Connection capacity is calculated according to NSR-10 Título G (G.12.11)<!-- [REF: NSR-10 Titulo G] -->:
-$$F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g$$
-Using four $\varnothing 5/8"$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 --> (15.9 mm) Grade A307 bolts in double shear through a $D = 100\text{ mm}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 --> culm:
-- Allowable single-bolt shear load from NSR-10 Tabla G.12.11-2<!-- [REF: NSR-10 Titulo G] --> is $F_{\text{bolt},\text{adm}} = 13.25\text{ kN}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 -->.
-- Group action factor from NSR-10 Tabla G.12.11-3<!-- [REF: NSR-10 Titulo G] --> for $n_{\text{bolt}} = 4$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 --> bolts in a row is $C_g = 0.93$<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 -->.
-- Hence, the member allowable joint capacity is:
-  $$F_{j,Rd} = 4 \times 13.25\text{ kN} \times 0.93 = 49.3\text{ kN}<!-- 00_System/DOCS_UPDATE_PROMPT.md:51 -->$$
+## 2.3 Loads and load combinations
 
-While alternative formulations such as the IStructE Manual yield 3–5 kN/bolt when applying ductile reduction factors<!-- 04_Results/PAPER_METHODS_NOTES.md:11 -->, NSR-10 represents codified Colombian design practice for Guadua connections.
+The load values are those of the 354-member reference dome [REF NEEDED: source of the dead, snow and wind values]. The same values, including the pressure coefficients of the 40 m reference dome, are used for all three domes. For Geodesic, S is the nominal span of 16 m.
 
-## 2.5. Loading Combinations
+- **Dead load D:** 0.20 kN/m² on the horizontal projection, downward.
+- **Snow load S:** 0.83 kN/m² on the horizontal projection, downward.
+- **Wind loads:** pressure normal to the surface, p = q_h G C_p − q_h GC_pi, with q_h = 1.115 kN/m², G = 0.85 and C_p = 0.0105, −0.907 and −0.5 in three zones along the wind direction x (x < −S/4, |x| ≤ S/4, x > S/4, where S is the span). The internal pressure term is GC_pi = −0.18 for pattern W_N and +0.18 for W_P. The resulting pressures are listed in Table 3.
 
-Loading criteria are based on ASCE 7-22 unfactored ASD combinations:
-- Dead load ($D$): Culm self-weight computed from volume and bulk density ($\rho = 700\text{ kg/m}^3$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->) plus roof cladding $D_{\text{clad}} = 0.25\text{ kN/m}^2$<!-- 00_System/DOCS_UPDATE_PROMPT.md:52 -->.
-- Snow load ($S$): Uniform roof snow of $S = 0.75\text{ kN/m}^2$<!-- 00_System/DOCS_UPDATE_PROMPT.md:52 -->; asymmetric snow is applied to half the dome span ($0.75\text{ kN/m}^2$ on one half, zero on the other)<!-- 00_System/DOCS_UPDATE_PROMPT.md:52 -->.
-- Wind load ($W$): Basic velocity pressure producing windward pressure $W_p = +0.60\text{ kN/m}^2$<!-- 00_System/DOCS_UPDATE_PROMPT.md:52 --> and leeward suction $W_s = -0.90\text{ kN/m}^2$<!-- 00_System/DOCS_UPDATE_PROMPT.md:52 -->.
+| Pattern | Zone x < -S/4 | Zone -S/4 <= x <= S/4 | Zone x > S/4 |
+|---|---|---|---|
+| W_N | +0.211 | -0.659 | -0.273 |
+| W_P | -0.191 | -1.060 | -0.675 |
 
-Eight standard ASD load combinations are solved:
-1. $D$ ($C_{DF} = 0.55$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-2. $D + S_{\text{uniform}}$ ($C_{DF} = 0.65$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-3. $D + S_{\text{asymmetric}}$ ($C_{DF} = 0.65$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-4. $D + W$ ($C_{DF} = 0.85$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-5. $D + 0.75 S_{\text{uniform}} + 0.75 W$ ($C_{DF} = 0.85$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-6. $D + 0.75 S_{\text{asymmetric}} + 0.75 W$ ($C_{DF} = 0.85$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->)
-7. $0.6 D + W$ ($C_{DF} = 0.85$<!-- 00_System/DOCS_UPDATE_PROMPT.md:50 -->, uplift check)
-8. $D + S_{\text{uniform}}$ (SLS deflection evaluation, $C_{DF} = 1.0$<!-- 02_Methods/MATHEMATICAL_FORMULATION.md:38 -->)
+**Table 3.** Wind pressures [kN/m²] computed from the constants above. Positive values act toward the surface.
 
-## 2.6. Optimization Formulation and Metaheuristic Solvers
+Surface loads are distributed to the nodes by triangular faces, one third of each face to each of its nodes. For Ribbed and Kiewitt, the projected area is normalised so that the total equals the area of a circle of diameter S. This normalisation is not applied to Geodesic. The wind zone of a face is selected from the x-coordinate of its centroid.
 
-The structural optimization problem is formulated as a single-objective discrete sizing minimization:
-$$\min_{\mathbf{x} \in \mathcal{S}^{N_g}} f_{\text{pen}}(\mathbf{x}) = W_{\text{bamboo}}(\mathbf{x}) \cdot \left(1 + P(\mathbf{x})\right)^\varepsilon$$
-where $\mathbf{x} = [x_1, x_2, \dots, x_{N_g}]$ is the vector of discrete section indices mapping each group to one of the 24 catalog profiles; $W_{\text{bamboo}}$ is total culm weight [kN]; $\varepsilon = 2.0$<!-- 00_System/DOCS_UPDATE_PROMPT.md:55 --> is the penalty exponent; and $P(\mathbf{x})$ is the cumulative constraint violation penalty:
-$$P(\mathbf{x}) = \sum_{i=1}^{N_m} \max\left(0, \max_j DCR_{\text{tens},i,j} - 1\right) + \sum_{i=1}^{N_m} \max\left(0, \max_j DCR_{\text{buck},i,j} - 1\right) + \sum_{i=1}^{N_m} \max\left(0, DCR_{\text{slend},i} - 1\right) + \sum_{i=1}^{N_m} \max\left(0, \max_j DCR_{\text{joint},i,j} - 1\right) + \sum_{k=1}^{N_n} \max\left(0, DCR_{\text{disp},k} - 1\right)$$
+The culm self-weight, the connection hardware and the grout are not applied as loads. The permanent load is the surface load D only. This follows the reference benchmark [REF NEEDED: benchmark].
 
-Three metaheuristic optimization algorithms selected from initial population tuning (`04_Results/TUNING_STUDY.md`<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 -->) are deployed:
-1. **Artificial Bee Colony (ABC):** Swarm intelligence simulating foraging behaviors, population size $N_p = 20$<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 -->.
-2. **Ant Colony Optimization (ACO):** Pheromone-guided stochastic discrete path construction, population size $N_p = 40$<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 -->.
-3. **Dandelion Optimizer (DO):** A physics-inspired metaheuristic based on dandelion seed flight dynamics (Zhao et al., 2022<!-- [REF NEEDED: Zhao et al. 2022] -->), population size $N_p = 40$<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 -->.
+Eight ASD combinations are evaluated without load factors (ASCE 7-22 Section 2.4.1) [REF CHECK: ASCE 7-22 section number]. The duration class of a combination is that of its shortest-duration load.
 
-A strict evaluation budget is enforced across all runs: $\text{NFE} = 1000 \times N_g$<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 --> function evaluations. Specifically:
-- `geodesic16` ($N_g = 23$): $\text{NFE} = 23\,000$<!-- T1 -->
-- `kiewitt32` ($N_g = 22$): $\text{NFE} = 22\,000$<!-- T1 -->
-- `ribbed40` ($N_g = 43$): $\text{NFE} = 43\,000$<!-- T1 -->
+| No. | Combination | Duration class | C_DF | k = C_R C_DF C_T / FS |
+|---|---|---|---|---|
+| 1 | D | permanent | 0.55 | 0.2475 |
+| 2 | D+S | transient | 0.65 | 0.2925 |
+| 3 | D+0.6W_N | instantaneous | 0.85 | 0.3825 |
+| 4 | D+0.6W_P | instantaneous | 0.85 | 0.3825 |
+| 5 | D+0.75S+0.45W_N | instantaneous | 0.85 | 0.3825 |
+| 6 | D+0.75S+0.45W_P | instantaneous | 0.85 | 0.3825 |
+| 7 | 0.6D+0.6W_N | instantaneous | 0.85 | 0.3825 |
+| 8 | 0.6D+0.6W_P | instantaneous | 0.85 | 0.3825 |
 
-Each algorithm-topology pair is executed across 30 independent random seeds (seeds 1001–1030<!-- 00_System/DOCS_UPDATE_PROMPT.md:56 -->), generating 270 independent campaign runs<!-- 00_System/DOCS_UPDATE_PROMPT.md:57 -->.
+**Table 4.** Load combinations, duration classes and capacity factors k.
 
-## 2.7. Statistical Evaluation Protocol
+## 2.4 Design checks
 
-Performance differences among the algorithms are evaluated non-parametrically across the 30 independent seeds:
-1. **Friedman Rank Test:** A block-design rank analysis is conducted to determine overall significance among the three algorithms across seeds for each topology.
-2. **Pair-wise Mann-Whitney U Test (Wilcoxon Rank-Sum):** Two-sided tests evaluate pairwise differences between ABC, ACO, and DO. Family-wise error rate is controlled using Holm's step-down adjustment ($\alpha = 0.05$<!-- 00_System/DOCS_UPDATE_PROMPT.md:58 -->).
-3. **Vargha-Delaney Effect Size ($A_{12}$):** The non-parametric effect magnitude is quantified:
-   $$A_{12} = \frac{U_1}{n_1 n_2}$$
-   where $A_{12} = 0.5$ denotes stochastic equality, $A_{12} > 0.71$ indicates a large effect size favoring algorithm 1, and $A_{12} = 1.0$ indicates complete dominance across all seeds.
+For member i and combination j, let N_ij be the axial force (tension positive). The scaled force is Ñ_ij = N_ij / k_j with k_j = C_R C_DF,j C_T / FS (Table 4). Four demand-to-capacity ratios are computed per member from the envelope over the eight combinations:
 
-## 2.8. Life Cycle Assessment (A1–A3) Embodied Carbon Model
+- Tension: DC_t = max_j(Ñ_ij) / (A_i f_t,0,k), taken as zero if no combination gives tension.
+- Compression: DC_c = max_j(−Ñ_ij) / (A_i f_cr,i), taken as zero if no combination gives compression. The Ylinen compressive strength is
 
-Embodied carbon ($ECO_2e$) is evaluated using a cradle-to-gate (A1–A3) system boundary encompassing raw material extraction, harvesting, processing, and transportation to the factory gate. In line with conservative reporting, biogenic carbon sequestration during culm growth and end-of-life disposal scenarios (A4–C4) are excluded.
+$$f_{e} = \frac{\pi^{2} E_k C_{bow}}{(K L_i / r_i)^{2}}, \qquad f_{cr} = \frac{f_{c,0,k}+f_e}{2c} - \sqrt{\left(\frac{f_{c,0,k}+f_e}{2c}\right)^{2} - \frac{f_{c,0,k}\, f_e}{c}}$$
 
-Total embodied carbon is decomposed into three component masses:
-$$ECO_2e = m_{\text{culm}} \cdot EC_b + m_{\text{steel}} \cdot EC_s + m_{\text{mortar}} \cdot EC_m$$
-where:
-- **Bamboo culm ($EC_b$):** Baseline value of $0.30\text{ kg CO}_2\text{e/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 --> culm, derived from combined harvesting/processing ($0.092\text{ kg/kg}$<!-- 04_Results/EC_BAMBOO_METHOD.md:10 -->) and regional road transportation over 300 km<!-- 04_Results/EC_BAMBOO_METHOD.md:20 --> ($0.211\text{ kg/kg}$<!-- 04_Results/EC_BAMBOO_METHOD.md:20 -->; $f_{\text{load}} = 3.8$<!-- 04_Results/EC_BAMBOO_METHOD.md:13 --> based on hollow culm bulk density of $100\text{ kg/m}^3$<!-- 04_Results/EC_BAMBOO_METHOD.md:13 -->; Zea Escamilla & Habert, 2014<!-- [REF: Zea Escamilla & Habert 2014] -->). Sensitivity bounds span $0.09\text{ kg/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 --> (local supply, 50 km<!-- 04_Results/EC_BAMBOO_METHOD.md:19 -->) to $1.23\text{ kg/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 --> (intercontinental transport to Europe; Zea Escamilla & Habert, 2014<!-- [REF: Zea Escamilla & Habert 2014] -->). The lower production bound ($0.0324\text{ kg/kg}$<!-- 04_Results/EC_BAMBOO_METHOD.md:8 -->) is an assumption based on harvesting data from INBAR TR35<!-- [REF NEEDED: INBAR TR35] -->.
-- **Connection steel plates and bolts ($EC_s$):** $2.38\text{ kg CO}_2\text{e/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 -->, obtained from ICE Educational Database V5.0 (Circular Ecology, June 2026<!-- [REF: ICE Database V5.0] -->) for structural steel plate.
-- **Non-shrink cementitious grout ($EC_m$):** $0.18\text{ kg CO}_2\text{e/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 -->, adopted from ICE Educational V5.0<!-- [REF: ICE Database V5.0] --> as a proxy (1:3 cement-sand mortar; grout density $\rho_m = 2100\text{ kg/m}^3$<!-- 06_Review_Audit/agent_02_reviewer.md:36 -->).
-- **Steel pipe benchmark members ($EC_{s,\text{pipe}}$):** $2.51\text{ kg CO}_2\text{e/kg}$<!-- 00_System/DOCS_UPDATE_PROMPT.md:64 --> for welded structural steel pipe from ICE Educational V5.0<!-- [REF: ICE Database V5.0] -->.
+- Slenderness: DC_s = λ_i / 150 with λ_i = K L_i / r_i, for all members.
+- Joint: DC_j = max_j |N_ij| / F_j,Rd, using the unscaled force.
 
-The steel hardware mass at each joint includes an internal gusset plate ($0.5\text{ kg}$<!-- 06_Review_Audit/agent_02_reviewer.md:36 --> per member end), central hub connector ($2.0\text{ kg}$<!-- 06_Review_Audit/agent_02_reviewer.md:36 --> per dome node), and four bolts. Mortar injection volume is calculated as $V_m = \frac{\pi}{4}(D - 2t)^2 \cdot L_{\text{inj}}$ at both ends of each member.
+The member ratio is DC_i = max(DC_t, DC_c, DC_s, DC_j). The serviceability measure is u_max, the largest absolute nodal displacement over all nodes, all three translation components and all eight combinations. The limit is u_lim = S/150 (Table 1).
 
-## 2.9. Material Cost Estimation Framework
+## 2.5 Connection model
 
-Economic evaluation is restricted strictly to material procurement cost (culms, steel fittings, and grout); labor, fabrication, and life cycle maintenance are excluded. Because commercial structural bamboo pricing varies with diameter, prices are estimated using an exponential scaling relationship:
-$$C_{\text{culm}}(D) = C_{\text{ref}} \left(\frac{D}{D_{\text{ref}}}\right)^\alpha$$
-where $C_{\text{ref}}$ is the baseline unit price at reference diameter $D_{\text{ref}} = 70\text{ mm}$<!-- T9a --> ($120\text{ mm}$<!-- T9a --> for Colombia), and $\alpha$ is a size scaling exponent ($\alpha \in \{1.5, 2.0, 2.5, 3.0\}$<!-- T9 -->, baseline $\alpha = 2.0$<!-- 04_Results/PAPER_METHODS_NOTES.md:23 -->).
+The joint capacity is F_j,Rd = n_bolt F_bolt,adm C_g = 4 × 13.25 kN × 0.93 = 49.3 kN. F_bolt,adm is the allowable load of one #5 (5/8 in) bolt in double shear, parallel to the fibre, for a culm diameter of 100 mm (NSR-10 Tabla G.12.11-2). C_g is the group factor for four bolts (Tabla G.12.11-3). The number of bolts n_bolt = 4 is a design decision of the authors. The same capacity is used for every member, independent of the section.
 
-Four country cost models are analyzed using documented institutional price schedules (Table 9a<!-- T9a -->):
-1. **Indonesia 2024:** Based on Jawa Tengah HSD (2024)<!-- [REF NEEDED: Jawa Tengah HSD 2024] -->: bamboo culm ($0.2304\text{ USD/m}$<!-- T9a --> at $D=70\text{ mm}$), structural steel ($1.141\text{ USD/kg}$<!-- T9a -->), and cementitious grout ($0.5388\text{ USD/kg}$<!-- T9a -->).
-2. **India 2023:** CPWD Delhi Schedule of Rates (DSR 2023)<!-- [REF NEEDED: CPWD DSR 2023] -->: structural steel ($0.7222\text{ USD/kg}$<!-- T9a -->), grout ($0.3390\text{ USD/kg}$<!-- T9a -->), and bamboo ($0.1459\text{ USD/m}$<!-- T9a -->, derived from Indonesia bamboo-to-steel ratio $r_b = 0.202$<!-- T9a -->).
-3. **Turkiye 2026:** Ministry of Environment (CSB, August 2026)<!-- [REF NEEDED: Turkiye CSB 2026] -->: structural steel ($0.6894\text{ USD/kg}$<!-- T9a -->), grout ($0.3246\text{ USD/kg}$<!-- T9a -->), and bamboo ($0.1392\text{ USD/m}$<!-- T9a -->).
-4. **Colombia 2026:** Market pricing for 6 m Guadua culms ($1.583\text{ USD/m}$<!-- T9a -->, assuming $D_{\text{ref}} = 120\text{ mm}$<!-- T9a -->), with steel and grout taken as average proxy values ($0.9315\text{ USD/kg}$<!-- T9a --> and $0.4389\text{ USD/kg}$<!-- T9a -->).
+A calculation with the joint procedure of the IStructE Manual gave about 3–5 kN per bolt. The factor K of that procedure could not be verified, so the NSR-10 value is used [DATA NEEDED: record of the IStructE joint calculation].
 
-## 2.10. Conventional Steel Benchmark Domes
+The carbon model uses a fixed joint hardware definition: a steel hub of 2.0 kg per node, 0.5 kg of steel per member end (stud, nut and washer) and a grout infill at each member end (Section 2.8). These masses are assumptions. They do not depend on the member force and are not designed against F_j,Rd.
 
-To benchmark the structural efficiency and carbon intensity of bamboo, four structural steel dome designs are evaluated under identical loading and boundary conditions:
-- **Reference 354-member ribbed dome:** A 40 m<!-- 00_System/DOCS_UPDATE_PROMPT.md:48 --> spatial dome topology widely studied in structural optimization literature (Hasançebi et al., 2009<!-- [REF NEEDED: Hasançebi et al. 2009] -->; Saka, 1991<!-- [REF NEEDED: Saka 1991] -->), comprising 127 nodes and 354 members divided into 22 design groups. Member selection is drawn from 37 standard AISC steel pipes (AISC ASD-89, A36 steel with $F_y = 248.2\text{ MPa}$<!-- [REF NEEDED: AISC ASD-89] -->, $E = 200\text{ GPa}$, $\rho = 7850\text{ kg/m}^3$).
-- **Identical-geometry steel counterparts:** Steel designs optimized on the exact geometries of `geodesic16` (115 members<!-- T5 -->), `kiewitt32` (456 members<!-- T5 -->), and `ribbed40` (1464 members<!-- T5 -->) using the same 37 AISC pipe sections under the same ASCE 7-22 ASD load combinations and $u_{\max} \le \text{Span}/150$<!-- 04_Results/PAPER_METHODS_NOTES.md:28 --> deflection limit.
+Section 3.3 reports the number of bolts that each member requires and the members that are too short to hold them under the NSR-10 spacing rules (bolt spacing of at least 150 mm; end distance of more than 150 mm for tension members and more than 100 mm for compression members). The required length of a member with n bolts at each end is L ≥ 2 (e + (n − 1) · 150 mm) + 150 mm, where e is the end distance: 150 mm for tension members and 100 mm for compression members (NSR-10 G.12.11.3.13). With e = 150 mm, three bolts require a member length of about 1.05 m, and four bolts at both ends about 1.35 m.
+
+## 2.6 Optimization problem and algorithms
+
+The design vector x contains one section index (1–24) per design group, so the number of variables N_g equals the number of groups (Table 1). The objective is the penalized weight
+
+$$\min_{x}\; f_{pen}(x) = W(x)\,\bigl(1+P(x)\bigr)^{\varepsilon}, \qquad \varepsilon = 2,$$
+
+$$P(x) = \sum_{g=1}^{N_g} \max\bigl(DC_g - 1,\,0\bigr) + \max\!\left(\frac{u_{max}}{u_{lim}} - 1,\,0\right), \qquad DC_g = \max_{i\in g} DC_i .$$
+
+For a feasible design P = 0 and f_pen = W. Carbon is not part of the objective.
+
+Three algorithms were used: the artificial bee colony (ABC), ant colony optimization (ACO) and the dandelion optimizer (DO; Zhao et al., 2022) [REF NEEDED: original references of ABC, ACO and DO]. They were implemented for this study (`metaheuristic_optimizers.py`). The campaign used the default parameters of the implementation. For ABC, the abandonment limit is the population size times N_g. For ACO, α = 1, β = 0.5, the evaporation rate is 0.2 and the elite fraction is 0.2; its heuristic is 1/s for section index s, which favours small sections. [DATA NEEDED: DO parameter values].
+
+Each run stopped after NFE = 1000 N_g function evaluations: 43 000 (Ribbed), 22 000 (Kiewitt) and 23 000 (Geodesic). The population sizes were 20 for ABC and 40 for ACO and DO. Each algorithm was run with 30 independent seeds (1001–1030) on each dome, giving 270 runs.
+
+Algorithm selection used a separate tuning study with seeds 2001–2005 (three seeds for Ribbed), population sizes of 20, 40 and 80, and the candidates ABC, ACO, DO, GWO, WOA and TLBO. Each candidate was ranked at its own best population size by mean penalized weight (`TUNING_STUDY.md`). GWO, WOA and TLBO were not run on Ribbed, so the mean ranks are taken over the domes on which an algorithm was run. ABC and ACO had the lowest mean ranks (1.00 and 2.00); DO had 3.33, but GWO had a lower mean weight than DO on Geodesic. DO was included by study design, as one recent algorithm next to two older ones (ABC, ACO); it is not shown to be among the three best candidates. The campaign used population sizes of 20, 40 and 40, whereas the tuning table lists the best sizes [20, 20, 40] (ABC), [80, 20, 80] (ACO) and [40, 80, 40] (DO) for Geodesic, Kiewitt and Ribbed.
+
+## 2.7 Statistical comparison
+
+For each dome, the best weights of the 30 seeds were compared with a seed-blocked Friedman test over the three algorithms. ABC, which had the lowest Friedman mean rank on every dome, was compared with ACO and with DO by two-sided Mann–Whitney U tests with Holm correction over the two comparisons of a dome, at a significance level of 0.05 [REF NEEDED: Friedman, Mann–Whitney, Holm]. ACO and DO were not compared with each other. The effect size A12 is the probability that a run of the competing algorithm gives a heavier design than a run of ABC, with ties counted as 0.5 [REF NEEDED: Vargha and Delaney].
+
+## 2.8 Embodied carbon
+
+Embodied carbon covers the stages A1–A3. Biogenic carbon storage, use, demolition and recycling are not included. It is computed after the optimization for the lightest design of each dome:
+
+$$E = EC_b\, m_b + EC_s\, m_s + EC_m\, m_m .$$
+
+The culm mass is m_b = ρ Σ A_i L_i. The connection steel mass is m_s = 2.0 N_n + 0.5 · 2 N_m, with N_n nodes and N_m members. The grout mass is m_m = Σ_i 2 ρ_m (π/4)(D_i − 2 t_i)² (2.5 D_i), with ρ_m = 2100 kg/m³ (assumed density of non-shrink grout [REF NEEDED]), that is, a grout column of length 2.5 D_i in the bore at each end of member i. The factor 2.5 and the hardware masses are assumptions.
+
+| Factor | Value [kg CO₂e/kg] | Basis |
+|---|---|---|
+| Bamboo culm EC_b | 0.30 (range 0.09–1.23) | derived in `EC_BAMBOO_METHOD.md`: production 0.092 plus 300 km road transport 0.21. The production lower bound uses data for laminated bamboo panels and is an assumption. The production term uses the ICE value for softwood without carbon storage (0.2626) as its upper bound. The upper value 1.23 is derived from Zea Escamilla and Habert (2014) and is an import-to-Europe scenario that does not suit local use [LICENSE CHECK for the ICE term] |
+| Connection steel EC_s | 2.38 | ICE Educational V5.0 "Steel, Plate" [LICENSE CHECK] |
+| Grout EC_m | 0.18 | ICE Educational V5.0 mortar 1:3, used as a proxy for non-shrink grout [LICENSE CHECK] |
+| Steel tube (steel reference only) | 2.51 | ICE Educational V5.0 "Steel, welded pipe" [LICENSE CHECK] |
+
+**Table 5.** Emission factors. [LICENSE CHECK: the terms of use of ICE Educational V5.0 exclude research use; the source of the steel and grout factors has to be confirmed before submission.]
+
+The sensitivity of the joint share (steel plus grout) was evaluated for the lightest designs by changing one parameter at a time: L_inj/D from 1.5 to 3.5, EC_s from 1.2 to 3.0 kg CO₂e/kg and EC_b from 0.09 to 1.23 kg CO₂e/kg. A combined case applies L_inj/D = 1.5, EC_s = 1.2, EC_b = 0.47 and EC_m = 0.12 together.
+
+## 2.9 Material cost
+
+Only material cost is considered. Labour, erection and life-cycle costs are not included, for bamboo and for steel. The price of bamboo per metre is taken at a reference culm diameter and scaled to the section diameter with (D/D_ref)^α for α = 1.5, 2, 2.5 and 3. Connection steel is priced at the steel material price, and grout at the grout price. The steel reference is priced with the same steel material price for tubes and connection steel.
+
+| Scenario | Steel material [USD/kg] | Grout [USD/kg] | Bamboo at reference diameter [USD/m] | Reference diameter [mm] |
+|---|---|---|---|---|
+| Indonesia 2024 (Jateng HSD) | 1.141 | 0.5388 | 0.2304 | 70 |
+| India 2023 (CPWD DSR) | 0.7222 | 0.339 | 0.1459 | 70 |
+| Turkiye 2026 (CSB, August) | 0.6894 | 0.3246 | 0.1392 | 70 |
+| Colombia 2026 (Guadua, D_ref assumed) | 0.9315 | 0.4389 | 1.583 | 120 |
+
+**Table 6.** Price inputs in USD. The Indonesian prices of bamboo, steel and grout come from one document (Jawa Tengah HSD 2024) and are means over four regencies; the bamboo price is for culms of 6–8 cm diameter and 6 m length. The Jateng HSD and CPWD DSR prices were read from scanned pages [DATA CHECK: visual verification against the pages is not recorded]. The Indian steel and grout prices come from CPWD DSR 2023, where the steel price is the base price of structural steel sections and is applied to tubes, bolts and connection steel; the Indian bamboo price is derived from the Indonesian ratio of bamboo to steel price. The Türkiye steel price is derived from the erected-steel price of ÇŞB (August 2026) with the Indian ratio of erected to material price; its grout and bamboo prices are derived from ratios. The Colombian bamboo price is a 6 m Guadua unit price of 38 500 COP from a supplier web page (2026); the diameter is not stated and D_ref = 120 mm is assumed; its steel and grout prices are the mean of the Indonesian and Indian values. Exchange rates: 82.60 INR (2023), 15 855 IDR (2024) and 47.4925 TRY (mean of two TCMB quotes of 3 August 2026) per USD; 4 053 COP (2025) per USD. The INR, IDR and COP rates are annual averages [DATA CHECK: source files of the rates].
+
+Because the bamboo prices of three scenarios are derived from the Indonesian prices, the four scenarios are not independent.
+
+## 2.10 Steel reference
+
+Each dome and the 354-member reference dome were also sized in steel with the same geometry, load patterns, combinations and displacement limit. The steel members are circular hollow sections from a catalogue of 37 AISC pipe sections, with F_y = 248.2 MPa and E = 205 GPa. Tension is limited to 0.6 F_y and compression to the AISC ASD 1989 allowable stress [REF NEEDED: AISC ASD 1989]. The slenderness limits are 200 in compression and 300 in tension. No joint capacity check is made for steel. The steel connection hardware uses the same masses per node and per member end as the bamboo model, without grout. The steel structures were optimized with ABC (population 20, NFE = 1000 N_g, seeds 1001–1030), 30 runs per structure and 120 runs in total.
+
+## 2.11 Weight–carbon relation
+
+The stored genes of every evaluation of the 270 runs were used to examine the relation between weight and carbon. For all feasible evaluations (P = 0) the weight and the carbon were recomputed from the gene with the current emission factors. The Pearson correlation was computed per dome. The non-dominated subset of the visited feasible designs was extracted, and the carbon of the lightest design was compared with the lowest carbon found. The evaluations are the points visited by a single-objective search. They are not a random sample and not the front of a multi-objective search.
+
+## Supplementary tables
+
+| Section | D [mm] | t [mm] |
+|---|---|---|
+| 1 | 80 | 6 |
+| 2 | 80 | 9 |
+| 3 | 80 | 12 |
+| 4 | 90 | 7 |
+| 5 | 90 | 10 |
+| 6 | 90 | 14 |
+| 7 | 100 | 7 |
+| 8 | 100 | 10 |
+| 9 | 100 | 14 |
+| 10 | 110 | 8 |
+| 11 | 110 | 11 |
+| 12 | 110 | 15 |
+| 13 | 120 | 8 |
+| 14 | 120 | 12 |
+| 15 | 120 | 16 |
+| 16 | 130 | 9 |
+| 17 | 130 | 13 |
+| 18 | 130 | 18 |
+| 19 | 140 | 10 |
+| 20 | 140 | 15 |
+| 21 | 140 | 20 |
+| 22 | 160 | 10 |
+| 23 | 160 | 15 |
+| 24 | 160 | 22 |
+
+**Table S1.** The 24 hollow circular sections of the catalogue.

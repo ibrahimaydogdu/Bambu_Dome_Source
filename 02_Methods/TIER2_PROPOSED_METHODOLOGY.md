@@ -38,7 +38,7 @@ $$\text{Denklem (11):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}}(\mathbf{X}) \
 Sabit düğüm kütleli basitleştirilmiş modelde $f_2$ ile $f_1$ tam doğrusaldır ($\text{corr} = 1.000$). Kesite bağlı harç ve bağlantı modelinde ise uygun örneklerde kütle ile karbon arasındaki korelasyon $r = 0.91 - 0.98$ ve $R^2 = 0.81 - 0.97$ olarak ölçülmektedir. Bu durum iki amaç arasında **ampirik bir yakın-doğrusallık (quasi-collinearity)** olduğunu gösterir; analitik bir türev özdeşliği değildir. Bu yüksek korelasyon nedeniyle çok-amaçlı optimizasyon (NSGA-II, MOABC vb.) Pareto cephesini tek bir noktaya veya son derece dar bir aralığa çöktürür.
 
 ### Bağlantı Karbonunun Parametrik Duyarlılığı:
-Temel senaryoda hibrit bağlantıların (çelik göbek/saplama + harç dolgu) toplam gömülü karbondaki payı %74.1–%82.1 (yalnızca çelik %39.0–%57.3) seviyesindedir. En elverişsiz parametre kombinasyonunda bu pay ribbed40'ta %57.7'ye, geodesic16'da %53.9'a, kiewitt32'de %45.3'e düşmektedir (`LCA_SENSITIVITY_REPORT.md`). Bu nedenle "Dekarbonizasyon Paradoksu" kesin bir yasa değil, envanter sınırlarına ve bağlantı detaylandırmasına duyarlı parametrik bir araştırma konusudur.
+Temel senaryoda hibrit bağlantıların (çelik göbek/saplama + harç dolgu) toplam gömülü karbondaki payı %74.1–%82.1 (yalnızca çelik %39.0–%57.3) seviyesindedir. Birleşik elverişsiz parametre kombinasyonunda bu pay ribbed40'ta %57.7'ye, geodesic16'da %53.9'a, kiewitt32'de %45.3'e düşmektedir (`LCA_SENSITIVITY_REPORT.md`). Bu nedenle "Dekarbonizasyon Paradoksu" kesin bir yasa değil, envanter sınırlarına ve bağlantı detaylandırmasına duyarlı parametrik bir araştırma konusudur.
 
 ---
 

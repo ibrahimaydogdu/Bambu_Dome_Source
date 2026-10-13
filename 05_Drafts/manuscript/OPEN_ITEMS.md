@@ -1,52 +1,68 @@
-# Open Items Register (OPEN_ITEMS.md)
+# Open items
 
-This document tracks all placeholders, required empirical parameters (`[DATA NEEDED]`), citations requiring formal external verification (`[REF NEEDED]`), and sources requiring bibliographic check (`[REF CHECK]`) across the draft manuscript.
+## Decisions for the authors
 
----
+1. **ICE Educational V5.0.** The "Please Read First" document of the database states that it may not be used "in research or any carbon calculations, other than for the purposes of teaching or learning the subject of embodied carbon". The emission factors for connection steel (2.38), steel tube (2.51) and grout (0.18 kg CO₂e/kg) come from this database. The base value of the culm factor EC_b (0.30) and its lower bound (0.09) also depend on it, through the ICE value for softwood without carbon storage (0.2626 kg CO₂e/kg) used as the upper production bound in `EC_BAMBOO_METHOD.md`. A source that permits research use has to be chosen, or permission obtained, before submission. Changing the factors changes all carbon results.
+2. **Weight–carbon relation.** The project documents (AGENTS.md rule 1, README, MEMORY) state a near-linear relation with R² = 0.81–0.97. Recomputed from all feasible evaluations with the current emission factors, the values are R² = 0.804 (Geodesic), 0.524 (Kiewitt) and 0.734 (Ribbed) (`04_Results/WEIGHT_CARBON_TRADEOFF.md`). The manuscript reports the recomputed values. The statement that no trade-off exists should be reworded in the project documents.
+3. **Title and span wording.** The three domes have spans of 16, 32 and 40 m. Earlier project documents described all three as 40 m domes.
+4. **Price scenarios.** The draft shows all four scenarios with their derivation. Three of them derive bamboo prices from the Indonesian prices. The authors may present the Indonesian scenario as the main case and the others as sensitivity cases.
+5. **Population sizes.** The campaign used population sizes of 20, 40 and 40 for ABC, ACO and DO. The tuning study found other best sizes for some pairs of algorithm and dome. The basis of the campaign values has to be stated.
 
-## 1. Data Placeholders (`[DATA NEEDED]`)
+## Data needed from the authors
 
-The following numerical values represent minor secondary or derived parameters that were not directly tabulated in the primary summary tables and must be extracted from raw run files prior to journal submission:
+- Verbal definition of the design groups of Ribbed and Kiewitt (Section 2.1).
+- Basis for the 24 (D, t) pairs of the catalogue (Section 2.2).
+- Source of the load values and of the 354-member reference dome (Section 2.3, 2.1).
+- Record of the IStructE joint calculation (3–5 kN per bolt) (Sections 2.5, 4.6).
+- Parameter values of the dandelion optimizer (Section 2.6).
+- Record of the check of the steel model against the literature (135–136 kN against 151.1–155.8 kN) (Section 3.6).
+- Source file of the COP exchange rate (Section 2.9).
+- Colombian Guadua price: diameter of the 6 m unit (38 500 COP), and the source of the Turkish bamboo price table mentioned in `MEMORY.md`.
+- Archive of the raw campaign records (about 135 MB).
 
-| Location | Tag | Description | Current Estimated Value |
-|---|---|---|---|
-| `03_results.md:3.2` | `[DATA NEEDED: max force in geodesic]` | Maximum axial force in `geodesic16` (joint DCR = 0.280) | $\approx 13.80\text{ kN}$ ($0.280 \times 49.3\text{ kN}$) |
-| `03_results.md:3.2` | `[DATA NEEDED: max force in kiewitt]` | Maximum axial force in `kiewitt32` (joint DCR = 0.543) | $\approx 26.77\text{ kN}$ ($0.543 \times 49.3\text{ kN}$) |
-| `03_results.md:3.2` | `[DATA NEEDED: absolute deflections]` | Maximum apex vertical deflections under SLS for `geodesic16` and `kiewitt32` | $\approx 16.0\text{ mm}$ and $\approx 16.5\text{ mm}$ ($u/u_{\text{lim}} = 0.060, 0.062$) |
-| `03_results.md:3.3` | `[DATA NEEDED: absolute culm CO2]` | Absolute cradle-to-gate embodied carbon of culm mass across domes | Calculated from Table 7 shares and totals |
-| `03_results.md:3.3` | `[DATA NEEDED: absolute steel CO2]` | Absolute cradle-to-gate embodied carbon of connection steel | Calculated from Table 7 shares and totals |
-| `03_results.md:3.3` | `[DATA NEEDED: absolute mortar CO2]` | Absolute cradle-to-gate embodied carbon of cementitious grout | Calculated from Table 7 shares and totals |
-| `03_results.md:3.5` | `[DATA NEEDED: component weights]` | Exact dead weight breakdown between connector steel and mortar in `ribbed40` | Member: 66.35 kN, Total: 277.22 kN, Grout $\approx 186.6\text{ kN}$ |
-| `04_discussion.md:4.1` | `[DATA NEEDED: culm CO2 ribbed]` | Absolute CO$_2$e of raw culm in `ribbed40` | $2.029\text{ t CO}_2\text{e}$ ($17.892\% \times 11.341\text{ t}$) |
-| `04_discussion.md:4.1` | `[DATA NEEDED: joint CO2 ribbed]` | Absolute CO$_2$e of joint hardware in `ribbed40` | $9.312\text{ t CO}_2\text{e}$ ($82.108\% \times 11.341\text{ t}$) |
-| `04_discussion.md:4.2` | `[DATA NEEDED: grout weight ribbed]` | Absolute dead weight of mortar infill in `ribbed40` | $\approx 186.6\text{ kN}$ |
-| `04_discussion.md:4.4` | `[DATA NEEDED: alternative bolt size]` | Alternative bolt diameter for short member detailing | e.g., $\varnothing 3/4"$ or custom sleeve |
-| `05_conclusions.md:3` | `[DATA NEEDED: grout weight]` | Absolute dead weight of mortar infill in `ribbed40` | $\approx 186.6\text{ kN}$ |
+## Placeholders in the manuscript text (generated)
 
----
-
-## 2. Unverified References (`[REF NEEDED]`)
-
-The following citations are referenced for historical or comparative context but do not possess primary PDF verifications in `Papers/`. Full bibliographic details and DOIs must be verified before submission:
-
-| Tag | Intended Source | Context / Section |
+| File | Line | Placeholder |
 |---|---|---|
-| `[REF NEEDED: Zhao et al. 2022]` | Zhao, S., Zhang, T., Ma, S., Chen, M. (2022). *Eng. Appl. Artif. Intell.*, 114, 105075. | Dandelion Optimizer algorithm formulation |
-| `[REF NEEDED: Karaboga 2005]` | Karaboga, D. (2005). Technical Report TR06, Erciyes University. | Artificial Bee Colony algorithm formulation |
-| `[REF NEEDED: Dorigo et al. 1996]` | Dorigo, M. et al. (1996). *IEEE Trans. Syst. Man Cybern. B*, 26(1), 29–41. | Ant Colony Optimization formulation |
-| `[REF NEEDED: Saka 1991]` | Saka, M. P. (1991). Discrete sizing of pin-jointed structures. | Ribbed 40-m dome geometry origin |
-| `[REF NEEDED: Hasançebi et al. 2009]` | Hasançebi, O. et al. (2009). *Comput. Struct.*, 87(5–6), 284–302. | 354-member benchmark steel dome |
-| `[REF NEEDED: AISC ASD-89]` | AISC (1989). Specification for Structural Steel Buildings. | 37 steel pipe catalog design standard |
-| `[REF NEEDED: INBAR TR35]` | INBAR (2014). Technical Report No. 35. | Lower-bound harvesting carbon value ($0.0324\text{ kg/kg}$) |
-| `[REF NEEDED: Jawa Tengah HSD 2024]` | Pemerintah Provinsi Jawa Tengah (2024). HSD schedule. | Indonesian regional cost data |
-| `[REF NEEDED: CPWD DSR 2023]` | CPWD (2023). Delhi Schedule of Rates. | Indian regional cost data |
-| `[REF NEEDED: Turkiye CSB 2026]` | T.C. Çevre, Şehircilik ve İklim Değişikliği Bakanlığı (2026). | Turkish regional cost data |
-| `[REF NEEDED: Colombia Guadua 2026]` | Comercializadora de Guadua y Bambú Colombia (2026). Web catalogue. | Colombian Guadua 6 m pricing |
+| 00_title_abstract_highlights.md | 5 | [DECISION NEEDED: title. The domes have spans of 16, 32 and 40 m. The study excludes biogenic carbon and the stages after A3, so it cannot decide whether bamboo is "zero-carbon"; "large-span" and "decarbonization paradox" are the authors' choice of wording.] |
+| 01_introduction.md | 3 | [REF NEEDED] |
+| 01_introduction.md | 9 | [REF NEEDED: metaheuristic sizing optimization of steel domes; reference 354-member dome] |
+| 02_methods.md | 15 | [REF NEEDED: source of the 354-member reference dome] |
+| 02_methods.md | 19 | [DATA NEEDED: verbal description of the Ribbed and Kiewitt group definition] |
+| 02_methods.md | 38 | [REF CHECK: Manual limit b₀ ≤ 0.02] |
+| 02_methods.md | 46 | [DATA NEEDED: basis for the choice of the 24 (D, t) pairs] |
+| 02_methods.md | 50 | [REF NEEDED: source of the dead, snow and wind values] |
+| 02_methods.md | 65 | [REF NEEDED: benchmark] |
+| 02_methods.md | 67 | [REF CHECK: ASCE 7-22 section number] |
+| 02_methods.md | 100 | [DATA NEEDED: record of the IStructE joint calculation] |
+| 02_methods.md | 116 | [REF NEEDED: original references of ABC, ACO and DO] |
+| 02_methods.md | 116 | [DATA NEEDED: DO parameter values] |
+| 02_methods.md | 124 | [REF NEEDED: Friedman, Mann–Whitney, Holm] |
+| 02_methods.md | 124 | [REF NEEDED: Vargha and Delaney] |
+| 02_methods.md | 132 | [REF NEEDED] |
+| 02_methods.md | 136 | [LICENSE CHECK for the ICE term] |
+| 02_methods.md | 137 | [LICENSE CHECK] |
+| 02_methods.md | 138 | [LICENSE CHECK] |
+| 02_methods.md | 139 | [LICENSE CHECK] |
+| 02_methods.md | 141 | [LICENSE CHECK: the terms of use of ICE Educational V5.0 exclude research use; the source of the steel and grout factors has to be confirmed before submission.] |
+| 02_methods.md | 156 | [DATA CHECK: visual verification against the pages is not recorded] |
+| 02_methods.md | 156 | [DATA CHECK: source files of the rates] |
+| 02_methods.md | 162 | [REF NEEDED: AISC ASD 1989] |
+| 03_results.md | 142 | [DATA NEEDED: calculation record of the 135–136 kN check; REF NEEDED: literature values] |
+| 04_discussion.md | 7 | [DATA NEEDED: basis for the population sizes used in the campaign] |
+| 04_discussion.md | 35 | [DATA NEEDED: IStructE joint calculation record] |
+| 04_discussion.md | 43 | [LICENSE CHECK] |
+| 07_references.md | 3 | [REF NEEDED] |
+| 07_references.md | 3 | [REF CHECK] |
+| 07_references.md | 21 | [REF CHECK: year and publisher details] |
+| 07_references.md | 25 | [REF CHECK: full title and publisher] |
+| 07_references.md | 26 | [REF CHECK: title and publisher] |
+| 07_references.md | 27 | [REF CHECK: authors; LICENSE CHECK: terms of use exclude research use] |
+| 07_references.md | 28 | [REF NEEDED: full citation] |
+| 07_references.md | 29 | [REF NEEDED] |
+| 07_references.md | 30 | [REF NEEDED] |
+| 07_references.md | 31 | [REF NEEDED] |
+| 07_references.md | 32 | [REF NEEDED] |
+| 07_references.md | 33 | [REF CHECK: report number, authors, year; file `Evidence/MOSO-Bamboo-products-LCA-TP35.pdf`] |
 
----
-
-## 3. Bibliographic Checks (`[REF CHECK]`)
-
-| Tag | Source | Issue / Verification Required |
-|---|---|---|
-| `[REF CHECK: ICE Database V5.0]` | Circular Ecology, *Embodied Carbon – The Inventory of Carbon and Energy*, Educational V5.0 (June 2026). | Author order is not specified in the "Please Read First" introductory sheet; verify whether institutional author "Circular Ecology" or primary contributors (Jones & Hammond) should be cited. |
+Count: 40
