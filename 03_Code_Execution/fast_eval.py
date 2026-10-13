@@ -8,7 +8,7 @@ Tanimlar (CAMPAIGN_EXECUTION_PLAN.md):
        "section" modu (varsayilan): her cubugun iki ucuna harc enjeksiyonu ve celik sapla
            M_harc  = sum_i 2 * rho_m * pi/4 * (D_i - 2 t_i)^2 * L_inj,  L_inj = k * D_i
            M_celik = N_dugum*m_hub + sum_i 2 * (c_s0 + c_s1 * D_i)
-       "fixed" modu: eski sabit dugum modeli (f2, f1'in dogrusal kopyasi -> Pareto tek nokta)
+       "fixed" modu: eski sabit dugum modeli (f2, f1'in dogrusal kopyasi)
   P  = sum_g max_{i in g} max(DC_i - 1, 0)  +  max(u_max/u_izin - 1, 0)
        DC_i: cekme / basinc(Ylinen) / narinlik (ISO 22156), her yuk durumu zarfinda
        (en buyuk cekme ve en buyuk basinc ayri kontrol edilir)

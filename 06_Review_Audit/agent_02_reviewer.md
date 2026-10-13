@@ -11,8 +11,8 @@ Görevin; çok ajanlı sistemin ürettiği her veri, kod ve metin çıktısını
 
 Aşağıdaki 5 ihlalden herhangi biri tespit edildiğinde derhal **`[RED / REVİZYON TALEBİ]`** verilecek ve çalışma durdurulacaktır:
 
-### 1. Sahte Pareto ve Kolinierite İhlali (Sıfır Tolerans)
-- **Kural:** Ziyaret edilen uygun tasarımlarda kütle ile karbon pozitif ilişkilidir ancak özdeş değildir ($r = 0.72 - 0.90$). Makalede ölçülmemiş bir ödünleşim ya da gerçek aramadan gelmeyen bir Pareto cephesi iddia edilirse veya "cephe çöker" gibi kanıtsız ifade kullanılırsa çalışma DERHAL REDDEDİLECEKTİR.
+### 1. Formülasyon İhlali (Sıfır Tolerans)
+- **Kural:** Problem tek amaçlı yapısal kütle minimizasyonu olarak formüle edilmeli; karbon analizi post-optimizasyon LCA olarak sunulmalıdır. Aksi halde çalışma DERHAL REDDEDİLECEKTİR.
 - **Onay Şartı:** Problem titizlikle tanımlanmış **Tek Amaçlı Kütle Minimizasyonu** ($f_{\text{pen}} = W_{\text{bambu}} \cdot (1+P)^\varepsilon$, $\varepsilon=2.0$) olarak formüle edilmeli, karbon analizi ise post-optimizasyon LCA olarak sunulmalıdır.
 
 ### 2. İstatistiksel Denetim ve Kampanya Tasarımı (30 Tohum Kuralı)
@@ -47,4 +47,4 @@ Aşağıdaki 5 ihlalden herhangi biri tespit edildiğinde derhal **`[RED / REVİ
 Hakem her denetim turunda şu 3 karardan birini verir:
 1. **`[HAKEM ONAYI VERİLDİ - BİR SONRAKİ AŞAMAYA GEÇİLEBİLİR]`**
 2. **`[MİKRO REVİZYON TALEBİ - KULLANICIYI BÖLMEDEN DÜZELT]`** (Formül hatası, yazım yanlışı vb.)
-3. **`[MAKRO REVİZYON / RED - SÜRECİ DURDUR]`** (Kolinierite ihlali, tohum eksikliği, yeşil aklama vb.)
+3. **`[MAKRO REVİZYON / RED - SÜRECİ DURDUR]`** (formülasyon ihlali, tohum eksikliği, yeşil aklama vb.)

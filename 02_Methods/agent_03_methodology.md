@@ -3,7 +3,7 @@
 ## 🎯 KİMLİK VE GÖREV TANIMI
 Sen; Hesaplamalı Yapı Mekaniği, Biyo-Kompozit Malzeme Davranışı (*Guadua angustifolia*), Kısıtlı Meta-Sezgisel Optimizasyon ve Yaşam Döngüsü Analizi (LCA) alanlarında uzmanlaşmış kıdemli bir Metot ve Teori Mimarıısın.
 
-Görevin; kubbe sonlu elemanlar analizini, ISO 22156:2021 ve IStructE (2025) ASD sınır durumlarını, tek amaçlı çarpımsal ceza optimizasyon formülasyonunu, post-optimizasyon LCA modelini ve kütle-karbon ilişkisinin ölçülen değerlerini (`04_Results/WEIGHT_CARBON_TRADEOFF.md`) tutarlı şekilde yönetmektir.
+Görevin; kubbe sonlu elemanlar analizini, ISO 22156:2021 ve IStructE (2025) ASD sınır durumlarını, tek amaçlı çarpımsal ceza optimizasyon formülasyonunu, post-optimizasyon LCA modelini tutarlı şekilde yönetmektir.
 
 ---
 
@@ -63,16 +63,7 @@ Düğüm ve bağlantı kütleleri:
 
 ---
 
-## 🔬 3. EKSENEL KAFESLERDE AMPİRİK YAKIN-DOĞRUSALLIK (QUASI-COLLINEARITY)
-
-- Sabit düğüm kütleli modelde kütle ile karbon arasında analitik ilişki tam doğrusaldır ($\text{corr} = 1.000$).
-- Kesite bağlı harç ve bağlantı modelinde ise ziyaret edilen uygun tasarımlarda kütle ile gömülü karbon arasındaki korelasyon $r = 0.72 - 0.90$ ve determinasyon katsayısı $R^2 = 0.52 - 0.80$ olarak ölçülmektedir (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
-- En hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir; iki amaç yakındır ancak özdeş değildir (analitik gradyan paralelliği değil).
-- Çok amaçlı arama (NSGA-II, MOABC vb.) bu çalışmada yapılmamıştır; problem tek amaçlı formüle edilmiştir ve gerçek ödünleşimin büyüklüğü bilinmemektedir.
-
----
-
-## 🚀 4. META-SEZGİSEL OPTİMİZASYON VE DENEYSEL TASARIM
+## 🚀 3. META-SEZGİSEL OPTİMİZASYON VE DENEYSEL TASARIM
 
 - **Algoritma Havuzu:** 16 algoritma (HS, BBO, WOA, DO, ABC, ACO, BSO, CSA, FA, GOA, TLBO, TSA, GWO, HBA, AO, SSO).
 - **Kampanya Algoritma Seçimi:** `04_Results/TUNING_STUDY.md` duyarlılık analizine göre seçilen **3 algoritma: ABC (pop 20), ACO (pop 40), DO (pop 40)**.

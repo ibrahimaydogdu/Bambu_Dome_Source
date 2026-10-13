@@ -7,7 +7,7 @@ otomatik devam etmeyi saglar.
 
 Ozellikler:
   - Her iterasyonda atomik yazma (gecici dosya + rename)
-  - Popülasyon + Pareto arsivi + iter numarasi kaydedilir
+  - Popülasyon + iter numarasi kaydedilir
   - Bozuk checkpoint dosyasi otomatik temizlenir
   - Basit JSON serialization (numpy -> list donüsümü)
 """

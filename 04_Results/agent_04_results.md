@@ -49,12 +49,3 @@ Her topoloji için 3 seçilmiş algoritmanın 30 tohumluk performans tablosu şa
 - **Vurgu:** Hibrit bağlantı bileşenlerinin toplam karbon içerisindeki orantısal ağırlığı ve parametrik hassasiyeti. Yüzdeler `LCA_SENSITIVITY_REPORT.md`'den alınır (temel %74.1–%82.1; birleşik elverişsiz uç %45.3–%57.7).
 
 ---
-
-### 📉 Şekil 4: Kütle vs. Karbon Dağılım Grafiği (Ampirik Yakın-Doğrusallık)
-- **Format:** Saçılma grafiği (Scatter plot) ve doğrusal regresyon analizi.
-- **İçerik:**
-  - X ekseni: Yapısal Ağırlık $W$ [kN].
-  - Y ekseni: Toplam Gömülü Karbon $ECO_2e$ [kg CO₂e].
-  - Optimizasyon boyunca değerlendirilen uygun çözümlerin dağılımı.
-  - Ziyaret edilen uygun tasarımlarda korelasyon ve determinasyon katsayısı: $r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$ (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
-  - **Açıklama:** Amaçlar yakındır ancak özdeş değildir; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir. Gerçek bir çok amaçlı cephe bu çalışmada hesaplanmamıştır.

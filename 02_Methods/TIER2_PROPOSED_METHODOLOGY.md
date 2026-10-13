@@ -26,7 +26,7 @@ $$\text{tasarım uzayı:} \quad \mathbf{X} = [x_1, x_2, \dots, x_{N_g}]^T \in \m
 
 ## 2. Post-Optimizasyon Beşikten-Kapıya (A1–A3) LCA ve Bağlantı Karbonu Duyarlılığı
 
-Optimizasyon sürecinde yapay çok-amaçlı Pareto kurguları yerine tek amaçlı fiziksel ağırlık minimizasyonu yürütülür; elde edilen optimum ve uygulanabilir tasarımlar üzerinde Beşikten-Kapıya (Modül A1–A3) karbon analizi optimizasyon sonrası (post-processing) aşamasında hesaplanır:
+Optimizasyon sürecinde tek amaçlı fiziksel ağırlık minimizasyonu yürütülür; elde edilen optimum ve uygulanabilir tasarımlar üzerinde Beşikten-Kapıya (Modül A1–A3) karbon analizi optimizasyon sonrası (post-processing) aşamasında hesaplanır:
 
 $$\text{Denklem (11):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}}(\mathbf{X}) \cdot EC_b + m_{\text{steel}}(\mathbf{X}) \cdot EC_s + m_{\text{mortar}}(\mathbf{X}) \cdot EC_m$$
 
@@ -35,7 +35,7 @@ $$\text{Denklem (11):} \quad ECO_2e(\mathbf{X}) = m_{\text{bambu}}(\mathbf{X}) \
 - $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ (ICE V5.0 harç 1:3; non-shrink grout proxy varsayımı)
 
 ### Eksenel Kafeslerde Ampirik Yakın-Doğrusallık ve Çok-Amaçlı Çöküş:
-Sabit düğüm kütleli basitleştirilmiş modelde $f_2$ ile $f_1$ tam doğrusaldır ($\text{corr} = 1.000$). Kesite bağlı harç ve bağlantı modelinde ise ziyaret edilen uygun tasarımlarda kütle ile karbon arasındaki korelasyon $r = 0.72 - 0.90$ ve $R^2 = 0.52 - 0.80$ olarak ölçülmektedir (`04_Results/WEIGHT_CARBON_TRADEOFF.md`). En hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir; amaçlar yakındır ancak özdeş değildir. Çok amaçlı arama bu çalışmada yapılmamıştır.
+Sabit düğüm kütleli basitleştirilmiş modelde $f_2$ ile $f_1$ tam doğrusaldır ($\text{corr} = 1.000$).
 
 ### Bağlantı Karbonunun Parametrik Duyarlılığı:
 Temel senaryoda hibrit bağlantıların (çelik göbek/saplama + harç dolgu) toplam gömülü karbondaki payı %74.1–%82.1 (yalnızca çelik %39.0–%57.3) seviyesindedir. Birleşik elverişsiz parametre kombinasyonunda bu pay ribbed40'ta %57.7'ye, geodesic16'da %53.9'a, kiewitt32'de %45.3'e düşmektedir (`LCA_SENSITIVITY_REPORT.md`). Bu nedenle "Dekarbonizasyon Paradoksu" kesin bir yasa değil, envanter sınırlarına ve bağlantı detaylandırmasına duyarlı parametrik bir araştırma konusudur.

@@ -22,12 +22,7 @@ Görevin; optimizasyon ve LCA bulgularını yüzeysel sayı tekrarlarından arı
 - **Eleştiri:** Bağlantı detaylarını ve harç dolgusunu model dışı bırakarak yapılan hesaplamalar metodolojik olarak eksiktir ve yeşil aklamaya açıktır.
 - **Bilimsel Sorumluluk:** Bu çalışma, A1–A3 beşikten-kapıya sınırlarında bağlantı bileşenlerini hesaba katarak biyo-yapı literatürüne şeffaf bir gerçekçilik standardı getirmektedir. Bununla birlikte, kullanılan emisyon katsayılarının ($EC_b = 0.30\text{ kg CO}_2\text{e/kg}$ türetilmiş baz değer [aralık 0.09–1.23], $EC_s = 2.38\text{ kg CO}_2\text{e/kg}$ çelik levha ICE V5.0, $EC_{s,\text{pipe}} = 2.51\text{ kg CO}_2\text{e/kg}$ yalnız çelik referans kubbe (T5–T8), $EC_m = 0.18\text{ kg CO}_2\text{e/kg}$ harç vekili ICE V5.0) literatür ve veritabanı kabulleri olduğu açıkça belirtilir.
 
-### 3. Eksenel Kafeslerde Kütle-Karbon Yakın-Doğrusallığı (Quasi-Collinearity)
-- Tartışma bölümü, kafes optimizasyonu literatüründeki yaygın bir yanılsamaya dikkat çeker:
-  - Sabit düğümlü modellerde kütle ile karbon tam doğrusaldır ($R^2 = 1.0$). Kesite bağlı bağlantı modelinde ise ziyaret edilen uygun tasarımlarda $r = 0.72 - 0.90$ ($R^2 = 0.52 - 0.80$) ölçülür (`04_Results/WEIGHT_CARBON_TRADEOFF.md`).
-  - En hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir; amaçlar yakındır ancak özdeş değildir. Tek amaçlı ağırlık minimizasyonu bir kapsam seçimidir ve çok amaçlı arama yapılmamıştır.
-
-### 4. Dürüst Sınırlar ve Gelecek Çalışmalar (Future Directions)
+### 3. Dürüst Sınırlar ve Gelecek Çalışmalar (Future Directions)
 - **Çalışmanın Kısıtları:**
   - Analizler ideal mafsallı düğüm kabulü altında yapılmıştır; gerçekte harçlı mafsallar yarı-rijit (semi-rigid) dönme rijitliğine sahip olabilir.
   - $n_{\text{bolt}} = 4$ cıvata kabulü (kullanıcı kararı, $F_{j,Rd} = 49.3\text{ kN}$ NSR-10 Tabla G.12.11-2/3 izin verilen yük) ve ribbed40 geometrisinde 12 kısa elemanın (%0.82) 3 cıvatayı boyuna sığdıramama geometrik detaylandırma kısıtı (T10, joint_bolt_check.py); cıvata sayısı ve aralıkları için tam ölçekli prototip testleri gereklidir.

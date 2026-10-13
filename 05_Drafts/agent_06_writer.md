@@ -27,7 +27,7 @@ Görevin; tüm bölümlerin verilerini, mekanik formüllerini ve LCA bulguların
 Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bulgusunu net bir şekilde yansıtmalıdır. Önerilen 4 güçlü başlık seçeneği:
 
 1. **Seçenek A (Soru Biçimli - Yüksek Etkili & Atıf Çekici - Önerilen):**  
-   *"Is Bamboo Truly Zero-Carbon? Single-Objective Structural Optimization and the Decarbonization Paradox of Large-Span Spatial Domes"*
+   *"Sizing Optimization of Guadua Bamboo Space Domes and the Share of Connection Steel and Grout in Embodied Carbon"*
 2. **Seçenek B (Mühendislik & Mekanik Odaklı):**  
    *"Structural Sizing Optimization and Embodied Carbon Dynamics of 16–40 m Bamboo Space Domes under ISO 22156 ASD Provisions: The Contribution of Joint Hardware"*
 3. **Seçenek C (Dekarbonizasyon ve Kısıt Odaklı):**  
@@ -43,8 +43,7 @@ Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bul
 2. **1. Introduction**
    - 1.1. Motivation: Decarbonization of large-span roofs and structural bamboo
    - 1.2. Mechanical challenges: Slenderness, Ylinen buckling, and ISO 22156 / IStructE 2025 ASD provisions
-   - 1.3. Methodological critique: Objective quasi-collinearity in axial spatial trusses
-   - 1.4. The decarbonization paradox hypothesis and study objectives
+   - 1.3. The decarbonization paradox hypothesis and study objectives
 3. **2. Materials and Design Standards**
    - 2.1. Guadua angustifolia culm morphology and discrete 24-section catalog (Table 2)
    - 2.2. ISO 22156:2021 & IStructE 2025 ASD design equations ($C_{DF}$, $FS=2$, $C_R=0.90$, Ylinen $c=0.8$, deflection $span/150$)
@@ -54,13 +53,11 @@ Makalenin başlığı tek amaçlı yapısal optimizasyonu ve dekarbonizasyon bul
    - 3.2. Direct stiffness solver and ASCE 7-22 ASD unfactored load combinations
    - 3.3. Single-objective formulation with multiplicative constraint penalty ($f_{\text{pen}} = W_{\text{bambu}} (1+P)^\varepsilon$, $\varepsilon=2$)
    - 3.4. 3 metaheuristic algorithms selection (ABC, ACO, DO) and 30-seed statistical protocol
-   - 3.5. Relation between mass and embodied carbon among the visited feasible designs (WEIGHT_CARBON_TRADEOFF.md)
-   - 3.6. Cradle-to-gate (A1–A3) embodied carbon model and parameter assumptions
+   - 3.5. Cradle-to-gate (A1–A3) embodied carbon model and parameter assumptions
 5. **4. Numerical Results and Statistical Verification**
    - 4.1. Sizing optimization results across 30 seeds (Table 1: Min, Mean, Median, Max, Std, Feasibility, p-values)
    - 4.2. Convergence performance and computational efficiency (NFE budget: 43k / 22k / 23k)
    - 4.3. Structural feasibility and ASD demand-capacity ratio distribution ($DCR \le 1.0$)
-   - 4.4. Empirical verification of quasi-collinearity and single-point Pareto collapse
 6. **5. Deep Discussion: The Decarbonization Paradox**
    - 5.1. Component-wise embodied carbon breakdown and parametric sensitivity (baseline joint share 74.1–82.1%; 45.3–57.7% at the the combined unfavourable case; LCA_SENSITIVITY_REPORT.md)
    - 5.2. Debunking the zero-carbon bamboo myth (Engineering reality vs. greenwashing)

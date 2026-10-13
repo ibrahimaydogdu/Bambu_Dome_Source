@@ -20,7 +20,6 @@ Bu belge; **Bambu Uzay Kafes Kubbelerin Tek Amaçlı Yapısal Optimizasyonu ve D
 - **Temel Sorumluluk:**
   - Her alt ajanın ürettiği çıktıyı "Red-Teaming" mantığıyla inceler.
   - **Kritik Denetim Odakları:**
-    1. **Sahte Pareto Yasağı:** Eksenel kafeslerde kütle ile karbonun pozitif ilişkili ama özdeş olmadığı ($r = 0.72 - 0.90$) ölçümünü gözetir; ölçülmemiş ödünleşim iddialarını ve kanıtsız çok amaçlılık kurgularını derhal reddeder.
     2. **ISO 22156 / IStructE (2025) ASD Uyumu:** ASD izinli gerilme yaklaşımı ($X_{\text{izin}} = X_k \cdot C_R \cdot C_{DF} \cdot C_T / FS$), Ylinen kararlılığı ($c = 0.8$, $C_{\text{bow}} = 1 - b_0/0.02$, $b_0 = 0.01$ varsayım, $K = 1.0$), narinlik sınırı ($\lambda \le 150$, çekme ve basınca uygulanır), bağlantı kapasitesi ($F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$, NSR-10 Tabla G.12.11-2/3 izinli yük, $n_{\text{bolt}} = 4$ kullanıcı kararı) ve SLS deplasman ($u \le \text{span}/150$) sınır durumlarının eksiksizliği.
     3. **İstatistiksel Güvenilirlik:** 30 bağımsız tohum (1001–1030), Min/Median/Mean/Max/Std, Wilcoxon rank-sum (Mann-Whitney U, iki yönlü, Holm düzeltmeli, A12 etki büyüklüğü) ve tohum bloklu Friedman sıra testleri.
     4. **LCA ve Duyarlılık Denetimi:** Düğüm noktası çelik göbeği ve harç dolgusu Beşikten-Kapıya (A1-A3) karbon bütçesine dahil edilerek parametrik duyarlılık ($L_{\text{inj}}/D$, $EC_{\text{steel}}$, $EC_{\text{bamboo}}$) yapılmadan onay vermez.
@@ -29,13 +28,13 @@ Bu belge; **Bambu Uzay Kafes Kubbelerin Tek Amaçlı Yapısal Optimizasyonu ve D
 ### 3. Literature & Gap Analyst (Literatür & Boşluk Analisti)
 - **Temel Sorumluluk:**
   - Bambu uzay kafes/kubbe sistemleri, biyo-kompozit yapıların yapısal davranışı ve yaşam döngüsü karbon analizlerini sentezler.
-  - 40 m açıklıkta biyo-yapısal benchmark eksikliğini (orijinal 354 elemanlı modelin 2.9–5.97 m çubuk boyları bambu için uygun değildir; freq=2 ile 1464 elemanlı biyo-yapısal model türetilmiştir), ISO 22156 / IStructE 2025 ASD otomasyon ihtiyacını ve literatürdeki sahte Pareto yanılgısını ortaya koyar.
+  - 40 m açıklıkta biyo-yapısal benchmark eksikliğini (orijinal 354 elemanlı modelin 2.9–5.97 m çubuk boyları bambu için uygun değildir; freq=2 ile 1464 elemanlı biyo-yapısal model türetilmiştir), ISO 22156 / IStructE 2025 ASD otomasyon ihtiyacını ortaya koyar.
   - "Dekarbonizasyon Paradoksu" hipotezini literatür taramasının merkezine oturtur.
 
 ### 4. Method & Theory Architect (Metodoloji & Teori Mimarı)
 - **Temel Sorumluluk:**
   - *Katman 1 (Destekleyici Yöntemler):* 3D kubbe sonlu elemanlar modelleme prensipleri, ASCE 7-22 §2.4.1 ASD yük kombinasyonları ve ISO 22156 / IStructE (2025) ASD tasarım denklemleri.
-  - *Katman 2 (Önerilen Özgün Yöntem):* Çarpımsal ceza fonksiyonlu tek amaçlı yapısal ağırlık minimizasyonu ($f_{\text{pen}}(\mathbf{X}) = W_{\text{bambu}} \cdot (1+P)^\varepsilon$), tuning çalışmasında belirlenen 3 meta-sezgisel optimizasyon algoritması (ABC, ACO, DO), 24 kesitli ayrık Guadua kataloğu, A1-A3 LCA modeli ve kütle-karbon ilişkisinin ölçümü ($r = 0.72 - 0.90$).
+  - *Katman 2 (Önerilen Özgün Yöntem):* Çarpımsal ceza fonksiyonlu tek amaçlı yapısal ağırlık minimizasyonu ($f_{\text{pen}}(\mathbf{X}) = W_{\text{bambu}} \cdot (1+P)^\varepsilon$), tuning çalışmasında belirlenen 3 meta-sezgisel optimizasyon algoritması (ABC, ACO, DO), 24 kesitli ayrık Guadua kataloğu, A1-A3 LCA modeli.
 
 ### 5. Developer & Execution Agent (Kod & Simülasyon Uzmanı)
 - **Temel Sorumluluk:**
@@ -47,7 +46,7 @@ Bu belge; **Bambu Uzay Kafes Kubbelerin Tek Amaçlı Yapısal Optimizasyonu ve D
 - **Temel Sorumluluk:**
   - 30 koşuluk istatistiksel sonuçları (Min, Median, Mean, Max, Std, Wilcoxon rank-sum $p$-değerleri, Friedman sıra analizi) ve yakınsama grafiklerini üretir.
   - Optimum kubbede eleman DCR kapasite dağılımını haritalandırır.
-  - Toplam karbon bileşen dağılımını (Bambu, Çelik, Harç; temel senaryoda bağlantı payı %74.1–82.1, birleşik elverişsiz uçta %45.3–57.7: `LCA_SENSITIVITY_REPORT.md`) ve kütle-karbon korelasyonunu ($r = 0.72 - 0.90$, `WEIGHT_CARBON_TRADEOFF.md`) tablolaştırır.
+  - Toplam karbon bileşen dağılımını (Bambu, Çelik, Harç; temel senaryoda bağlantı payı %74.1–82.1, birleşik elverişsiz uçta %45.3–57.7: `LCA_SENSITIVITY_REPORT.md`) tablolaştırır.
   - Geniş açıklıklı biyo-yapılarda bağlantı elemanlarının çevresel yükünü ve parametrik duyarlılık sınırlarını derinlemesine tartışır.
 
 ### 7. Academic Stylist & Formatter (Akademik Yazıcı & Dosya Derleyici)

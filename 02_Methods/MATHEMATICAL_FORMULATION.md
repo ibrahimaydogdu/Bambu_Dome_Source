@@ -16,7 +16,7 @@ Burada $x_i$, 24 elemanlı Guadua angustifolia culm kataloğundaki dış çap $D
 
 ## 2. Amaç Fonksiyonu ve Çarpımsal Ceza Modeli
 
-Eksenel kafes sistemlerde hem bambu karkas kütlesi hem de düğüm bağlantı hacimleri (çelik mafsal ve uç harç tıkacı) kesit boyutlarının ($D, t$) monoton artan fonksiyonlarıdır. Ziyaret edilen uygun tasarımlarda kütle ile gömülü karbon pozitif ilişkilidir ($r = 0.72 - 0.90$) ancak özdeş değildir (en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir). Çok amaçlı arama kapsam dışı bırakılmış ve problem, katı tek amaçlı yapısal ağırlık minimizasyonu olarak formüle edilmiştir:
+Eksenel kafes sistemlerde hem bambu karkas kütlesi hem de düğüm bağlantı hacimleri (çelik mafsal ve uç harç tıkacı) kesit boyutlarının ($D, t$) monoton artan fonksiyonlarıdır. Problem, katı tek amaçlı yapısal ağırlık minimizasyonu olarak formüle edilmiştir:
 
 $$\text{Denklem (2):} \quad \min_{\mathbf{X}} f_{\text{pen}}(\mathbf{X}) = W_{\text{bambu}}(\mathbf{X}) \cdot \left(1 + P(\mathbf{X})\right)^\varepsilon$$
 

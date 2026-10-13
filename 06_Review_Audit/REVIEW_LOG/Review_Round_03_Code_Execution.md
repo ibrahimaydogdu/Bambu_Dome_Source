@@ -51,13 +51,7 @@ Aşağıdaki cetvel, `06_Review_Audit/AUDIT_CHECKLIST.md` gereğince her bir kri
 
 ---
 
-## ⚠️ 3. KÜTLE VE GÖMÜLÜ KARBON İLİŞKİSİ (AMPİRİK YAKIN-DOĞRUSALLIK)
-
-Kesite bağlı bağlantı modelinde kütle ile gömülü karbon arasındaki korelasyon $r = 0.91 - 0.98$ ve determinasyon katsayısı $R^2 = 0.81 - 0.97$ olarak ölçülmektedir. Bu durum analitik bir türev paralelliği değil, ampirik bir yakın-doğrusallıktır (quasi-collinearity). Bu yakın-doğrusallık nedeniyle Pareto cephesi tek bir noktaya / dar aralığa çökmekte ve tek amaçlı formülasyonu doğrulamaktadır.
-
----
-
-## 🏁 4. NİHAİ HAKEM HÜKMÜ
+## 🏁 3. NİHAİ HAKEM HÜKMÜ
 
 1. `CAMPAIGN_EXECUTION_PLAN.md` ve ilgili belgeler yeni ASD mekaniği, 3 algoritmalı tuning tasarımı ve doğrulanmış atıflarla tam uyumludur.
 2. **Nihai Karar:** **`[HAKEM ONAYI VERİLDİ - ASD KAMPANYA MİMARİSİNE VE KOD ENTEGRASYONUNA HAZIR]`**.

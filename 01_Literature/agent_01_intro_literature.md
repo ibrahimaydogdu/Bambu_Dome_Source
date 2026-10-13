@@ -10,10 +10,9 @@ Görevin; makalenin teorik temelini, araştırma boşluğunu (Research Gap), hip
 ## 🔬 TEMEL BİLİMSEL KURGU VE HİPOTEZ MİMARİSİ
 
 ### 1. Araştırma Boşluğu (Research Gap)
-Mevcut akademik literatür incelendiğinde üç temel darboğaz tespit edilmiştir:
+Mevcut akademik literatür incelendiğinde iki temel darboğaz tespit edilmiştir:
 1. **Ölçek Kısıtı:** Yapısal bambu araştırmaları ezici çoğunlukla 6–15 metrelik küçük pavyonlar veya tekil eleman deneyleri ile sınırlıdır. 40 metrelik endüstriyel açıklıkta biyo-yapısal kafes davranışını inceleyen kapsamlı bir çalışma bulunmamaktadır. Orijinal Saka (1991) çelik benchmarkı 2.9–5.97 m çubuk boylarıyla bambu narinliğini aştığından, $freq=2$ yoğunlaştırmasıyla 1464 elemanlı (0.76–3.08 m boylar) biyo-yapısal adaptasyon zorunludur.
 2. **Standart Otomasyonu Eksikliği:** Modern uluslararası bambu tasarım standardı olan **ISO 22156:2021** ve yeni **IStructE (2025)** tasarım el kitabının gerektirdiği İzin Verilen Gerilme Tasarımı (ASD: $X_{\text{izin}} = X_k \cdot C_R \cdot C_{DF} \cdot C_T / FS$), Ylinen sütun kararlılığı ($c = 0.8$, $C_{\text{bow}} = 1 - b_0/0.02$, $b_0 = 0.01$ varsayım, $K = 1.0$), narinlik sınırı ($\lambda \le 150$, çekme ve basınca uygulanır), bağlantı kapasitesi ($F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$, NSR-10 Tabla G.12.11-2/3 izinli yük ve $n_{\text{bolt}}=4$ kullanıcı kararı) ve servis deplasman sınırları ($\text{span}/150$) geniş açıklıklı uzay kafes optimizasyon algoritmalarına otomatik olarak entegre edilmemiştir.
-3. **Kütle ve Karbonun Birlikte Ele Alınması:** Literatürdeki çok amaçlı çalışmalar için tarama yapılmamıştır [REF NEEDED]. Bu çalışmada ziyaret edilen uygun tasarımlarda kütle ile karbon pozitif ilişkilidir ancak özdeş değildir ($r = 0.72 - 0.90$); çok amaçlı arama kapsam dışıdır.
 
 ### 2. Temel Hipotez Kurgusu: "Dekarbonizasyon Paradoksu" (The Decarbonization Paradox)
 - **Soru:** *"Bambu uzay kafes strüktürler otomatik olarak düşük karbonlu veya karbon-negatif midir?"*
@@ -32,9 +31,7 @@ Ajan, Giriş bölümünü şu 6 paragraflık kesintisiz ve mantıksal zincirle k
    Bambunun lifli anizotropik yapısı, narinlik ve sütun kararlılığı duyarlılığı; 40 metrelik açıklıkta çelik kafes benchmarklarının bambuya uyarlanması durumunda ortaya çıkan geometrik serbest boy ve narinlik ($\lambda \le 150$) kısıtları; $freq=2$ halka sıklaştırması (1464 eleman, 0.76–3.08 m boylar) ihtiyacı.
 3. **Paragraf 3 — ISO 22156:2021 ve IStructE (2025) ASD Tasarım Kodları:**  
    Bambu için güncel ASD tasarım kuralları: $C_{DF}$, $FS$, $C_R$, Ylinen kararlılık parametresi ($c = 0.8$) ve eksenel basınç/çekme kısıtlarının optimizasyon süreçlerindeki etkisi.
-4. **Paragraf 4 — Literatürdeki Metodolojik Sakatlık (Ampirik Yakın-Doğrusallık):**  
-   Kütle ve karbonun ölçülen ilişkisi ($r = 0.72 - 0.90$; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir); tek amaçlı yapısal ağırlık optimizasyonunun kapsam seçimi olduğu ve çok amaçlı aramanın yapılmadığı.
-5. **Paragraf 5 — Dekarbonizasyon Paradoksu ve Bağlantıların Gizli Ağırlığı:**  
+4. **Paragraf 4 — Dekarbonizasyon Paradoksu ve Bağlantıların Gizli Ağırlığı:**  
    Yeşil aklama (greenwashing) tuzakları; bağlantı çeliği ve harç dolgusu ihmal edildiğinde ortaya çıkan yanıltıcı "sıfır karbon" iddiaları; gerçekçi A1–A3 beşikten-kapıya LCA sınırlarının ve parametrik duyarlılığın zorunluluğu.
 6. **Paragraf 6 — Makalenin Amacı ve 4 Özgün Katkısı:**  
    - 40 m açıklıklı ribbed40 modeli ($freq=2$, 1464 eleman); diğer modeller 32 m (kiewitt32) ve 16 m (geodesic16).

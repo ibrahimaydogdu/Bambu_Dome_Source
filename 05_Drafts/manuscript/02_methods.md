@@ -113,9 +113,9 @@ $$P(x) = \sum_{g=1}^{N_g} \max\bigl(DC_g - 1,\,0\bigr) + \max\!\left(\frac{u_{ma
 
 For a feasible design P = 0 and f_pen = W. Carbon is not part of the objective.
 
-Three algorithms were used: the artificial bee colony (ABC), ant colony optimization (ACO) and the dandelion optimizer (DO; Zhao et al., 2022) [REF NEEDED: original references of ABC, ACO and DO]. They were implemented for this study (`metaheuristic_optimizers.py`). The campaign used the default parameters of the implementation. For ABC, the abandonment limit is the population size times N_g. For ACO, α = 1, β = 0.5, the evaporation rate is 0.2 and the elite fraction is 0.2; its heuristic is 1/s for section index s, which favours small sections. [DATA NEEDED: DO parameter values].
+Three algorithms were used: the artificial bee colony (ABC), ant colony optimization (ACO) and the dandelion optimizer (DO; Zhao et al., 2022) [REF NEEDED: original ABC and ACO papers]. The application of these algorithms to steel structures is documented (Aydogdu and Saka, 2012; Aydogdu et al., 2016; Saka and Aydogdu, 2021; Taymuş et al., 2025). They were implemented for this study (`metaheuristic_optimizers.py`). The campaign used the default parameters of the implementation. For ABC, the abandonment limit is the population size times N_g. For ACO, α = 1, β = 0.5, the evaporation rate is 0.2 and the elite fraction is 0.2; its heuristic is 1/s for section index s, which favours small sections. DO has a rising stage, a descending stage and a landing stage with a Lévy-flight step (β = 1.5, scaled by 0.1); a new design replaces the current one only if it is better.
 
-Each run stopped after NFE = 1000 N_g function evaluations: 43 000 (Ribbed), 22 000 (Kiewitt) and 23 000 (Geodesic). The population sizes were 20 for ABC and 40 for ACO and DO. Each algorithm was run with 30 independent seeds (1001–1030) on each dome, giving 270 runs.
+Each run stopped after NFE = 1000 N_g function evaluations: 43 000 (Ribbed), 22 000 (Kiewitt) and 23 000 (Geodesic). The population sizes were 20 for ABC and 40 for ACO and DO, that is, 0.5–1.8 times the number of design variables (N_g = 22–43). Taymuş et al. (2025) set the memory size of the algorithms they compared, including an enhanced dandelion optimizer, equal to the number of design variables. Each algorithm was run with 30 independent seeds (1001–1030) on each dome, giving 270 runs.
 
 Algorithm selection used a separate tuning study with seeds 2001–2005 (three seeds for Ribbed), population sizes of 20, 40 and 80, and the candidates ABC, ACO, DO, GWO, WOA and TLBO. Each candidate was ranked at its own best population size by mean penalized weight (`TUNING_STUDY.md`). GWO, WOA and TLBO were not run on Ribbed, so the mean ranks are taken over the domes on which an algorithm was run. ABC and ACO had the lowest mean ranks (1.00 and 2.00); DO had 3.33, but GWO had a lower mean weight than DO on Geodesic. DO was included by study design, as one recent algorithm next to two older ones (ABC, ACO); it is not shown to be among the three best candidates. The campaign used population sizes of 20, 40 and 40, whereas the tuning table lists the best sizes [20, 20, 40] (ABC), [80, 20, 80] (ACO) and [40, 80, 40] (DO) for Geodesic, Kiewitt and Ribbed.
 
@@ -133,18 +133,18 @@ The culm mass is m_b = ρ Σ A_i L_i. The connection steel mass is m_s = 2.0 N_n
 
 | Factor | Value [kg CO₂e/kg] | Basis |
 |---|---|---|
-| Bamboo culm EC_b | 0.30 (range 0.09–1.23) | derived in `EC_BAMBOO_METHOD.md`: production 0.092 plus 300 km road transport 0.21. The production lower bound uses data for laminated bamboo panels and is an assumption. The production term uses the ICE value for softwood without carbon storage (0.2626) as its upper bound. The upper value 1.23 is derived from Zea Escamilla and Habert (2014) and is an import-to-Europe scenario that does not suit local use [LICENSE CHECK for the ICE term] |
-| Connection steel EC_s | 2.38 | ICE Educational V5.0 "Steel, Plate" [LICENSE CHECK] |
-| Grout EC_m | 0.18 | ICE Educational V5.0 mortar 1:3, used as a proxy for non-shrink grout [LICENSE CHECK] |
-| Steel tube (steel reference only) | 2.51 | ICE Educational V5.0 "Steel, welded pipe" [LICENSE CHECK] |
+| Bamboo culm EC_b | 0.30 (range 0.09–1.23) | derived in `EC_BAMBOO_METHOD.md`: production 0.092 plus 300 km road transport 0.21. The production lower bound uses data for laminated bamboo panels and is an assumption. The production term uses the ICE value for softwood without carbon storage (0.2626) as its upper bound. The upper value 1.23 is derived from Zea Escamilla and Habert (2014) and is an import-to-Europe scenario that does not suit local use |
+| Connection steel EC_s | 2.38 | ICE Educational V5.0 "Steel, Plate" |
+| Grout EC_m | 0.18 | ICE Educational V5.0 mortar 1:3, used as a proxy for non-shrink grout |
+| Steel tube (steel reference only) | 2.51 | ICE Educational V5.0 "Steel, welded pipe" |
 
-**Table 5.** Emission factors. [LICENSE CHECK: the terms of use of ICE Educational V5.0 exclude research use; the source of the steel and grout factors has to be confirmed before submission.]
+**Table 5.** Emission factors.
 
 The sensitivity of the joint share (steel plus grout) was evaluated for the lightest designs by changing one parameter at a time: L_inj/D from 1.5 to 3.5, EC_s from 1.2 to 3.0 kg CO₂e/kg and EC_b from 0.09 to 1.23 kg CO₂e/kg. A combined case applies L_inj/D = 1.5, EC_s = 1.2, EC_b = 0.47 and EC_m = 0.12 together.
 
 ## 2.9 Material cost
 
-Only material cost is considered. Labour, erection and life-cycle costs are not included, for bamboo and for steel. The price of bamboo per metre is taken at a reference culm diameter and scaled to the section diameter with (D/D_ref)^α for α = 1.5, 2, 2.5 and 3. Connection steel is priced at the steel material price, and grout at the grout price. The steel reference is priced with the same steel material price for tubes and connection steel.
+Only material cost is considered. Labour, erection and life-cycle costs are not included, for bamboo and for steel. The price of bamboo per metre is taken at a reference culm diameter and scaled to the section diameter with (D/D_ref)^α for α = 1.5, 2, 2.5 and 3. Connection steel is priced at the steel material price, and grout at the grout price. The steel reference is priced with the same steel material price for tubes and connection steel. The Indonesian scenario is the main case, because its prices of bamboo, steel and grout come from one document; the Indian, Türkiye and Colombian scenarios are sensitivity cases.
 
 | Scenario | Steel material [USD/kg] | Grout [USD/kg] | Bamboo at reference diameter [USD/m] | Reference diameter [mm] |
 |---|---|---|---|---|
@@ -155,15 +155,11 @@ Only material cost is considered. Labour, erection and life-cycle costs are not 
 
 **Table 6.** Price inputs in USD. The Indonesian prices of bamboo, steel and grout come from one document (Jawa Tengah HSD 2024) and are means over four regencies; the bamboo price is for culms of 6–8 cm diameter and 6 m length. The Jateng HSD and CPWD DSR prices were read from scanned pages [DATA CHECK: visual verification against the pages is not recorded]. The Indian steel and grout prices come from CPWD DSR 2023, where the steel price is the base price of structural steel sections and is applied to tubes, bolts and connection steel; the Indian bamboo price is derived from the Indonesian ratio of bamboo to steel price. The Türkiye steel price is derived from the erected-steel price of ÇŞB (August 2026) with the Indian ratio of erected to material price; its grout and bamboo prices are derived from ratios. The Colombian bamboo price is a 6 m Guadua unit price of 38 500 COP from a supplier web page (2026); the diameter is not stated and D_ref = 120 mm is assumed; its steel and grout prices are the mean of the Indonesian and Indian values. Exchange rates: 82.60 INR (2023), 15 855 IDR (2024) and 47.4925 TRY (mean of two TCMB quotes of 3 August 2026) per USD; 4 053 COP (2025) per USD. The INR, IDR and COP rates are annual averages [DATA CHECK: source files of the rates].
 
-Because the bamboo prices of three scenarios are derived from the Indonesian prices, the four scenarios are not independent.
+The bamboo prices of the Indian and Türkiye scenarios are derived from the Indonesian prices, and the Colombian steel and grout prices are proxies. The sensitivity scenarios are therefore not independent checks of the main case.
 
 ## 2.10 Steel reference
 
 Each dome and the 354-member reference dome were also sized in steel with the same geometry, load patterns, combinations and displacement limit. The steel members are circular hollow sections from a catalogue of 37 AISC pipe sections, with F_y = 248.2 MPa and E = 205 GPa. Tension is limited to 0.6 F_y and compression to the AISC ASD 1989 allowable stress [REF NEEDED: AISC ASD 1989]. The slenderness limits are 200 in compression and 300 in tension. No joint capacity check is made for steel. The steel connection hardware uses the same masses per node and per member end as the bamboo model, without grout. The steel structures were optimized with ABC (population 20, NFE = 1000 N_g, seeds 1001–1030), 30 runs per structure and 120 runs in total.
-
-## 2.11 Weight–carbon relation
-
-The stored genes of every evaluation of the 270 runs were used to examine the relation between weight and carbon. For all feasible evaluations (P = 0) the weight and the carbon were recomputed from the gene with the current emission factors. The Pearson correlation was computed per dome. The non-dominated subset of the visited feasible designs was extracted, and the carbon of the lightest design was compared with the lowest carbon found. The evaluations are the points visited by a single-objective search. They are not a random sample and not the front of a multi-objective search.
 
 ## Supplementary tables
 

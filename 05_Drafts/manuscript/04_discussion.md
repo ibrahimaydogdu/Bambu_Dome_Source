@@ -4,7 +4,7 @@
 
 ABC had the lowest mean weight and the lowest mean Friedman rank on all three domes. On Kiewitt, all 30 ABC runs ended at the same weight. ACO reached the best weight of ABC on Kiewitt and Ribbed in at least one run, and DO had the highest mean weight on every dome.
 
-The ranking applies to the settings used: NFE = 1000 N_g and population sizes of 20 (ABC), 40 (ACO) and 40 (DO). The tuning study found different best population sizes for some pairs of algorithm and dome (ABC: 20, 20 and 40; ACO: 80, 20 and 80; DO: 40, 80 and 40 for Geodesic, Kiewitt and Ribbed; `TUNING_STUDY.md`). The ranking may change with other population sizes or budgets [DATA NEEDED: basis for the population sizes used in the campaign]. ACO and DO were not tested against each other.
+The ranking applies to the settings used: NFE = 1000 N_g and population sizes of 20 (ABC), 40 (ACO) and 40 (DO). The tuning study found different best population sizes for some pairs of algorithm and dome (ABC: 20, 20 and 40; ACO: 80, 20 and 80; DO: 40, 80 and 40 for Geodesic, Kiewitt and Ribbed; `TUNING_STUDY.md`). The ranking may change with other population sizes or budgets. ACO and DO were not tested against each other.
 
 ## 4.2 Joint share of the embodied carbon
 
@@ -14,35 +14,29 @@ The share also depends on the hardware definition of the model: 2.0 kg of steel 
 
 Zea Escamilla et al. (2018, Table 2) report that, for a single-storey bamboo house, steel accounts for 34.7% and the transport of construction materials for 49.0% of the CO₂-equivalent, and the bamboo poles for 6.4%. That study has a different structure, functional unit and system boundary, so the values cannot be compared directly. In both studies, most of the CO₂-equivalent does not come from the culms.
 
-## 4.3 Weight and carbon
+## 4.3 Bamboo and steel
 
-The optimization minimized weight only, and carbon was computed afterwards. Among the feasible designs visited by the search, weight and carbon are positively correlated (r = 0.72–0.90), but the lightest design is not the lowest-carbon design: its carbon is 1.6–6.7% higher than the lowest value found, and the lowest-carbon design is 9.6–12.7% heavier (Table 15). The single-objective formulation is therefore an approximation of a problem with two objectives that are close but not identical.
-
-The difference in carbon between the two designs is small compared with the effect of the emission factors. For Ribbed, changing EC_b from 0.09 to 1.23 kg CO₂e/kg changes the carbon of the lightest design from 9.92 t to 17.63 t CO₂e (`LCA_SENSITIVITY_REPORT.md`). A multi-objective search was not made. The visited designs are not a front of such a search, so the size of the true trade-off is not known.
-
-## 4.4 Bamboo and steel
-
-In member weight and in embodied carbon, the bamboo designs are lower than the steel designs of the same geometry (Table 17). The carbon ratio of 0.25–0.35 holds for the baseline emission factors; it rises to 0.41–0.54 with EC_b = 1.23 (Section 3.6). With connection steel and grout included, the bamboo systems are heavier (Table 16). The grout alone is 19.02 t of the 28.26 t of the Ribbed system.
+In member weight and in embodied carbon, the bamboo designs are lower than the steel designs of the same geometry (Table 17). The carbon ratio of 0.25–0.35 holds for the baseline emission factors; it rises to 0.41–0.54 with EC_b = 1.23 (Section 3.5). With connection steel and grout included, the bamboo systems are heavier (Table 16). The grout alone is 19.02 t of the 28.26 t of the Ribbed system.
 
 The comparison has limits. The steel structures were sized with a different design rule (AISC ASD 1989), a catalogue of 37 pipe sections, slenderness limits of 200 and 300, and no joint capacity check, and they were optimized with one algorithm. The ratios compare optimum designs under different rules and catalogues and are indicative only.
 
-## 4.5 Material cost
+## 4.4 Material cost
 
-The cost ratio of bamboo to steel depends on the price scenario and on the exponent α that scales the bamboo price with the diameter (Table 18). It is below 1 for Geodesic in all scenarios and above 1 for Ribbed in most. The grout is 41.6–73.4% of the bamboo material cost. The bamboo price at structural diameters is not taken directly from a source: it is scaled from a reference diameter, and for Colombia the reference diameter is assumed. Three of the four scenarios derive their bamboo prices from the Indonesian prices. The cost results should be read as a range under stated assumptions. Labour, erection and life-cycle costs are not included.
+In the Indonesian scenario, the main case, the bamboo structure is cheaper than the steel structure for Geodesic at all values of the diameter exponent α, cheaper for Kiewitt for α ≤ 2, and more expensive for Ribbed for α ≥ 2 (Table 17). The bamboo price at structural diameters is not taken directly from a source: it is scaled from a reference diameter, and the ratios depend on α. The grout is a large part of the bamboo material cost. The sensitivity scenarios give higher ratios, the highest for Colombia, where the reference diameter is assumed (Table 18). The Indian and Türkiye bamboo prices are derived from the Indonesian prices, so those scenarios are not independent checks. Labour, erection and life-cycle costs are not included.
 
-## 4.6 Connections
+## 4.5 Connections
 
 The joint capacity of 49.3 kN follows NSR-10. The IStructE Manual procedure gave about 3–5 kN per bolt in a preliminary calculation (Section 2.5), against 13.25 kN allowable per bolt in NSR-10. If the lower capacity applied, more bolts per member end would be needed, and the hardware masses of the carbon model would no longer hold [DATA NEEDED: IStructE joint calculation record]. The 12 Ribbed members of 0.76 m cannot hold the bolts required under the NSR-10 spacing rules; their joints need a different detail.
 
-## 4.7 Limitations
+## 4.6 Limitations
 
 - The three domes have different spans, topologies and member counts; the results hold for these three models and the 24-section catalogue.
 - The culm self-weight, the connection hardware and the grout are not part of the loads.
 - C_R = 0.90 (single-culm members) and b₀ = 0.01 are assumptions; λ ≤ 150 is applied to tension members, although NSR-10 prescribes it for compression members only.
 - The hub (2.0 kg per node), the hardware at member ends (0.5 kg) and the grout length (2.5 D) are assumptions and are not designed against the member forces.
-- The emission factor of the culm has an assumed lower bound, and the grout factor is a proxy for non-shrink grout. The source of the steel and grout factors has a licence restriction that has to be resolved ([LICENSE CHECK], Section 2.8).
+- The emission factor of the culm has an assumed lower bound, and the grout factor is a proxy for non-shrink grout.
 - Only stages A1–A3 are considered; biogenic carbon is excluded.
 - The cost covers materials only. The bamboo price at structural diameters is scaled from a reference diameter, and the four price scenarios are not independent.
-- The steel reference was designed with different rules and catalogue than the bamboo structures (Section 4.4).
+- The steel reference was designed with different rules and catalogue than the bamboo structures (Section 4.3).
 - Connections are modelled as pin joints; joint stiffness and eccentricity are not considered.
 - The three algorithms were run with one population size each and one evaluation budget.

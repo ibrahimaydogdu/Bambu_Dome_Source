@@ -8,7 +8,7 @@
 
 ## 🎯 1. STRATEJİK PARADİGMA VE AMAÇ FONKSİYONU FORMÜLASYONU
 
-Eksenel kafeslerde kesite bağlı bağlantı modelinde kütle ile gömülü karbon, kampanyada ziyaret edilen uygun tasarımlarda pozitif ilişkilidir ($r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$) ancak özdeş değildir; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir. Bu nedenle çok-amaçlı arama kapsam dışı bırakılmış ve **Tek Amaçlı Yapısal Ağırlık Optimizasyonu + Post-Optimizasyon Beşikten-Kapıya LCA Ayrıştırması** modeline geçilmiştir.
+Çalışma **Tek Amaçlı Yapısal Ağırlık Optimizasyonu + Post-Optimizasyon Beşikten-Kapıya LCA Ayrıştırması** modeliyle yürütülür.
 
 ### 1.1. Tek Amaçlı Yapısal Ağırlık Minimizasyonu ($f_{\text{pen}}$ - Minimize)
 ISO 22156:2021, IStructE (2025) ASD ve ASCE 7-22 şartlarını tam sağlayan en hafif bambu kubbe tasarımı aranır:

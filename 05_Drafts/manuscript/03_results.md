@@ -65,7 +65,7 @@ Table 11 gives the largest demand-to-capacity ratio of each check for the lighte
 
 **Table 11.** Largest D/C ratio per check in the lightest design of each dome, displacement ratio and number of design groups with D/C ≥ 0.95.
 
-Compression determines the largest D/C ratio in 19 of 23 groups (Geodesic), 21 of 22 (Kiewitt) and 41 of 43 (Ribbed) in the lightest designs. Slenderness determines the remaining groups: 4, 1 and 2. Tension and the joint check determine no group of the lightest designs. Averaged over the 90 feasible runs of each dome, compression determines 81.1%, 95.5% and 93.4% of the groups, slenderness 18.9%, 4.5% and 6.5%, and the joint check 0.2% on Ribbed (`WEIGHT_CARBON_TRADEOFF.md`). Figure 4 shows these shares. The profiles of the lightest designs are in Figure 1.
+Compression determines the largest D/C ratio in 19 of 23 groups (Geodesic), 21 of 22 (Kiewitt) and 41 of 43 (Ribbed) in the lightest designs. Slenderness determines the remaining groups: 4, 1 and 2. Tension and the joint check determine no group of the lightest designs. Averaged over the 90 feasible runs of each dome, compression determines 81.1%, 95.5% and 93.4% of the groups, slenderness 18.9%, 4.5% and 6.5%, and the joint check 0.2% on Ribbed (`GOVERNING_LIMIT_SHARES.md`). Figure 4 shows these shares. The profiles of the lightest designs are in Figure 1.
 
 ## 3.3 Bolts required per member
 
@@ -103,21 +103,9 @@ Table 14 shows the joint share (steel plus grout) when parameters are changed.
 
 The emission factor of the bamboo culm has the largest effect. With EC_b = 0.09 the joint share is 90.50–93.86%; with EC_b = 1.23 it is 41.06–52.82%. The share changes by less than 10 percentage points with L_inj/D or EC_s alone. The joint share is below 50% for Kiewitt in the combined case (45.3%) and for Kiewitt (41.06%) and Geodesic (48.43%) with EC_b = 1.23.
 
-## 3.5 Weight and carbon among the visited designs
+## 3.5 Comparison with steel
 
-Among the feasible designs visited by the 270 runs, weight and carbon are positively correlated, with r = 0.897 (Geodesic), 0.724 (Kiewitt) and 0.857 (Ribbed) (Table 15). The lightest design is not the lowest-carbon design. Its carbon is 1.57%, 6.74% and 4.34% above the lowest carbon found, and the lowest-carbon design is 12.66%, 11.41% and 9.61% heavier. The visited designs contain 11, 48 and 69 non-dominated points.
-
-| Dome | Feasible evaluations | r | R^2 | Non-dominated points | W of lightest [kN] | Carbon of lightest [kg CO2e] | W of lowest-carbon [kN] | Carbon of lowest-carbon [kg CO2e] | Carbon excess of lightest [%] | Weight excess of lowest-carbon [%] |
-|---|---|---|---|---|---|---|---|---|---|---|
-| Geodesic | 1237620 | 0.897 | 0.804 | 11 | 5.800 | 860.5 | 6.535 | 847.2 | 1.57 | 12.66 |
-| Kiewitt | 975273 | 0.724 | 0.524 | 48 | 41.058 | 4842.1 | 45.745 | 4536.2 | 6.74 | 11.41 |
-| Ribbed | 1866958 | 0.857 | 0.734 | 69 | 66.352 | 11341.1 | 72.728 | 10869.0 | 4.34 | 9.61 |
-
-**Table 15.** Relation between weight and carbon among the feasible evaluations of the 270 runs (carbon recomputed with the baseline emission factors). The evaluations are the points visited by a single-objective search; they are not a random sample and not a multi-objective front.
-
-## 3.6 Comparison with steel
-
-For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.634 of the weight of the steel members, and the embodied carbon of the bamboo systems (culm, connection steel and grout) is 0.252, 0.278 and 0.347 of that of the steel systems at the baseline emission factors (Table 17). With EC_b = 1.23 kg CO₂e/kg the three ratios are 0.414, 0.502 and 0.540. With a steel emission factor of 1.6 kg CO₂e/kg they are 0.396, 0.436 and 0.545 (`T8_material_sensitivity.csv`). The system weights, which include connection steel and grout, are higher for bamboo than for steel (Table 16): 18.211, 141.320 and 277.222 kN for bamboo against 13.434, 68.456 and 128.955 kN for steel (ratios 1.36, 2.06 and 2.15, derived).
+For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.634 of the weight of the steel members, and the embodied carbon of the bamboo systems (culm, connection steel and grout) is 0.252, 0.278 and 0.347 of that of the steel systems at the baseline emission factors (Table 16). With EC_b = 1.23 kg CO₂e/kg the three ratios are 0.414, 0.502 and 0.540. With a steel emission factor of 1.6 kg CO₂e/kg they are 0.396, 0.436 and 0.545 (`T8_material_sensitivity.csv`). The system weights, which include connection steel and grout, are higher for bamboo than for steel (Table 15): 18.211, 141.320 and 277.222 kN for bamboo against 13.434, 68.456 and 128.955 kN for steel (ratios 1.36, 2.06 and 2.15, derived).
 
 | Structure | Members | Member weight [kN] | System weight [kN] | Embodied carbon [t CO2e] |
 |---|---|---|---|---|
@@ -129,7 +117,7 @@ For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.63
 | Bamboo - Kiewitt | 456 | 41.058 | 141.320 | 4.842 |
 | Bamboo - Ribbed | 1464 | 66.352 | 277.222 | 11.341 |
 
-**Table 16.** Steel and bamboo structures. Member weight is the culm weight (bamboo) or tube weight (steel). System weight adds connection steel and, for bamboo, grout. Reference is the 354-member steel dome. Bamboo values are for the lightest of the 90 runs of the dome; steel values are for the best of 30 runs.
+**Table 15.** Steel and bamboo structures. Member weight is the culm weight (bamboo) or tube weight (steel). System weight adds connection steel and, for bamboo, grout. Reference is the 354-member steel dome. Bamboo values are for the lightest of the 90 runs of the dome; steel values are for the best of 30 runs.
 
 | Dome | Bamboo/Steel member weight | Bamboo/Steel CO2e |
 |---|---|---|
@@ -137,21 +125,29 @@ For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.63
 | Kiewitt | 0.677 | 0.278 |
 | Ribbed | 0.634 | 0.347 |
 
-**Table 17.** Bamboo to steel ratios for the same geometry: member weight and embodied carbon of the systems, at the baseline emission factors.
+**Table 16.** Bamboo to steel ratios for the same geometry: member weight and embodied carbon of the systems, at the baseline emission factors.
 
-Figure 5 shows the member weight and the embodied carbon of all structures of Table 16. Under the load condition of the literature study, the present steel model gives 135–136 kN for the 354-member dome, against 151.1–155.8 kN reported there [DATA NEEDED: calculation record of the 135–136 kN check; REF NEEDED: literature values].
+Figure 5 shows the member weight and the embodied carbon of all structures of Table 15. Under the load condition of the literature study, the present steel model gives 135–136 kN for the 354-member dome, against 151.1–155.8 kN reported there [DATA NEEDED: calculation record of the 135–136 kN check; REF NEEDED: literature values].
 
-## 3.7 Material cost
+## 3.6 Material cost
 
-Table 18 gives the ratio of the bamboo material cost to the steel material cost for the same geometry. Over all scenarios and α, the ratio ranges from 0.610 to 0.875 (Geodesic), 0.865 to 1.394 (Kiewitt) and 0.977 to 1.342 (Ribbed). Grout accounts for 41.6–59.6%, 45.7–73.4% and 50.8–69.7% of the bamboo material cost of the three domes.
+Table 17 gives the ratio of the bamboo material cost to the steel material cost for the same geometry in the Indonesian scenario, the main case. With α = 2 the ratios are 0.639 (Geodesic), 0.926 (Kiewitt) and 1.021 (Ribbed). Over α = 1.5–3 they range from 0.612 to 0.724, 0.869 to 1.137 and 0.981 to 1.154. A ratio above 1 means that the bamboo structure costs more. The ratio is below 1 for Geodesic at all α, below 1 for Kiewitt for α ≤ 2, and below 1 for Ribbed only at α = 1.5 (0.981). The grout accounts for 50.4-59.6%, 56.1-73.4%, 59.2-69.7% of the bamboo material cost (Geodesic, Kiewitt, Ribbed).
 
-| Price scenario | Geodesic (alpha = 2) | Geodesic (alpha 1.5-3) | Kiewitt (alpha = 2) | Kiewitt (alpha 1.5-3) | Ribbed (alpha = 2) | Ribbed (alpha 1.5-3) |
+| alpha | Geodesic ratio | Kiewitt ratio | Ribbed ratio | Geodesic grout [%] | Kiewitt grout [%] | Ribbed grout [%] |
 |---|---|---|---|---|---|---|
-| Indonesia 2024 (Jateng HSD) | 0.639 | 0.612-0.724 | 0.926 | 0.869-1.137 | 1.021 | 0.981-1.154 |
-| India 2023 (CPWD DSR) | 0.637 | 0.610-0.721 | 0.922 | 0.865-1.133 | 1.016 | 0.977-1.150 |
-| Türkiye 2026 (CSB, August) | 0.638 | 0.611-0.723 | 0.924 | 0.867-1.135 | 1.019 | 0.979-1.152 |
-| Colombia 2026 (Guadua, D_ref = 120 mm assumed) | 0.868 | 0.862-0.875 | 1.248 | 1.191-1.394 | 1.297 | 1.279-1.342 |
+| 1.5 | 0.612 | 0.869 | 0.981 | 59.6 | 73.4 | 69.7 |
+| 2 | 0.639 | 0.926 | 1.021 | 57.1 | 68.9 | 67.0 |
+| 2.5 | 0.676 | 1.010 | 1.076 | 54.0 | 63.1 | 63.5 |
+| 3 | 0.724 | 1.137 | 1.154 | 50.4 | 56.1 | 59.2 |
 
-**Table 18.** Ratio of bamboo to steel material cost for the lightest bamboo and best steel designs of each dome, by price scenario. The columns give the ratio for α = 2 and the range over α = 1.5–3. A ratio above 1 means that the bamboo structure costs more. The four scenarios are not independent (Section 2.9).
+**Table 17.** Ratio of bamboo to steel material cost in the Indonesian scenario for the lightest bamboo and best steel designs, by diameter exponent α, and the grout share of the bamboo material cost.
 
-The ratio is below 1 for Geodesic in all scenarios. For Kiewitt, it is below 1 for α ≤ 2 in the Indonesian, Indian and Türkiye scenarios and above 1 in the Colombian scenario. For Ribbed, it is below 1 only for α = 1.5 in the Indonesian, Indian and Türkiye scenarios (0.977–0.981).
+The other three scenarios are sensitivity cases (Table 18). Over all four scenarios and α = 1.5–3, the ratio ranges from 0.610 to 0.875 (Geodesic), 0.865 to 1.394 (Kiewitt) and 0.977 to 1.342 (Ribbed). The Colombian scenario gives the highest ratios and is above 1 for Kiewitt and Ribbed at all α.
+
+| Price scenario | Geodesic | Kiewitt | Ribbed |
+|---|---|---|---|
+| India 2023 (CPWD DSR) | 0.637 (0.610-0.721) | 0.922 (0.865-1.133) | 1.016 (0.977-1.150) |
+| Türkiye 2026 (CSB, August) | 0.638 (0.611-0.723) | 0.924 (0.867-1.135) | 1.019 (0.979-1.152) |
+| Colombia 2026 (Guadua, D_ref = 120 mm assumed) | 0.868 (0.862-0.875) | 1.248 (1.191-1.394) | 1.297 (1.279-1.342) |
+
+**Table 18.** Sensitivity of the cost ratio to the price scenario: ratio at α = 2, with the range over α = 1.5–3 in brackets.

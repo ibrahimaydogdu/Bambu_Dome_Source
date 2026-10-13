@@ -102,7 +102,7 @@ Kaynak: `campaign.log` ön kontrol satırları, `dome_types.py`.
 
 ## 4. Kütle–karbon ilişkisi
 
-- **"R² ≈ 0,99" ve "∇EC ∥ ∇W analitik ispatı" ifadelerini kaldır.** Doğru ifade: sabit düğüm modelinde f₂, f₁'in tam doğrusal fonksiyonudur (corr = 1,000, `test_fast_eval.py`). Kesite bağlı bağlantı modelinde, kampanyada ziyaret edilen uygun tasarımlarda r = 0,72–0,90 (R² = 0,52–0,80; `04_Results/WEIGHT_CARBON_TRADEOFF.md`); en hafif tasarımın karbonu bulunan en düşüğün %1,6–6,7 üstündedir. Eski "R² = 0,81–0,97" aralığı üretilemedi. "Cephe çöker" veya "ödünleşim yok" yazma; ölçülen değerleri yaz.
+- **"R² ≈ 0,99" ve "∇EC ∥ ∇W analitik ispatı" ifadelerini kaldır.** Sabit düğüm modelinde f₂, f₁'in tam doğrusal fonksiyonudur (corr = 1,000, `test_fast_eval.py`).
 
 ---
 
@@ -166,7 +166,6 @@ Kaynak: `campaign.log` ön kontrol satırları, `dome_types.py`.
 - Zea Escamilla & Habert (2014), *J. Clean. Prod.* 69: 117–127, DOI 10.1016/j.jclepro.2014.01.067.
 - Zea Escamilla vd. (2018) (`Papers/2018 Zea et al....pdf`), Tablo 2.
 - ICE Database Educational V5.0 (Haziran 2026), Circular Ecology (yazar sırası [DOĞRULANACAK]).
-- NSGA-II'ye atıf gerekirse yalnızca Deb vd. 2002, IEEE TEVC 6(2): 182–197. MOABC atfını kaldır.
 - ISO 22156:2021 madde numaralarını standart metninden teyit etmeden yazma; Manual denklem/tablo numaralarını tercih et.
 - **Evidence uyarısı:** `Evidence/` içindeki şu beş dosya tarayıcıdan basılmış web sayfasıdır (Chrome/Skia PDF): `AISC_360_Steel_Standards_Official_Portal.pdf`, `Circular_Ecology_ICE_Database_v3_Official.pdf`, `Guadua_Bambu_Colombia_Official_Web_Catalogue.pdf`, `INBAR_Publications_LCA_Official_Portal.pdf`, `MERO_TSK_Space_Structures_Official.pdf`. Bunları "resmî belge" veya "standart" diye gösterme. Yalnızca "web sayfası, URL + erişim tarihi" olarak an. Guadua fiyatı için kaynak: guaduabambucolombia.co, 27.06.2026 sayfası. "Fedebambu 2024" atfı yanlıştı, sil.
 

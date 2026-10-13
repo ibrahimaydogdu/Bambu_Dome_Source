@@ -46,7 +46,6 @@ Görevin: FEM simülasyonları ve hiperparametre duyarlılık çalışmasından 
 ### 3. Dekarbonizasyon Paradoksu ve Derin Tartışma (`DEEP_DISCUSSION.md`)
 *Yüzeysel raporlama KESİNLİKLE YASAKTIR; ön-yazılı teyitsiz sayılar kullanılmaz:*
 - **Dekarbonizasyon Paradoksu ve Parametrik Duyarlılık:** Toplam gömülü karbon bilançosunda hibrit bağlantı elemanlarının (çelik manşon/düğüm ve enjeksiyon harcı) payı ve bu payın envanter parametrelerine (temel senaryoda %74.1–%82.1; birleşik elverişsiz parametre ucunda ribbed40 %57.7, geodesic16 %53.9, kiewitt32 %45.3) duyarlılığı. Yüzdeler yalnızca `LCA_SENSITIVITY_REPORT.md` ve T5–T8'den alınır; kampanya JSON'larındaki karbon alanları eski EC ile kaydedildiği için kullanılmaz.
-- **Kütle–Karbon İlişkisi:** Ziyaret edilen uygun tasarımlarda kütle ile karbonun ilişkisi ($r = 0.72 - 0.90$, $R^2 = 0.52 - 0.80$) ve en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir (`04_Results/WEIGHT_CARBON_TRADEOFF.md`); çok amaçlı arama yapılmamıştır.
 - **Yapı Mekaniği Dinamiği:** Algoritmaların mesnet ve tepe bölgelerindeki eksenel kuvvet akışını nasıl dengelediği.
 
 ---

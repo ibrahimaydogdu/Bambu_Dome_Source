@@ -7,7 +7,6 @@ The results hold for the three dome models (spans of 16, 32 and 40 m), the 24-se
 3. Compression determines the largest D/C ratio in 19 of 23, 21 of 22 and 41 of 43 design groups of the lightest designs. Tension and the joint check determine none.
 4. In the baseline case, connection steel and grout account for 74.1–82.1% of the embodied carbon (A1–A3, biogenic carbon excluded). Changing one parameter at a time gives 41.1–93.9%. The emission factor of the culm has the largest effect. The share is below 50% for Kiewitt in the combined case and for Kiewitt and Geodesic with EC_b = 1.23 kg CO₂e/kg.
 5. For the same geometry, the bamboo members weigh 0.51–0.68 of the steel members, and the bamboo systems carry 0.25–0.35 of the steel-system carbon at baseline emission factors (0.41–0.54 with EC_b = 1.23). With connection steel and grout, the bamboo systems weigh 1.36–2.15 times the steel systems.
-6. The ratio of bamboo to steel material cost is 0.610–0.875 (Geodesic), 0.865–1.394 (Kiewitt) and 0.977–1.342 (Ribbed), depending on the price scenario (four scenarios) and the diameter exponent α = 1.5–3. The price scenarios are not independent.
-7. Among the feasible designs visited, the lightest design has 1.6–6.7% more carbon than the lowest carbon found. A multi-objective search was not made.
+6. In the Indonesian price scenario, the ratio of bamboo to steel material cost is 0.64 (Geodesic), 0.93 (Kiewitt) and 1.02 (Ribbed) for α = 2, and 0.61–1.15 for α = 1.5–3. Across four price scenarios the ratio ranges from 0.610 to 1.394. The sensitivity scenarios are not independent of the main case.
 
-Future work: a joint design that follows from the member forces, a multi-objective search, the inclusion of biogenic carbon and of labour and life-cycle costs, and an emission-factor source that permits research use.
+Future work: a joint design that follows from the member forces, and the inclusion of biogenic carbon and of labour and life-cycle costs.

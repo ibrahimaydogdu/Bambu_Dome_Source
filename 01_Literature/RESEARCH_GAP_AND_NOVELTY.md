@@ -10,10 +10,7 @@ Geniş açıklıklı uzay kafes ve kubbe sistemleri, stadyum, sergi alanı ve ha
 2. **Modern Standart (ISO 22156:2021 & IStructE 2025) ASD Otomasyonu Eksikliği:**
    Bambu için uluslararası kabul gören güncel tasarım normu olan **ISO 22156:2021** ve yeni **IStructE (2025)** el kitabındaki İzin Verilen Gerilme Tasarımı (ASD) prensipleri ($X_{\text{izin}} = X_k \cdot C_R \cdot C_{DF} \cdot C_T / FS$, Ylinen elastik kararsızlığı $c = 0.8$, $C_{\text{bow}} = 1 - b_0/0.02$, $b_0 = 0.01$ varsayım, $K = 1.0$, narinlik sınırı $\lambda \le 150$ çekme ve basınca uygulanır, bağlantı kapasitesi $F_{j,Rd} = n_{\text{bolt}} \cdot F_{\text{bolt},\text{adm}} \cdot C_g = 4 \times 13.25 \times 0.93 = 49.3\text{ kN}$ NSR-10 Tabla G.12.11-2/3 izinli yük ve $n_{\text{bolt}}=4$ kullanıcı kararı, SLS sehim $\text{span}/150$) sonlu elemanlar optimizasyon süreçlerine tam ve otomatik olarak entegre edilmemiştir.
 
-3. **Kütle ve Karbonun Birlikte Ele Alınması:**
-   Kütle ile karbonun birlikte ele alındığı çok amaçlı çalışmalar için literatür taraması bu çalışmada yapılmamıştır [REF NEEDED]. Bu çalışmada, eksenel kafes kubbelerde ziyaret edilen uygun tasarımlarda kütle ile karbon pozitif ilişkilidir ancak özdeş değildir ($r = 0.72 - 0.90$); en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir. Çok amaçlı arama yapılmamıştır.
-
-4. **"Dekarbonizasyon Paradoksu" ve Bağlantı Karbonu Duyarlılığı:**
+3. **"Dekarbonizasyon Paradoksu" ve Bağlantı Karbonu Duyarlılığı:**
    Mevcut yaşam döngüsü analizleri (LCA) çoğunlukla bambu gövdesinin biyojenik potansiyeline odaklanarak, gerçek bir mühendislik yapısında eksenel yükleri aktarmak için zorunlu olan **çelik düğüm göbekleri, saplamalar ve uç harç dolgularını** ihmal etmekte veya ikincil görmektedir. Geniş açıklıklı bir uzay kubbede gerçekçi beşikten-kapıya (A1–A3) sınırlarında bağlantı elemanlarının toplam karbon bütçesindeki ağırlığını ve parametrik duyarlılığını sistematik olarak ortaya koyan çalışma bulunmamaktadır.
 
 ---
@@ -32,14 +29,14 @@ ASCE 7-22 §2.4.1 ASD faktörsüz yük kombinasyonları altında doğrudan rijit
 Biyo-yapısal uzay kafes kubbede hibrit bağlantı elemanlarının (çelik göbek ve harç dolgusu) gömülü karbon bilançosundaki belirleyici ağırlığı ortaya konmuş ve $L_{\text{inj}}/D \in [1.5, 3.5]$, $EC_{\text{steel}}$ ve $EC_{\text{bamboo}}$ parametreleri taranarak duyarlılık sınırları belirlenmiştir (Temel durumda bağlantı payı %74.1–%82.1; birleşik elverişsiz parametre ucunda kiewitt32'de %45.3'e düşerek duyarlılık sergiler).
 
 ### Katkı 4: Kütle ve Karbonun Ampirik Yakın-Doğrusallığı ve Stokastik Kıyaslama
-Kütle ve karbon amaçları arasındaki ilişki ölçülmüştür ($r = 0.72 - 0.90$; en hafif tasarımın karbonu bulunan en düşüğün %1.6–6.7 üstündedir; çok amaçlı arama yapılmamıştır). Titiz tek amaçlı optimizasyon çerçevesinde tuning çalışmasıyla belirlenen 3 meta-sezgisel algoritma (ABC, ACO, DO); 30 bağımsız tohum (1001–1030), NFE = $1000 \times N_{\text{grup}}$ bütçesi, Mann-Whitney U (iki yönlü, Holm düzeltmeli, A12 etki büyüklüğü) ve tohum bloklu Friedman sıra testleri eşliğinde karşılaştırılmıştır.
+Titiz tek amaçlı optimizasyon çerçevesinde tuning çalışmasıyla belirlenen 3 meta-sezgisel algoritma (ABC, ACO, DO); 30 bağımsız tohum (1001–1030), NFE = $1000 \times N_{\text{grup}}$ bütçesi, Mann-Whitney U (iki yönlü, Holm düzeltmeli, A12 etki büyüklüğü) ve tohum bloklu Friedman sıra testleri eşliğinde karşılaştırılmıştır.
 
 ---
 
 ## 3. Metot Seçim Gerekçelendirmesi (Rationale via Literature)
 
 1. **Neden Tek Amaçlı Formülasyon?**
-   Eksenel kafeslerde ziyaret edilen uygun tasarımlarda kütle ile karbon pozitif ilişkilidir ($r = 0.72 - 0.90$) ancak özdeş değildir; çok amaçlı arama bu çalışmanın kapsamı dışındadır. Mühendislik optimizasyonunun amacı; kısıtları tam sağlayan ($P=0$) en hafif yapıyı bulmak, ardından bu tasarım üzerinde detaylı LCA ayrıştırması ve parametrik duyarlılık analizini yürütmektir.
+   Mühendislik optimizasyonunun amacı; kısıtları tam sağlayan ($P=0$) en hafif yapıyı bulmak, ardından bu tasarım üzerinde detaylı LCA ayrıştırması ve parametrik duyarlılık analizini yürütmektir.
 
 2. **Neden Tuning Temelli 3 Meta-Sezgisel Algoritma?**
    - 16 yöntemlik meta-sezgisel havuz (`metaheuristic_optimizers.py`) geliştirilmiş ve test edilmiştir.

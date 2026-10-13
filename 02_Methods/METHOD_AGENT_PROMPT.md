@@ -27,7 +27,6 @@ Görevin: Projenin metodoloji bölümünü; ISO 22156:2021 ve ASCE 7-22 kısıtl
 
 ### 🔸 KATMAN 2: Önerilen Özgün Yöntem ve Optimizasyon Motoru
 1. **Tek Amaçlı Yapısal Optimizasyon Probleminin Tanımı:**
-   - Eksenel kafeslerde kütle ve karbonun birlikte artması ve ölçülen pozitif ilişkisi ($r = 0.72 - 0.90$; özdeş değil), çok amaçlı aramanın kapsam dışı bırakılması nedeniyle:
      $$\min_{\mathbf{X}} f_{\text{pen}}(\mathbf{X}) = W_{\text{bambu}}(\mathbf{X}) \cdot (1 + P(\mathbf{X}))^\varepsilon$$
 2. **Tasarım Değişkenleri ve Ayrık Eşleme (Discrete Mapping):**
    - $\mathbf{X} = [x_1, x_2, \dots, x_{N_g}]$, her $x_i \in \{1, \dots, 24\}$ (24 Guadua kesit tipi).
