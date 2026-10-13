@@ -40,6 +40,13 @@
 
 ## 🔄 3. DİNAMİK TUR GÜNLÜĞÜ (ITERATION HISTORY)
 
+### 📍 [Round 13] - [2026-10-13] - Master Agent & Stylist Agent (Atıf İnce Ayarı ve Katı Doğrulama)
+1. **[11] (Trujillo & Malkowska 2018):** Bölüm 2.3 $F_{bolt,adm}$ tanımından kaldırıldı (kapasite yalnızca NSR-10 Tabla G.12.11-2 [37]'ye dayanır). Tartışma bölümündeki cıvata detay/aralık sınırları cümlesinden [11] çıkarıldı (kural yalnızca NSR-10'da mevcuttur). Giriş bölümünde tekil bağlantı deneyleri bağlamında [7, 8, 11] olarak korundu.
+2. **[13] (Chung & Yu 2002):** Bölüm 3.2 Guadua malzeme özellikleri metninden çıkarıldı (Tablo 2 IStructE Manual ve NSR-10'a dayanır; Chung & Yu iskele bambusudur). Giriş bölümünde culm mekanik özellikleri genel literatürü [5, 6, 13] olarak korundu.
+3. **[29] (Saka 1991):** Bölüm 3.1'deki 40 m Ribbed kubbe ve 354 elemanlı çelik referans kubbe tanımlarından çıkarıldı (Saka 1991 çelik çerçeveler üzerinedir, 354 elemanlı Schwedler kubbesi değildir). Yalnızca [20, 30, 31] bırakıldı. Giriş bölümünde çelik kafes boyutlandırma optimizasyonu temeli [29] olarak korundu.
+4. **[12] (Bahtiar et al. 2021):** Bölüm 2.3'te yazar adıyla başlayan ve Ylinen sabitleri doğrulaması iddiası içeren ifade yumuşatıldı: *"Column buckling tests on Guadua culms are reported in [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3."* Denklem (7)'den [12] çıkarıldı ([1, 36] kaldı).
+5. Tüm taslak bölümleri ve derlenmiş `MANUSCRIPT_FULL.md`, `MANUSCRIPT_FULL.docx`, `MANUSCRIPT_FULL.html` güncellendi.
+
 ### 📍 [Round 12] - [2026-10-13] - Master Agent & Developer Agent (Referans Atıfları, Repro CSV Paketi, Çift GitHub Push)
 1. **Referans Atıfları:** Hakem/editör eleştirisi üzerine metin içinde doğrudan atıfı bulunmayan [11], [12], [13], [14], [16], [19], [29] referansları Giriş, Yöntem, Sayısal Örnekler ve Tartışma bölümlerine bağlamlarına tam uygun şekilde eklendi; tüm `.md` bölümleri ve derlenmiş `MANUSCRIPT_FULL.*` senkronize edildi.
 2. **Repro Paketi CSV Dönüşümü:** Markdown çalışma raporları yerine hakemlerin inceleyeceği 10 adet standart CSV veri seti (`04_Results/tables/T_*.csv`) üretildi: `T_stats_descriptive.csv`, `T_stats_friedman_ranks.csv`, `T_stats_wilcoxon_pairwise.csv`, `T_lca_base_case_breakdown.csv`, `T_lca_sensitivity_*.csv`, `T_tuning_study_summary.csv`, `T_governing_limit_shares.csv` ve Şekil 3'ün 2700 satırlık ham yakınsama serisi `T_convergence_curves_history.csv`. Ayrıca `04_Results/tables/README.md` veri rehberi oluşturuldu.

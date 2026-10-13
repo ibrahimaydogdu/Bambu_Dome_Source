@@ -83,7 +83,7 @@ $$g^t_{ij}(\mathbf{x}) = \frac{\max(\tilde{N}_{ij}, 0)}{A_i\,f_{t,0,k}} - 1 \le 
 
 where $f_{t,0,k}$ is the characteristic tensile strength of the culm.
 
-**Compression and flexural column buckling constraints.** Axial compression is checked against the characteristic critical buckling stress $f_{cr,i}$ governed by Ylinen's non-linear column formulation [1, 12, 36]:
+**Compression and flexural column buckling constraints.** Axial compression is checked against the characteristic critical buckling stress $f_{cr,i}$ governed by Ylinen's non-linear column formulation [1, 36]:
 
 $$g^c_{ij}(\mathbf{x}) = \frac{\max(-\tilde{N}_{ij}, 0)}{A_i\,f_{cr,i}} - 1 \le 0 \tag{7}$$
 
@@ -91,7 +91,7 @@ $$f_{cr,i} = \frac{f_{c,0,k} + f_{e,i}}{2c} - \sqrt{\left(\frac{f_{c,0,k} + f_{e
 
 $$f_{e,i} = \frac{\pi^2 E_k\,C_{bow}}{\lambda_i^2}, \qquad \lambda_i = \frac{K\,L_i}{r_i}, \qquad C_{bow} = 1 - \frac{b_0}{0.02} \tag{9}$$
 
-where $f_{c,0,k}$ is the characteristic parallel compressive strength, $E_k$ is the characteristic elastic modulus, $c$ is the dimensionless Ylinen interaction constant, $\lambda_i$ is column slenderness, $K$ is the effective length factor ($K = 1.0$ for pinned ends), $r_i$ is the radius of gyration, and $C_{bow}$ is the reduction factor accounting for initial culm crookedness ($b_0$). Experimental validation of column buckling behavior and Ylinen constants for Guadua culms is detailed by Bahtiar et al. [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3.
+where $f_{c,0,k}$ is the characteristic parallel compressive strength, $E_k$ is the characteristic elastic modulus, $c$ is the dimensionless Ylinen interaction constant, $\lambda_i$ is column slenderness, $K$ is the effective length factor ($K = 1.0$ for pinned ends), $r_i$ is the radius of gyration, and $C_{bow}$ is the reduction factor accounting for initial culm crookedness ($b_0$). Column buckling tests on Guadua culms are reported in [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3.
 
 **Geometric slenderness constraints.** To prevent excessive flexibility during transport, erection, and service life, maximum slenderness is constrained according to Title G of the Colombian seismic building code NSR-10 [37]:
 
@@ -103,7 +103,7 @@ where $\lambda_{max} = 150$ is enforced across all structural elements as a cons
 
 $$g^n_{ij}(\mathbf{x}) = \frac{|N_{ij}|}{F_{j,Rd}} - 1 \le 0, \qquad F_{j,Rd} = n_{bolt}\,F_{bolt,adm}\,C_g \tag{11}$$
 
-where $F_{bolt,adm}$ is the allowable double-shear capacity of a single steel bolt embedded in a mortared bamboo culm based on NSR-10 (Table G.12.11-2 [37]) and empirical connection tests on Guadua culms [11], $n_{bolt}$ is the number of through-bolts per member end, and $C_g$ is the bolt group modification factor (Table G.12.11-3 of NSR-10).
+where $F_{bolt,adm}$ is the allowable double-shear capacity of a single steel bolt embedded in a mortared bamboo culm (Table G.12.11-2 of NSR-10 [37]), $n_{bolt}$ is the number of through-bolts per member end, and $C_g$ is the bolt group modification factor (Table G.12.11-3 of NSR-10).
 
 **Serviceability deflection constraints.** Overall structural serviceability is governed by the peak nodal translation across all active load combinations:
 
@@ -177,11 +177,11 @@ To investigate scale effects and geometric sensitivity, three benchmark space do
 
 **Table 1.** Geometric parameters and modeling properties of the benchmark space domes. $u_{lim} = \text{span}/150$.
 
-The spatial layout of each dome configuration reflects standard spatial truss typologies established in the structural optimization literature [20, 29–31]:
+The spatial layout of each dome configuration reflects standard spatial truss typologies established in the structural optimization literature [20, 30, 31]:
 - **Geodesic Dome (16 m span):** Based on an icosahedral spherical geometry (Class I, subdivision frequency 5) truncated at a colatitude of 50°. The structure features 46 joints and 115 members categorized into 23 independent cross-sectional sizing groups based on latitude rings and 72° five-fold rotational symmetry. All 20 perimeter base joints along the zigzag boundary are pinned in all translational degrees of freedom. Member lengths range between 2.24 m and 2.96 m.
 - **Kiewitt Dome (32 m span):** Formed as a spherical cap divided into 8 symmetric circumferential sectors with 6 concentric horizontal rings, encompassing 169 nodes and 456 members. Members are partitioned into 22 design groups according to ring position and radial orientation. The 48 outermost perimeter base nodes are pinned. Member lengths vary from 2.09 m to 3.55 m.
-- **Ribbed (Schwedler-type) Dome (40 m span):** Derived from the well-established 40 m, 354-member benchmark space dome extensively investigated in steel optimization literature [20, 29–31]. In the original 354-member geometry, member lengths reach up to 5.97 m, which exceeds practical unbraced buckling limits for naturally grown structural bamboo culms. To make the topology viable for natural bio-materials without violating transportable culm lengths, a frequency-2 topological densification was executed, generating 505 nodes, 1464 members, and 43 design groups with member lengths strictly constrained between 0.76 m and 3.08 m. The 48 foundation support nodes are pinned.
-- **Classical 354-Member Steel Reference Dome:** In addition to the three bio-structural benchmark domes, the classical 40 m span, 354-member, 22-group Schwedler-type steel dome [20, 29–31] was analyzed under identical loading conditions as an external literature calibration anchor.
+- **Ribbed (Schwedler-type) Dome (40 m span):** Derived from the well-established 40 m, 354-member benchmark space dome extensively investigated in steel optimization literature [20, 30, 31]. In the original 354-member geometry, member lengths reach up to 5.97 m, which exceeds practical unbraced buckling limits for naturally grown structural bamboo culms. To make the topology viable for natural bio-materials without violating transportable culm lengths, a frequency-2 topological densification was executed, generating 505 nodes, 1464 members, and 43 design groups with member lengths strictly constrained between 0.76 m and 3.08 m. The 48 foundation support nodes are pinned.
+- **Classical 354-Member Steel Reference Dome:** In addition to the three bio-structural benchmark domes, the classical 40 m span, 354-member, 22-group Schwedler-type steel dome [20, 30, 31] was analyzed under identical loading conditions as an external literature calibration anchor.
 
 Figure 2 illustrates the spatial layouts, plan projections, elevation profiles, and optimal cross-sectional diameter allocations across the three benchmark space domes: (a) 16 m Geodesic dome, (b) 32 m Kiewitt dome, and (c) 40 m Ribbed dome, where each dome panel depicts (i) 3D perspective view, (ii) plan view, and (iii) side elevation view. The generation algorithms of the node coordinates are given in Supplementary Material Appendix S4.
 
@@ -203,7 +203,7 @@ Elastic structural analysis is performed using an in-house direct stiffness solv
 
 ## 3.2 Material mechanical properties and discrete profile catalogues
 
-Material properties, allowable stress limits, and design factors for *Guadua angustifolia* bamboo are established in strict accordance with ISO 22156:2021 [36], the IStructE bamboo design manual [1], and NSR-10 Title G [37], drawing upon characteristic experimental evaluations of structural bamboo culms [13]. Table 2 presents the material parameters and design factors adopted in the analysis.
+Material properties, allowable stress limits, and design factors for *Guadua angustifolia* bamboo are established in strict accordance with ISO 22156:2021 [36], the IStructE bamboo design manual [1], and NSR-10 Title G [37]. Table 2 presents the material parameters and design factors adopted in the analysis.
 
 | Mechanical / Design Property | Design Value | Codified Source and Justification |
 |---|---|---|
@@ -496,7 +496,7 @@ Parametric sensitivity sweeps show that the connection share stays between 43% a
 
 From an economic perspective, the viability of structural bamboo domes depends strongly on span, topological member count, and regional market pricing structures. In the unified Indonesian baseline market, the 16 m Geodesic dome is cheaper than structural steel across all culm pricing exponents ($\alpha = 1.5$ to $3.0$), achieving cost ratios of 0.61 to 0.72. However, as the span and member density increase—culminating in the 40 m Ribbed dome with 1464 members—bamboo loses its cost competitiveness, exceeding steel expenditures at $\alpha \ge 2.0$. This economic tipping point is directly driven by the cumulative volume of injected cementitious grout, which constitutes 50% to 73% of total bamboo material costs. In the India, Türkiye and Colombia scenarios, the cost ratio of the 16 m Geodesic dome is between 0.637 and 0.868 at $\alpha = 2.0$ (Table 18). Only material unit prices are modelled, so the effect of labour, transport and erection costs on the large-span domes is not assessed; the results indicate that the grout volume governs the cost of the large-span domes.
 
-Practical fabrication and spatial geometry impose additional structural limitations that must be addressed in actual implementation. While peak member axial forces reach up to 39.8 kN on the 40 m Ribbed dome (governing connection demand-to-capacity ratio D/C = 0.807), remaining within the 49.3 kN allowable capacity, spatial congestion in dense topologies emerges as a physical constraint. On the 40 m Ribbed dome, 12 short meridional members (0.76 m length) carrying axial loads up to 31.25 kN cannot satisfy the minimum codified bolt pitch and end distances prescribed by NSR-10 [37]. Accommodating the required three bolts necessitates at least 0.95 m of member length for compression members (0.80 m without the 150 mm mid-span clearance), consistent with empirical connection detailing limits established for Guadua culms [11, 37], indicating that standard through-bolted sleeve detailing cannot be universally applied to all members of dense spatial grids without custom nodal modifications. Moreover, the current structural model adopts idealized pin-ended member connections, neglecting semi-rigid joint rotational stiffness, eccentricities, and moisture-induced dimensional shrinkage, which represent subjects for future experimental and multi-scale numerical investigations.
+Practical fabrication and spatial geometry impose additional structural limitations that must be addressed in actual implementation. While peak member axial forces reach up to 39.8 kN on the 40 m Ribbed dome (governing connection demand-to-capacity ratio D/C = 0.807), remaining within the 49.3 kN allowable capacity, spatial congestion in dense topologies emerges as a physical constraint. On the 40 m Ribbed dome, 12 short meridional members (0.76 m length) carrying axial loads up to 31.25 kN cannot satisfy the minimum codified bolt pitch and end distances prescribed by NSR-10 [37]. Accommodating the required three bolts necessitates at least 0.95 m of member length for compression members (0.80 m without the 150 mm mid-span clearance), indicating that standard through-bolted sleeve detailing cannot be universally applied to all members of dense spatial grids without custom nodal modifications. Moreover, the current structural model adopts idealized pin-ended member connections, neglecting semi-rigid joint rotational stiffness, eccentricities, and moisture-induced dimensional shrinkage, which represent subjects for future experimental and multi-scale numerical investigations.
 
 # 6. Conclusions
 

@@ -14,11 +14,11 @@ To investigate scale effects and geometric sensitivity, three benchmark space do
 
 **Table 1.** Geometric parameters and modeling properties of the benchmark space domes. $u_{lim} = \text{span}/150$.
 
-The spatial layout of each dome configuration reflects standard spatial truss typologies established in the structural optimization literature [20, 29–31]:
+The spatial layout of each dome configuration reflects standard spatial truss typologies established in the structural optimization literature [20, 30, 31]:
 - **Geodesic Dome (16 m span):** Based on an icosahedral spherical geometry (Class I, subdivision frequency 5) truncated at a colatitude of 50°. The structure features 46 joints and 115 members categorized into 23 independent cross-sectional sizing groups based on latitude rings and 72° five-fold rotational symmetry. All 20 perimeter base joints along the zigzag boundary are pinned in all translational degrees of freedom. Member lengths range between 2.24 m and 2.96 m.
 - **Kiewitt Dome (32 m span):** Formed as a spherical cap divided into 8 symmetric circumferential sectors with 6 concentric horizontal rings, encompassing 169 nodes and 456 members. Members are partitioned into 22 design groups according to ring position and radial orientation. The 48 outermost perimeter base nodes are pinned. Member lengths vary from 2.09 m to 3.55 m.
-- **Ribbed (Schwedler-type) Dome (40 m span):** Derived from the well-established 40 m, 354-member benchmark space dome extensively investigated in steel optimization literature [20, 29–31]. In the original 354-member geometry, member lengths reach up to 5.97 m, which exceeds practical unbraced buckling limits for naturally grown structural bamboo culms. To make the topology viable for natural bio-materials without violating transportable culm lengths, a frequency-2 topological densification was executed, generating 505 nodes, 1464 members, and 43 design groups with member lengths strictly constrained between 0.76 m and 3.08 m. The 48 foundation support nodes are pinned.
-- **Classical 354-Member Steel Reference Dome:** In addition to the three bio-structural benchmark domes, the classical 40 m span, 354-member, 22-group Schwedler-type steel dome [20, 29–31] was analyzed under identical loading conditions as an external literature calibration anchor.
+- **Ribbed (Schwedler-type) Dome (40 m span):** Derived from the well-established 40 m, 354-member benchmark space dome extensively investigated in steel optimization literature [20, 30, 31]. In the original 354-member geometry, member lengths reach up to 5.97 m, which exceeds practical unbraced buckling limits for naturally grown structural bamboo culms. To make the topology viable for natural bio-materials without violating transportable culm lengths, a frequency-2 topological densification was executed, generating 505 nodes, 1464 members, and 43 design groups with member lengths strictly constrained between 0.76 m and 3.08 m. The 48 foundation support nodes are pinned.
+- **Classical 354-Member Steel Reference Dome:** In addition to the three bio-structural benchmark domes, the classical 40 m span, 354-member, 22-group Schwedler-type steel dome [20, 30, 31] was analyzed under identical loading conditions as an external literature calibration anchor.
 
 Figure 2 illustrates the spatial layouts, plan projections, elevation profiles, and optimal cross-sectional diameter allocations across the three benchmark space domes: (a) 16 m Geodesic dome, (b) 32 m Kiewitt dome, and (c) 40 m Ribbed dome, where each dome panel depicts (i) 3D perspective view, (ii) plan view, and (iii) side elevation view. The generation algorithms of the node coordinates are given in Supplementary Material Appendix S4.
 
@@ -26,7 +26,7 @@ Elastic structural analysis is performed using an in-house direct stiffness solv
 
 ## 3.2 Material mechanical properties and discrete profile catalogues
 
-Material properties, allowable stress limits, and design factors for *Guadua angustifolia* bamboo are established in strict accordance with ISO 22156:2021 [36], the IStructE bamboo design manual [1], and NSR-10 Title G [37], drawing upon characteristic experimental evaluations of structural bamboo culms [13]. Table 2 presents the material parameters and design factors adopted in the analysis.
+Material properties, allowable stress limits, and design factors for *Guadua angustifolia* bamboo are established in strict accordance with ISO 22156:2021 [36], the IStructE bamboo design manual [1], and NSR-10 Title G [37]. Table 2 presents the material parameters and design factors adopted in the analysis.
 
 | Mechanical / Design Property | Design Value | Codified Source and Justification |
 |---|---|---|

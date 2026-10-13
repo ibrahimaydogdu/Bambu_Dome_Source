@@ -42,7 +42,7 @@ $$g^t_{ij}(\mathbf{x}) = \frac{\max(\tilde{N}_{ij}, 0)}{A_i\,f_{t,0,k}} - 1 \le 
 
 where $f_{t,0,k}$ is the characteristic tensile strength of the culm.
 
-**Compression and flexural column buckling constraints.** Axial compression is checked against the characteristic critical buckling stress $f_{cr,i}$ governed by Ylinen's non-linear column formulation [1, 12, 36]:
+**Compression and flexural column buckling constraints.** Axial compression is checked against the characteristic critical buckling stress $f_{cr,i}$ governed by Ylinen's non-linear column formulation [1, 36]:
 
 $$g^c_{ij}(\mathbf{x}) = \frac{\max(-\tilde{N}_{ij}, 0)}{A_i\,f_{cr,i}} - 1 \le 0 \tag{7}$$
 
@@ -50,7 +50,7 @@ $$f_{cr,i} = \frac{f_{c,0,k} + f_{e,i}}{2c} - \sqrt{\left(\frac{f_{c,0,k} + f_{e
 
 $$f_{e,i} = \frac{\pi^2 E_k\,C_{bow}}{\lambda_i^2}, \qquad \lambda_i = \frac{K\,L_i}{r_i}, \qquad C_{bow} = 1 - \frac{b_0}{0.02} \tag{9}$$
 
-where $f_{c,0,k}$ is the characteristic parallel compressive strength, $E_k$ is the characteristic elastic modulus, $c$ is the dimensionless Ylinen interaction constant, $\lambda_i$ is column slenderness, $K$ is the effective length factor ($K = 1.0$ for pinned ends), $r_i$ is the radius of gyration, and $C_{bow}$ is the reduction factor accounting for initial culm crookedness ($b_0$). Experimental validation of column buckling behavior and Ylinen constants for Guadua culms is detailed by Bahtiar et al. [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3.
+where $f_{c,0,k}$ is the characteristic parallel compressive strength, $E_k$ is the characteristic elastic modulus, $c$ is the dimensionless Ylinen interaction constant, $\lambda_i$ is column slenderness, $K$ is the effective length factor ($K = 1.0$ for pinned ends), $r_i$ is the radius of gyration, and $C_{bow}$ is the reduction factor accounting for initial culm crookedness ($b_0$). Column buckling tests on Guadua culms are reported in [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3.
 
 **Geometric slenderness constraints.** To prevent excessive flexibility during transport, erection, and service life, maximum slenderness is constrained according to Title G of the Colombian seismic building code NSR-10 [37]:
 
@@ -62,7 +62,7 @@ where $\lambda_{max} = 150$ is enforced across all structural elements as a cons
 
 $$g^n_{ij}(\mathbf{x}) = \frac{|N_{ij}|}{F_{j,Rd}} - 1 \le 0, \qquad F_{j,Rd} = n_{bolt}\,F_{bolt,adm}\,C_g \tag{11}$$
 
-where $F_{bolt,adm}$ is the allowable double-shear capacity of a single steel bolt embedded in a mortared bamboo culm based on NSR-10 (Table G.12.11-2 [37]) and empirical connection tests on Guadua culms [11], $n_{bolt}$ is the number of through-bolts per member end, and $C_g$ is the bolt group modification factor (Table G.12.11-3 of NSR-10).
+where $F_{bolt,adm}$ is the allowable double-shear capacity of a single steel bolt embedded in a mortared bamboo culm (Table G.12.11-2 of NSR-10 [37]), $n_{bolt}$ is the number of through-bolts per member end, and $C_g$ is the bolt group modification factor (Table G.12.11-3 of NSR-10).
 
 **Serviceability deflection constraints.** Overall structural serviceability is governed by the peak nodal translation across all active load combinations:
 

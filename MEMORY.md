@@ -95,3 +95,13 @@ Bu dosyadaki ve diğer proje belgelerindeki (agent_*.md, 00_System, 01–02 klas
    - `Bambu_Dome_Source` çalışma deposu (`https://github.com/ibrahimaydogdu/Bambu_Dome_Source.git`): Tüm güncel makale, kod ve sonuç revizyonlarıyla senkronize edilerek push edildi.
 5. **[16] Gan et al. (2017) Künye Düzeltmesi (Crossref Doğrulamalı):** Halüsinatif başlık ve yanlış DOI yerine Crossref onaylı gerçek yayın künyesi girildi: Gan, V.J.L., Cheng, J.C.P., Lo, I.M.C., Chan, C.M., 2017. *Developing a CO2-e accounting method for quantification and analysis of embodied carbon in high-rise buildings*. Journal of Cleaner Production 141, 825–836. DOI: 10.1016/j.jclepro.2016.09.126. Giriş bölümü [14, 16, 17, 18] (gömülü karbon analizleri) ve [15, 19] (yapısal optimizasyon) olarak hassaslaştırıldı.
 
+## Atıf İnce Ayarı ve Katı Doğrulama (2026-10-13, Tur 13)
+
+Kullanıcının metin içi atıf kontrolleri doğrultusunda 5 kritik düzeltme yapıldı:
+1. **[11] (Trujillo & Malkowska 2018):** Bölüm 2.3'teki $F_{bolt,adm}$ tanımından kaldırıldı (kapasite yalnızca NSR-10 Tabla G.12.11-2 [37]'ye dayanır). Tartışma bölümündeki cıvata aralık/uç mesafesi cümlesinden [11] çıkarıldı (aralık kuralları [11]'de yoktur, sadece NSR-10'dadır). [11], Giriş bölümünde tekil bağlantı deneyleri bağlamında [7, 8, 11] olarak korundu.
+2. **[13] (Chung & Yu 2002):** Bölüm 3.2 Guadua malzeme özellikleri metninden çıkarıldı (Tablo 2 değerleri ISO 22156, IStructE Manual ve NSR-10'dan alınmıştır; Chung & Yu iskele bambusudur). [13], Giriş bölümünde bambu culmlarının mekanik verimliliği genel literatüründe [5, 6, 13] olarak korundu.
+3. **[29] (Saka 1991):** Bölüm 3.1'deki 40 m Ribbed kubbe ve 354 elemanlı çelik referans kubbe tanımlarından çıkarıldı (Saka 1991 çelik çerçeveler ve konik elemanlar üzerinedir, 354 elemanlı Schwedler kubbesi literatürü değildir). Her iki cümlede yalnızca [20, 30, 31] bırakıldı. [29], Giriş bölümünde çelik kafes yapıların temel boyutlandırma optimizasyonu atfı olarak korundu.
+4. **[12] (Bahtiar et al. 2021):** Bölüm 2.3'te yazar adıyla başlayan ve Ylinen sabitlerinin doğrulanmasını iddia eden keskin ifade yumuşatıldı; kurala uygun nesnel cümleye dönüştürüldü: *"Column buckling tests on Guadua culms are reported in [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3."* Denklem (7) Ylinen atfından [12] çıkarıldı ([1, 36] kaldı).
+5. Tüm `.md` taslak dosyaları ve derlenmiş `MANUSCRIPT_FULL.md`, `MANUSCRIPT_FULL.docx`, `MANUSCRIPT_FULL.html` yeniden oluşturulup tam senkronize edildi.
+
+
