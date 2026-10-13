@@ -1,8 +1,8 @@
-# 3. Results
+# 4. Results
 
-## 3.1 Algorithm performance
+## 4.1 Algorithm performance
 
-All 270 runs ended with feasible designs (Table 7). The lightest design of each dome weighs 5.800 kN (Geodesic), 41.058 kN (Kiewitt) and 66.352 kN (Ribbed). ABC reached this weight in 5, 30 and 7 of its 30 runs, ACO in 0, 14 and 1 runs, and DO in none (`summary.csv`). DO gave the heaviest mean weight on every dome.
+All 270 runs ended with feasible designs (Table 7). The lightest design of each dome weighs 5.800 kN (Geodesic), 41.058 kN (Kiewitt) and 66.352 kN (Ribbed). ABC reached this weight in 5, 30 and 7 of its 30 runs, ACO in 0, 14 and 1 runs, and DO in none. DO gave the heaviest mean weight on every dome.
 
 | Dome | Algorithm | Feasible runs | Best [kN] | Median [kN] | Mean [kN] | Std [kN] | Worst [kN] | NFE | Mean time [min] |
 |---|---|---|---|---|---|---|---|---|---|
@@ -53,7 +53,7 @@ For the lightest design of each dome, member forces and nodal displacements were
 
 **Table 10.** Comparison of the own solver with SAP2000 for the lightest design of each dome.
 
-## 3.2 Lightest designs and governing limit states
+## 4.2 Lightest designs and governing limit states
 
 Table 11 gives the largest demand-to-capacity ratio of each check for the lightest designs. Compression reaches a ratio of 0.992–1.000 in all three designs. The displacement ratio is 0.060, 0.062 and 0.129 of the limit.
 
@@ -65,9 +65,9 @@ Table 11 gives the largest demand-to-capacity ratio of each check for the lighte
 
 **Table 11.** Largest D/C ratio per check in the lightest design of each dome, displacement ratio and number of design groups with D/C ≥ 0.95.
 
-Compression determines the largest D/C ratio in 19 of 23 groups (Geodesic), 21 of 22 (Kiewitt) and 41 of 43 (Ribbed) in the lightest designs. Slenderness determines the remaining groups: 4, 1 and 2. Tension and the joint check determine no group of the lightest designs. Averaged over the 90 feasible runs of each dome, compression determines 81.1%, 95.5% and 93.4% of the groups, slenderness 18.9%, 4.5% and 6.5%, and the joint check 0.2% on Ribbed (`GOVERNING_LIMIT_SHARES.md`). Figure 4 shows these shares. The profiles of the lightest designs are in Figure 1.
+Compression determines the largest D/C ratio in 19 of 23 groups (Geodesic), 21 of 22 (Kiewitt) and 41 of 43 (Ribbed) in the lightest designs. Slenderness determines the remaining groups: 4, 1 and 2. Tension and the joint check determine no group of the lightest designs. Averaged over the 90 feasible runs of each dome, compression determines 81.1%, 95.5% and 93.4% of the groups, slenderness 18.9%, 4.5% and 6.5%, and the joint check 0.2% on Ribbed. Figure 4 shows these shares. The profiles of the lightest designs are in Figure 1.
 
-## 3.3 Bolts required per member
+## 4.3 Bolts required per member
 
 The largest member forces of the lightest designs are 13.82, 26.76 and 39.77 kN (Table 10), below F_j,Rd = 49.3 kN, so most members need one or two bolts (Table 12). No member needs four. On Ribbed, 813 members need one bolt, 591 two and 60 three. Twelve Ribbed members (0.82%), all 0.76 m long, are too short to hold the three bolts they require under the NSR-10 spacing rules; the largest force in these members is 31.25 kN. Eighty-four Ribbed members are shorter than 1.35 m. Geodesic and Kiewitt have no such members; their shortest members are 2.24 m and 2.09 m long.
 
@@ -79,7 +79,7 @@ The largest member forces of the lightest designs are 13.82, 26.76 and 39.77 kN 
 
 **Table 12.** Number of bolts required per member end (NSR-10 allowable load, #5 bolt) and members too short to hold them. Lengths and forces in the last columns are in m and kN.
 
-## 3.4 Embodied carbon of the lightest designs
+## 4.4 Embodied carbon of the lightest designs
 
 The embodied carbon of the lightest designs is 0.86 t CO₂e (Geodesic), 4.84 t (Kiewitt) and 11.34 t (Ribbed) (Table 13). Connection steel and grout together account for 79.39%, 74.07% and 82.11% of this carbon; connection steel alone accounts for 57.25%, 39.03% and 51.92%. The grout mass is 57%, 65% and 67% of the total mass of culm, steel and grout (derived from Table 13).
 
@@ -89,23 +89,23 @@ The embodied carbon of the lightest designs is 0.86 t CO₂e (Geodesic), 4.84 t 
 | Kiewitt | 4.19 | 0.79 | 9.43 | 14.41 | 25.93 | 39.03 | 35.04 | 74.07 | 4.84 |
 | Ribbed | 6.76 | 2.47 | 19.02 | 28.26 | 17.89 | 51.92 | 30.19 | 82.11 | 11.34 |
 
-**Table 13.** Mass and carbon breakdown of the lightest design of each dome (baseline parameters: EC_b = 0.30, EC_s = 2.38, EC_m = 0.18 kg CO₂e/kg; L_inj = 2.5 D).
+**Table 13.** Mass and carbon breakdown of the lightest design of each dome (baseline parameters: EC_b = 0.30, EC_s = 2.38, EC_m = 0.18 kg CO₂e/kg; β = 2.5).
 
 Table 14 shows the joint share (steel plus grout) when parameters are changed.
 
-| Dome | Base | L_inj/D = 1.5 | L_inj/D = 3.5 | EC_steel = 1.2 | EC_steel = 3.0 | EC_bamboo = 0.09 | EC_bamboo = 1.23 | Combined case |
+| Dome | Base | β = 1.5 | β = 3.5 | EC_steel = 1.2 | EC_steel = 3.0 | EC_bamboo = 0.09 | EC_bamboo = 1.23 | Combined case |
 |---|---|---|---|---|---|---|---|---|
 | Geodesic | 79.39 | 77.38 | 81.06 | 71.22 | 82.06 | 92.77 | 48.43 | 53.9 |
 | Kiewitt | 74.07 | 69.84 | 77.26 | 67.85 | 76.46 | 90.50 | 41.06 | 45.3 |
 | Ribbed | 82.11 | 79.65 | 84.04 | 75.91 | 84.24 | 93.86 | 52.82 | 57.7 |
 
-**Table 14.** Joint share of the embodied carbon [%] for the lightest designs. Each column changes one parameter from the baseline; the last column changes L_inj/D = 1.5, EC_s = 1.2, EC_b = 0.47 and EC_m = 0.12 together.
+**Table 14.** Joint share of the embodied carbon [%] for the lightest designs. Each column changes one parameter from the baseline; the last column changes β = 1.5, EC_s = 1.2, EC_b = 0.47 and EC_m = 0.12 together. β is the ratio of the grout length to the culm diameter.
 
-The emission factor of the bamboo culm has the largest effect. With EC_b = 0.09 the joint share is 90.50–93.86%; with EC_b = 1.23 it is 41.06–52.82%. The share changes by less than 10 percentage points with L_inj/D or EC_s alone. The joint share is below 50% for Kiewitt in the combined case (45.3%) and for Kiewitt (41.06%) and Geodesic (48.43%) with EC_b = 1.23.
+The emission factor of the bamboo culm has the largest effect. With EC_b = 0.09 the joint share is 90.50–93.86%; with EC_b = 1.23 it is 41.06–52.82%. The share changes by less than 10 percentage points with β or EC_s alone. The joint share is below 50% for Kiewitt in the combined case (45.3%) and for Kiewitt (41.06%) and Geodesic (48.43%) with EC_b = 1.23.
 
-## 3.5 Comparison with steel
+## 4.5 Comparison with steel
 
-For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.634 of the weight of the steel members, and the embodied carbon of the bamboo systems (culm, connection steel and grout) is 0.252, 0.278 and 0.347 of that of the steel systems at the baseline emission factors (Table 16). With EC_b = 1.23 kg CO₂e/kg the three ratios are 0.414, 0.502 and 0.540. With a steel emission factor of 1.6 kg CO₂e/kg they are 0.396, 0.436 and 0.545 (`T8_material_sensitivity.csv`). The system weights, which include connection steel and grout, are higher for bamboo than for steel (Table 15): 18.211, 141.320 and 277.222 kN for bamboo against 13.434, 68.456 and 128.955 kN for steel (ratios 1.36, 2.06 and 2.15, derived).
+For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.634 of the weight of the steel members, and the embodied carbon of the bamboo systems (culm, connection steel and grout) is 0.252, 0.278 and 0.347 of that of the steel systems at the baseline emission factors (Table 16). With EC_b = 1.23 kg CO₂e/kg the three ratios are 0.414, 0.502 and 0.540. With a steel emission factor of 1.6 kg CO₂e/kg they are 0.396, 0.436 and 0.545. The system weights, which include connection steel and grout, are higher for bamboo than for steel (Table 15): 18.211, 141.320 and 277.222 kN for bamboo against 13.434, 68.456 and 128.955 kN for steel (ratios 1.36, 2.06 and 2.15, derived).
 
 | Structure | Members | Member weight [kN] | System weight [kN] | Embodied carbon [t CO2e] |
 |---|---|---|---|---|
@@ -129,7 +129,7 @@ For the same geometry, the weight of the bamboo members is 0.509, 0.677 and 0.63
 
 Figure 5 shows the member weight and the embodied carbon of all structures of Table 15. Under the load condition of the literature study, the present steel model gives 135–136 kN for the 354-member dome, against 151.1–155.8 kN reported there [DATA NEEDED: calculation record of the 135–136 kN check; REF NEEDED: literature values].
 
-## 3.6 Material cost
+## 4.6 Material cost
 
 Table 17 gives the ratio of the bamboo material cost to the steel material cost for the same geometry in the Indonesian scenario, the main case. With α = 2 the ratios are 0.639 (Geodesic), 0.926 (Kiewitt) and 1.021 (Ribbed). Over α = 1.5–3 they range from 0.612 to 0.724, 0.869 to 1.137 and 0.981 to 1.154. A ratio above 1 means that the bamboo structure costs more. The ratio is below 1 for Geodesic at all α, below 1 for Kiewitt for α ≤ 2, and below 1 for Ribbed only at α = 1.5 (0.981). The grout accounts for 50.4-59.6%, 56.1-73.4%, 59.2-69.7% of the bamboo material cost (Geodesic, Kiewitt, Ribbed).
 

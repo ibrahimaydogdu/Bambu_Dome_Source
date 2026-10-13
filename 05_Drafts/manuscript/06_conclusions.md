@@ -1,4 +1,4 @@
-# 5. Conclusions
+# 6. Conclusions
 
 The results hold for the three dome models (spans of 16, 32 and 40 m), the 24-section catalogue, the assumed joint hardware and the stated emission factors.
 

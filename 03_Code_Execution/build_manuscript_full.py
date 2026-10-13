@@ -21,17 +21,17 @@ FIGS = {  # numara -> dosya
     "4": "F4_governing_limit_states.png", "5a": "F5_material_weight.png", "5b": "F5_material_co2.png"}
 # sekil, ilgili paragrafin baslangicindan sonra yerlestirilir (bolum dosyasi, paragraf baslangici)
 ANCHORS = [
-    ("03_results.md", "**Table 9.**", ["3"]),
-    ("03_results.md", "Figure 2 shows the mean", ["2"]),
-    ("03_results.md", "Compression determines the largest D/C ratio", ["4", "1"]),
-    ("03_results.md", "Figure 5 shows the member weight", ["5a", "5b"]),
+    ("04_results.md", "**Table 9.**", ["3"]),
+    ("04_results.md", "Figure 2 shows the mean", ["2"]),
+    ("04_results.md", "Compression determines the largest D/C ratio", ["4", "1"]),
+    ("04_results.md", "Figure 5 shows the member weight", ["5a", "5b"]),
 ]
 
 
 def captions() -> dict[str, str]:
     out = {}
-    for ln in (MS / "06_figure_table_captions.md").read_text(encoding="utf-8").splitlines():
-        m = re.match(r"\*\*Figure (\d[ab]?)\*\* \(`[^`]+`\)\. (.*)", ln)
+    for ln in (MS / "07_figure_captions.md").read_text(encoding="utf-8").splitlines():
+        m = re.match(r"\*\*Figure (\d[ab]?)\.\*\* (.*)", ln)
         if m:
             out[m.group(1)] = m.group(2)
     return out
@@ -57,11 +57,11 @@ def build_md() -> str:
     rest = rest.replace("## Highlights", "## Highlights").strip()
     n_open = re.search(r"Count: (\d+)", (MS / "OPEN_ITEMS.md").read_text(encoding="utf-8"))
     status = ("> Working draft. Open placeholders in the text: " + (n_open.group(1) if n_open else "?") +
-              ". Sources of numbers: `NUMBERS_TRACE.md`. Open decisions and data requests: `OPEN_ITEMS.md`.")
+              ". Sources of numbers: `NUMBERS_TRACE.md`. Open decisions and data requests: `OPEN_ITEMS.md`. Source search instructions: `REFERENCE_SEARCH_GUIDE.md`.")
     parts = [f"# {title}", "", status, "", rest]
-    for name in ["01_introduction.md", "02_methods.md", "03_results.md", "04_discussion.md", "05_conclusions.md"]:
+    for name in ["01_introduction.md", "02_methods.md", "03_numerical_examples.md", "04_results.md", "05_discussion.md", "06_conclusions.md"]:
         parts += ["", with_figures(name, (MS / name).read_text(encoding="utf-8").strip(), caps)]
-    parts += ["", (MS / "07_references.md").read_text(encoding="utf-8").strip()]
+    parts += ["", (MS / "08_references.md").read_text(encoding="utf-8").strip()]
     return "\n".join(parts) + "\n"
 
 
