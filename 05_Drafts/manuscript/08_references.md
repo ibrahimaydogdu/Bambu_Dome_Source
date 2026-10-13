@@ -30,7 +30,7 @@
 
 [15] Eleftheriadis, S., Duffour, P., Greening, P., Mumovic, D., 2018. Integrated BIM-structural optimization framework for embodied carbon reduction of building frames. Energy and Buildings 173, 706–718. https://doi.org/10.1016/j.enbuild.2018.05.044
 
-[16] Gan, V.J.L., Cheng, J.C.P., Lo, I.M.C., 2017. Integrating life cycle assessment and buildability for sustainable structural design. Journal of Cleaner Production 162, 1068–1082. https://doi.org/10.1016/j.jclepro.2017.06.096
+[16] Gan, V.J.L., Cheng, J.C.P., Lo, I.M.C., Chan, C.M., 2017. Developing a CO2-e accounting method for quantification and analysis of embodied carbon in high-rise buildings. Journal of Cleaner Production 141, 825–836. https://doi.org/10.1016/j.jclepro.2016.09.126
 
 [17] Pomponi, F., Moncaster, A., 2016. Embodied carbon mitigation and reduction in the built environment—What does the evidence say? Journal of Environmental Management 181, 687–700. https://doi.org/10.1016/j.jenvman.2016.08.036
 

@@ -93,4 +93,5 @@ Bu dosyadaki ve diğer proje belgelerindeki (agent_*.md, 00_System, 01–02 klas
 4. **Çift GitHub Deposu Senkronizasyonu ve Push:**
    - `BambuDome-reproducibility` deposu (`https://github.com/ibrahimaydogdu/BambuDome-reproducibility.git`): Yereldeki 19 commit edilmemiş dosya + yeni üretilen tüm CSV veri setleri ve modeller stage edilip commit edildi ve `origin/main`'e başarıyla push edildi.
    - `Bambu_Dome_Source` çalışma deposu (`https://github.com/ibrahimaydogdu/Bambu_Dome_Source.git`): Tüm güncel makale, kod ve sonuç revizyonlarıyla senkronize edilerek push edildi.
+5. **[16] Gan et al. (2017) Künye Düzeltmesi (Crossref Doğrulamalı):** Halüsinatif başlık ve yanlış DOI yerine Crossref onaylı gerçek yayın künyesi girildi: Gan, V.J.L., Cheng, J.C.P., Lo, I.M.C., Chan, C.M., 2017. *Developing a CO2-e accounting method for quantification and analysis of embodied carbon in high-rise buildings*. Journal of Cleaner Production 141, 825–836. DOI: 10.1016/j.jclepro.2016.09.126. Giriş bölümü [14, 16, 17, 18] (gömülü karbon analizleri) ve [15, 19] (yapısal optimizasyon) olarak hassaslaştırıldı.
 
