@@ -1,6 +1,6 @@
 # Open items
 
-Status of 2026-10-13 (after the revision that removed the ICE database). The manuscript text contains no placeholders at present; the points below must be settled before submission. Stage 5 has not been approved by the lead author.
+Status of 2026-10-14. The manuscript text contains no placeholders. Stage 5 was approved by the author on 2026-10-14. The points below are for the author before submission.
 
 ## Decisions taken by the authors
 
@@ -15,11 +15,11 @@ Status of 2026-10-13 (after the revision that removed the ICE database). The man
 The verification of the references and of the steel model against the literature is carried out by the author and is not listed here.
 
 - **Emission factor sources.** The plate EPD expired on 24.10.2023; the pipe EPD is a single Canadian producer; the freight factor 0.185 kg CO₂e/(t·km) is the authors' value within the DEFRA 2023 range 0.1782–0.2146; the upper bound 1.23 of the culm factor is derived from Zea Escamilla and Habert 2014 (Table 8) and not verified against the full source tables.
-- **Literature gap statement (Section 1).** The statement that structure-level comparisons of bamboo with steel are limited has no search protocol behind it; a search (Scopus or Web of Science, see `REFERENCE_SEARCH_GUIDE.md`) is needed.
 - **Prices.** The OCR-read Indonesian and Indian prices were not compared with the page images; the Colombian bamboo quotation and the proxy steel and grout prices are not verified.
-- **Design groups, densification, catalogue basis.** Verbal definition of the groups of Ribbed and Kiewitt, the reason for the frequency-2 densification and the basis of the 24 (D, t) pairs are not documented.
-- **Declarations.** The statement on the use of AI tools is checked by the author. The data availability statement points to `https://github.com/ibrahimaydogdu/BambuDome-reproducibility`, where all structured CSV datasets (Tables 8–9 stats, LCA sensitivity, tuning, and Figure 3 convergence series), FEA solver, optimization routines, and SAP2000 models are synchronized and published.
-- **Stale columns.** `campaign_final/summary.csv` and `global_best*.json` contain carbon columns computed with factors different from the manuscript (the campaign configuration used 0.35, 2.1 and 0.18); they are not used in the manuscript.
+- **Declarations.** The statement on the use of AI tools must be checked by the authors; the data availability statement refers to `https://github.com/ibrahimaydogdu/BambuDome-reproducibility`, whose visibility and archive (for example Zenodo DOI for the raw records of about 135 MB) are not confirmed.
+- **Literature search.** Web of Science screening of 2026-10-14 (six keyword sets, 506 unique records, `01_Literature/WOS_SCREENING_2026-10-14.md`). The queries and the total number of hits per query are to be added to the record; the Laleicke et al. 2015 full text is not yet in `Papers/`.
+- **Design groups and catalogue basis.** The verbal definition of the groups of Ribbed and Kiewitt and the basis of the 24 (D, t) pairs are not documented. The frequency-2 densification of the Ribbed dome is documented by `bamboo_354_feasibility.py`.
+- **Declarations.** AI-use statement and a Zenodo archive of the raw records (about 135 MB), if the journal asks, are with the author.
 
 ## Placeholders in the manuscript text (generated)
 
