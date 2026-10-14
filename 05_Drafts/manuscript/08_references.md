@@ -91,3 +91,8 @@
 
 [45] Frangedaki, E., Sardone, L., Lagaros, N.D., 2021. Design optimization of tree-shaped structural systems and sustainable architecture using bamboo and earthen materials. Journal of Architectural Engineering 27 (4), 04021034. https://doi.org/10.1061/(ASCE)AE.1943-5568.0000492
 
+[46] Zhang, J., Xu, J., Wu, Y., Xie, T., Bo, L., Li, Z., 2023. Life cycle assessment of steel-glued laminated bamboo (GluBam) hybrid truss in China. Energy and Buildings 294, 113218. https://doi.org/10.1016/j.enbuild.2023.113218
+
+[47] Zhang, X., Xu, J., Zhang, X., Li, Y., 2021. Life cycle carbon emission reduction potential of a new steel-bamboo composite frame structure for residential houses. Journal of Building Engineering 39, 102295. https://doi.org/10.1016/j.jobe.2021.102295
+
+[48] Wei, X., Xue, F., Wang, J., Liang, D., 2026. Bi-objective optimization of low-carbon, low-cost scaffolding design using bamboo and steel with a study in China. Resources, Conservation & Recycling Advances 30, 200334. https://doi.org/10.1016/j.rcradv.2026.200334

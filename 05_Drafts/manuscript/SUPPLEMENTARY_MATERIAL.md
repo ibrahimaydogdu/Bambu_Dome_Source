@@ -278,7 +278,7 @@ The geodesic geometry is constructed by subdividing the triangular faces of a re
 The Kiewitt cap is generated on a spherical cap of radius $R = 22.70$ m spanning a base diameter of 32.0 m and rise of 6.60 m. The geometry is partitioned into 8 cyclic radial sectors and 6 concentric horizontal latitude rings. Diagonal bracing is arranged in alternating orientations within each sector to ensure kinematic triangulated stability.
 
 ### Ribbed (Schwedler-type) Dome Generation
-The 40 m ribbed dome geometry is generated on a spherical surface of radius $R = 28.29$ m with a crown rise of 8.28 m. The structure features 24 meridional ribs and 10 horizontal rings. In the frequency-2 densified model, each original trapezoidal grid quadrilateral is subdivided into four triangulated sub-panels, reducing peak member lengths from 5.97 m to 3.08 m to comply with structural culm transportability.
+The 40 m ribbed dome geometry is generated on a spherical surface of radius $R = 28.29$ m with a crown rise of 8.28 m. The structure features 24 meridional ribs and 10 horizontal rings. In the frequency-2 densified model, each original trapezoidal grid quadrilateral is subdivided into four triangulated sub-panels, reducing the member lengths from up to 5.97 m to up to 3.08 m. For the original geometry no feasible bamboo design was found (Section 3.1), whereas feasible designs were found for the densified model (Section 4.1).
 
 ## S4.3 Wind Pressure Aerodynamic Zoning and Tributary Loading
 
