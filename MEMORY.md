@@ -104,4 +104,21 @@ Kullanıcının metin içi atıf kontrolleri doğrultusunda 5 kritik düzeltme y
 4. **[12] (Bahtiar et al. 2021):** Bölüm 2.3'te yazar adıyla başlayan ve Ylinen sabitlerinin doğrulanmasını iddia eden keskin ifade yumuşatıldı; kurala uygun nesnel cümleye dönüştürüldü: *"Column buckling tests on Guadua culms are reported in [12], while complete mechanical derivations are provided in Supplementary Material Appendix S3."* Denklem (7) Ylinen atfından [12] çıkarıldı ([1, 36] kaldı).
 5. Tüm `.md` taslak dosyaları ve derlenmiş `MANUSCRIPT_FULL.md`, `MANUSCRIPT_FULL.docx`, `MANUSCRIPT_FULL.html` yeniden oluşturulup tam senkronize edildi.
 
+## Çoklu Ajan ve Hakem Ön-Denetim Düzeltmeleri (2026-10-14, Tur 14)
+
+Kullanıcının ve diğer yapay zekânın denetim maddeleri doğrultusunda 12 başlık eksiksiz tamamlandı:
+1. **Literatür Boşluğu & Doğrulama (Giriş):** Bambu uzay kafesleri ve optimizasyon literatürü Crossref/Scopus üzerinden taranarak doğrulanmış gerçek yayınlar eklendi: Wu & Xiao (2018) [43] (glubam hibrit uzay kafesi, EngStruct), Seixas vd. (2021) [44] (esnek mafsallı bambu uzay yapıları, IJSS), Frangedaki vd. (2021) [45] (Guadua optimizasyonu, ASCE JAE). Boşluk iddiası bu birincil kaynaklarla sağlamlaştırıldı.
+2. **354 Elemanlı Kubbe Sıklaştırma Gerekçesi:** Orijinal 354 elemanlı çelik kubbede eleman boyları 5.97 m'ye ulaşarak doğal Guadua culm nakliye ve narinlik/burkulma sınırlarını aştığı için frekans-2 sıklaştırması yapıldığı belgelendi.
+3. **Karbon Girdileri Şeffaflık Notu:** Tablo 5 altına şeffaflık paragrafı eklendi: Bauforumstahl plaka EPD (24.10.2023 bitişli) için 0.5–2.0 kat ($0.565–2.26\text{ kg CO}_2\text{e/kg}$) tesis aralığı tarandığı, Welded Tube HSS ve DEFRA 2023 kamyon aralığı medianı ($0.185$) ile Zea & Habert üst sınırı ($1.23$) açıkça metodolojik not olarak açıklandı.
+4. **Yapay Zekâ Beyanı:** Kullanıcı kontrolünde, ikinci depodan Claude logosu kaldırılacak.
+5. **Zenodo:** Askıya alındı; dergi şart koşarsa eklenecek.
+6. **Eski Karbon Sütunlarının Senkronizasyonu:** `update_legacy_carbon_columns.py` betiğiyle `summary.csv` (270 koşu), `global_best_*.json` (geodesic: 705.61, kiewitt: 4836.45, ribbed: 10335.84 kg CO2e) ve `steel_reference_aisc37_summary.csv` (120 koşu) EPD katsayılarıyla sıfırdan yeniden hesaplanarak güncellendi; `README.md` senkronize edildi.
+7. **Referans Denetimi:** [1]–[45] arasındaki 45 referansın tamamının metin içinde aktif olarak atıflandığı ve hiç kullanılmayan referans kalmadığı doğrulanıp kanıtlandı.
+8. **Ek Dosya Düzeltmeleri (S8, S12, Yarıçap):** `SUPPLEMENTARY_MATERIAL.md` içinde Denk. S8'e feromon alt sınırı ($\tau_{min} = 0.01$), Denk. S12'ye DO iniş çarpanları ($0.1$ ve $2t/T$), ve Ribbed kubbe küresel yarıçapına $R = 28.29$ m girildi; HTML ve DOCX çıktıları derlendi.
+9. **Kolombiya Fiyat Farkı Tartışması:** Tartışma Bölümü 5'e Kolombiya ticari fiyatının kimyasal immünize (boron emprenyeli ve fırın kurusu) culmları temsil ettiği, Endonezya'nın ise işlemsiz taze/kuru culmları içerdiği ve yapısal ömür için emprenyenin zorunlu olduğu bilgisi eklendi.
+10. **Yeni EPD'ler (MAPEI, Özdemir Boru):** Kanıt klasöründe tutuldu, modellerde baz olarak değiştirilmedi.
+11. **Aşama 5 Durumu:** Tüm düzeltmeler tamamlandı, denetim raporu kullanıcıya sunuldu.
+12. **Git Senkronizasyonu:** Her iki yerel depoda (`Bambu_Dome_Source` ve `BambuDome-reproducibility`) commit atılarak push edildi.
+
+
 

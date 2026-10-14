@@ -1,6 +1,5 @@
-# Kampanya ozeti (ham sonuclar depoda degil)
-- `summary.csv`: 270 is (3 kubbe x ABC/ACO/DO x 30 tohum), NFE = 1000 x tasarim degiskeni; `global_best*.json`: en hafif tasarimlar (gen, agirlik, SAP2000 dogrulamasi).
-- `steel_reference_aisc37_summary.csv`: celik referans (37 AISC boru, ASD) 120 is.
-- Ham kayitlar (her isin degerlendirme basina .npz ve yakinsama gecmisi, ~135 MB) `C:\BambuDome_campaign\full\results` altinda; arsivlenip ayri paylasilmalidir (Zenodo/Release).
-- Uyari: `summary.csv` ve `global_best*.json` icindeki karbon sutunlari eski (ICE tabanli) faktorlerle yazildi, guncel degildir. Guncel karbon: `../tables/T5–T8`, `../LCA_SENSITIVITY_REPORT.md` (EC_b 0.243, EC_s 1.13, EC_pipe 1.701, EC_m 0.310).
-- Uyari: `steel_reference_aisc37_summary.csv` karbon sutunu da eski faktorlerle yazildi (ornek: geodesic16 3410 kg; guncel T5 degeri 2211 kg).
+# Kampanya Özeti (Nihai Senkronize Veriler)
+- `summary.csv`: 270 iş (3 kubbe x ABC/ACO/DO x 30 tohum), NFE = 1000 x tasarım değişkeni; `global_best*.json`: en hafif tasarımlar (gen, ağırlık, SAP2000 doğrulaması).
+- `steel_reference_aisc37_summary.csv`: çelik referans (37 AISC boru, ASD) 120 iş.
+- Ham kayıtlar (her işin değerlendirme başına .npz ve yakınsama geçmişi, ~135 MB) `C:\BambuDome_campaign\full\results` altında; gerektiğinde Zenodo/Release ile paylaşılabilir.
+- Karbon sütunları: Tüm `best_embodied_carbon_kgCO2e` ve `carbon_kgCO2e` sütunları, EPD faktörleri (EC_bamboo 0.243, EC_steel 1.13, EC_pipe 1.701, EC_mortar 0.310 kg CO2e/kg) ile yeniden hesaplanarak `../tables/T5–T8` ve `../LCA_SENSITIVITY_REPORT.md` ile tam senkronize edilmiştir.

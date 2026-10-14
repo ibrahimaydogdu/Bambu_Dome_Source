@@ -118,5 +118,5 @@ Direct structural material costs are modeled without consideration of site labor
 
 $$C_{bamboo} = \sum_{i=1}^{N_m} L_i\,p_b(D_i) + p_s\,m_s + p_g\,m_m, \qquad p_b(D) = p_{ref}\left(\frac{D}{D_{ref}}\right)^\alpha \tag{19}$$
 
-where $p_b(D)$ represents the diameter-dependent bamboo price per linear meter, scaled nonlinearly from reference unit cost $p_{ref}$ at base diameter $D_{ref}$ through exponent $\alpha \in [1.5, 3.0]$; $p_s$ and $p_g$ denote unit material prices (USD/kg) for steel and grout. For steel domes, total material expenditure is $C_{steel} = p_s(m_{pipe} + m_s)$. Unit price inventories across four international economic regions are documented in Section 3.5.
+where $p_b(D)$ represents the diameter-dependent bamboo price per linear meter, scaled nonlinearly from reference unit cost $p_{ref}$ at base diameter $D_{ref}$ through exponent $\alpha \in [1.5, 3.0]$; $p_s$ and $p_g$ denote unit material prices (USD/kg) for steel and grout. For steel domes, total material expenditure is $C_{steel} = p_s(m_{pipe} + m_s)$. No source gives the price of Guadua culms as a function of the diameter; the exponent $\alpha$ is an assumption of the study, and the results are reported for $\alpha = 1.5$ to $3.0$. Unit price inventories across four international economic regions are documented in Section 3.5.
 

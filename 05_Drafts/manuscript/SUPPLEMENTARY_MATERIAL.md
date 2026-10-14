@@ -86,7 +86,9 @@ where $\alpha$ is the pheromone sensitivity exponent ($\alpha = 1.0$), and $\bet
 ### Pheromone Evaporation and Global Update
 After all ants in the population have constructed their design solutions and their penalized objective weights $F(\mathbf{x})$ have been evaluated, pheromone levels evaporate at rate $\rho = 0.20$:
 
-$$\tau_{\ell,s} \leftarrow (1 - \rho)\,\tau_{\ell,s} \tag{S8}$$
+$$\tau_{\ell,s} \leftarrow \max\left((1 - \rho)\,\tau_{\ell,s},\, \tau_{\min}\right) \tag{S8}$$
+
+where $\tau_{\min} = 0.01$ is the lower pheromone threshold enforced to avoid search stagnation.
 
 Pheromone reinforcement is deposited exclusively by the elite fraction (top 20% best-performing ants) of the current generation, alongside the global best solution found since the start of search:
 
@@ -113,7 +115,7 @@ $$\mathbf{x}_{m}^{t+1} = \mathbf{x}_{m}^{t} - \beta_t \cdot \left( \frac{1}{N_p}
 ### Landing Stage (Lévy Flight Search)
 Upon approaching the terrain, landing sites are explored using a Lévy flight random walk to avoid premature trapping:
 
-$$\mathbf{x}_{m}^{t+1} = \mathbf{x}_{best}^{t} + \text{Lévy}(\beta) \cdot \alpha_t \cdot (\mathbf{x}_{best}^{t} - \mathbf{x}_{m}^{t}) \tag{S12}$$
+$$\mathbf{x}_{m}^{t+1} = \mathbf{x}_{best}^{t} + 0.1 \cdot \text{Lévy}(\beta) \cdot \alpha_t \cdot \left( \mathbf{x}_{best}^{t} - \mathbf{x}_{m}^{t} \cdot \frac{2 t}{T} \right) \tag{S12}$$
 
 where $\beta = 1.5$ is the Lévy exponent. After each continuous position update, coordinates are rounded to the nearest integer index and bounded within $[1, n_s]$.
 
@@ -276,7 +278,7 @@ The geodesic geometry is constructed by subdividing the triangular faces of a re
 The Kiewitt cap is generated on a spherical cap of radius $R = 22.70$ m spanning a base diameter of 32.0 m and rise of 6.60 m. The geometry is partitioned into 8 cyclic radial sectors and 6 concentric horizontal latitude rings. Diagonal bracing is arranged in alternating orientations within each sector to ensure kinematic triangulated stability.
 
 ### Ribbed (Schwedler-type) Dome Generation
-The 40 m ribbed dome geometry is generated on a spherical surface of radius $R = 28.32$ m with a crown rise of 8.28 m. The structure features 24 meridional ribs and 10 horizontal rings. In the frequency-2 densified model, each original trapezoidal grid quadrilateral is subdivided into four triangulated sub-panels, reducing peak member lengths from 5.97 m to 3.08 m to comply with structural culm transportability.
+The 40 m ribbed dome geometry is generated on a spherical surface of radius $R = 28.29$ m with a crown rise of 8.28 m. The structure features 24 meridional ribs and 10 horizontal rings. In the frequency-2 densified model, each original trapezoidal grid quadrilateral is subdivided into four triangulated sub-panels, reducing peak member lengths from 5.97 m to 3.08 m to comply with structural culm transportability.
 
 ## S4.3 Wind Pressure Aerodynamic Zoning and Tributary Loading
 

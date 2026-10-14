@@ -84,3 +84,10 @@
 [41] Sika Hellas, 2024. Environmental Product Declaration, SikaGrout-312 HP. EPD International (International EPD System), Stockholm.
 
 [42] UK Department for Energy Security and Net Zero, Department for Environment, Food and Rural Affairs, 2023. Greenhouse gas reporting: conversion factors 2023, sheet 'Freighting goods'. London.
+
+[43] Wu, Y., Xiao, Y., 2018. Steel and glubam hybrid space truss. Engineering Structures 171, 140–153. https://doi.org/10.1016/j.engstruct.2018.05.086
+
+[44] Seixas, M., Moreira, L.E., Stoffel, P., Bina, J., Ripper, J.L.M., Ferreira, J.L., Ghavami, K., 2021. Analysis of a self-supporting bamboo structure with flexible joints. International Journal of Space Structures 36 (2), 137–151. https://doi.org/10.1177/09560599211001660
+
+[45] Frangedaki, E., Sardone, L., Lagaros, N.D., 2021. Design optimization of tree-shaped structural systems and sustainable architecture using bamboo and earthen materials. Journal of Architectural Engineering 27 (4), 04021034. https://doi.org/10.1061/(ASCE)AE.1943-5568.0000492
+

@@ -40,6 +40,16 @@
 
 ## 🔄 3. DİNAMİK TUR GÜNLÜĞÜ (ITERATION HISTORY)
 
+### 📍 [Round 14] - [2026-10-14] - Master Agent & Developer Agent (Ön-Denetim Düzeltmeleri, EPD Senkronizasyonu, Literatür Boşluğu)
+1. **Literatür Boşluğu & Doğrulama (Giriş):** Crossref üzerinden taranan 3 gerçek yayın eklendi: Wu & Xiao (2018) [43] (glubam hibrit uzay kafesi, EngStruct), Seixas vd. (2021) [44] (esnek mafsallı bambu uzay yapıları, IJSS), Frangedaki vd. (2021) [45] (Guadua optimizasyonu, ASCE JAE). Boşluk iddiası birincil kanıtlarla temellendirildi.
+2. **354 Elemanlı Kubbe Sıklaştırma:** Eleman boylarının 5.97 m'ye ulaşarak bambu nakliyesi ve narinliğini aşması nedeniyle frekans-2 sıklaştırması yapıldığı gerekçelendirildi.
+3. **Karbon Girdileri Şeffaflık Notu:** Tablo 5 altına Bauforumstahl plaka EPD (24.10.2023 bitişli), Welded Tube HSS ve DEFRA 2023 katsayılarına ilişkin metodolojik şeffaflık notu eklendi.
+4. **Eski Karbon Sütunlarının Senkronizasyonu:** `update_legacy_carbon_columns.py` ile `summary.csv` (270 koşu), `global_best_*.json` (geodesic: 705.61, kiewitt: 4836.45, ribbed: 10335.84 kg CO2e) ve `steel_reference_aisc37_summary.csv` (120 koşu) EPD katsayılarıyla güncellendi; `README.md` senkronize edildi.
+5. **Referans Denetimi:** [1]–[45] arasındaki 45 referansın tamamının metin içinde eksiksiz atıflandığı ve 0 eksik kaldığı betikle kanıtlandı.
+6. **Ek Dosya Düzeltmeleri:** `SUPPLEMENTARY_MATERIAL.md` içinde Denk. S8'e feromon tabanı ($\tau_{min} = 0.01$), Denk. S12'ye DO iniş çarpanları ($0.1$ ve $2t/T$), Ribbed yarıçapına $R = 28.29$ m girildi; HTML ve DOCX derlendi.
+7. **Kolombiya Fiyat Farkı Tartışması:** Bölüm 5 Tartışma'ya Kolombiya fiyatının kimyasal immünize (boron) bambuyu yansıttığı, Endonezya'nın ise işlemsiz culmları temsil ettiği açıklandı.
+8. **Makale Çıktıları:** `MANUSCRIPT_FULL.md`, `MANUSCRIPT_FULL.docx`, `MANUSCRIPT_FULL.html` baştan derlendi.
+
 ### 📍 [Round 13] - [2026-10-13] - Master Agent & Stylist Agent (Atıf İnce Ayarı ve Katı Doğrulama)
 1. **[11] (Trujillo & Malkowska 2018):** Bölüm 2.3 $F_{bolt,adm}$ tanımından kaldırıldı (kapasite yalnızca NSR-10 Tabla G.12.11-2 [37]'ye dayanır). Tartışma bölümündeki cıvata detay/aralık sınırları cümlesinden [11] çıkarıldı (kural yalnızca NSR-10'da mevcuttur). Giriş bölümünde tekil bağlantı deneyleri bağlamında [7, 8, 11] olarak korundu.
 2. **[13] (Chung & Yu 2002):** Bölüm 3.2 Guadua malzeme özellikleri metninden çıkarıldı (Tablo 2 IStructE Manual ve NSR-10'a dayanır; Chung & Yu iskele bambusudur). Giriş bölümünde culm mekanik özellikleri genel literatürü [5, 6, 13] olarak korundu.
